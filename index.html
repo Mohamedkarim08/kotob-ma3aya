@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كتبك معايا | المنصة التعليمية</title>
+    <title>كتبك معايا | المنصة التعليمية للكتب الخارجية</title>
     <style>
         * {
             box-sizing: border-box;
@@ -17,17 +17,48 @@
             text-align: center;
             padding: 20px;
         }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e293b;
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-btn {
+            background-color: #0284c7;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .nav-btn:hover {
+            background-color: #0369a1;
+        }
         header {
             background-color: #1e293b;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 12px;
             margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
         h1 {
             color: #38bdf8;
             margin-bottom: 10px;
-            font-size: 28px;
+            font-size: 30px;
         }
         p {
             color: #94a3b8;
@@ -44,7 +75,7 @@
             background-color: #1e293b;
             border: 2px solid #334155;
             border-radius: 12px;
-            width: 250px;
+            width: 260px;
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
             transition: transform 0.3s;
@@ -58,6 +89,7 @@
             font-weight: bold;
             color: #f8fafc;
             margin-bottom: 15px;
+            line-height: 1.4;
         }
         .download-btn {
             display: inline-block;
@@ -75,6 +107,16 @@
     </style>
 </head>
 <body>
+
+    <!-- شريط التنقل العلوي (اللوحة والأزرار) -->
+    <nav>
+        <div class="logo">كتبك معايا</div>
+        <div class="nav-links">
+            <a href="#" class="nav-btn">الواجهة</a>
+            <a href="#" class="nav-btn">لوحة الإدارة</a>
+            <a href="#" class="nav-btn">قناة التليجرام</a>
+        </div>
+    </nav>
 
     <header>
         <h1>مرحباً بك في منصة كتبك معايا</h1>
