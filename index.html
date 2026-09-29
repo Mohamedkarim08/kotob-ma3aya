@@ -12,8 +12,8 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f1f5f9; /* خلفية فاتحة */
-            color: #1e293b; /* نص داكن وواضح */
+            background-color: #f1f5f9;
+            color: #1e293b;
             text-align: center;
             padding: 20px;
         }
@@ -50,6 +50,12 @@
         .nav-btn:hover {
             background-color: #0369a1;
         }
+        .nav-btn-green {
+            background-color: #10b981;
+        }
+        .nav-btn-green:hover {
+            background-color: #059669;
+        }
         header {
             background-color: #ffffff;
             padding: 30px;
@@ -66,7 +72,7 @@
             color: #64748b;
             font-size: 16px;
         }
-        /* نافذة تسجيل الدخول للإدارة الباسورد */
+        /* صندوق تسجيل الدخول للإدارة الباسورد */
         #login-box {
             background-color: #ffffff;
             border: 2px solid #cbd5e1;
@@ -77,6 +83,7 @@
             margin-left: auto;
             margin-right: auto;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: none;
         }
         #login-box input {
             width: 100%;
@@ -183,21 +190,25 @@
             font-size: 13px;
             font-weight: bold;
             cursor: pointer;
-            display: none; /* مخفي للزوار ويظهر فقط للإدارة */
+            display: none;
         }
         .delete-btn:hover {
             background-color: #dc2626;
         }
-        /* قسم الدعم الفني وطلب كتاب */
-        .support-section {
+        .support-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .support-box {
             background-color: #ffffff;
             padding: 20px;
             border-radius: 12px;
-            margin-top: 40px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             text-align: center;
         }
-        .support-section h3 {
+        .support-box h3 {
             color: #0284c7;
             margin-bottom: 10px;
         }
@@ -224,9 +235,9 @@
         <button class="nav-btn" onclick="checkAdmin()">دخول</button>
     </div>
 
-    <!-- لوحة التحكم لإضافة الكتب (مخفية لحين الدخول الصح) -->
+    <!-- لوحة التحكم لإضافة الكتب -->
     <div id="admin-panel">
-        <h3>🛠️ لوحة التحكم لإضافة الكتب</h3>
+        <h3>🛠️️ لوحة التحكم لإضافة الكتب</h3>
         <p>قم بإضافة اسم الكتاب ورابط التحميل الخاص به:</p>
         <br>
         <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد (مثال: كتاب العلوم)">
@@ -289,17 +300,25 @@
         </div>
     </div>
 
-    <!-- قسم الدعم الفني وطلب كتاب -->
-    <div class="support-section">
-        <h3>💬 الدعم الفني وطلب كتاب</h3>
-        <p style="margin-bottom: 15px;">هل تواجه مشكلة أو تحتاج كتاباً معيناً غير موجود؟ تواصل معنا عبر قناتنا على التليجرام وسنقوم بتوفيره فورا!</p>
-        <a href="https://t.me/mrmohamedbooks" target="_blank" class="nav-btn">اطلب كتابك أو تواصل معنا</a>
+    <!-- قسم التواصل (طلب الكتب + الدعم الفني) -->
+    <div class="support-container">
+        <!-- طلب كتاب -->
+        <div class="support-box">
+            <h3>📖 اطلب كتابك</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">لا تجد الكتاب الذي تبحث عنه؟ اطلبه الآن عبر بوت طلب الكتب وسنقوم بتوفيره لك فوراً!</p>
+            <a href="https://t.me/KotobkMaya_bot" target="_blank" class="nav-btn nav-btn-green">بوت طلب الكتب</a>
+        </div>
+        <!-- الدعم الفني -->
+        <div class="support-box">
+            <h3>💬 الدعم الفني</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">هل تواجه مشكلة تقنية في التحميل أو الموقع؟ تواصل معنا عبر بوت الدعم الفني لمساعدتك.</p>
+            <a href="https://t.me/MohamedHelpDesk_bot" target="_blank" class="nav-btn">بوت الدعم الفني</a>
+        </div>
     </div>
 
     <script>
         let isAdminLoggedIn = false;
 
-        // إظهار وإخفاء صندوق تسجيل الدخول
         function toggleLoginBox() {
             var box = document.getElementById('login-box');
             if (box.style.display === 'block') {
@@ -309,7 +328,6 @@
             }
         }
 
-        // التحقق من الباسورد وتأكيد الرقم السري
         function checkAdmin() {
             var pass = document.getElementById('adminPass').value;
             var confirm = document.getElementById('confirmPass').value;
@@ -319,7 +337,6 @@
                 document.getElementById('login-box').style.display = 'none';
                 document.getElementById('admin-panel').style.display = 'block';
                 
-                // إظهار أزرار الحذف لكل الكتب الموجودة
                 var deleteBtns = document.getElementsByClassName('delete-btn');
                 for (let btn of deleteBtns) {
                     btn.style.display = 'inline-block';
@@ -330,7 +347,6 @@
             }
         }
 
-        // دالة إضافة كتاب جديد
         function addBook() {
             var title = document.getElementById('bookTitleInput').value;
             var url = document.getElementById('bookUrlInput').value;
@@ -360,7 +376,6 @@
             alert("تم إضافة الكتاب بنجاح!");
         }
 
-        // دالة حذف الكتاب
         function deleteBook(button) {
             if (confirm("هل أنت متأكد من حذف هذا الكتاب؟")) {
                 var bookItem = button.closest('.book-item');
