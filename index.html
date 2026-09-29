@@ -44,6 +44,8 @@
             border-radius: 8px;
             font-weight: bold;
             transition: background-color 0.2s;
+            cursor: pointer;
+            border: none;
         }
         .nav-btn:hover {
             background-color: #0369a1;
@@ -63,6 +65,29 @@
         p {
             color: #94a3b8;
             font-size: 16px;
+        }
+        /* لوحة التحكم المخفية تظهر عند الضغط على زر لوحة الإدارة */
+        #admin-panel {
+            display: none;
+            background-color: #1e293b;
+            border: 2px dashed #38bdf8;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: right;
+        }
+        #admin-panel h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+        #admin-panel input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background-color: #0f172a;
+            color: white;
         }
         .section-title {
             color: #38bdf8;
@@ -86,11 +111,6 @@
             padding: 20px;
             text-align: right;
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .grade-card:hover {
-            transform: translateY(-5px);
-            border-color: #38bdf8;
         }
         .grade-title {
             font-size: 20px;
@@ -136,10 +156,20 @@
         <div class="logo">📚 كتبك معايا</div>
         <div class="nav-links">
             <a href="#" class="nav-btn">الرئيسية</a>
-            <a href="#" class="nav-btn">لوحة الإدارة</a>
-            <a href="#" class="nav-btn">تليجرام</a>
+            <button class="nav-btn" onclick="toggleAdmin()">لوحة الإدارة</button>
+            <a href="https://t.me/" target="_blank" class="nav-btn">تليجرام</a>
         </div>
     </nav>
+
+    <!-- لوحة التحكم لإضافة الكتب -->
+    <div id="admin-panel">
+        <h3>🛠️ لوحة التحكم السريعة لإدارة الكتب</h3>
+        <p>قم بإضافة اسم الكتاب ورابط التحميل الخاص به:</p>
+        <br>
+        <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد هنا (مثال: كتاب الفيزياء)">
+        <input type="text" id="bookUrlInput" placeholder="ضع رابط التحميل هنا (رابط PDF أو رابط تليجرام)">
+        <button class="nav-btn" onclick="addBook()">إضافة الكتاب للموقع</button>
+    </div>
 
     <!-- الواجهة الرئيسية -->
     <header>
@@ -150,61 +180,85 @@
     <!-- قسم المرحلة الإعدادية -->
     <div class="section-title">المرحلة الإعدادية</div>
 
-    <div class="grades-container">
+    <div class="grades-container" id="gradesContainer">
         <!-- الصف الأول الإعدادي -->
         <div class="grade-card">
             <div class="grade-title">الصف الأول الإعدادي</div>
-            
             <div class="book-item">
                 <span class="book-name">كتاب الرياضيات</span>
-                <a href="#" class="download-btn">تحميل</a>
+                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
             </div>
             <div class="book-item">
                 <span class="book-name">كتاب العلوم</span>
-                <a href="#" class="download-btn">تحميل</a>
-            </div>
-            <div class="book-item">
-                <span class="book-name">كتاب الدراسات الاجتماعية</span>
-                <a href="#" class="download-btn">تحميل</a>
+                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
             </div>
         </div>
 
         <!-- الصف الثاني الإعدادي -->
         <div class="grade-card">
             <div class="grade-title">الصف الثاني الإعدادي</div>
-            
             <div class="book-item">
                 <span class="book-name">كتاب الرياضيات</span>
-                <a href="#" class="download-btn">تحميل</a>
-            </div>
-            <div class="book-item">
-                <span class="book-name">كتاب العلوم</span>
-                <a href="#" class="download-btn">تحميل</a>
+                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
             </div>
             <div class="book-item">
                 <span class="book-name">كتاب اللغة العربية</span>
-                <a href="#" class="download-btn">تحميل</a>
+                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
             </div>
         </div>
 
         <!-- الصف الثالث الإعدادي -->
         <div class="grade-card">
             <div class="grade-title">الصف الثالث الإعدادي</div>
-            
-            <div class="book-item">
-                <span class="book-name">كتاب الرياضيات</span>
-                <a href="#" class="download-btn">تحميل</a>
-            </div>
             <div class="book-item">
                 <span class="book-name">كتاب العلوم</span>
-                <a href="#" class="download-btn">تحميل</a>
+                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
             </div>
             <div class="book-item">
                 <span class="book-name">كتاب اللغة الإنجليزية</span>
-                <a href="#" class="download-btn">تحميل</a>
+                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
             </div>
         </div>
     </div>
+
+    <script>
+        // دالة لإظهار وإخفاء لوحة الإدارة
+        function toggleAdmin() {
+            var panel = document.getElementById('admin-panel');
+            if (panel.style.display === 'block') {
+                panel.style.display = 'none';
+            } else {
+                panel.style.display = 'block';
+            }
+        }
+
+        // دالة تجريبية لإضافة كتاب جديد (تظهر مباشرة للمستخدم)
+        function addBook() {
+            var title = document.getElementById('bookTitleInput').value;
+            var url = document.getElementById('bookUrlInput').value;
+            
+            if(title === "" || url === "") {
+                alert("الرجاء إدخال اسم الكتاب والرابط!");
+                return;
+            }
+
+            var container = document.getElementById('gradesContainer');
+            var newCard = document.createElement('div');
+            newCard.className = 'grade-card';
+            newCard.innerHTML = `
+                <div class="grade-title">كتب مضافة حديثاً</div>
+                <div class="book-item">
+                    <span class="book-name">${title}</span>
+                    <a href="${url}" target="_blank" class="download-btn">تحميل</a>
+                </div>
+            `;
+            container.appendChild(newCard);
+            
+            document.getElementById('bookTitleInput').value = "";
+            document.getElementById('bookUrlInput').value = "";
+            alert("تم إضافة الكتاب بنجاح!");
+        }
+    </script>
 
 </body>
 </html>
