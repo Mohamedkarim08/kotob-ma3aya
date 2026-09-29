@@ -12,8 +12,8 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b1329;
-            color: #ffffff;
+            background-color: #f1f5f9; /* خلفية فاتحة */
+            color: #1e293b; /* نص داكن وواضح */
             text-align: center;
             padding: 20px;
         }
@@ -21,16 +21,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #1e293b;
+            background-color: #ffffff;
             padding: 15px 25px;
             border-radius: 12px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         .logo {
             font-size: 22px;
             font-weight: bold;
-            color: #38bdf8;
+            color: #0284c7;
         }
         .nav-links {
             display: flex;
@@ -51,33 +51,55 @@
             background-color: #0369a1;
         }
         header {
-            background-color: #1e293b;
+            background-color: #ffffff;
             padding: 30px;
             border-radius: 12px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         h1 {
-            color: #38bdf8;
+            color: #0284c7;
             margin-bottom: 10px;
             font-size: 32px;
         }
         p {
-            color: #94a3b8;
+            color: #64748b;
             font-size: 16px;
         }
-        /* لوحة التحكم المخفية تظهر عند الضغط على زر لوحة الإدارة */
+        /* نافذة تسجيل الدخول للإدارة الباسورد */
+        #login-box {
+            background-color: #ffffff;
+            border: 2px solid #cbd5e1;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        #login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        /* لوحة التحكم المخفية */
         #admin-panel {
             display: none;
-            background-color: #1e293b;
-            border: 2px dashed #38bdf8;
+            background-color: #ffffff;
+            border: 2px dashed #0284c7;
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 30px;
             text-align: right;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         #admin-panel h3 {
-            color: #38bdf8;
+            color: #0284c7;
             margin-bottom: 10px;
         }
         #admin-panel input {
@@ -85,15 +107,15 @@
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 6px;
-            border: 1px solid #334155;
-            background-color: #0f172a;
-            color: white;
+            border: 1px solid #cbd5e1;
+            background-color: #f8fafc;
+            color: #1e293b;
         }
         .section-title {
-            color: #38bdf8;
+            color: #0284c7;
             font-size: 24px;
             margin: 40px 0 20px 0;
-            border-bottom: 2px solid #1e293b;
+            border-bottom: 2px solid #cbd5e1;
             padding-bottom: 10px;
             text-align: right;
             padding-right: 10px;
@@ -105,47 +127,79 @@
             margin-bottom: 30px;
         }
         .grade-card {
-            background-color: #1e293b;
-            border: 2px solid #334155;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
             border-radius: 12px;
             padding: 20px;
             text-align: right;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         .grade-title {
             font-size: 20px;
             font-weight: bold;
-            color: #f8fafc;
+            color: #0f172a;
             margin-bottom: 15px;
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid #f1f5f9;
             padding-bottom: 8px;
         }
         .book-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #0f172a;
+            background-color: #f8fafc;
             padding: 10px 15px;
             border-radius: 8px;
             margin-bottom: 10px;
+            border: 1px solid #e2e8f0;
         }
         .book-name {
             font-size: 15px;
-            color: #cbd5e1;
+            color: #334155;
+        }
+        .actions-group {
+            display: flex;
+            gap: 5px;
         }
         .download-btn {
             background-color: #0284c7;
             color: #ffffff;
             text-decoration: none;
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             transition: background-color 0.2s;
             white-space: nowrap;
         }
         .download-btn:hover {
             background-color: #0369a1;
+        }
+        .delete-btn {
+            background-color: #ef4444;
+            color: #ffffff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none; /* مخفي للزوار ويظهر فقط للإدارة */
+        }
+        .delete-btn:hover {
+            background-color: #dc2626;
+        }
+        /* قسم الدعم الفني وطلب كتاب */
+        .support-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .support-section h3 {
+            color: #0284c7;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -156,19 +210,29 @@
         <div class="logo">📚 كتبك معايا</div>
         <div class="nav-links">
             <a href="#" class="nav-btn">الرئيسية</a>
-            <button class="nav-btn" onclick="toggleAdmin()">لوحة الإدارة</button>
-            <a href="https://t.me/" target="_blank" class="nav-btn">تليجرام</a>
+            <button class="nav-btn" onclick="toggleLoginBox()">لوحة الإدارة</button>
+            <a href="https://t.me/mrmohamedbooks" target="_blank" class="nav-btn">تليجرام</a>
         </div>
     </nav>
 
-    <!-- لوحة التحكم لإضافة الكتب -->
+    <!-- صندوق إدخال الباسورد للوحة الإدارة -->
+    <div id="login-box">
+        <h3>🔒 تسجيل دخول الإدارة</h3>
+        <p style="font-size: 13px; margin-bottom: 10px;">أدخل كلمة المرور ورمز التأكيد للتحكم بالموقع</p>
+        <input type="password" id="adminPass" placeholder="كلمة المرور (Password)">
+        <input type="password" id="confirmPass" placeholder="رمز التأكيد (Confirmation Code)">
+        <button class="nav-btn" onclick="checkAdmin()">دخول</button>
+    </div>
+
+    <!-- لوحة التحكم لإضافة الكتب (مخفية لحين الدخول الصح) -->
     <div id="admin-panel">
-        <h3>🛠️ لوحة التحكم السريعة لإدارة الكتب</h3>
+        <h3>🛠️ لوحة التحكم لإضافة الكتب</h3>
         <p>قم بإضافة اسم الكتاب ورابط التحميل الخاص به:</p>
         <br>
-        <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد هنا (مثال: كتاب الفيزياء)">
-        <input type="text" id="bookUrlInput" placeholder="ضع رابط التحميل هنا (رابط PDF أو رابط تليجرام)">
+        <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد (مثال: كتاب العلوم)">
+        <input type="text" id="bookUrlInput" placeholder="ضع رابط التحميل هنا (رابط PDF أو تليجرام)">
         <button class="nav-btn" onclick="addBook()">إضافة الكتاب للموقع</button>
+        <p style="color: #10b981; margin-top: 10px; font-weight: bold;">أنت مسجل كمسؤول الآن! يمكنك حذف أي كتاب مباشرة.</p>
     </div>
 
     <!-- الواجهة الرئيسية -->
@@ -186,11 +250,17 @@
             <div class="grade-title">الصف الأول الإعدادي</div>
             <div class="book-item">
                 <span class="book-name">كتاب الرياضيات</span>
-                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
+                <div class="actions-group">
+                    <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تحميل</a>
+                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                </div>
             </div>
             <div class="book-item">
                 <span class="book-name">كتاب العلوم</span>
-                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
+                <div class="actions-group">
+                    <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تحميل</a>
+                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                </div>
             </div>
         </div>
 
@@ -199,11 +269,10 @@
             <div class="grade-title">الصف الثاني الإعدادي</div>
             <div class="book-item">
                 <span class="book-name">كتاب الرياضيات</span>
-                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
-            </div>
-            <div class="book-item">
-                <span class="book-name">كتاب اللغة العربية</span>
-                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
+                <div class="actions-group">
+                    <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تحميل</a>
+                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                </div>
             </div>
         </div>
 
@@ -211,34 +280,63 @@
         <div class="grade-card">
             <div class="grade-title">الصف الثالث الإعدادي</div>
             <div class="book-item">
-                <span class="book-name">كتاب العلوم</span>
-                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
-            </div>
-            <div class="book-item">
                 <span class="book-name">كتاب اللغة الإنجليزية</span>
-                <a href="https://t.me/" target="_blank" class="download-btn">تحميل</a>
+                <div class="actions-group">
+                    <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تحميل</a>
+                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- قسم الدعم الفني وطلب كتاب -->
+    <div class="support-section">
+        <h3>💬 الدعم الفني وطلب كتاب</h3>
+        <p style="margin-bottom: 15px;">هل تواجه مشكلة أو تحتاج كتاباً معيناً غير موجود؟ تواصل معنا عبر قناتنا على التليجرام وسنقوم بتوفيره فورا!</p>
+        <a href="https://t.me/mrmohamedbooks" target="_blank" class="nav-btn">اطلب كتابك أو تواصل معنا</a>
+    </div>
+
     <script>
-        // دالة لإظهار وإخفاء لوحة الإدارة
-        function toggleAdmin() {
-            var panel = document.getElementById('admin-panel');
-            if (panel.style.display === 'block') {
-                panel.style.display = 'none';
+        let isAdminLoggedIn = false;
+
+        // إظهار وإخفاء صندوق تسجيل الدخول
+        function toggleLoginBox() {
+            var box = document.getElementById('login-box');
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
             } else {
-                panel.style.display = 'block';
+                box.style.display = 'block';
             }
         }
 
-        // دالة تجريبية لإضافة كتاب جديد (تظهر مباشرة للمستخدم)
+        // التحقق من الباسورد وتأكيد الرقم السري
+        function checkAdmin() {
+            var pass = document.getElementById('adminPass').value;
+            var confirm = document.getElementById('confirmPass').value;
+
+            if (pass === "Mohamedkarim" && confirm === "082013") {
+                isAdminLoggedIn = true;
+                document.getElementById('login-box').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                
+                // إظهار أزرار الحذف لكل الكتب الموجودة
+                var deleteBtns = document.getElementsByClassName('delete-btn');
+                for (let btn of deleteBtns) {
+                    btn.style.display = 'inline-block';
+                }
+                alert("مرحباً بك يا ميدو! تم تسجيل الدخول للوحة الإدارة بنجاح.");
+            } else {
+                alert("كلمة المرور أو رمز التأكيد غير صحيح!");
+            }
+        }
+
+        // دالة إضافة كتاب جديد
         function addBook() {
             var title = document.getElementById('bookTitleInput').value;
             var url = document.getElementById('bookUrlInput').value;
             
             if(title === "" || url === "") {
-                alert("الرجاء إدخال اسم الكتاب والرابط!");
+                alert("الرجاء إدخال اسم الكتاب ورابط التحميل!");
                 return;
             }
 
@@ -249,7 +347,10 @@
                 <div class="grade-title">كتب مضافة حديثاً</div>
                 <div class="book-item">
                     <span class="book-name">${title}</span>
-                    <a href="${url}" target="_blank" class="download-btn">تحميل</a>
+                    <div class="actions-group">
+                        <a href="${url}" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" style="display: inline-block;" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
             `;
             container.appendChild(newCard);
@@ -257,6 +358,14 @@
             document.getElementById('bookTitleInput').value = "";
             document.getElementById('bookUrlInput').value = "";
             alert("تم إضافة الكتاب بنجاح!");
+        }
+
+        // دالة حذف الكتاب
+        function deleteBook(button) {
+            if (confirm("هل أنت متأكد من حذف هذا الكتاب؟")) {
+                var bookItem = button.closest('.book-item');
+                bookItem.remove();
+            }
         }
     </script>
 
