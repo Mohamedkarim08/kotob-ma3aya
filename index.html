@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head><!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-03CXN64SLF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-03CXN64SLF');
-</script>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-03CXN64SLF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-03CXN64SLF');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كتبك معايا | المنصة التعليمية للكتب الخارجية</title>
@@ -38,566 +38,137 @@
         .logo {
             font-size: 22px;
             font-weight: bold;
-            color: #0284c7;
+            color: #2563eb;
         }
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-        .nav-btn {
-            background-color: #0284c7;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background-color 0.2s;
-            cursor: pointer;
-            border: none;
-        }
-        .nav-btn:hover {
-            background-color: #0369a1;
-        }
-        .nav-btn-green {
-            background-color: #10b981;
-        }
-        .nav-btn-green:hover {
-            background-color: #059669;
-        }
-        header {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        h1 {
-            color: #0284c7;
-            margin-bottom: 10px;
-            font-size: 32px;
-        }
-        p {
-            color: #64748b;
-            font-size: 16px;
-        }
-        /* صندوق البحث السريع */
         .search-container {
-            margin-top: 20px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 20px 0;
         }
-        .search-container input {
+        #searchInput {
             width: 100%;
+            max-width: 450px;
             padding: 12px 20px;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
-            border: 1px solid #cbd5e1;
             font-size: 16px;
-            background-color: #f8fafc;
-            color: #1e293b;
             outline: none;
-            transition: border-color 0.2s;
+            transition: border-color 0.3s;
         }
-        .search-container input:focus {
-            border-color: #0284c7;
-        }
-        #login-box {
-            background-color: #ffffff;
-            border: 2px solid #cbd5e1;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            display: none;
-        }
-        #login-box input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            border: 1px solid #cbd5e1;
-            background-color: #f8fafc;
-            color: #1e293b;
-        }
-        #admin-panel {
-            display: none;
-            background-color: #ffffff;
-            border: 2px dashed #0284c7;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            text-align: right;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        #admin-panel h3 {
-            color: #0284c7;
-            margin-bottom: 10px;
-        }
-        #admin-panel input, #admin-panel select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            border: 1px solid #cbd5e1;
-            background-color: #f8fafc;
-            color: #1e293b;
+        #searchInput:focus {
+            border-color: #2563eb;
         }
         .section-title {
-            color: #0284c7;
-            font-size: 24px;
-            margin: 40px 0 20px 0;
-            border-bottom: 2px solid #cbd5e1;
-            padding-bottom: 10px;
+            font-size: 22px;
+            margin: 30px 0 15px;
+            color: #1e293b;
             text-align: right;
             padding-right: 10px;
+            border-right: 4px solid #2563eb;
         }
-        .grades-container {
+        .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
         }
-        .grade-card {
+        .card {
             background-color: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: right;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        .grade-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #0f172a;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 8px;
-        }
-        .book-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #f8fafc;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #e2e8f0;
-        }
-        .book-name {
-            font-size: 15px;
-            color: #334155;
-        }
-        .actions-group {
-            display: flex;
-            gap: 5px;
-        }
-        .download-btn {
-            background-color: #0284c7;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: bold;
-            transition: background-color 0.2s;
-            white-space: nowrap;
-        }
-        .download-btn:hover {
-            background-color: #0369a1;
-        }
-        .delete-btn {
-            background-color: #ef4444;
-            color: #ffffff;
-            border: none;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            display: none;
-        }
-        .delete-btn:hover {
-            background-color: #dc2626;
-        }
-        .support-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-        .support-box {
-            background-color: #ffffff;
-            padding: 20px;
+            padding: 18px;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: center;
+            text-align: right;
+            transition: transform 0.2s;
         }
-        .support-box h3 {
-            color: #0284c7;
-            margin-bottom: 10px;
+        .card:hover {
+            transform: translateY(-3px);
+        }
+        .card h3 {
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+        footer {
+            margin-top: 40px;
+            color: #64748b;
+            font-size: 14px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- شريط التنقل العلوي -->
     <nav>
         <div class="logo">📚 كتبك معايا</div>
-        <div class="nav-links">
-            <a href="#" class="nav-btn">الرئيسية</a>
-            <button class="nav-btn" onclick="toggleLoginBox()">لوحة الإدارة</button>
-            <a href="https://t.me/mrmohamedbooks" target="_blank" class="nav-btn">تليجرام</a>
-        </div>
+        <div>المنصة التعليمية للكتب والملازم</div>
     </nav>
 
-    <!-- صندوق تسجيل الدخول للإدارة -->
-    <div id="login-box">
-        <h3>🔒 تسجيل دخول الإدارة</h3>
-        <p style="font-size: 13px; margin-bottom: 10px;">أدخل كلمة المرور ورمز التأكيد للتحكم بالموقع</p>
-        <input type="password" id="adminPass" placeholder="كلمة المرور (Password)">
-        <input type="password" id="confirmPass" placeholder="رمز التأكيد (Confirmation Code)">
-        <button class="nav-btn" onclick="checkAdmin()">دخول</button>
+    <!-- رمز وبحث ذكي -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="🔍 ابحث عن أي كتاب أو مادة..." onkeyup="searchBooks()">
     </div>
 
-    <!-- لوحة التحكم لإضافة الكتب -->
-    <div id="admin-panel">
-        <h3>🛠 لوحة التحكم لإضافة الكتب</h3>
-        <p>اختر الصف الدراسي المطلوب، ثم اكتب اسم الكتاب ورابط التحميل:</p>
-        <br>
-        <select id="gradeSelect">
-            <option value="grade1">الصف الأول الإعدادي</option>
-            <option value="grade2">الصف الثاني الإعدادي</option>
-            <option value="grade3">الصف الثالث الإعدادي</option>
-        </select>
-        <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد (مثال: كتاب العلوم)">
-        <input type="text" id="bookUrlInput" placeholder="ضع رابط التحميل هنا (رابط PDF أو تليجرام)">
-        <button class="nav-btn" onclick="addBook()">إضافة الكتاب للصف المحدد</button>
-        <p style="color: #10b981; margin-top: 10px; font-weight: bold;">أنت مسجل كمسؤول الآن! يمكنك حذف أي كتاب مباشرة.</p>
+    <!-- المرحلة الأولى الإعدادية -->
+    <div class="section-title">📖 المرحلة الأولى الإعدادية</div>
+    <div class="container">
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر لغة إنجليزية</h3><a href="https://t.me/mrmohamedbooks/75?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر رياضيات</h3><a href="https://t.me/mrmohamedbooks/76?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر هالو بلس</h3><a href="https://t.me/mrmohamedbooks/77?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب الامتحان علوم</h3><a href="https://t.me/mrmohamedbooks/78?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب الامتحان لغة عربية</h3><a href="https://t.me/mrmohamedbooks/79?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر ماث</h3><a href="https://t.me/mrmohamedbooks/80" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر ساينس</h3><a href="https://t.me/mrmohamedbooks/81" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب الامتحان دراسات</h3><a href="https://t.me/mrmohamedbooks/83" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">ملحق كتاب المعاصر ماث (أولى إعدادي)</h3><a href="https://t.me/mrmohamedbooks/43?single" target="_blank" class="btn">تحميل الملحق</a></div>
+        <div class="card book-item"><h3 class="book-name">إجابات كتاب المعاصر ماث (أولى إعدادي)</h3><a href="https://t.me/mrmohamedbooks/44?single" target="_blank" class="btn">تحميل الإجابات</a></div>
     </div>
 
-    <!-- الواجهة الرئيسية -->
-    <header>
-        <h1>مرحباً بك في منصة كتبك معايا</h1>
-        <p>حمل جميع الكتب الخارجية والمذكرات الدراسية للمرحلة الإعدادية مجاناً وبكل سهولة</p>
-        
-        <!-- صندوق البحث السريع -->
-        <div class="search-container">
-            <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="🔍 ابحث عن أي كتاب أو مادة بالاسم...">
-        </div>
-    </header>
-
-    <!-- قسم المرحلة الإعدادية -->
-    <div class="section-title">المرحلة الإعدادية</div>
-
-    <div class="grades-container">
-        <!-- الصف الأول الإعدادي -->
-        <div class="grade-card" id="grade1-card">
-            <div class="grade-title">الصف الأول الإعدادي</div>
-            
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر اللغه الانجليزيه</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/75?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر رياضيات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/76?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر هالو بلس</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/77?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان علوم</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/78?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان اللغه العربيه</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/79?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر ماث</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/80" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر ساينس</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/81" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان دراسات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/83" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">ملحق كتاب المعاصر ماث أولى اعدادي</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/43?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">إجابات كتاب المعاصر ماث أولى اعدادي</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/44?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- الصف الثاني الإعدادي -->
-        <div class="grade-card" id="grade2-card">
-            <div class="grade-title">الصف الثاني الإعدادي</div>
-            
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر اللغه الانجليزيه</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/66?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر رياضيات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/67?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر ساينس</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/68?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر هالو بلس</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/69?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان علوم</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/70?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان اللغه العربيه</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/71?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر ماث</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/72" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان دراسات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/73" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- الصف الثالث الإعدادي -->
-        <div class="grade-card" id="grade3-card">
-            <div class="grade-title">الصف الثالث الإعدادي</div>
-            
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر اللغه الانجليزي</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/150?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر رياضيات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/151?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر هالو بلس</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/152?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان دراسات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/153?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان علوم</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/154?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان اللغه العربيه</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/155?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">ملحق المعاصر ماث</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/325?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">اجابات المعاصر ماث</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/326?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-        </div>
+    <!-- المرحلة الثانية الإعدادية -->
+    <div class="section-title">📖 المرحلة الثانية الإعدادية</div>
+    <div class="container">
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر لغة إنجليزية</h3><a href="https://t.me/mrmohamedbooks/66?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر رياضيات</h3><a href="https://t.me/mrmohamedbooks/67?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر ساينس</h3><a href="https://t.me/mrmohamedbooks/68?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر هالو بلس</h3><a href="https://t.me/mrmohamedbooks/69?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب الامتحان علوم</h3><a href="https://t.me/mrmohamedbooks/70?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب الامتحان لغة عربية</h3><a href="https://t.me/mrmohamedbooks/71?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر ماث</h3><a href="https://t.me/mrmohamedbooks/72" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب الامتحان دراسات</h3><a href="https://t.me/mrmohamedbooks/73" target="_blank" class="btn">تحميل الكتاب</a></div>
     </div>
 
-    <!-- قسم التواصل (طلب الكتب + الدعم الفني) -->
-    <div class="support-container">
-        <div class="support-box">
-            <h3>📖 اطلب كتابك</h3>
-            <p style="margin-bottom: 15px; font-size: 14px;">لا تجد الكتاب الذي تبحث عنه؟ اطلبه الآن عبر بوت طلب الكتب وسنقوم بتوفيره لك فوراً!</p>
-            <a href="https://t.me/KotobkMaya_bot" target="_blank" class="nav-btn nav-btn-green">بوت طلب الكتب</a>
-        </div>
-        <div class="support-box">
-            <h3>💬 الدعم الفني</h3>
-            <p style="margin-bottom: 15px; font-size: 14px;">هل تواجه مشكلة تقنية في التحميل أو الموقع؟ تواصل معنا عبر بوت الدعم الفني لمساعدتك.</p>
-            <a href="https://t.me/MohamedHelpDesk_bot" target="_blank" class="nav-btn">بوت الدعم الفني</a>
-        </div>
+    <!-- المرحلة الثالثة الإعدادية -->
+    <div class="section-title">📖 المرحلة الثالثة الإعدادية (الشهادة)</div>
+    <div class="container">
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر لغة إنجليزية</h3><a href="https://t.me/mrmohamedbooks/150?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر رياضيات</h3><a href="https://t.me/mrmohamedbooks/151?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب المعاصر هالو بلس</h3><a href="https://t.me/mrmohamedbooks/152?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب الامتحان دراسات</h3><a href="https://t.me/mrmohamedbooks/153?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب الامتحان علوم</h3><a href="https://t.me/mrmohamedbooks/154?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">كتاب الامتحان لغة عربية</h3><a href="https://t.me/mrmohamedbooks/155?single" target="_blank" class="btn">تحميل الكتاب</a></div>
+        <div class="card book-item"><h3 class="book-name">ملحق المعاصر ماث (ثالثة إعدادي)</h3><a href="https://t.me/mrmohamedbooks/325?single" target="_blank" class="btn">تحميل الملحق</a></div>
+        <div class="card book-item"><h3 class="book-name">إجابات المعاصر ماث (ثالثة إعدادي)</h3><a href="https://t.me/mrmohamedbooks/326?single" target="_blank" class="btn">تحميل الإجابات</a></div>
     </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 - منصة كتبك معايا</p>
+    </footer>
 
     <script>
-        let isAdminLoggedIn = false;
-
-        function toggleLoginBox() {
-            var box = document.getElementById('login-box');
-            if (box.style.display === 'block') {
-                box.style.display = 'none';
-            } else {
-                box.style.display = 'block';
-            }
-        }
-
-        function checkAdmin() {
-            var pass = document.getElementById('adminPass').value;
-            var confirm = document.getElementById('confirmPass').value;
-
-            if (pass === "Mohamedkarim" && confirm === "082013") {
-                isAdminLoggedIn = true;
-                document.getElementById('login-box').style.display = 'none';
-                document.getElementById('admin-panel').style.display = 'block';
-                
-                var deleteBtns = document.getElementsByClassName('delete-btn');
-                for (let btn of deleteBtns) {
-                    btn.style.display = 'inline-block';
-                }
-                alert("مرحباً بك يا ميدو! تم تسجيل الدخول للوحة الإدارة بنجاح.");
-            } else {
-                alert("كلمة المرور أو رمز التأكيد غير صحيح!");
-            }
-        }
-
-        function addBook() {
-            var selectedGrade = document.getElementById('gradeSelect').value;
-            var title = document.getElementById('bookTitleInput').value;
-            var url = document.getElementById('bookUrlInput').value;
-            
-            if(title === "" || url === "") {
-                alert("الرجاء إدخال اسم الكتاب ورابط التحميل!");
-                return;
-            }
-
-            var targetCard = document.getElementById(selectedGrade + '-card');
-            
-            var newBookDiv = document.createElement('div');
-            newBookDiv.className = 'book-item';
-            newBookDiv.innerHTML = `
-                <span class="book-name">${title}</span>
-                <div class="actions-group">
-                    <a href="${url}" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" style="display: inline-block;" onclick="deleteBook(this)">حذف</button>
-                </div>
-            `;
-            
-            targetCard.appendChild(newBookDiv);
-            
-            document.getElementById('bookTitleInput').value = "";
-            document.getElementById('bookUrlInput').value = "";
-            alert("تم إضافة الكتاب في الصف المحدد بنجاح!");
-        }
-
-        function deleteBook(button) {
-            if (confirm("هل أنت متأكد من حذف هذا الكتاب؟")) {
-                var bookItem = button.closest('.book-item');
-                bookItem.remove();
-            }
-        }
-
         // دالة البحث الذكي
         function searchBooks() {
             var input = document.getElementById('searchInput').value.toLowerCase();
@@ -606,13 +177,12 @@
             for (var i = 0; i < books.length; i++) {
                 var bookName = books[i].getElementsByClassName('book-name')[0].innerText.toLowerCase();
                 if (bookName.includes(input)) {
-                    books[i].style.display = "flex";
+                    books[i].style.display = "block";
                 } else {
                     books[i].style.display = "none";
                 }
             }
         }
     </script>
-
 </body>
 </html>
