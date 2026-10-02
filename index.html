@@ -26,6 +26,8 @@
             border-radius: 12px;
             margin-bottom: 25px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .logo {
             font-size: 22px;
@@ -60,7 +62,7 @@
             background-color: #ffffff;
             padding: 30px;
             border-radius: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         h1 {
@@ -71,6 +73,29 @@
         p {
             color: #64748b;
             font-size: 16px;
+        }
+        /* أزرار فلترة المراحل */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0 30px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background-color: #ffffff;
+            color: #0284c7;
+            border: 2px solid #0284c7;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 15px;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #0284c7;
+            color: white;
         }
         /* صندوق البحث السريع */
         .search-container {
@@ -260,12 +285,22 @@
         <p>اختر الصف الدراسي المطلوب، ثم اكتب اسم الكتاب ورابط التحميل:</p>
         <br>
         <select id="gradeSelect">
-            <option value="grade1">الصف الأول الإعدادي</option>
-            <option value="grade2">الصف الثاني الإعدادي</option>
-            <option value="grade3">الصف الثالث الإعدادي</option>
+            <optgroup label="المرحلة الابتدائية">
+                <option value="p1">الصف الأول الابتدائي</option>
+                <option value="p2">الصف الثاني الابتدائي</option>
+                <option value="p3">الصف الثالث الابتدائي</option>
+                <option value="p4">الصف الرابع الابتدائي</option>
+                <option value="p5">الصف الخامس الابتدائي</option>
+                <option value="p6">الصف السادس الابتدائي</option>
+            </optgroup>
+            <optgroup label="المرحلة الإعدادية">
+                <option value="grade1">الصف الأول الإعدادي</option>
+                <option value="grade2">الصف الثاني الإعدادي</option>
+                <option value="grade3">الصف الثالث الإعدادي</option>
+            </optgroup>
         </select>
-        <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد (مثال: كتاب العلوم)">
-        <input type="text" id="bookUrlInput" placeholder="ضع رابط التحميل هنا (رابط PDF أو تليجرام)">
+        <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد (مثال: كتاب الرياضيات)">
+        <input type="text" id="bookUrlInput" placeholder="ضع رابط التحميل هنا (رابط تليجرام أو PDF)">
         <button class="nav-btn" onclick="addBook()">إضافة الكتاب للصف المحدد</button>
         <p style="color: #10b981; margin-top: 10px; font-weight: bold;">أنت مسجل كمسؤول الآن! يمكنك حذف أي كتاب مباشرة.</p>
     </div>
@@ -273,7 +308,7 @@
     <!-- الواجهة الرئيسية -->
     <header>
         <h1>مرحباً بك في منصة كتبك معايا</h1>
-        <p>حمل جميع الكتب الخارجية والمذكرات الدراسية للمرحلة الإعدادية مجاناً وبكل سهولة</p>
+        <p>حمل جميع الكتب الخارجية والمذكرات الدراسية لجميع المراحل التعليمية مجاناً وبكل سهولة</p>
         
         <!-- صندوق البحث السريع -->
         <div class="search-container">
@@ -281,229 +316,315 @@
         </div>
     </header>
 
+    <!-- أزرار فلترة المراحل -->
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterStage('all', this)">🌐 كل المراحل</button>
+        <button class="filter-btn" onclick="filterStage('primary', this)">🎒 المرحلة الابتدائية</button>
+        <button class="filter-btn" onclick="filterStage('prep', this)">📖 المرحلة الإعدادية</button>
+    </div>
+
+    <!-- قسم المرحلة الابتدائية -->
+    <div class="stage-section" id="primary-section">
+        <div class="section-title">🎒 المرحلة الابتدائية</div>
+        <div class="grades-container">
+            <!-- الصف الأول الابتدائي -->
+            <div class="grade-card" id="p1-card">
+                <div class="grade-title">الصف الأول الابتدائي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الصف الأول الابتدائي</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تليجرام</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الصف الثاني الابتدائي -->
+            <div class="grade-card" id="p2-card">
+                <div class="grade-title">الصف الثاني الابتدائي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الصف الثاني الابتدائي</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تليجرام</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الصف الثالث الابتدائي -->
+            <div class="grade-card" id="p3-card">
+                <div class="grade-title">الصف الثالث الابتدائي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الصف الثالث الابتدائي</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تليجرام</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الصف الرابع الابتدائي -->
+            <div class="grade-card" id="p4-card">
+                <div class="grade-title">الصف الرابع الابتدائي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الصف الرابع الابتدائي</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تليجرام</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الصف الخامس الابتدائي -->
+            <div class="grade-card" id="p5-card">
+                <div class="grade-title">الصف الخامس الابتدائي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الصف الخامس الابتدائي</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تليجرام</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الصف السادس الابتدائي -->
+            <div class="grade-card" id="p6-card">
+                <div class="grade-title">الصف السادس الابتدائي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الصف السادس الابتدائي</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تليجرام</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- قسم المرحلة الإعدادية -->
-    <div class="section-title">المرحلة الإعدادية</div>
+    <div class="stage-section" id="prep-section">
+        <div class="section-title">📖 المرحلة الإعدادية</div>
+        <div class="grades-container">
+            <!-- الصف الأول الإعدادي -->
+            <div class="grade-card" id="grade1-card">
+                <div class="grade-title">الصف الأول الإعدادي</div>
+                
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر اللغه الانجليزيه</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/75?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
 
-    <div class="grades-container">
-        <!-- الصف الأول الإعدادي -->
-        <div class="grade-card" id="grade1-card">
-            <div class="grade-title">الصف الأول الإعدادي</div>
-            
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر اللغه الانجليزيه</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/75?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر رياضيات</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/76?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر هالو بلس</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/77?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب الامتحان علوم</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/78?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب الامتحان اللغه العربيه</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/79?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر ماث</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/80" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر ساينس</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/81" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب الامتحان دراسات</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/83" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">ملحق كتاب المعاصر ماث أولى اعدادي</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/43?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">إجابات كتاب المعاصر ماث أولى اعدادي</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/44?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر رياضيات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/76?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+            <!-- الصف الثاني الإعدادي -->
+            <div class="grade-card" id="grade2-card">
+                <div class="grade-title">الصف الثاني الإعدادي</div>
+                
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر اللغه الانجليزيه</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/66?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر رياضيات</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/67?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر ساينس</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/68?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر هالو بلس</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/69?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب الامتحان علوم</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/70?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب الامتحان اللغه العربيه</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/71?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر ماث</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/72" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <div class="book-item">
+                    <span class="book-name">كتاب الامتحان دراسات</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/73" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر هالو بلس</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/77?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+            <!-- الصف الثالث الإعدادي -->
+            <div class="grade-card" id="grade3-card">
+                <div class="grade-title">الصف الثالث الإعدادي</div>
+                
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر اللغه الانجليزي</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/150?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان علوم</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/78?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر رياضيات</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/151?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان اللغه العربيه</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/79?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر هالو بلس</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/152?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر ماث</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/80" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                <div class="book-item">
+                    <span class="book-name">كتاب الامتحان دراسات</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/153?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر ساينس</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/81" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                <div class="book-item">
+                    <span class="book-name">كتاب الامتحان علوم</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/154?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان دراسات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/83" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                <div class="book-item">
+                    <span class="book-name">كتاب الامتحان اللغه العربيه</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/155?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="book-item">
-                <span class="book-name">ملحق كتاب المعاصر ماث أولى اعدادي</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/43?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                <div class="book-item">
+                    <span class="book-name">ملحق المعاصر ماث</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/325?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="book-item">
-                <span class="book-name">إجابات كتاب المعاصر ماث أولى اعدادي</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/44?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- الصف الثاني الإعدادي -->
-        <div class="grade-card" id="grade2-card">
-            <div class="grade-title">الصف الثاني الإعدادي</div>
-            
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر اللغه الانجليزيه</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/66?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر رياضيات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/67?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر ساينس</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/68?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر هالو بلس</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/69?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان علوم</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/70?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان اللغه العربيه</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/71?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر ماث</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/72" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان دراسات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/73" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- الصف الثالث الإعدادي -->
-        <div class="grade-card" id="grade3-card">
-            <div class="grade-title">الصف الثالث الإعدادي</div>
-            
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر اللغه الانجليزي</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/150?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر رياضيات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/151?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب المعاصر هالو بلس</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/152?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان دراسات</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/153?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان علوم</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/154?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">كتاب الامتحان اللغه العربيه</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/155?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">ملحق المعاصر ماث</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/325?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                </div>
-            </div>
-
-            <div class="book-item">
-                <span class="book-name">اجابات المعاصر ماث</span>
-                <div class="actions-group">
-                    <a href="https://t.me/mrmohamedbooks/326?single" target="_blank" class="download-btn">تحميل</a>
-                    <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                <div class="book-item">
+                    <span class="book-name">اجابات المعاصر ماث</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/326?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -587,6 +708,29 @@
             if (confirm("هل أنت متأكد من حذف هذا الكتاب؟")) {
                 var bookItem = button.closest('.book-item');
                 bookItem.remove();
+            }
+        }
+
+        // دالة تصفية المراحل (فلترة الابتدائي والإعدادي والكل)
+        function filterStage(stage, btnElement) {
+            var buttons = document.getElementsByClassName('filter-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            btnElement.classList.add('active');
+
+            var primarySec = document.getElementById('primary-section');
+            var prepSec = document.getElementById('prep-section');
+
+            if (stage === 'all') {
+                primarySec.style.display = 'block';
+                prepSec.style.display = 'block';
+            } else if (stage === 'primary') {
+                primarySec.style.display = 'block';
+                prepSec.style.display = 'none';
+            } else if (stage === 'prep') {
+                primarySec.style.display = 'none';
+                prepSec.style.display = 'block';
             }
         }
 
