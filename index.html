@@ -80,53 +80,73 @@
             color: #ef4444;
             font-weight: 600;
         }
-        /* أزرار فلترة المراحل */
-        .filter-buttons {
+        
+        /* شريط القوائم المنسدلة (Dropdown Navigation) */
+        .dropdown-nav {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 20px 0 15px;
+            gap: 15px;
+            margin: 25px 0;
             flex-wrap: wrap;
+            position: relative;
         }
-        .filter-btn {
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-main-btn {
             background-color: #ffffff;
             color: #0284c7;
             border: 2px solid #0284c7;
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s;
             font-size: 15px;
         }
-        .filter-btn:hover, .filter-btn.active {
+        .dropdown-main-btn:hover, .dropdown-main-btn.active {
             background-color: #0284c7;
             color: white;
         }
-        /* أزرار الفلترة السريعة للصفوف داخل قسم البحث */
-        .grade-filter-chips {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .chip-btn {
-            background-color: #f8fafc;
-            color: #334155;
+        /* القائمة المنسدلة الرأسية تشبه الصورة */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #ffffff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            z-index: 100;
+            overflow: hidden;
             border: 1px solid #cbd5e1;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 13px;
+            margin-top: 8px;
+            text-align: right;
+        }
+        .dropdown-menu button {
+            color: #334155;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: right;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: background 0.2s;
+            border-bottom: 1px solid #f1f5f9;
         }
-        .chip-btn:hover, .chip-btn.active {
-            background-color: #0284c7;
-            color: #ffffff;
-            border-color: #0284c7;
+        .dropdown-menu button:hover {
+            background-color: #f8fafc;
+            color: #0284c7;
         }
+        .dropdown-container.show .dropdown-menu {
+            display: block;
+        }
+
         /* صندوق البحث السريع */
         .search-container {
             margin-top: 20px;
@@ -144,7 +164,6 @@
             color: #1e293b;
             outline: none;
             transition: border-color 0.2s;
-            margin-bottom: 15px;
         }
         .search-container input:focus {
             border-color: #0284c7;
@@ -192,6 +211,9 @@
             border: 1px solid #cbd5e1;
             background-color: #f8fafc;
             color: #1e293b;
+        }
+        .stage-section {
+            margin-bottom: 30px;
         }
         .section-title {
             color: #0284c7;
@@ -348,28 +370,39 @@
         <p>حمل جميع الكتب الخارجية والمذكرات الدراسية لجميع المراحل التعليمية مجاناً وبكل سهولة</p>
         <div class="sub-notice">⚠️ تنبيه هامة: اللي مش مشترك في قناة التليجرام مش هيعرف يحمل الكتب!</div>
         
-        <!-- صندوق البحث السريع مع أزرار التنقل السريع للصفوف -->
+        <!-- صندوق البحث العام -->
         <div class="search-container">
             <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="🔍 ابحث عن أي كتاب أو مادة بالاسم...">
-            <div class="grade-filter-chips">
-                <button class="chip-btn" onclick="scrollToGrade('p1-card', this)">أولى ابتدائي</button>
-                <button class="chip-btn" onclick="scrollToGrade('p2-card', this)">ثاني ابتدائي</button>
-                <button class="chip-btn" onclick="scrollToGrade('p3-card', this)">ثالث ابتدائي</button>
-                <button class="chip-btn" onclick="scrollToGrade('p4-card', this)">رابع ابتدائي</button>
-                <button class="chip-btn" onclick="scrollToGrade('p5-card', this)">خامس ابتدائي</button>
-                <button class="chip-btn" onclick="scrollToGrade('p6-card', this)">سادس ابتدائي</button>
-                <button class="chip-btn" onclick="scrollToGrade('grade1-card', this)">أولى إعدادي</button>
-                <button class="chip-btn" onclick="scrollToGrade('grade2-card', this)">ثاني إعدادي</button>
-                <button class="chip-btn" onclick="scrollToGrade('grade3-card', this)">ثالث إعدادي</button>
-            </div>
         </div>
     </header>
 
-    <!-- أزرار فلترة المراحل -->
-    <div class="filter-buttons">
-        <button class="filter-btn active" onclick="filterStage('all', this)">🌐 كل المراحل</button>
-        <button class="filter-btn" onclick="filterStage('primary', this)">🎒 المرحلة الابتدائية</button>
-        <button class="filter-btn" onclick="filterStage('prep', this)">📖 المرحلة الإعدادية</button>
+    <!-- شريط القوائم المنسدلة للمراحل والصفوف -->
+    <div class="dropdown-nav">
+        <!-- زر كل المراحل -->
+        <button class="dropdown-main-btn active" id="all-stages-btn" onclick="filterStage('all')">🌐 كل المراحل</button>
+
+        <!-- قائمة المرحلة الابتدائية المنسدلة -->
+        <div class="dropdown-container" id="primary-dropdown">
+            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'primary-dropdown')">🎒 المرحلة الابتدائية ▾</button>
+            <div class="dropdown-menu">
+                <button onclick="selectGradeAndFilter('p1-card', 'primary')">الصف الأول الابتدائي</button>
+                <button onclick="selectGradeAndFilter('p2-card', 'primary')">الصف الثاني الابتدائي</button>
+                <button onclick="selectGradeAndFilter('p3-card', 'primary')">الصف الثالث الابتدائي</button>
+                <button onclick="selectGradeAndFilter('p4-card', 'primary')">الصف الرابع الابتدائي</button>
+                <button onclick="selectGradeAndFilter('p5-card', 'primary')">الصف الخامس الابتدائي</button>
+                <button onclick="selectGradeAndFilter('p6-card', 'primary')">الصف السادس الابتدائي</button>
+            </div>
+        </div>
+
+        <!-- قائمة المرحلة الإعدادية المنسدلة -->
+        <div class="dropdown-container" id="prep-dropdown">
+            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'prep-dropdown')">📖 المرحلة الإعدادية ▾</button>
+            <div class="dropdown-menu">
+                <button onclick="selectGradeAndFilter('grade1-card', 'prep')">الصف الأول الإعدادي</button>
+                <button onclick="selectGradeAndFilter('grade2-card', 'prep')">الصف الثاني الإعدادي</button>
+                <button onclick="selectGradeAndFilter('grade3-card', 'prep')">الصف الثالث الإعدادي</button>
+            </div>
+        </div>
     </div>
 
     <!-- قسم المرحلة الابتدائية -->
@@ -438,7 +471,6 @@
             <!-- الصف الثالث الابتدائي -->
             <div class="grade-card" id="p3-card">
                 <div class="grade-title">الصف الثالث الابتدائي</div>
-                <p style="font-size: 13px; color: #0284c7; margin-bottom: 12px; font-weight: bold;">📌 هذه الكتب التي تم توفيرها حتى الآن:</p>
                 <div class="book-item">
                     <span class="book-name">كتاب المعاصر كونكت</span>
                     <div class="actions-group">
@@ -824,49 +856,69 @@
             }
         }
 
-        // دالة التنقل السريع للصف المطلوب بضغطة زر
-        function scrollToGrade(cardId, chipElement) {
-            var chips = document.getElementsByClassName('chip-btn');
-            for (var i = 0; i < chips.length; i++) {
-                chips[i].classList.remove('active');
+        // إظهار أو إخفاء القائمة المنسدلة عند النقر
+        function toggleDropdown(event, dropdownId) {
+            event.stopPropagation();
+            // إغلاق أي قوائم أخرى مفتوحة
+            var dropdowns = document.getElementsByClassName('dropdown-container');
+            for (var i = 0; i < dropdowns.length; i++) {
+                if (dropdowns[i].id !== dropdownId) {
+                    dropdowns[i].classList.remove('show');
+                }
             }
-            chipElement.classList.add('active');
+            // تبديل القائمة الحالية
+            var currentDropdown = document.getElementById(dropdownId);
+            currentDropdown.classList.toggle('show');
+        }
 
-            // التأكد من إظهار القسم الرئيسي أو الإعدادي التابع له الكارت
-            document.getElementById('primary-section').style.display = 'block';
-            document.getElementById('prep-section').style.display = 'block';
-
-            var targetCard = document.getElementById(cardId);
-            if (targetCard) {
-                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                // تأثير تمييز بسيط مؤقت
-                targetCard.style.boxShadow = '0 0 15px rgba(2, 132, 199, 0.5)';
-                setTimeout(() => {
-                    targetCard.style.boxShadow = '0 4px 10px rgba(0,0,0,0.05)';
-                }, 1500);
+        // إغلاق القوائم المنسدلة عند النقر في أي مكان خارجها
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-main-btn')) {
+                var dropdowns = document.getElementsByClassName('dropdown-container');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
             }
         }
 
-        // دالة تصفية المراحل (فلترة الابتدائي والإعدادي والكل)
-        function filterStage(stage, btnElement) {
-            var buttons = document.getElementsByClassName('filter-btn');
-            for (var i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove('active');
-            }
-            btnElement.classList.add('active');
-
+        // تصفية المراحل وعرض الصف المحدد فقط وإخفاء الباقي
+        function filterStage(stage) {
             var primarySec = document.getElementById('primary-section');
             var prepSec = document.getElementById('prep-section');
+            
+            // تحديث الأزرار النشطة
+            document.getElementById('all-stages-btn').classList.remove('active');
+            var dropdownBtns = document.getElementsByClassName('dropdown-main-btn');
+            for(let b of dropdownBtns) { b.classList.remove('active'); }
 
             if (stage === 'all') {
                 primarySec.style.display = 'block';
                 prepSec.style.display = 'block';
+                document.getElementById('all-stages-btn').classList.add('active');
             } else if (stage === 'primary') {
                 primarySec.style.display = 'block';
                 prepSec.style.display = 'none';
+                document.querySelector('#primary-dropdown .dropdown-main-btn').classList.add('active');
             } else if (stage === 'prep') {
                 primarySec.style.display = 'none';
                 prepSec.style.display = 'block';
+                document.querySelector('#prep-dropdown .dropdown-main-btn').classList.add('active');
+            }
+        }
+
+        // عند الضغط على صف معين من القائمة المنسدلة
+        function selectGradeAndFilter(cardId, stageType) {
+            // تصفية المرحلة وعرضها فقط
+            filterStage(stageType);
+
+            // الذهاب للصف المطلوب بسلاسة
+            var targetCard = document.getElementById(cardId);
+            if (targetCard) {
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                targetCard.style.boxShadow = '0 0 15px rgba(2, 132, 199, 0.5)';
+                setTimeout(() => {
+                    targetCard.style.boxShadow = '0 4px 10px rgba(0,0,0,0.05)';
+                }, 1500);
             }
         }
 
