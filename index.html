@@ -109,7 +109,7 @@
             background-color: #0284c7;
             color: white;
         }
-        /* القائمة المنسدلة الرأسية تشبه الصورة */
+        /* القائمة المنسدلة الرأسية */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -379,18 +379,18 @@
     <!-- شريط القوائم المنسدلة للمراحل والصفوف -->
     <div class="dropdown-nav">
         <!-- زر كل المراحل -->
-        <button class="dropdown-main-btn active" id="all-stages-btn" onclick="filterStage('all')">🌐 كل المراحل</button>
+        <button class="dropdown-main-btn active" id="all-stages-btn" onclick="showAllGrades()">🌐 كل المراحل</button>
 
         <!-- قائمة المرحلة الابتدائية المنسدلة -->
         <div class="dropdown-container" id="primary-dropdown">
             <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'primary-dropdown')">🎒 المرحلة الابتدائية ▾</button>
             <div class="dropdown-menu">
-                <button onclick="selectGradeAndFilter('p1-card', 'primary')">الصف الأول الابتدائي</button>
-                <button onclick="selectGradeAndFilter('p2-card', 'primary')">الصف الثاني الابتدائي</button>
-                <button onclick="selectGradeAndFilter('p3-card', 'primary')">الصف الثالث الابتدائي</button>
-                <button onclick="selectGradeAndFilter('p4-card', 'primary')">الصف الرابع الابتدائي</button>
-                <button onclick="selectGradeAndFilter('p5-card', 'primary')">الصف الخامس الابتدائي</button>
-                <button onclick="selectGradeAndFilter('p6-card', 'primary')">الصف السادس الابتدائي</button>
+                <button onclick="filterSpecificGrade('p1-card')">الصف الأول الابتدائي</button>
+                <button onclick="filterSpecificGrade('p2-card')">الصف الثاني الابتدائي</button>
+                <button onclick="filterSpecificGrade('p3-card')">الصف الثالث الابتدائي</button>
+                <button onclick="filterSpecificGrade('p4-card')">الصف الرابع الابتدائي</button>
+                <button onclick="filterSpecificGrade('p5-card')">الصف الخامس الابتدائي</button>
+                <button onclick="filterSpecificGrade('p6-card')">الصف السادس الابتدائي</button>
             </div>
         </div>
 
@@ -398,9 +398,9 @@
         <div class="dropdown-container" id="prep-dropdown">
             <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'prep-dropdown')">📖 المرحلة الإعدادية ▾</button>
             <div class="dropdown-menu">
-                <button onclick="selectGradeAndFilter('grade1-card', 'prep')">الصف الأول الإعدادي</button>
-                <button onclick="selectGradeAndFilter('grade2-card', 'prep')">الصف الثاني الإعدادي</button>
-                <button onclick="selectGradeAndFilter('grade3-card', 'prep')">الصف الثالث الإعدادي</button>
+                <button onclick="filterSpecificGrade('grade1-card')">الصف الأول الإعدادي</button>
+                <button onclick="filterSpecificGrade('grade2-card')">الصف الثاني الإعدادي</button>
+                <button onclick="filterSpecificGrade('grade3-card')">الصف الثالث الإعدادي</button>
             </div>
         </div>
     </div>
@@ -410,7 +410,7 @@
         <div class="section-title">🎒 المرحلة الابتدائية</div>
         <div class="grades-container">
             <!-- الصف الأول الابتدائي -->
-            <div class="grade-card" id="p1-card">
+            <div class="grade-card" id="p1-card" data-grade="true">
                 <div class="grade-title">الصف الأول الابتدائي</div>
                 <div class="book-item">
                     <span class="book-name">كتاب المعاصر كونكت</span>
@@ -436,7 +436,7 @@
             </div>
 
             <!-- الصف الثاني الابتدائي -->
-            <div class="grade-card" id="p2-card">
+            <div class="grade-card" id="p2-card" data-grade="true">
                 <div class="grade-title">الصف الثاني الابتدائي</div>
                 <div class="book-item">
                     <span class="book-name">كتاب المعاصر كونكت</span>
@@ -469,7 +469,7 @@
             </div>
 
             <!-- الصف الثالث الابتدائي -->
-            <div class="grade-card" id="p3-card">
+            <div class="grade-card" id="p3-card" data-grade="true">
                 <div class="grade-title">الصف الثالث الابتدائي</div>
                 <div class="book-item">
                     <span class="book-name">كتاب المعاصر كونكت</span>
@@ -509,7 +509,7 @@
             </div>
 
             <!-- الصف الرابع الابتدائي -->
-            <div class="grade-card" id="p4-card">
+            <div class="grade-card" id="p4-card" data-grade="true">
                 <div class="grade-title">الصف الرابع الابتدائي</div>
                 <div class="book-item">
                     <span class="book-name">قريباً إضافة الكتب</span>
@@ -521,7 +521,7 @@
             </div>
 
             <!-- الصف الخامس الابتدائي -->
-            <div class="grade-card" id="p5-card">
+            <div class="grade-card" id="p5-card" data-grade="true">
                 <div class="grade-title">الصف الخامس الابتدائي</div>
                 <div class="book-item">
                     <span class="book-name">قريباً إضافة الكتب</span>
@@ -533,7 +533,7 @@
             </div>
 
             <!-- الصف السادس الابتدائي -->
-            <div class="grade-card" id="p6-card">
+            <div class="grade-card" id="p6-card" data-grade="true">
                 <div class="grade-title">الصف السادس الابتدائي</div>
                 <div class="book-item">
                     <span class="book-name">قريباً إضافة الكتب</span>
@@ -551,7 +551,7 @@
         <div class="section-title">📖 المرحلة الإعدادية</div>
         <div class="grades-container">
             <!-- الصف الأول الإعدادي -->
-            <div class="grade-card" id="grade1-card">
+            <div class="grade-card" id="grade1-card" data-grade="true">
                 <div class="grade-title">الصف الأول الإعدادي</div>
                 
                 <div class="book-item">
@@ -636,7 +636,7 @@
             </div>
 
             <!-- الصف الثاني الإعدادي -->
-            <div class="grade-card" id="grade2-card">
+            <div class="grade-card" id="grade2-card" data-grade="true">
                 <div class="grade-title">الصف الثاني الإعدادي</div>
                 
                 <div class="book-item">
@@ -705,7 +705,7 @@
             </div>
 
             <!-- الصف الثالث الإعدادي -->
-            <div class="grade-card" id="grade3-card">
+            <div class="grade-card" id="grade3-card" data-grade="true">
                 <div class="grade-title">الصف الثالث الإعدادي</div>
                 
                 <div class="book-item">
@@ -859,14 +859,12 @@
         // إظهار أو إخفاء القائمة المنسدلة عند النقر
         function toggleDropdown(event, dropdownId) {
             event.stopPropagation();
-            // إغلاق أي قوائم أخرى مفتوحة
             var dropdowns = document.getElementsByClassName('dropdown-container');
             for (var i = 0; i < dropdowns.length; i++) {
                 if (dropdowns[i].id !== dropdownId) {
                     dropdowns[i].classList.remove('show');
                 }
             }
-            // تبديل القائمة الحالية
             var currentDropdown = document.getElementById(dropdownId);
             currentDropdown.classList.toggle('show');
         }
@@ -881,41 +879,43 @@
             }
         }
 
-        // تصفية المراحل وعرض الصف المحدد فقط وإخفاء الباقي
-        function filterStage(stage) {
-            var primarySec = document.getElementById('primary-section');
-            var prepSec = document.getElementById('prep-section');
+        // عرض كل المراحل والصفوف
+        function showAllGrades() {
+            document.getElementById('primary-section').style.display = 'block';
+            document.getElementById('prep-section').style.display = 'block';
             
-            // تحديث الأزرار النشطة
-            document.getElementById('all-stages-btn').classList.remove('active');
-            var dropdownBtns = document.getElementsByClassName('dropdown-main-btn');
-            for(let b of dropdownBtns) { b.classList.remove('active'); }
-
-            if (stage === 'all') {
-                primarySec.style.display = 'block';
-                prepSec.style.display = 'block';
-                document.getElementById('all-stages-btn').classList.add('active');
-            } else if (stage === 'primary') {
-                primarySec.style.display = 'block';
-                prepSec.style.display = 'none';
-                document.querySelector('#primary-dropdown .dropdown-main-btn').classList.add('active');
-            } else if (stage === 'prep') {
-                primarySec.style.display = 'none';
-                prepSec.style.display = 'block';
-                document.querySelector('#prep-dropdown .dropdown-main-btn').classList.add('active');
+            var cards = document.getElementsByClassName('grade-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.display = 'block';
             }
+
+            document.getElementById('all-stages-btn').classList.add('active');
+            var dropdownBtns = document.getElementsByClassName('dropdown-main-btn');
+            for (let b of dropdownBtns) { b.classList.remove('active'); }
         }
 
-        // عند الضغط على صف معين من القائمة المنسدلة
-        function selectGradeAndFilter(cardId, stageType) {
-            // تصفية المرحلة وعرضها فقط
-            filterStage(stageType);
+        // تصفية وإظهار كارت الصف المختار فقط وإخفاء الباقي تماماً
+        function filterSpecificGrade(cardId) {
+            document.getElementById('all-stages-btn').classList.remove('active');
+            
+            // إخفاء كل كروت الصفوف في الموقع بالكامل
+            var cards = document.getElementsByClassName('grade-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.display = 'none';
+            }
 
-            // الذهاب للصف المطلوب بسلاسة
+            // إظهار القسمين الرئيسي والأفرع لضمان ظهور الكارت المستهدف
+            document.getElementById('primary-section').style.display = 'block';
+            document.getElementById('prep-section').style.display = 'block';
+
+            // إظهار الكارت المطلوب فقط
             var targetCard = document.getElementById(cardId);
             if (targetCard) {
+                targetCard.style.display = 'block';
                 targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                targetCard.style.boxShadow = '0 0 15px rgba(2, 132, 199, 0.5)';
+                
+                // تأثير بصري خفيف مؤقت لتحديد الكارت
+                targetCard.style.boxShadow = '0 0 20px rgba(2, 132, 199, 0.6)';
                 setTimeout(() => {
                     targetCard.style.boxShadow = '0 4px 10px rgba(0,0,0,0.05)';
                 }, 1500);
