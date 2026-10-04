@@ -77,7 +77,7 @@
         .sub-notice {
             margin-top: 8px;
             font-size: 14px;
-            color: #0284c7;
+            color: #ef4444;
             font-weight: 600;
         }
         /* أزرار فلترة المراحل */
@@ -85,7 +85,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin: 20px 0 30px;
+            margin: 20px 0 15px;
             flex-wrap: wrap;
         }
         .filter-btn {
@@ -102,6 +102,30 @@
         .filter-btn:hover, .filter-btn.active {
             background-color: #0284c7;
             color: white;
+        }
+        /* أزرار الفلترة السريعة للصفوف داخل قسم البحث */
+        .grade-filter-chips {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .chip-btn {
+            background-color: #f8fafc;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .chip-btn:hover, .chip-btn.active {
+            background-color: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
         }
         /* صندوق البحث السريع */
         .search-container {
@@ -120,6 +144,7 @@
             color: #1e293b;
             outline: none;
             transition: border-color 0.2s;
+            margin-bottom: 15px;
         }
         .search-container input:focus {
             border-color: #0284c7;
@@ -321,11 +346,22 @@
     <header>
         <h1>مرحباً بك في منصة كتبك معايا</h1>
         <p>حمل جميع الكتب الخارجية والمذكرات الدراسية لجميع المراحل التعليمية مجاناً وبكل سهولة</p>
-        <div class="sub-notice">📌 الموقع حالياً متخصص في كتب المعاصر والامتحان، وسنقوم بتوفير باقي الكتب قريباً جداً!</div>
+        <div class="sub-notice">⚠️ تنبيه هامة: اللي مش مشترك في قناة التليجرام مش هيعرف يحمل الكتب!</div>
         
-        <!-- صندوق البحث السريع -->
+        <!-- صندوق البحث السريع مع أزرار التنقل السريع للصفوف -->
         <div class="search-container">
             <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="🔍 ابحث عن أي كتاب أو مادة بالاسم...">
+            <div class="grade-filter-chips">
+                <button class="chip-btn" onclick="scrollToGrade('p1-card', this)">أولى ابتدائي</button>
+                <button class="chip-btn" onclick="scrollToGrade('p2-card', this)">ثاني ابتدائي</button>
+                <button class="chip-btn" onclick="scrollToGrade('p3-card', this)">ثالث ابتدائي</button>
+                <button class="chip-btn" onclick="scrollToGrade('p4-card', this)">رابع ابتدائي</button>
+                <button class="chip-btn" onclick="scrollToGrade('p5-card', this)">خامس ابتدائي</button>
+                <button class="chip-btn" onclick="scrollToGrade('p6-card', this)">سادس ابتدائي</button>
+                <button class="chip-btn" onclick="scrollToGrade('grade1-card', this)">أولى إعدادي</button>
+                <button class="chip-btn" onclick="scrollToGrade('grade2-card', this)">ثاني إعدادي</button>
+                <button class="chip-btn" onclick="scrollToGrade('grade3-card', this)">ثالث إعدادي</button>
+            </div>
         </div>
     </header>
 
@@ -402,10 +438,39 @@
             <!-- الصف الثالث الابتدائي -->
             <div class="grade-card" id="p3-card">
                 <div class="grade-title">الصف الثالث الابتدائي</div>
+                <p style="font-size: 13px; color: #0284c7; margin-bottom: 12px; font-weight: bold;">📌 هذه الكتب التي تم توفيرها حتى الآن:</p>
                 <div class="book-item">
-                    <span class="book-name">قريباً إضافة الكتب</span>
+                    <span class="book-name">كتاب المعاصر كونكت</span>
                     <div class="actions-group">
-                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">تليجرام</a>
+                        <a href="https://t.me/mrmohamedbooks/355?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر كونكت بلس</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/356?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">كتاب المعاصر ماث</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/357" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">ملحق كتاب المعاصر ماث</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/359?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">إجابات كتاب المعاصر ماث</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/360?single" target="_blank" class="download-btn">تحميل</a>
                         <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
                     </div>
                 </div>
@@ -756,6 +821,29 @@
             if (confirm("هل أنت متأكد من حذف هذا الكتاب؟")) {
                 var bookItem = button.closest('.book-item');
                 bookItem.remove();
+            }
+        }
+
+        // دالة التنقل السريع للصف المطلوب بضغطة زر
+        function scrollToGrade(cardId, chipElement) {
+            var chips = document.getElementsByClassName('chip-btn');
+            for (var i = 0; i < chips.length; i++) {
+                chips[i].classList.remove('active');
+            }
+            chipElement.classList.add('active');
+
+            // التأكد من إظهار القسم الرئيسي أو الإعدادي التابع له الكارت
+            document.getElementById('primary-section').style.display = 'block';
+            document.getElementById('prep-section').style.display = 'block';
+
+            var targetCard = document.getElementById(cardId);
+            if (targetCard) {
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // تأثير تمييز بسيط مؤقت
+                targetCard.style.boxShadow = '0 0 15px rgba(2, 132, 199, 0.5)';
+                setTimeout(() => {
+                    targetCard.style.boxShadow = '0 4px 10px rgba(0,0,0,0.05)';
+                }, 1500);
             }
         }
 
