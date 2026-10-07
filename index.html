@@ -367,10 +367,8 @@
                 <option value="sec1-card">الصف الأول الثانوي</option>
                 <option value="sec2-sci-card">الصف الثاني الثانوي (علمي)</option>
                 <option value="sec2-art-card">الصف الثاني الثانوي (أدبي)</option>
-                <option value="sec3-sci-card">الصف الثالث الثانوي (علمي)</option>
-                <option value="sec3-art-card">الصف الثالث الثانوي (أدبي)</option>
             </optgroup>
-            <optgroup label="كتب الوزارة المدرسية (جميع المراحل)">
+            <optgroup label="كتب الوزارة المدرسية (جميع المراحل المتاحة)">
                 <option value="sch-p1">أولى ابتدائي (وزارة)</option>
                 <option value="sch-p2">تاني ابتدائي (وزارة)</option>
                 <option value="sch-p3">تالت ابتدائي (وزارة)</option>
@@ -382,7 +380,6 @@
                 <option value="sch-g3">تالت إعدادي (وزارة)</option>
                 <option value="sch-s1">أولى ثانوي (وزارة)</option>
                 <option value="sch-s2">تاني ثانوي (وزارة)</option>
-                <option value="sch-s3">تالت ثانوي (وزارة)</option>
             </optgroup>
         </select>
         <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد (مثال: كتاب الرياضيات)">
@@ -438,8 +435,6 @@
                 <button onclick="filterSpecificGrade('sec1-card')">الصف الأول الثانوي</button>
                 <button onclick="filterSpecificGrade('sec2-sci-card')">تاني ثانوي (علمي)</button>
                 <button onclick="filterSpecificGrade('sec2-art-card')">تاني ثانوي (أدبي)</button>
-                <button onclick="filterSpecificGrade('sec3-sci-card')">تالت ثانوي (علمي)</button>
-                <button onclick="filterSpecificGrade('sec3-art-card')">تالت ثانوي (أدبي)</button>
             </div>
         </div>
 
@@ -458,7 +453,6 @@
                 <button onclick="filterSpecificGrade('sch-g3')">تالت إعدادي (وزارة)</button>
                 <button onclick="filterSpecificGrade('sch-s1')">أولى ثانوي (وزارة)</button>
                 <button onclick="filterSpecificGrade('sch-s2')">تاني ثانوي (وزارة)</button>
-                <button onclick="filterSpecificGrade('sch-s3')">تالت ثانوي (وزارة)</button>
             </div>
         </div>
     </div>
@@ -892,7 +886,7 @@
         </div>
     </div>
 
-    <!-- قسم المرحلة الثانوية (الكتب الخارجية وشعبها) -->
+    <!-- قسم المرحلة الثانوية (الكتب الخارجية وشعبها - بدون ثالثة ثانوي) -->
     <div class="stage-section" id="sec-section">
         <div class="section-title">🎓 المرحلة الثانوية (الكتب الخارجية وشعبها)</div>
         <div class="grades-container">
@@ -926,30 +920,10 @@
                     </div>
                 </div>
             </div>
-            <div class="grade-card" id="sec3-sci-card" data-grade="true">
-                <div class="grade-title">الصف الثالث الثانوي (علمي)</div>
-                <div class="book-item">
-                    <span class="book-name">قريباً إضافة كتب ثالثة ثانوي علمي</span>
-                    <div class="actions-group">
-                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
-                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                    </div>
-                </div>
-            </div>
-            <div class="grade-card" id="sec3-art-card" data-grade="true">
-                <div class="grade-title">الصف الثالث الثانوي (أدبي)</div>
-                <div class="book-item">
-                    <span class="book-name">قريباً إضافة كتب ثالثة ثانوي أدبي</span>
-                    <div class="actions-group">
-                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
-                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
-    <!-- قسم كتب الوزارة المدرسية الرسمية لكل المراحل والصفوف -->
+    <!-- قسم كتب الوزارة المدرسية الرسمية لكل المراحل والصفوف المتاحة -->
     <div class="stage-section" id="school-books-section">
         <div class="section-title">🏛️ كتب الوزارة (الكتب المدرسية الرسمية لكل المراحل والصفوف)</div>
         
@@ -1065,16 +1039,6 @@
             </div>
             <div class="grade-card" id="sch-s2" data-grade="true">
                 <div class="grade-title">الصف الثاني الثانوي (وزارة)</div>
-                <div class="book-item">
-                    <span class="book-name">قريباً كتب الوزارة</span>
-                    <div class="actions-group">
-                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
-                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
-                    </div>
-                </div>
-            </div>
-            <div class="grade-card" id="sch-s3" data-grade="true">
-                <div class="grade-title">الصف الثالث الثانوي العام (وزارة)</div>
                 <div class="book-item">
                     <span class="book-name">قريباً كتب الوزارة</span>
                     <div class="actions-group">
