@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كتبك معايا | المنصة التعليمية للكتب الخارجية</title>
+    <title>كتبك معايا | المنصة التعليمية للكتب الخارجية وكتب الوزارة</title>
     <style>
         * {
             box-sizing: border-box;
@@ -344,7 +344,7 @@
         <p>اختر الصف الدراسي المطلوب، ثم اكتب اسم الكتاب ورابط التحميل:</p>
         <br>
         <select id="gradeSelect">
-            <optgroup label="المرحلة الابتدائية">
+            <optgroup label="المرحلة الابتدائية (الكتب الخارجية)">
                 <option value="p1-card">الصف الأول الابتدائي</option>
                 <option value="p2-card">الصف الثاني الابتدائي</option>
                 <option value="p3-card">الصف الثالث الابتدائي</option>
@@ -352,10 +352,14 @@
                 <option value="p5-card">الصف الخامس الابتدائي</option>
                 <option value="p6-card">الصف السادس الابتدائي</option>
             </optgroup>
-            <optgroup label="المرحلة الإعدادية">
+            <optgroup label="المرحلة الإعدادية (الكتب الخارجية)">
                 <option value="grade1-card">الصف الأول الإعدادي</option>
                 <option value="grade2-card">الصف الثاني الإعدادي</option>
                 <option value="grade3-card">الصف الثالث الإعدادي</option>
+            </optgroup>
+            <optgroup label="كتب الوزارة المدرسية">
+                <option value="school-primary-card">كتب الوزارة - الابتدائي</option>
+                <option value="school-prep-card">كتب الوزارة - الإعدادي</option>
             </optgroup>
         </select>
         <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد (مثال: كتاب الرياضيات)">
@@ -367,7 +371,7 @@
     <!-- الواجهة الرئيسية -->
     <header>
         <h1>مرحباً بك في منصة كتبك معايا</h1>
-        <p>حمل جميع الكتب الخارجية والمذكرات الدراسية لجميع المراحل التعليمية مجاناً وبكل سهولة</p>
+        <p>حمل جميع الكتب الخارجية وكتب الوزارة والمذكرات الدراسية لجميع المراحل مجاناً وبكل سهولة</p>
         <div class="sub-notice">⚠️ تنبيه هامة: اللي مش مشترك في قناة التليجرام مش هيعرف يحمل الكتب!</div>
         
         <!-- صندوق البحث العام -->
@@ -403,11 +407,20 @@
                 <button onclick="filterSpecificGrade('grade3-card')">الصف الثالث الإعدادي</button>
             </div>
         </div>
+
+        <!-- قائمة كتب الوزارة المدرسية المنسدلة -->
+        <div class="dropdown-container" id="school-dropdown">
+            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'school-dropdown')">🏛️ كتب الوزارة ▾</button>
+            <div class="dropdown-menu">
+                <button onclick="filterSpecificGrade('school-primary-card')">كتب الوزارة - الابتدائي</button>
+                <button onclick="filterSpecificGrade('school-prep-card')">كتب الوزارة - الإعدادي</button>
+            </div>
+        </div>
     </div>
 
     <!-- قسم المرحلة الابتدائية -->
     <div class="stage-section" id="primary-section">
-        <div class="section-title">🎒 المرحلة الابتدائية</div>
+        <div class="section-title">🎒 المرحلة الابتدائية (الكتب الخارجية)</div>
         <div class="grades-container">
             <!-- الصف الأول الابتدائي -->
             <div class="grade-card" id="p1-card" data-grade="true">
@@ -632,7 +645,7 @@
 
     <!-- قسم المرحلة الإعدادية -->
     <div class="stage-section" id="prep-section">
-        <div class="section-title">📖 المرحلة الإعدادية</div>
+        <div class="section-title">📖 المرحلة الإعدادية (الكتب الخارجية)</div>
         <div class="grades-container">
             <!-- الصف الأول الإعدادي -->
             <div class="grade-card" id="grade1-card" data-grade="true">
@@ -843,7 +856,37 @@
         </div>
     </div>
 
-    <!-- قسم بوت طلب الكتب والدعم الفني (بالنصوص والروابط الجديدة الصحيحة) -->
+    <!-- قسم كتب الوزارة المدرسية -->
+    <div class="stage-section" id="school-books-section">
+        <div class="section-title">🏛️ كتب الوزارة (الكتب المدرسية الرسمية)</div>
+        <div class="grades-container">
+            <!-- كتب الوزارة - الابتدائي -->
+            <div class="grade-card" id="school-primary-card" data-grade="true">
+                <div class="grade-title">كتب الوزارة - المرحلة الابتدائية</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الوزارة الابتدائية</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- كتب الوزارة - الإعدادي -->
+            <div class="grade-card" id="school-prep-card" data-grade="true">
+                <div class="grade-title">كتب الوزارة - المرحلة الإعدادية</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الوزارة الإعدادية</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم بوت طلب الكتب والدعم الفني -->
     <div class="support-container">
         <div class="support-box">
             <h3>🤖 بوت طلب الكتب</h3>
@@ -929,13 +972,14 @@
                 }
             });
 
-            if (gradeId.startsWith('p')) {
-                document.getElementById('primary-section').style.display = 'block';
-                document.getElementById('prep-section').style.display = 'none';
-            } else {
-                document.getElementById('primary-section').style.display = 'none';
-                document.getElementById('prep-section').style.display = 'block';
-            }
+            document.querySelectorAll('.stage-section').forEach(sec => {
+                const visibleCards = sec.querySelectorAll('.grade-card[style*="block"]');
+                if (visibleCards.length > 0) {
+                    sec.style.display = 'block';
+                } else {
+                    sec.style.display = 'none';
+                }
+            });
 
             document.getElementById('all-stages-btn').classList.remove('active');
         }
