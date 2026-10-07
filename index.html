@@ -115,7 +115,7 @@
             position: absolute;
             right: 0;
             background-color: #ffffff;
-            min-width: 200px;
+            min-width: 220px;
             box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
             border-radius: 10px;
             z-index: 100;
@@ -123,6 +123,8 @@
             border: 1px solid #cbd5e1;
             margin-top: 8px;
             text-align: right;
+            max-height: 300px;
+            overflow-y: auto;
         }
         .dropdown-menu button {
             color: #334155;
@@ -357,9 +359,18 @@
                 <option value="grade2-card">الصف الثاني الإعدادي</option>
                 <option value="grade3-card">الصف الثالث الإعدادي</option>
             </optgroup>
-            <optgroup label="كتب الوزارة المدرسية">
-                <option value="school-primary-card">كتب الوزارة - الابتدائي</option>
-                <option value="school-prep-card">كتب الوزارة - الإعدادي</option>
+            <optgroup label="كتب الوزارة - الابتدائي">
+                <option value="sch-p1">كتب الوزارة - أولى ابتدائي</option>
+                <option value="sch-p2">كتب الوزارة - تاني ابتدائي</option>
+                <option value="sch-p3">كتب الوزارة - تالت ابتدائي</option>
+                <option value="sch-p4">كتب الوزارة - رابع ابتدائي</option>
+                <option value="sch-p5">كتب الوزارة - خامس ابتدائي</option>
+                <option value="sch-p6">كتب الوزارة - سادس ابتدائي</option>
+            </optgroup>
+            <optgroup label="كتب الوزارة - الإعدادي">
+                <option value="sch-g1">كتب الوزارة - أولى إعدادي</option>
+                <option value="sch-g2">كتب الوزارة - تاني إعدادي</option>
+                <option value="sch-g3">كتب الوزارة - تالت إعدادي</option>
             </optgroup>
         </select>
         <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد (مثال: كتاب الرياضيات)">
@@ -387,7 +398,7 @@
 
         <!-- قائمة المرحلة الابتدائية المنسدلة -->
         <div class="dropdown-container" id="primary-dropdown">
-            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'primary-dropdown')">🎒 المرحلة الابتدائية ▾</button>
+            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'primary-dropdown')">🎒 الابتدائي (خارجية) ▾</button>
             <div class="dropdown-menu">
                 <button onclick="filterSpecificGrade('p1-card')">الصف الأول الابتدائي</button>
                 <button onclick="filterSpecificGrade('p2-card')">الصف الثاني الابتدائي</button>
@@ -400,7 +411,7 @@
 
         <!-- قائمة المرحلة الإعدادية المنسدلة -->
         <div class="dropdown-container" id="prep-dropdown">
-            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'prep-dropdown')">📖 المرحلة الإعدادية ▾</button>
+            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'prep-dropdown')">📖 الإعدادي (خارجية) ▾</button>
             <div class="dropdown-menu">
                 <button onclick="filterSpecificGrade('grade1-card')">الصف الأول الإعدادي</button>
                 <button onclick="filterSpecificGrade('grade2-card')">الصف الثاني الإعدادي</button>
@@ -412,8 +423,15 @@
         <div class="dropdown-container" id="school-dropdown">
             <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'school-dropdown')">🏛️ كتب الوزارة ▾</button>
             <div class="dropdown-menu">
-                <button onclick="filterSpecificGrade('school-primary-card')">كتب الوزارة - الابتدائي</button>
-                <button onclick="filterSpecificGrade('school-prep-card')">كتب الوزارة - الإعدادي</button>
+                <button onclick="filterSpecificGrade('sch-p1')">أولى ابتدائي (وزارة)</button>
+                <button onclick="filterSpecificGrade('sch-p2')">تاني ابتدائي (وزارة)</button>
+                <button onclick="filterSpecificGrade('sch-p3')">تالت ابتدائي (وزارة)</button>
+                <button onclick="filterSpecificGrade('sch-p4')">رابع ابتدائي (وزارة)</button>
+                <button onclick="filterSpecificGrade('sch-p5')">خامس ابتدائي (وزارة)</button>
+                <button onclick="filterSpecificGrade('sch-p6')">سادس ابتدائي (وزارة)</button>
+                <button onclick="filterSpecificGrade('sch-g1')">أولى إعدادي (وزارة)</button>
+                <button onclick="filterSpecificGrade('sch-g2')">تاني إعدادي (وزارة)</button>
+                <button onclick="filterSpecificGrade('sch-g3')">تالت إعدادي (وزارة)</button>
             </div>
         </div>
     </div>
@@ -856,27 +874,100 @@
         </div>
     </div>
 
-    <!-- قسم كتب الوزارة المدرسية -->
+    <!-- قسم كتب الوزارة (مقسمة لكل صف على حدة) -->
     <div class="stage-section" id="school-books-section">
-        <div class="section-title">🏛️ كتب الوزارة (الكتب المدرسية الرسمية)</div>
+        <div class="section-title">🏛️ كتب الوزارة (الكتب المدرسية الرسمية لكل صف)</div>
+        
+        <div class="section-title" style="font-size: 18px; border: none; margin: 20px 0 10px 0; color: #0369a1;">المرحلة الابتدائية - كتب الوزارة</div>
         <div class="grades-container">
-            <!-- كتب الوزارة - الابتدائي -->
-            <div class="grade-card" id="school-primary-card" data-grade="true">
-                <div class="grade-title">كتب الوزارة - المرحلة الابتدائية</div>
+            <div class="grade-card" id="sch-p1" data-grade="true">
+                <div class="grade-title">الصف الأول الابتدائي</div>
                 <div class="book-item">
-                    <span class="book-name">قريباً إضافة كتب الوزارة الابتدائية</span>
+                    <span class="book-name">قريباً إضافة كتب الوزارة</span>
                     <div class="actions-group">
                         <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
                         <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
                     </div>
                 </div>
             </div>
-
-            <!-- كتب الوزارة - الإعدادي -->
-            <div class="grade-card" id="school-prep-card" data-grade="true">
-                <div class="grade-title">كتب الوزارة - المرحلة الإعدادية</div>
+            <div class="grade-card" id="sch-p2" data-grade="true">
+                <div class="grade-title">الصف الثاني الابتدائي</div>
                 <div class="book-item">
-                    <span class="book-name">قريباً إضافة كتب الوزارة الإعدادية</span>
+                    <span class="book-name">قريباً إضافة كتب الوزارة</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+            <div class="grade-card" id="sch-p3" data-grade="true">
+                <div class="grade-title">الصف الثالث الابتدائي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الوزارة</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+            <div class="grade-card" id="sch-p4" data-grade="true">
+                <div class="grade-title">الصف الرابع الابتدائي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الوزارة</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+            <div class="grade-card" id="sch-p5" data-grade="true">
+                <div class="grade-title">الصف الخامس الابتدائي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الوزارة</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+            <div class="grade-card" id="sch-p6" data-grade="true">
+                <div class="grade-title">الصف السادس الابتدائي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الوزارة</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title" style="font-size: 18px; border: none; margin: 30px 0 10px 0; color: #0369a1;">المرحلة الإعدادية - كتب الوزارة</div>
+        <div class="grades-container">
+            <div class="grade-card" id="sch-g1" data-grade="true">
+                <div class="grade-title">الصف الأول الإعدادي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الوزارة</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+            <div class="grade-card" id="sch-g2" data-grade="true">
+                <div class="grade-title">الصف الثاني الإعدادي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الوزارة</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+            </div>
+            <div class="grade-card" id="sch-g3" data-grade="true">
+                <div class="grade-title">الصف الثالث الإعدادي</div>
+                <div class="book-item">
+                    <span class="book-name">قريباً إضافة كتب الوزارة</span>
                     <div class="actions-group">
                         <a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a>
                         <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
