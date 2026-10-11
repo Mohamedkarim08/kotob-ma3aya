@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كتبك معايا | المنصة التعليمية للكتب الخارجية وكتب الوزارة</title>
+    <title>كتبك معايا | المنصة التعليمية للكتب الخارجية وكتب الوزارة والتقييمات</title>
+    
+    <!-- ربط ملف الـ Web App Manifest (عشان الموبايل والكمبيوتر يشوفوا الموقع كبرنامج) -->
+    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22%D9%83%D8%AA%D8%A8%D9%83%20%D9%85%D8%B9%D8%A7%D9%8A%D8%A7%22%2C%22short_name%22%3A%22%D9%83%D8%AA%D8%A8%D9%83%20%D9%85%D8%B9%D8%A7%D9%8A%D8%A7%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23f1f5f9%22%2C%22theme_color%22%3A%22%230284c7%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fimg.icons8.com%2Ffluency%2F192%2Fbooks.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
+    <meta name="theme-color" content="#0284c7">
+
     <style>
         * {
             box-sizing: border-box;
@@ -37,6 +42,7 @@
         .nav-links {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
         .nav-btn {
             background-color: #0284c7;
@@ -57,6 +63,12 @@
         }
         .nav-btn-green:hover {
             background-color: #059669;
+        }
+        .nav-btn-purple {
+            background-color: #8b5cf6;
+        }
+        .nav-btn-purple:hover {
+            background-color: #7c3aed;
         }
         header {
             background-color: #ffffff;
@@ -83,6 +95,16 @@
             padding: 10px;
             border-radius: 8px;
             border: 1px solid #fecaca;
+        }
+        .credit-notice {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #475569;
+            font-weight: 600;
+            background-color: #f0f9ff;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px dashed #0284c7;
         }
         
         /* شريط القوائم المنسدلة (Dropdown Navigation) */
@@ -330,6 +352,8 @@
         <div class="logo">📚 كتبك معايا</div>
         <div class="nav-links">
             <a href="#" class="nav-btn">الرئيسية</a>
+            <!-- زر تثبيت التطبيق/البرنامج -->
+            <button id="installAppBtn" class="nav-btn nav-btn-purple" style="display: none;" onclick="installApp()">📱 تثبيت التطبيق</button>
             <button class="nav-btn" onclick="toggleLoginBox()">لوحة الإدارة</button>
             <a href="https://t.me/mrmohamedbooks" target="_blank" class="nav-btn">تليجرام</a>
         </div>
@@ -350,7 +374,7 @@
         <p>اختر الصف الدراسي المطلوب، ثم اكتب اسم الكتاب ورابط التحميل:</p>
         <br>
         <select id="gradeSelect">
-            <optgroup label="المرحلة الابتدائية (الكتب الخارجية)">
+            <optgroup label="المرحلة الابتدائية (الكتب الخارجية والتقييمات)">
                 <option value="p1-card">الصف الأول الابتدائي</option>
                 <option value="p2-card">الصف الثاني الابتدائي</option>
                 <option value="p3-card">الصف الثالث الابتدائي</option>
@@ -382,7 +406,7 @@
                 <option value="sch-s2">تاني ثانوي (وزارة)</option>
             </optgroup>
         </select>
-        <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب الجديد (مثال: كتاب الرياضيات)">
+        <input type="text" id="bookTitleInput" placeholder="اكتب اسم الكتاب أو التقييم الجديد">
         <input type="text" id="bookUrlInput" placeholder="ضع رابط التحميل هنا (رابط تليجرام أو PDF)">
         <button class="nav-btn" onclick="addBook()">إضافة الكتاب للصف المحدد</button>
         <p style="color: #10b981; margin-top: 10px; font-weight: bold;">أنت مسجل كمسؤول الآن! يمكنك حذف أي كتاب مباشرة.</p>
@@ -391,12 +415,12 @@
     <!-- الواجهة الرئيسية -->
     <header>
         <h1>مرحباً بك في منصة كتبك معايا</h1>
-        <p>حمل جميع الكتب الخارجية وكتب الوزارة والمذكرات الدراسية لجميع المراحل التعليمية مجاناً وبكل سهولة</p>
+        <p>حمل جميع الكتب الخارجية وكتب الوزارة والتقييمات بالحلول مجاناً وبكل سهولة</p>
         <div class="sub-notice">⚠️ تنبيه هام: اللي نزل حالياً هو اللي متاح فقط، واللي مش مشترك في قناة التليجرام مش هيعرف يحمل الكتب!</div>
         
         <!-- صندوق البحث العام -->
         <div class="search-container">
-            <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="🔍 ابحث عن أي كتاب أو مادة بالاسم...">
+            <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="🔍 ابحث عن أي كتاب، تقييم، أو مادة بالاسم...">
         </div>
     </header>
 
@@ -407,7 +431,7 @@
 
         <!-- قائمة المرحلة الابتدائية -->
         <div class="dropdown-container" id="primary-dropdown">
-            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'primary-dropdown')">🎒 الابتدائي (خارجية) ▾</button>
+            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'primary-dropdown')">🎒 الابتدائي ▾</button>
             <div class="dropdown-menu">
                 <button onclick="filterSpecificGrade('p1-card')">الصف الأول الابتدائي</button>
                 <button onclick="filterSpecificGrade('p2-card')">الصف الثاني الابتدائي</button>
@@ -420,7 +444,7 @@
 
         <!-- قائمة المرحلة الإعدادية -->
         <div class="dropdown-container" id="prep-dropdown">
-            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'prep-dropdown')">📖 الإعدادي (خارجية) ▾</button>
+            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'prep-dropdown')">📖 الإعدادي ▾</button>
             <div class="dropdown-menu">
                 <button onclick="filterSpecificGrade('grade1-card')">الصف الأول الإعدادي</button>
                 <button onclick="filterSpecificGrade('grade2-card')">الصف الثاني الإعدادي</button>
@@ -430,7 +454,7 @@
 
         <!-- قائمة المرحلة الثانوية -->
         <div class="dropdown-container" id="sec-dropdown">
-            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'sec-dropdown')">🎓 الثانوي (خارجية) ▾</button>
+            <button class="dropdown-main-btn" onclick="toggleDropdown(event, 'sec-dropdown')">🎓 الثانوي ▾</button>
             <div class="dropdown-menu">
                 <button onclick="filterSpecificGrade('sec1-card')">الصف الأول الثانوي</button>
                 <button onclick="filterSpecificGrade('sec2-sci-card')">تاني ثانوي (علمي)</button>
@@ -459,10 +483,12 @@
 
     <!-- قسم المرحلة الابتدائية -->
     <div class="stage-section" id="primary-section">
-        <div class="section-title">🎒 المرحلة الابتدائية (الكتب الخارجية)</div>
+        <div class="section-title">🎒 المرحلة الابتدائية (الكتب الخارجية والتقييمات)</div>
         <div class="grades-container">
             <div class="grade-card" id="p1-card" data-grade="true">
                 <div class="grade-title">الصف الأول الابتدائي</div>
+                
+                <!-- الكتب الخارجية -->
                 <div class="book-item">
                     <span class="book-name">كتاب المعاصر كونكت</span>
                     <div class="actions-group">
@@ -481,6 +507,66 @@
                     <span class="book-name">كتاب المعاصر كونكت بلس</span>
                     <div class="actions-group">
                         <a href="https://t.me/mrmohamedbooks/399?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <!-- قسم التقييمات والأداءات بالحل -->
+                <div class="credit-notice">📝 كتب التقييمات وحلولها (نقلاً عن ذاكرولي):</div>
+                <br>
+                <div class="book-item">
+                    <span class="book-name">كتاب التقييمات اللغة الإنجليزية</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/448" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">حل كتاب التقييمات اللغة الإنجليزية</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/441?single" target="_blank" class="download-btn">تحميل الحل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">كتاب التقييمات اللغة العربية</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/443?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">حل كتاب تقييمات اللغة العربية</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/442?single" target="_blank" class="download-btn">تحميل الحل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">كتاب التقييمات ماث (Math)</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/444?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">حل كتاب التقييمات ماث (Math)</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/445?single" target="_blank" class="download-btn">تحميل الحل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">كتاب التقييمات رياضيات</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/447?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">حل كتاب التقييمات رياضيات</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/446?single" target="_blank" class="download-btn">تحميل الحل</a>
                         <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
                     </div>
                 </div>
@@ -1066,7 +1152,7 @@
         </div>
     </div>
 
-    <!-- كود JavaScript الخاص بالتشغيل والتحكم -->
+    <!-- كود JavaScript الخاص بالتشغيل والتحكم والبرنامج (PWA) -->
     <script>
         let isAdmin = false;
 
@@ -1205,6 +1291,32 @@
                     item.style.display = 'none';
                 }
             });
+        }
+
+        /* --- كود PWA App --- */
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const installBtn = document.getElementById('installAppBtn');
+            if (installBtn) {
+                installBtn.style.display = 'inline-block';
+            }
+        });
+
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted install');
+                    }
+                    deferredPrompt = null;
+                    document.getElementById('installAppBtn').style.display = 'none';
+                });
+            } else {
+                alert('التطبيق مثبت بالفعل، أو يمكنك تثبيته من خيارات المتصفح (إضافة إلى الشاشة الرئيسية).');
+            }
         }
     </script>
 </body>
