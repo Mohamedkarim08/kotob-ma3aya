@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كتبك معايا | المنصة التعليمية للكتب الخارجية وكتب الوزارة والتقييمات</title>
-    
-    <!-- ربط ملف الـ Web App Manifest (عشان الموبايل والكمبيوتر يشوفوا الموقع كبرنامج) -->
-    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22%D9%83%D8%AA%D8%A8%D9%83%20%D9%85%D8%B9%D8%A7%D9%8A%D8%A7%22%2C%22short_name%22%3A%22%D9%83%D8%AA%D8%A8%D9%83%20%D9%85%D8%B9%D8%A7%D9%8A%D8%A7%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23f1f5f9%22%2C%22theme_color%22%3A%22%230284c7%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fimg.icons8.com%2Ffluency%2F192%2Fbooks.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
-    <meta name="theme-color" content="#0284c7">
-
     <style>
         * {
             box-sizing: border-box;
@@ -63,12 +58,6 @@
         }
         .nav-btn-green:hover {
             background-color: #059669;
-        }
-        .nav-btn-purple {
-            background-color: #8b5cf6;
-        }
-        .nav-btn-purple:hover {
-            background-color: #7c3aed;
         }
         header {
             background-color: #ffffff;
@@ -353,8 +342,6 @@
         <div class="logo">📚 كتبك معايا</div>
         <div class="nav-links">
             <a href="#" class="nav-btn">الرئيسية</a>
-            <!-- زر تثبيت التطبيق/البرنامج -->
-            <button id="installAppBtn" class="nav-btn nav-btn-purple" style="display: none;" onclick="installApp()">📱 تثبيت التطبيق</button>
             <button class="nav-btn" onclick="toggleLoginBox()">لوحة الإدارة</button>
             <a href="https://t.me/mrmohamedbooks" target="_blank" class="nav-btn">تليجرام</a>
         </div>
@@ -599,6 +586,65 @@
                     <span class="book-name">كتاب المعاصر ماث</span>
                     <div class="actions-group">
                         <a href="https://t.me/mrmohamedbooks/395" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+
+                <!-- قسم التقييمات والأداءات بالحل (الصف الثاني الابتدائي) -->
+                <div class="credit-notice">📝 جميع كتب التقييمات وحلولها التالية من حقوق ذاكرولي:</div>
+                <div class="book-item">
+                    <span class="book-name">كتاب التقييمات اللغة العربية</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/454?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">حل كتاب التقييمات اللغة العربية</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/455?single" target="_blank" class="download-btn">تحميل الحل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">كتاب التقييمات اللغة الإنجليزية</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/457?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">حل كتاب التقييمات اللغة الإنجليزية</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/456?single" target="_blank" class="download-btn">تحميل الحل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">كتاب التقييمات رياضيات</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/459?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">حل كتاب التقييمات رياضيات</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/458?single" target="_blank" class="download-btn">تحميل الحل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">كتاب التقييمات ماث (Math)</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/461?single" target="_blank" class="download-btn">تحميل</a>
+                        <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <span class="book-name">حل كتاب التقييمات ماث (Math)</span>
+                    <div class="actions-group">
+                        <a href="https://t.me/mrmohamedbooks/460?single" target="_blank" class="download-btn">تحميل الحل</a>
                         <button class="delete-btn" onclick="deleteBook(this)">حذف</button>
                     </div>
                 </div>
@@ -1163,7 +1209,7 @@
         </div>
     </div>
 
-    <!-- كود JavaScript الخاص بالتشغيل والتحكم والبرنامج (PWA) -->
+    <!-- كود JavaScript الخاص بالتشغيل والتحكم -->
     <script>
         let isAdmin = false;
 
@@ -1302,32 +1348,6 @@
                     item.style.display = 'none';
                 }
             });
-        }
-
-        /* --- كود PWA App --- */
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            const installBtn = document.getElementById('installAppBtn');
-            if (installBtn) {
-                installBtn.style.display = 'inline-block';
-            }
-        });
-
-        function installApp() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted install');
-                    }
-                    deferredPrompt = null;
-                    document.getElementById('installAppBtn').style.display = 'none';
-                });
-            } else {
-                alert('التطبيق مثبت بالفعل، أو يمكنك تثبيته من خيارات المتصفح (إضافة إلى الشاشة الرئيسية).');
-            }
         }
     </script>
 </body>
