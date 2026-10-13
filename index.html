@@ -1482,4 +1482,18 @@
     overflow: hidden;
     border: 1px solid #cbd5e1;
 }
+       // كود تشغيل البحث في الموقع
+document.getElementById('searchInput').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+            card.style.display = 'flex'; // إظهار الكارت لو فيه تطابق
+        } else {
+            card.style.display = 'none'; // إخفاء الكارت لو مفيش تطابق
+        }
+    });
+});
 </body>
