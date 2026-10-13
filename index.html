@@ -1449,91 +1449,37 @@
             });
         }
     <script>
-    // تشفير التوكن للحماية من كشف GitHub Secrets
-    const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
-    const BOT_TOKEN = _t.join(':');
-    const CHAT_ID = '5698534303';
-
-    function toggleAIChat() {
-        const win = document.getElementById('ai-chat-window');
-        win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-    }
-
-    function showAdminForm() {
-        document.getElementById('adminForm').style.display = 'flex';
-    }
-
-    function hideAdminForm() {
-        document.getElementById('adminForm').style.display = 'none';
-    }
-
-    function sendToTelegram() {
-        const name = document.getElementById('senderName').value.trim();
-        const contact = document.getElementById('senderContact').value.trim();
-        const msg = document.getElementById('senderMsg').value.trim();
-
-        if (!name || !contact || !msg) {
-            alert('من فضلك أكمل جميع البيانات لتمكين المسؤول من التواصل معك!');
-            return;
-        }
-
-        const fullMessage = `🚨 طلب دعم جديد من منصة كتبك معايا:\n\n👤 الاسم: ${name}\n📞 التواصل: ${contact}\n💬 المشكلة/الطلب:\n${msg}`;
-
-        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: CHAT_ID,
-                text: fullMessage
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.ok) {
-                alert('تم إرسال رسالتك بنجاح للمسؤول! سيتواصل معك قريباً.');
-                document.getElementById('senderName').value = '';
-                document.getElementById('senderContact').value = '';
-                document.getElementById('senderMsg').value = '';
-                hideAdminForm();
-            } else {
-                alert('حدث خطأ أثناء الإرسال، برجاء المحاولة لاحقاً.');
-            }
-        })
-        .catch(error => {
-            alert('تعذر الاتصال بالخادم، تحقق من الإنترنت.');
-        });
-    }
-
-    function sendAIMessage() {
-        const input = document.getElementById('aiUserInput');
-        const text = input.value.trim();
-        if (!text) return;
-
-        const chatBody = document.getElementById('aiChatBody');
-        const userMsg = document.createElement('div');
-        userMsg.className = 'ai-msg user';
-        userMsg.textContent = text;
-        chatBody.appendChild(userMsg);
-
-        input.value = '';
-        chatBody.scrollTop = chatBody.scrollHeight;
-
-        setTimeout(() => {
-            const botMsg = document.createElement('div');
-            botMsg.className = 'ai-msg bot';
-            
-            const lowerText = text.toLowerCase();
-            if (lowerText.includes('كتاب') || lowerText.includes('تحميل')) {
-                botMsg.textContent = 'يمكنك العثور على جميع الكتب والتقييمات مجاناً من خلال تصفح المراحل التعليمية في الصفحة الرئيسية أو استخدام شريط البحث العلوي 📚';
-            } else if (lowerText.includes('تليجرام') || lowerText.includes('قناة')) {
-                botMsg.textContent = 'رابط قناة التليجرام الرسمية موجود في أعلى الموقع، اشترك فيها ليصلك كل جديد فوراً!';
-            } else {
-                botMsg.textContent = 'أنا هنا لمساعدتك! إذا واجهتك أي مشكلة، اضغط على زر "تحويل إلى المسؤول" بالأعلى وسأوصل رسالتك للمسؤول مباشرة.';
-            }
-
-            chatBody.appendChild(botMsg);
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }, 600);
-    }
-</script>
+    #ai-fab {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+}
+#ai-chat-window {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    left: 25px;
+    width: 350px;
+    max-width: 90vw;
+    height: 500px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 10000;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+}
 </body>
