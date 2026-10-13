@@ -2,40 +2,34 @@
 <html lang="ar" dir="rtl">
 <head><script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "0bab1240-0450-4f76-934e-84bea722e350",
-      notifyButton: { enable: true },
-    });
-  });
-</script>function toggleAIChat() {
-    const win = document.getElementById('ai-chat-window');
-    win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-}
+    function toggleAIChat() {
+        const win = document.getElementById('ai-chat-window');
+        win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+    }
 
-function sendAIMessage() {
-    const input = document.getElementById('aiUserInput');
-    const text = input.value.trim();
-    if (!text) return;
+    function sendAIMessage() {
+        const input = document.getElementById('aiUserInput');
+        const text = input.value.trim();
+        if (!text) return;
 
-    const chatBody = document.getElementById('aiChatBody');
-    const userMsg = document.createElement('div');
-    userMsg.style.cssText = 'background-color: #0284c7; color: #ffffff; align-self: flex-end; border-radius: 10px; padding: 10px 14px; font-size: 14px; max-width: 85%;';
-    userMsg.textContent = text;
-    chatBody.appendChild(userMsg);
+        const chatBody = document.getElementById('aiChatBody');
+        const userMsg = document.createElement('div');
+        userMsg.style.cssText = 'background-color: #0284c7; color: #ffffff; align-self: flex-end; border-radius: 10px; padding: 10px 14px; font-size: 14px; max-width: 85%;';
+        userMsg.textContent = text;
+        chatBody.appendChild(userMsg);
 
-    input.value = '';
-    chatBody.scrollTop = chatBody.scrollHeight;
-
-    setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.style.cssText = 'background-color: #ffffff; color: #1e293b; align-self: flex-start; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-size: 14px; max-width: 85%;';
-        botMsg.textContent = 'أنا هنا لمساعدتك في العثور على الكتب الخارجية والتقييمات مجاناً! يمكنك استخدام شريط البحث أعلى الموقع للوصول لأي مادة بسرعة 📚';
-        chatBody.appendChild(botMsg);
+        input.value = '';
         chatBody.scrollTop = chatBody.scrollHeight;
-    }, 600);
-}
+
+        setTimeout(() => {
+            const botMsg = document.createElement('div');
+            botMsg.style.cssText = 'background-color: #ffffff; color: #1e293b; align-self: flex-start; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-size: 14px; max-width: 85%;';
+            botMsg.textContent = 'أنا هنا لمساعدتك في العثور على الكتب الخارجية والتقييمات مجاناً! يمكنك استخدام شريط البحث أعلى الموقع للوصول لأي مادة بسرعة 📚';
+            chatBody.appendChild(botMsg);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }, 600);
+    }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كتبك معايا | المنصة التعليمية للكتب الخارجية وكتب الوزارة والتقييمات</title>
