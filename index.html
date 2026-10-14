@@ -5,6 +5,15 @@
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({
+      appId: "ضع_كود_App_ID_هنا",
+    });
+  });
+</script>
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
       appId: "0bab1240-0450-4f76-934e-84bea722e350",
       safari_web_id: "web.onesignal.auto.01ea4289-b460-45e4-8d90-838752554827",
       notifyButton: {
