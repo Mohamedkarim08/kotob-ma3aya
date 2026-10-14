@@ -39,6 +39,28 @@
     .ai-chat-footer { padding: 10px; background-color: #ffffff; border-top: 1px solid #e2e8f0; display: flex; gap: 8px; }
     .ai-chat-footer input { flex: 1; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; font-size: 14px; text-align: right; }
     .ai-chat-footer button { background-color: #0284c7; color: white; border: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+      cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script> <!-- (هنا بتقفل السكريبت) -->
+
+    <!-- (وهنا بتحط الكود الجديد بتاع الزرار والشات تحت السكريبت وفوق قفلة الـ body مباشرة) -->
+    <div id="ai-fab" onclick="toggleAIChat()">
+        🤖 المساعد الذكي
+    </div>
+    
+    <div id="ai-chat-window">
+        <!-- (باقي كود الشات هنا) -->
+    </div>
+
+</body>
+</html>
 <style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
