@@ -1448,41 +1448,40 @@
             });
         }
     <script>
-   <!-- زرار المساعد الذكي العائم -->
-<div id="ai-fab" onclick="toggleAIChat()">
-    🤖 المساعد الذكي
-</div>
-
-<!-- نافذة الشات -->
-<div id="ai-chat-window">
-    <div class="ai-chat-header">
-        <span>🤖 مساعد كتبك معايا الذكي</span>
-        <button onclick="toggleAIChat()">✕</button>
-    </div>
-    
-    <div style="padding: 8px 12px; background: #f1f5f9; text-align: center; border-bottom: 1px solid #e2e8f0;">
-        <button onclick="showAdminForm()" style="background-color: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px;">
-            👤 تحويل إلى المسؤول
-        </button>
+ <!-- 🤖 زرار المساعد الذكي العائم ونافذة الشات -->
+    <div id="ai-fab" onclick="toggleAIChat()">
+        🤖 المساعد الذكي
     </div>
 
-    <div id="adminForm" style="display: none; padding: 12px; background-color: #ffffff; flex-direction: column; gap: 8px; border-bottom: 1px solid #e2e8f0;">
-        <h4 style="color: #0284c7; margin-bottom: 2px; font-size: 13px; text-align: right;">📝 اكتب طلبك أو مشكلتك للمسؤول:</h4>
-        <input type="text" id="senderName" placeholder="اسمك" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; text-align: right;">
-        <input type="text" id="senderContact" placeholder="يوزر تليجرام أو رقم الموبايل للتواصل" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; text-align: right;">
-        <textarea id="senderMsg" placeholder="اكتب تفاصيل مشكلتك هنا..." rows="2" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; resize: none; text-align: right;"></textarea>
-        <div style="display: flex; gap: 5px;">
-            <button onclick="sendToTelegram()" style="flex: 1; background-color: #10b981; color: white; border: none; padding: 7px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px;">إرسال للمسؤول 🚀</button>
-            <button onclick="hideAdminForm()" style="background-color: #64748b; color: white; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;">إلغاء</button>
+    <div id="ai-chat-window">
+        <div class="ai-chat-header">
+            <span>🤖 مساعد كتبك معايا الذكي</span>
+            <button onclick="toggleAIChat()">✕</button>
+        </div>
+        
+        <div style="padding: 8px 12px; background: #f1f5f9; text-align: center; border-bottom: 1px solid #e2e8f0;">
+            <button onclick="showAdminForm()" style="background-color: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px;">
+                👤 تحويل إلى المسؤول
+            </button>
+        </div>
+
+        <div id="adminForm" style="display: none; padding: 12px; background-color: #ffffff; flex-direction: column; gap: 8px; border-bottom: 1px solid #e2e8f0;">
+            <h4 style="color: #0284c7; margin-bottom: 2px; font-size: 13px; text-align: right;">📝 اكتب طلبك أو مشكلتك للمسؤول:</h4>
+            <input type="text" id="senderName" placeholder="اسمك" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; text-align: right;">
+            <input type="text" id="senderContact" placeholder="يوزر تليجرام أو رقم الموبايل للتواصل" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; text-align: right;">
+            <textarea id="senderMsg" placeholder="اكتب تفاصيل مشكلتك هنا..." rows="2" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; resize: none; text-align: right;"></textarea>
+            <div style="display: flex; gap: 5px;">
+                <button onclick="sendToTelegram()" style="flex: 1; background-color: #10b981; color: white; border: none; padding: 7px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px;">إرسال للمسؤول 🚀</button>
+                <button onclick="hideAdminForm()" style="background-color: #64748b; color: white; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;">إلغاء</button>
+            </div>
+        </div>
+
+        <div class="ai-chat-body" id="aiChatBody">
+            <div class="ai-msg bot">أهلاً بك يا بطل! أنا مساعدك الذكي في منصة "كتبك معايا". اسألني عن أي كتاب، مادة، أو استفسار وسأساعدك فوراً! وإذا احتجت مساعدة خاصة، يمكنك الضغط على "تحويل إلى المسؤول".</div>
+        </div>
+        <div class="ai-chat-footer">
+            <input type="text" id="aiUserInput" placeholder="اكتب سؤالك هنا..." onkeypress="if(event.key==='Enter') sendAIMessage()">
+            <button onclick="sendAIMessage()">إرسال</button>
         </div>
     </div>
-
-    <div class="ai-chat-body" id="aiChatBody">
-        <div class="ai-msg bot">أهلاً بك يا بطل! أنا مساعدك الذكي في منصة "كتبك معايا". اسألني عن أي كتاب، مادة، أو استفسار وسأساعدك فوراً! وإذا احتجت مساعدة خاصة، يمكنك الضغط على "تحويل إلى المسؤول".</div>
-    </div>
-    <div class="ai-chat-footer">
-        <input type="text" id="aiUserInput" placeholder="اكتب سؤالك هنا..." onkeypress="if(event.key==='Enter') sendAIMessage()">
-        <button onclick="sendAIMessage()">إرسال</button>
-    </div>
-</div>
 </body>
