@@ -1445,14 +1445,12 @@
                 } else {
                     item.style.display = 'none';
                 }
-            });
-        }
-    <script>
- <!-- 🤖 زرار المساعد الذكي العائم ونافذة الشات -->
+          <!-- 🤖 1. زرار المساعد الذكي العائم -->
     <div id="ai-fab" onclick="toggleAIChat()">
         🤖 المساعد الذكي
     </div>
 
+    <!-- 🤖 2. نافذة الشات الكاملة -->
     <div id="ai-chat-window">
         <div class="ai-chat-header">
             <span>🤖 مساعد كتبك معايا الذكي</span>
@@ -1465,6 +1463,7 @@
             </button>
         </div>
 
+        <!-- نموذج الإرسال للتليجرام -->
         <div id="adminForm" style="display: none; padding: 12px; background-color: #ffffff; flex-direction: column; gap: 8px; border-bottom: 1px solid #e2e8f0;">
             <h4 style="color: #0284c7; margin-bottom: 2px; font-size: 13px; text-align: right;">📝 اكتب طلبك أو مشكلتك للمسؤول:</h4>
             <input type="text" id="senderName" placeholder="اسمك" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; text-align: right;">
@@ -1479,9 +1478,100 @@
         <div class="ai-chat-body" id="aiChatBody">
             <div class="ai-msg bot">أهلاً بك يا بطل! أنا مساعدك الذكي في منصة "كتبك معايا". اسألني عن أي كتاب، مادة، أو استفسار وسأساعدك فوراً! وإذا احتجت مساعدة خاصة، يمكنك الضغط على "تحويل إلى المسؤول".</div>
         </div>
+
         <div class="ai-chat-footer">
             <input type="text" id="aiUserInput" placeholder="اكتب سؤالك هنا..." onkeypress="if(event.key==='Enter') sendAIMessage()">
             <button onclick="sendAIMessage()">إرسال</button>
         </div>
-    </div>
+    </div> <!-- قفلة نافذة الشات ai-chat-window -->
+
+    <!-- 🤖 3. كود السكريبت والوظائف البرمجية -->
+    <script>
+        const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
+        const BOT_TOKEN = _t.join(':');
+        const CHAT_ID = '5698534303';
+
+        function toggleAIChat() {
+            const win = document.getElementById('ai-chat-window');
+            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function showAdminForm() {
+            document.getElementById('adminForm').style.display = 'flex';
+        }
+
+        function hideAdminForm() {
+            document.getElementById('adminForm').style.display = 'none';
+        }
+
+        function sendToTelegram() {
+            const name = document.getElementById('senderName').value.trim();
+            const contact = document.getElementById('senderContact').value.trim();
+            const msg = document.getElementById('senderMsg').value.trim();
+
+            if (!name || !contact || !msg) {
+                alert('من فضلك أكمل جميع البيانات لتمكين المسؤول من التواصل معك!');
+                return;
+            }
+
+            const fullMessage = `🚨 طلب دعم جديد من منصة كتبك معايا:\n\n👤 الاسم: ${name}\n📞 التواصل: ${contact}\n💬 المشكلة/الطلب:\n${msg}`;
+
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: CHAT_ID, text: fullMessage })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok) {
+                    alert('تم إرسال رسالتك بنجاح للمسؤول!');
+                    document.getElementById('senderName').value = '';
+                    document.getElementById('senderContact').value = '';
+                    document.getElementById('senderMsg').value = '';
+                    hideAdminForm();
+                } else {
+                    alert('حدث خطأ أثناء الإرسال.');
+                }
+            })
+            .catch(() => alert('تعذر الاتصال بالخادم.'));
+        }
+
+        function sendAIMessage() {
+            const input = document.getElementById('aiUserInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const chatBody = document.getElementById('aiChatBody');
+            const userMsg = document.createElement('div');
+            userMsg.className = 'ai-msg user';
+            userMsg.textContent = text;
+            chatBody.appendChild(userMsg);
+
+            input.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'ai-msg bot';
+                botMsg.textContent = 'أنا هنا لمساعدتك! إذا واجهتك أي مشكلة، اضغط على زر "تحويل إلى المسؤول" بالأعلى وسأوصل رسالتك للمسؤول مباشرة.';
+                chatBody.appendChild(botMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 600);
+        }
+
+        // كود تشغيل البحث السريع
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.book-item, .card');
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
