@@ -436,19 +436,22 @@ header h1{font-size:28px;margin-bottom:5px}
         }
         async function askGemini(prompt, imageBase64=null, mimeType=null){
             if(!GEMINI_API_KEY || GEMINI_API_KEY.includes('PUT_YOUR')){
-                return '⚠️ المسؤول لسه محطش مفتاح الذكاء الاصطناعي. اكتب اسم الكتاب وهطلعهولك، أو اضغط تحويل إلى المسؤول.';
+                return null;
             }
-            const parts=[{text: "أنت مدرس مصري ذكي لمنصة كتبك معايا. حل السؤال بالعربي خطوة بخطوة وبشكل مبسط للطالب. السؤال: "+prompt}];
+            const parts=[{text: "أنت مدرس مصري خبير لمنصة كتبك معايا لجميع الصفوف من أولى ابتدائي لحد تانية ثانوي. حل السؤال بالعربي خطوة بخطوة وبشكل مبسط، ولو اختيار من متعدد اختر الصح وعلل. السؤال: "+prompt}];
             if(imageBase64){ parts.push({inline_data:{mime_type:mimeType, data:imageBase64}}); }
-            const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,{
-                method:'POST', headers:{'Content-Type':'application/json'},
-                body:JSON.stringify({contents:[{parts:parts}]})
-            });
-            const data=await res.json();
-            return data.candidates?.[0]?.content?.parts?.[0]?.text || 'معرفتش أحل السؤال، جرب تصوره أوضح.';
+            try{
+                const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,{
+                    method:'POST', headers:{'Content-Type':'application/json'},
+                    body:JSON.stringify({contents:[{parts:parts}]})
+                });
+                const data=await res.json();
+                if(data.error) return 'مفتاح الذكاء الاصطناعي فيه مشكلة، تأكد منه.';
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || 'الصورة مش واضحة، ابعتها أوضح أو اكتب السؤال نصاً.';
+            }catch(e){ return 'حصل خطأ في الاتصال، جرب تاني.'; }
         }
         function normalizeArabic(str){
-            return str.toLowerCase()
+            return (str||'').toLowerCase()
                 .replace(/[ً-ٰٟ]/g,'')
                 .replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/إ|أ|آ/g,'ا')
                 .replace(/[()]/g,' ')
@@ -456,16 +459,34 @@ header h1{font-size:28px;margin-bottom:5px}
         }
         function getGradeCardIdFromText(text){
             const t = normalizeArabic(text);
-            if(/(الصف الاول|اولي ابتدائي|اولى ابتدائي|سنه اولي|صف اول)/.test(t)) return 'p1-card';
-            if(/(الصف الثاني|تانيه ابتدائي|تانية ابتدائي|سنه تانيه)/.test(t)) return 'p2-card';
-            if(/(الصف الثالث|تالته ابتدائي|تالتة ابتدائي|سنه تالته)/.test(t)) return 'p3-card';
-            if(/(الصف الرابع|رابعه ابتدائي|رابعة ابتدائي|سنه رابعه)/.test(t)) return 'p4-card';
-            if(/(الصف الخامس|خامسه ابتدائي|خامسة ابتدائي|سنه خامسه)/.test(t)) return 'p5-card';
-            if(/(الصف السادس|ساته ابتدائي|سادسه ابتدائي|سنه ساته)/.test(t)) return 'p6-card';
-            if(/(اول اعدادي|اولي اعدادي|الصف الاول الاعدادي)/.test(t)) return 'grade1-card';
-            if(/(تاني اعدادي|ثاني اعدادي|الصف الثاني الاعدادي)/.test(t)) return 'grade2-card';
-            if(/(تالت اعدادي|ثالث اعدادي|الصف الثالث الاعدادي)/.test(t)) return 'grade3-card';
-            if(/(اولي ثانوي|اول ثانوي|الصف الاول الثانوي)/.test(t)) return 'sec1-card';
+            const isWizara = t.includes('وزاره');
+            if(isWizara){
+                if(/(اولي|اول) ابتدائي/.test(t)) return 'sch-p1';
+                if(/(تانيه|ثاني|تاني) ابتدائي/.test(t)) return 'sch-p2';
+                if(/(تالته|ثالث|تالت) ابتدائي/.test(t)) return 'sch-p3';
+                if(/(رابعه|رابع) ابتدائي/.test(t)) return 'sch-p4';
+                if(/(خامسه|خامس) ابتدائي/.test(t)) return 'sch-p5';
+                if(/(ساته|سادس) ابتدائي/.test(t)) return 'sch-p6';
+                if(/(اولي|اول) اعدادي/.test(t)) return 'sch-g1';
+                if(/(تانيه|ثاني|تاني) اعدادي/.test(t)) return 'sch-g2';
+                if(/(تالته|ثالث|تالت) اعدادي/.test(t)) return 'sch-g3';
+                if(/(اولي|اول) ثانوي/.test(t)) return 'sch-s1';
+                if(/(تانيه|ثاني) ثانوي/.test(t)) return 'sch-s2';
+            }
+            if(/(الصف الاول الابتدائي|اولي ابتدائي|اولى ابتدائي|سنه اولي)/.test(t)) return 'p1-card';
+            if(/(الصف الثاني الابتدائي|تانيه ابتدائي|تانية ابتدائي|سنه تانيه|ثاني ابتدائي)/.test(t)) return 'p2-card';
+            if(/(الصف الثالث الابتدائي|تالته ابتدائي|تالتة ابتدائي|سنه تالته|ثالث ابتدائي)/.test(t)) return 'p3-card';
+            if(/(الصف الرابع الابتدائي|رابعه ابتدائي|رابعة ابتدائي|سنه رابعه|رابع ابتدائي)/.test(t)) return 'p4-card';
+            if(/(الصف الخامس الابتدائي|خامسه ابتدائي|خامسة ابتدائي|سنه خامسه|خامس ابتدائي)/.test(t)) return 'p5-card';
+            if(/(الصف السادس الابتدائي|ساته ابتدائي|سادسه ابتدائي|سنه ساته|سادس ابتدائي)/.test(t)) return 'p6-card';
+            if(/(الصف الاول الاعدادي|اولي اعدادي|اول اعدادي|اولى اعدادي)/.test(t)) return 'grade1-card';
+            if(/(الصف الثاني الاعدادي|تانيه اعدادي|تاني اعدادي|ثاني اعدادي)/.test(t)) return 'grade2-card';
+            if(/(الصف الثالث الاعدادي|تالته اعدادي|تالت اعدادي|ثالث اعدادي)/.test(t)) return 'grade3-card';
+            if(/بكالوريا/.test(t)) return 'sec2-bac-card';
+            if(/(تانيه ثانوي علمي|ثاني ثانوي علمي)/.test(t)) return 'sec2-sci-card';
+            if(/(تانيه ثانوي ادبي|ثاني ثانوي ادبي)/.test(t)) return 'sec2-art-card';
+            if(/(الصف الاول الثانوي|اولي ثانوي|اول ثانوي)/.test(t)) return 'sec1-card';
+            if(/(تانيه ثانوي|ثاني ثانوي)/.test(t)) return 'sec2-sci-card';
             return null;
         }
         async function sendAIMessage(){
@@ -473,8 +494,8 @@ header h1{font-size:28px;margin-bottom:5px}
             const text=input.value.trim(); if(!text) return;
             addMsg(text,'user'); input.value='';
             const loading=addMsg('جاري التفكير والحل... ⏳','bot');
-
-            const isBookRequest = /(كتاب|تقييمات|تحميل|عايز|هات|ابحث)/.test(normalizeArabic(text));
+            const normText = normalizeArabic(text);
+            const isBookRequest = /(كتاب|تقييمات|تحميل|عايز|هات|ابحث|رابط|لينك)/.test(normText);
             if(isBookRequest){
                 const gradeId = getGradeCardIdFromText(text);
                 let cardsToSearch = [];
@@ -484,11 +505,10 @@ header h1{font-size:28px;margin-bottom:5px}
                 } else {
                     cardsToSearch = document.querySelectorAll('.grade-card');
                 }
-                let cleanText = normalizeArabic(text)
-                    .replace(/كتاب|الصف|الاول|الثاني|الثالث|الرابع|الخامس|السادس|ابتدائي|اعدادي|ثانوي|اللغه|الانجليزيه|الانجليزية/g,' ')
+                let cleanText = normText
+                    .replace(/كتاب|الصف|الاول|الثاني|الثالث|الرابع|الخامس|السادس|الابتدائي|ابتدائي|الاعدادي|اعدادي|الثانوي|ثانوي|اللغه|اللغة|العربية|العربيه|الانجليزيه|الانجليزية|وزاره|وزارة|عايز|هات|تحميل|ابحث|رابط|لينك|من فضلك|علمي|ادبي|بكالوريا/g,' ')
                     .replace(/\s+/g,' ').trim();
-                let searchWords = cleanText.split(' ').filter(w=>w.length>2 && !['عايز','هات','تحميل'].includes(w));
-
+                let searchWords = cleanText.split(' ').filter(w=>w.length>1);
                 let found=[];
                 cardsToSearch.forEach(card=>{
                     const gt=card.querySelector('.grade-title')?.textContent||'';
@@ -500,30 +520,40 @@ header h1{font-size:28px;margin-bottom:5px}
                         if(isMatch) found.push({gt,name,link});
                     });
                 });
-
                 if(found.length){
                     loading.remove();
                     let h=`لقيت لك من ${found[0].gt}:<br><br>`;
-                    found.slice(0,5).forEach(r=>{h+=`📚 ${r.name}<br><a href="${r.link}" target="_blank" style="color:#0284c7;font-weight:bold">تحميل الكتاب</a><br><br>`});
+                    found.slice(0,6).forEach(r=>{h+=`📚 ${r.name}<br><a href="${r.link}" target="_blank" style="color:#0284c7;font-weight:bold">تحميل الكتاب</a><br><br>`});
                     addMsgHTML(h,'bot'); return;
-                } else if(gradeId) {
-                    loading.textContent = 'دورت في الصف اللي انت حددته بس وملقيتش الكتاب ده. جرب تكتب اسمه بس من غير كلمة الصف.';
+                }
+                if(gradeId){
+                    loading.textContent='دورت في الصف اللي انت حددته بس وملقيتش الكتاب ده، جرب تكتب اسم الكتاب بس.';
                     return;
                 }
             }
-            try{ const ans=await askGemini(text); loading.textContent=ans; }
-            catch(e){ loading.textContent='حصل خطأ، جرب تاني.'; }
+            const ans = await askGemini(text);
+            if(ans===null){
+                loading.textContent='⚠️ حل الواجب محتاج مفتاح Gemini من المسؤول. لو عايز كتاب اكتب اسمه وصفّه وهطلعهولك فوراً.';
+            }else{
+                loading.textContent=ans;
+            }
         }
         function handleFileUpload(inputEl){
             const file=inputEl.files[0]; if(!file) return;
             addMsg(`📎 تم إرسال: ${file.name}`,'user');
-            const loading=addMsg('جاري قراءة الملف وحل الواجب... ⏳','bot');
+            const loading=addMsg('جاري قراءة الصورة وحل الواجب... ⏳','bot');
             if(file.type.startsWith('image/')){
                 const reader=new FileReader();
                 reader.onload=async ()=>{
                     const base64=reader.result.split(',')[1];
-                    try{ const ans=await askGemini('حل كل الأسئلة اللي في الصورة دي', base64, file.type); loading.textContent=ans; }
-                    catch(e){ loading.textContent='معرفتش أقرأ الصورة، ابعتها للمسؤول من الزرار اللي فوق.'; }
+                    const ans=await askGemini('حل كل الأسئلة اللي في الصورة دي بالتفصيل سؤال سؤال', base64, file.type);
+                    if(ans===null){
+                        loading.textContent='⚠️ حل الصور محتاج مفتاح Gemini، الصورة هتتبعت للمسؤول.';
+                        const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('photo',file); fd.append('caption','🖼️ صورة واجب جديدة محتاجة حل');
+                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`,{method:'POST',body:fd});
+                    }else{
+                        loading.textContent=ans;
+                    }
                 };
                 reader.readAsDataURL(file);
             }else{
