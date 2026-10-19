@@ -489,6 +489,23 @@ header h1{font-size:28px;margin-bottom:5px}
             if(/(تانيه ثانوي|ثاني ثانوي)/.test(t)) return 'sec2-sci-card';
             return null;
         }
+      function getLocalReply(msg){
+    const t = (msg||'').trim();
+    const norm = t.replace(/[ً-ٰٟ]/g,'').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/إ|أ|آ/g,'ا');
+    if(norm.includes('السلام عليكم') || t==='سلام' || t==='السلام' || norm.includes('السلام عليكم ورحمه')){
+        return 'وعليكم السلام ورحمة الله وبركاته يا بطل 👋\nأهلاً بيك في منصة "كتبك معايا".\nاكتب سؤال الواجب أو ابعت صورته وهحلهولك فوراً.';
+    }
+    if(norm.includes('اهلا') || norm.includes('مرحبا') || t==='هاي' || norm.includes('صباح الخير') || norm.includes('مساء الخير')){
+        return 'أهلاً وسهلاً بيك يا بطل 👋\nأنا مساعدك الذكي في "كتبك معايا"، ابعت سؤال الواجب اللي واقف معاك وهحلهولك على طول.';
+    }
+    if(norm.includes('ازيك') || norm.includes('عامل ايه') || norm.includes('اخبارك')){
+        return 'الحمد لله تمام يا بطل 👋\nأنت عامل إيه؟ ابعت سؤال الواجب وهحلهولك.';
+    }
+    if(norm.includes('شكرا') || norm.includes('تسلم')){
+        return 'العفو يا بطل ❤️\nلو عندك أي سؤال تاني ابعته وأنا معاك.';
+    }
+    return null;
+}
        async function sendAIMessage(){
     const input=document.getElementById('aiUserInput');
     const text=input.value.trim(); if(!text) return;
