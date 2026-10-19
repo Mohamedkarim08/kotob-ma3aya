@@ -489,11 +489,16 @@ header h1{font-size:28px;margin-bottom:5px}
             if(/(تانيه ثانوي|ثاني ثانوي)/.test(t)) return 'sec2-sci-card';
             return null;
         }
-        async function sendAIMessage(){
-            const input=document.getElementById('aiUserInput');
-            const text=input.value.trim(); if(!text) return;
-            addMsg(text,'user'); input.value='';
-            const loading=addMsg('جاري التفكير والحل... ⏳','bot');
+       async function sendAIMessage(){
+    const input=document.getElementById('aiUserInput');
+    const text=input.value.trim(); if(!text) return;
+    addMsg(text,'user'); input.value='';
+    
+    // الرد المحلي على السلام والتحيات من غير Gemini
+    const localReply = getLocalReply(text);
+    if(localReply){ addMsg(localReply,'bot'); return; }
+    
+    const loading=addMsg('جاري التفكير والحل... ⏳','bot');
             const normText = normalizeArabic(text);
             const isBookRequest = /(كتاب|تقييمات|تحميل|عايز|هات|ابحث|رابط|لينك)/.test(normText);
             if(isBookRequest){
