@@ -85,7 +85,7 @@ header h1{font-size:28px;margin-bottom:5px}
 <select id="gradeSelect">
 <option value="p1-card">أولى ابتدائي</option><option value="p2-card">تانية ابتدائي</option><option value="p3-card">تالتة ابتدائي</option><option value="p4-card">رابعة ابتدائي</option><option value="p5-card">خامسة ابتدائي</option><option value="p6-card">ساتة ابتدائي</option>
 <option value="grade1-card">أولى إعدادي</option><option value="grade2-card">تانية إعدادي</option><option value="grade3-card">تالتة إعدادي</option>
-<option value="sec1-card">أولى ثانوي</option><option value="sec2-sci-card">تانية ثانوي علمي</option><option value="sec2-art-card">تانية ثانوي أدبي</option>
+<option value="sec1-card">أولى ثانوي</option><option value="sec2-sci-card">تانية ثانوي علمي</option><option value="sec2-art-card">تانية ثانوي أدبي</option><option value="sec2-bac-card">تانية ثانوي بكالوريا</option>
 <option value="sch-p1">أولى ابتدائي وزارة</option><option value="sch-p2">تانية ابتدائي وزارة</option><option value="sch-p3">تالتة ابتدائي وزارة</option><option value="sch-p4">رابعة ابتدائي وزارة</option><option value="sch-p5">خامسة ابتدائي وزارة</option><option value="sch-p6">ساتة ابتدائي وزارة</option>
 <option value="sch-g1">أولى إعدادي وزارة</option><option value="sch-g2">تانية إعدادي وزارة</option><option value="sch-g3">تالتة إعدادي وزارة</option>
 <option value="sch-s1">أولى ثانوي وزارة</option><option value="sch-s2">تانية ثانوي وزارة</option>
@@ -122,6 +122,7 @@ header h1{font-size:28px;margin-bottom:5px}
 <button onclick="filterSpecificGrade('sec1-card')">الصف الأول الثانوي</button>
 <button onclick="filterSpecificGrade('sec2-sci-card')">تاني ثانوي (علمي)</button>
 <button onclick="filterSpecificGrade('sec2-art-card')">تاني ثانوي (أدبي)</button>
+<button onclick="filterSpecificGrade('sec2-bac-card')">تاني ثانوي (بكالوريا)</button>
 </div>
 </div>
 <div class="dropdown-container" id="school-dropdown">
@@ -285,6 +286,7 @@ header h1{font-size:28px;margin-bottom:5px}
             <div class="grade-card" id="sec1-card" data-grade="true"><div class="grade-title">الصف الأول الثانوي</div><div class="book-item"><span class="book-name">قريباً إضافة كتب الصف الأول الثانوي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
             <div class="grade-card" id="sec2-sci-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (علمي)</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي علمي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
             <div class="grade-card" id="sec2-art-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (أدبي)</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي أدبي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+            <div class="grade-card" id="sec2-bac-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (بكالوريا)</div><div class="credit-notice">🎓 قسم خاص بنظام البكالوريا الجديد - تانية ثانوي</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي بكالوريا</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
         </div>
     </div>
 
@@ -416,7 +418,7 @@ header h1{font-size:28px;margin-bottom:5px}
     </div>
 
     <script>
-        const GEMINI_API_KEY = 'PUT_YOUR_GEMINI_API_KEY_HERE'; // <-- حط مفتاحك هنا
+        const GEMINI_API_KEY = 'PUT_YOUR_GEMINI_API_KEY_HERE';
         const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
         const BOT_TOKEN = _t.join(':');
         const CHAT_ID = '5698534303';
@@ -432,7 +434,6 @@ header h1{font-size:28px;margin-bottom:5px}
             const b=document.getElementById('aiChatBody');
             const d=document.createElement('div'); d.className='ai-msg '+cls; d.innerHTML=html; b.appendChild(d); b.scrollTop=b.scrollHeight; return d;
         }
-
         async function askGemini(prompt, imageBase64=null, mimeType=null){
             if(!GEMINI_API_KEY || GEMINI_API_KEY.includes('PUT_YOUR')){
                 return '⚠️ المسؤول لسه محطش مفتاح الذكاء الاصطناعي. اكتب اسم الكتاب وهطلعهولك، أو اضغط تحويل إلى المسؤول.';
@@ -446,13 +447,11 @@ header h1{font-size:28px;margin-bottom:5px}
             const data=await res.json();
             return data.candidates?.[0]?.content?.parts?.[0]?.text || 'معرفتش أحل السؤال، جرب تصوره أوضح.';
         }
-
         async function sendAIMessage(){
             const input=document.getElementById('aiUserInput');
             const text=input.value.trim(); if(!text) return;
             addMsg(text,'user'); input.value='';
             const loading=addMsg('جاري التفكير والحل... ⏳','bot');
-            // بحث كتب أولا
             let found=[];
             document.querySelectorAll('.grade-card').forEach(card=>{
                 const gt=card.querySelector('.grade-title')?.textContent||'';
@@ -462,7 +461,7 @@ header h1{font-size:28px;margin-bottom:5px}
                     if(text.split(' ').some(w=>w.length>2 && name.includes(w))) found.push({gt,name,link});
                 });
             });
-            if(found.length && (text.includes('كتاب')||text.includes('تقييمات')||text.includes('تحميل'))){
+            if(found.length && (text.includes('كتاب')||text.includes('تقييمات')||text.includes('تحميل')||text.includes('بكالوريا'))){
                 loading.remove();
                 let h=`لقيت لك:<br>`; found.slice(0,5).forEach(r=>{h+=`📚 ${r.name} - ${r.gt}<br><a href="${r.link}" target="_blank" style="color:#0284c7;font-weight:bold">تحميل</a><br><br>`});
                 addMsgHTML(h,'bot'); return;
@@ -470,7 +469,6 @@ header h1{font-size:28px;margin-bottom:5px}
             try{ const ans=await askGemini(text); loading.textContent=ans; }
             catch(e){ loading.textContent='حصل خطأ، جرب تاني.'; }
         }
-
         function handleFileUpload(inputEl){
             const file=inputEl.files[0]; if(!file) return;
             addMsg(`📎 تم إرسال: ${file.name}`,'user');
@@ -490,7 +488,6 @@ header h1{font-size:28px;margin-bottom:5px}
             }
             inputEl.value='';
         }
-
         let mediaRecorder, audioChunks=[], isRecording=false;
         function toggleRecord(){
             const btn=document.getElementById('recordBtn');
@@ -509,7 +506,6 @@ header h1{font-size:28px;margin-bottom:5px}
                 }).catch(()=>alert('اسمح بصلاحية الميكروفون'));
             }else{ mediaRecorder.stop(); isRecording=false; btn.textContent='🎤'; }
         }
-
         function sendToTelegram(){
             const name=document.getElementById('senderName').value.trim();
             const contact=document.getElementById('senderContact').value.trim();
