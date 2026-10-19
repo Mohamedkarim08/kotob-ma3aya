@@ -447,24 +447,69 @@ header h1{font-size:28px;margin-bottom:5px}
             const data=await res.json();
             return data.candidates?.[0]?.content?.parts?.[0]?.text || 'معرفتش أحل السؤال، جرب تصوره أوضح.';
         }
+        function normalizeArabic(str){
+            return str.toLowerCase()
+                .replace(/[ً-ٰٟ]/g,'')
+                .replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/إ|أ|آ/g,'ا')
+                .replace(/[()]/g,' ')
+                .replace(/\s+/g,' ').trim();
+        }
+        function getGradeCardIdFromText(text){
+            const t = normalizeArabic(text);
+            if(/(الصف الاول|اولي ابتدائي|اولى ابتدائي|سنه اولي|صف اول)/.test(t)) return 'p1-card';
+            if(/(الصف الثاني|تانيه ابتدائي|تانية ابتدائي|سنه تانيه)/.test(t)) return 'p2-card';
+            if(/(الصف الثالث|تالته ابتدائي|تالتة ابتدائي|سنه تالته)/.test(t)) return 'p3-card';
+            if(/(الصف الرابع|رابعه ابتدائي|رابعة ابتدائي|سنه رابعه)/.test(t)) return 'p4-card';
+            if(/(الصف الخامس|خامسه ابتدائي|خامسة ابتدائي|سنه خامسه)/.test(t)) return 'p5-card';
+            if(/(الصف السادس|ساته ابتدائي|سادسه ابتدائي|سنه ساته)/.test(t)) return 'p6-card';
+            if(/(اول اعدادي|اولي اعدادي|الصف الاول الاعدادي)/.test(t)) return 'grade1-card';
+            if(/(تاني اعدادي|ثاني اعدادي|الصف الثاني الاعدادي)/.test(t)) return 'grade2-card';
+            if(/(تالت اعدادي|ثالث اعدادي|الصف الثالث الاعدادي)/.test(t)) return 'grade3-card';
+            if(/(اولي ثانوي|اول ثانوي|الصف الاول الثانوي)/.test(t)) return 'sec1-card';
+            return null;
+        }
         async function sendAIMessage(){
             const input=document.getElementById('aiUserInput');
             const text=input.value.trim(); if(!text) return;
             addMsg(text,'user'); input.value='';
             const loading=addMsg('جاري التفكير والحل... ⏳','bot');
-            let found=[];
-            document.querySelectorAll('.grade-card').forEach(card=>{
-                const gt=card.querySelector('.grade-title')?.textContent||'';
-                card.querySelectorAll('.book-item').forEach(item=>{
-                    const name=item.querySelector('.book-name').textContent;
-                    const link=item.querySelector('a')?.href||'#';
-                    if(text.split(' ').some(w=>w.length>2 && name.includes(w))) found.push({gt,name,link});
+
+            const isBookRequest = /(كتاب|تقييمات|تحميل|عايز|هات|ابحث)/.test(normalizeArabic(text));
+            if(isBookRequest){
+                const gradeId = getGradeCardIdFromText(text);
+                let cardsToSearch = [];
+                if(gradeId){
+                    const specificCard = document.getElementById(gradeId);
+                    if(specificCard) cardsToSearch = [specificCard];
+                } else {
+                    cardsToSearch = document.querySelectorAll('.grade-card');
+                }
+                let cleanText = normalizeArabic(text)
+                    .replace(/كتاب|الصف|الاول|الثاني|الثالث|الرابع|الخامس|السادس|ابتدائي|اعدادي|ثانوي|اللغه|الانجليزيه|الانجليزية/g,' ')
+                    .replace(/\s+/g,' ').trim();
+                let searchWords = cleanText.split(' ').filter(w=>w.length>2 && !['عايز','هات','تحميل'].includes(w));
+
+                let found=[];
+                cardsToSearch.forEach(card=>{
+                    const gt=card.querySelector('.grade-title')?.textContent||'';
+                    card.querySelectorAll('.book-item').forEach(item=>{
+                        const name=item.querySelector('.book-name').textContent;
+                        const link=item.querySelector('a')?.href||'#';
+                        const normalizedName = normalizeArabic(name);
+                        const isMatch = searchWords.length===0 || searchWords.every(w=>normalizedName.includes(w));
+                        if(isMatch) found.push({gt,name,link});
+                    });
                 });
-            });
-            if(found.length && (text.includes('كتاب')||text.includes('تقييمات')||text.includes('تحميل')||text.includes('بكالوريا'))){
-                loading.remove();
-                let h=`لقيت لك:<br>`; found.slice(0,5).forEach(r=>{h+=`📚 ${r.name} - ${r.gt}<br><a href="${r.link}" target="_blank" style="color:#0284c7;font-weight:bold">تحميل</a><br><br>`});
-                addMsgHTML(h,'bot'); return;
+
+                if(found.length){
+                    loading.remove();
+                    let h=`لقيت لك من ${found[0].gt}:<br><br>`;
+                    found.slice(0,5).forEach(r=>{h+=`📚 ${r.name}<br><a href="${r.link}" target="_blank" style="color:#0284c7;font-weight:bold">تحميل الكتاب</a><br><br>`});
+                    addMsgHTML(h,'bot'); return;
+                } else if(gradeId) {
+                    loading.textContent = 'دورت في الصف اللي انت حددته بس وملقيتش الكتاب ده. جرب تكتب اسمه بس من غير كلمة الصف.';
+                    return;
+                }
             }
             try{ const ans=await askGemini(text); loading.textContent=ans; }
             catch(e){ loading.textContent='حصل خطأ، جرب تاني.'; }
