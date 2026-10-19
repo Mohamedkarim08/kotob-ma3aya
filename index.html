@@ -9,9 +9,7 @@
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "1cf7b516-6fdb-4678-997b-4810e0db7cab",
-    });
+    await OneSignal.init({ appId: "1cf7b516-6fdb-4678-997b-4810e0db7cab" });
   });
 </script>
 <style>
@@ -47,16 +45,17 @@ header h1{font-size:28px;margin-bottom:5px}
 .support-container{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;padding:20px;max-width:1000px;margin:auto}
 .support-box{background:#fff;padding:20px;border-radius:12px;text-align:center;flex:1;min-width:280px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 #ai-fab{position:fixed;bottom:20px;left:20px;background:#0284c7;color:#fff;padding:12px 18px;border-radius:30px;cursor:pointer;z-index:1000;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.2)}
-#ai-chat-window{display:none;position:fixed;bottom:80px;left:20px;width:350px;max-width:90vw;height:500px;background:#fff;border-radius:12px;flex-direction:column;z-index:1000;box-shadow:0 5px 25px rgba(0,0,0,.2);overflow:hidden}
+#ai-chat-window{display:none;position:fixed;bottom:80px;left:20px;width:350px;max-width:90vw;height:520px;background:#fff;border-radius:12px;flex-direction:column;z-index:1000;box-shadow:0 5px 25px rgba(0,0,0,.2);overflow:hidden}
 .ai-chat-header{background:#0284c7;color:#fff;padding:12px;display:flex;justify-content:space-between}
 .ai-chat-header button{background:none;border:none;color:#fff;font-size:18px;cursor:pointer}
 .ai-chat-body{flex:1;padding:10px;overflow-y:auto;background:#f8fafc;display:flex;flex-direction:column;gap:8px}
-.ai-msg{padding:8px 12px;border-radius:12px;max-width:85%;font-size:13px}
+.ai-msg{padding:8px 12px;border-radius:12px;max-width:85%;font-size:13px;line-height:1.6;white-space:pre-wrap}
 .ai-msg.bot{background:#e0f2fe;align-self:flex-start}
 .ai-msg.user{background:#0284c7;color:#fff;align-self:flex-end}
-.ai-chat-footer{display:flex;padding:8px;border-top:1px solid #e2e8f0}
-.ai-chat-footer input{flex:1;padding:8px;border:1px solid #cbd5e1;border-radius:6px}
-.ai-chat-footer button{background:#0284c7;color:#fff;border:none;padding:8px 15px;border-radius:6px;margin-right:5px;cursor:pointer}
+.ai-chat-footer{display:flex;padding:8px;border-top:1px solid #e2e8f0;gap:5px;align-items:center}
+.ai-chat-footer input[type=text]{flex:1;padding:8px;border:1px solid #cbd5e1;border-radius:6px}
+.ai-chat-footer button{background:#0284c7;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+.icon-btn{background:#e0f2fe!important;color:#0284c7!important;border:1px solid #0284c7!important}
 .search-container{padding:15px;text-align:center;background:#fff}
 #searchInput{width:90%;max-width:600px;padding:12px;border:2px solid #0284c7;border-radius:25px;text-align:center}
 </style>
@@ -257,7 +256,6 @@ header h1{font-size:28px;margin-bottom:5px}
                 <div class="book-item"><span class="book-name">ملحق كتاب المعاصر ماث أولى اعدادي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/43?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
                 <div class="book-item"><span class="book-name">إجابات كتاب المعاصر ماث أولى اعدادي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/44?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
             </div>
-
             <div class="grade-card" id="grade2-card" data-grade="true">
                 <div class="grade-title">الصف الثاني الإعدادي</div>
                 <div class="book-item"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/66?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
@@ -269,7 +267,6 @@ header h1{font-size:28px;margin-bottom:5px}
                 <div class="book-item"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/72" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
                 <div class="book-item"><span class="book-name">كتاب الامتحان دراسات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/73" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
             </div>
-
             <div class="grade-card" id="grade3-card" data-grade="true">
                 <div class="grade-title">الصف الثالث الإعدادي</div>
                 <div class="book-item"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/150?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
@@ -389,10 +386,10 @@ header h1{font-size:28px;margin-bottom:5px}
         });
     </script>
 
-    <div id="ai-fab" onclick="toggleAIChat()">🤖 المساعد الذكي</div>
+    <div id="ai-fab" onclick="toggleAIChat()">🤖 حل الواجب بالذكاء الاصطناعي</div>
 
     <div id="ai-chat-window">
-        <div class="ai-chat-header"><span>🤖 مساعد كتبك معايا الذكي</span><button onclick="toggleAIChat()">✕</button></div>
+        <div class="ai-chat-header"><span>🤖 مساعد كتبك معايا - حل الواجب</span><button onclick="toggleAIChat()">✕</button></div>
         <div style="padding: 8px 12px; background: #f1f5f9; text-align: center; border-bottom: 1px solid #e2e8f0;">
             <button onclick="showAdminForm()" style="background-color: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px;">👤 تحويل إلى المسؤول</button>
         </div>
@@ -407,45 +404,123 @@ header h1{font-size:28px;margin-bottom:5px}
             </div>
         </div>
         <div class="ai-chat-body" id="aiChatBody">
-            <div class="ai-msg bot">أهلاً بك يا بطل! أنا مساعدك الذكي في منصة "كتبك معايا". اسألني عن أي كتاب، مادة، أو استفسار وسأساعدك فوراً! وإذا احتجت مساعدة خاصة، يمكنك الضغط على "تحويل إلى المسؤول".</div>
+            <div class="ai-msg bot">أهلاً بك يا بطل! أنا مساعدك الذكي في منصة "كتبك معايا". اكتب أي سؤال واجب وهحله لك، أو ابعت صورة الواجب من زرار 📎 أو سجل صوتك من 🎤 وهحلها لك فوراً.</div>
         </div>
         <div class="ai-chat-footer">
-            <input type="text" id="aiUserInput" placeholder="اكتب سؤالك هنا..." onkeypress="if(event.key==='Enter') sendAIMessage()">
+            <button class="icon-btn" onclick="document.getElementById('fileInput').click()" title="صورة أو ملف أو أغنية">📎</button>
+            <button class="icon-btn" id="recordBtn" onclick="toggleRecord()" title="تسجيل صوتي">🎤</button>
+            <input type="text" id="aiUserInput" placeholder="اكتب سؤال الواجب هنا..." onkeypress="if(event.key==='Enter') sendAIMessage()">
             <button onclick="sendAIMessage()">إرسال</button>
+            <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,audio/*" style="display:none" onchange="handleFileUpload(this)">
         </div>
     </div>
 
     <script>
+        const GEMINI_API_KEY = 'PUT_YOUR_GEMINI_API_KEY_HERE'; // <-- حط مفتاحك هنا
         const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
         const BOT_TOKEN = _t.join(':');
         const CHAT_ID = '5698534303';
+
         function toggleAIChat(){const win=document.getElementById('ai-chat-window');win.style.display=(win.style.display==='flex')?'none':'flex';}
         function showAdminForm(){document.getElementById('adminForm').style.display='flex';}
         function hideAdminForm(){document.getElementById('adminForm').style.display='none';}
+        function addMsg(text, cls){
+            const b=document.getElementById('aiChatBody');
+            const d=document.createElement('div'); d.className='ai-msg '+cls; d.textContent=text; b.appendChild(d); b.scrollTop=b.scrollHeight; return d;
+        }
+        function addMsgHTML(html, cls){
+            const b=document.getElementById('aiChatBody');
+            const d=document.createElement('div'); d.className='ai-msg '+cls; d.innerHTML=html; b.appendChild(d); b.scrollTop=b.scrollHeight; return d;
+        }
+
+        async function askGemini(prompt, imageBase64=null, mimeType=null){
+            if(!GEMINI_API_KEY || GEMINI_API_KEY.includes('PUT_YOUR')){
+                return '⚠️ المسؤول لسه محطش مفتاح الذكاء الاصطناعي. اكتب اسم الكتاب وهطلعهولك، أو اضغط تحويل إلى المسؤول.';
+            }
+            const parts=[{text: "أنت مدرس مصري ذكي لمنصة كتبك معايا. حل السؤال بالعربي خطوة بخطوة وبشكل مبسط للطالب. السؤال: "+prompt}];
+            if(imageBase64){ parts.push({inline_data:{mime_type:mimeType, data:imageBase64}}); }
+            const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,{
+                method:'POST', headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({contents:[{parts:parts}]})
+            });
+            const data=await res.json();
+            return data.candidates?.[0]?.content?.parts?.[0]?.text || 'معرفتش أحل السؤال، جرب تصوره أوضح.';
+        }
+
+        async function sendAIMessage(){
+            const input=document.getElementById('aiUserInput');
+            const text=input.value.trim(); if(!text) return;
+            addMsg(text,'user'); input.value='';
+            const loading=addMsg('جاري التفكير والحل... ⏳','bot');
+            // بحث كتب أولا
+            let found=[];
+            document.querySelectorAll('.grade-card').forEach(card=>{
+                const gt=card.querySelector('.grade-title')?.textContent||'';
+                card.querySelectorAll('.book-item').forEach(item=>{
+                    const name=item.querySelector('.book-name').textContent;
+                    const link=item.querySelector('a')?.href||'#';
+                    if(text.split(' ').some(w=>w.length>2 && name.includes(w))) found.push({gt,name,link});
+                });
+            });
+            if(found.length && (text.includes('كتاب')||text.includes('تقييمات')||text.includes('تحميل'))){
+                loading.remove();
+                let h=`لقيت لك:<br>`; found.slice(0,5).forEach(r=>{h+=`📚 ${r.name} - ${r.gt}<br><a href="${r.link}" target="_blank" style="color:#0284c7;font-weight:bold">تحميل</a><br><br>`});
+                addMsgHTML(h,'bot'); return;
+            }
+            try{ const ans=await askGemini(text); loading.textContent=ans; }
+            catch(e){ loading.textContent='حصل خطأ، جرب تاني.'; }
+        }
+
+        function handleFileUpload(inputEl){
+            const file=inputEl.files[0]; if(!file) return;
+            addMsg(`📎 تم إرسال: ${file.name}`,'user');
+            const loading=addMsg('جاري قراءة الملف وحل الواجب... ⏳','bot');
+            if(file.type.startsWith('image/')){
+                const reader=new FileReader();
+                reader.onload=async ()=>{
+                    const base64=reader.result.split(',')[1];
+                    try{ const ans=await askGemini('حل كل الأسئلة اللي في الصورة دي', base64, file.type); loading.textContent=ans; }
+                    catch(e){ loading.textContent='معرفتش أقرأ الصورة، ابعتها للمسؤول من الزرار اللي فوق.'; }
+                };
+                reader.readAsDataURL(file);
+            }else{
+                loading.textContent='استلمت الملف ✅ الصور بس هي اللي بتتحل تلقائي، الملف ده هيتبعت للمسؤول يحله.';
+                const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('document',file); fd.append('caption','📎 ملف واجب جديد من الموقع محتاج حل');
+                fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`,{method:'POST',body:fd});
+            }
+            inputEl.value='';
+        }
+
+        let mediaRecorder, audioChunks=[], isRecording=false;
+        function toggleRecord(){
+            const btn=document.getElementById('recordBtn');
+            if(!isRecording){
+                navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
+                    mediaRecorder=new MediaRecorder(stream); audioChunks=[];
+                    mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
+                    mediaRecorder.onstop=()=>{
+                        const blob=new Blob(audioChunks,{type:'audio/webm'});
+                        addMsg('🎤 تم إرسال تسجيل صوتي','user');
+                        addMsg('استلمت تسجيلك ✅ المسؤول هيسمعه ويرد عليك، واكتب سؤالك نصاً لو عايز حل فوري بالذكاء الاصطناعي.','bot');
+                        const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('voice',blob,'voice.webm');
+                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendVoice`,{method:'POST',body:fd});
+                    };
+                    mediaRecorder.start(); isRecording=true; btn.textContent='⏹️';
+                }).catch(()=>alert('اسمح بصلاحية الميكروفون'));
+            }else{ mediaRecorder.stop(); isRecording=false; btn.textContent='🎤'; }
+        }
+
         function sendToTelegram(){
             const name=document.getElementById('senderName').value.trim();
             const contact=document.getElementById('senderContact').value.trim();
             const msg=document.getElementById('senderMsg').value.trim();
-            if(!name||!contact||!msg){alert('من فضلك أكمل جميع البيانات لتمكين المسؤول من التواصل معك!');return;}
+            if(!name||!contact||!msg){alert('من فضلك أكمل جميع البيانات!');return;}
             const fullMessage=`🚨 طلب دعم جديد من منصة كتبك معايا:\n\n👤 الاسم: ${name}\n📞 التواصل: ${contact}\n💬 المشكلة/الطلب:\n${msg}`;
             fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CHAT_ID,text:fullMessage})})
             .then(res=>res.json()).then(data=>{
-                if(data.ok){alert('تم إرسال رسالتك بنجاح للمسؤول!');document.getElementById('senderName').value='';document.getElementById('senderContact').value='';document.getElementById('senderMsg').value='';hideAdminForm();}
+                if(data.ok){alert('تم إرسال رسالتك بنجاح للمسؤول!');hideAdminForm();}
                 else{alert('حدث خطأ أثناء الإرسال.');}
             }).catch(()=>alert('تعذر الاتصال بالخادم.'));
-        }
-        function sendAIMessage(){
-            const input=document.getElementById('aiUserInput');
-            const text=input.value.trim();
-            if(!text)return;
-            const chatBody=document.getElementById('aiChatBody');
-            const userMsg=document.createElement('div');userMsg.className='ai-msg user';userMsg.textContent=text;chatBody.appendChild(userMsg);
-            input.value='';chatBody.scrollTop=chatBody.scrollHeight;
-            setTimeout(()=>{
-                const botMsg=document.createElement('div');botMsg.className='ai-msg bot';
-                botMsg.textContent='أنا هنا لمساعدتك! إذا واجهتك أي مشكلة، اضغط على زر "تحويل إلى المسؤول" بالأعلى وسأوصل رسالتك للمسؤول مباشرة.';
-                chatBody.appendChild(botMsg);chatBody.scrollTop=chatBody.scrollHeight;
-            },600);
         }
     </script>
 </body>
