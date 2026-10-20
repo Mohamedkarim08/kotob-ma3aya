@@ -418,10 +418,10 @@ header h1{font-size:28px;margin-bottom:5px}
     </div>
 
     <script>
-        const GEMINI_API_KEY = AQ.Ab8RN6LvaC8od4-WdUJ-ye0l3R6wSTBo0vllpEgD3VC2I9eOnA;
-        const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
-        const BOT_TOKEN = _t.join(':');
-        const CHAT_ID = '5698534303';
+       const SECURE_WORKER_URL = 'https://aged-credit-e207.mrmohamedkarim601.workers.dev/';
+const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
+const BOT_TOKEN = _t.join(':');
+const CHAT_ID = '5698534303';
 
         function toggleAIChat(){const win=document.getElementById('ai-chat-window');win.style.display=(win.style.display==='flex')?'none':'flex';}
         function showAdminForm(){document.getElementById('adminForm').style.display='flex';}
@@ -435,8 +435,19 @@ header h1{font-size:28px;margin-bottom:5px}
             const d=document.createElement('div'); d.className='ai-msg '+cls; d.innerHTML=html; b.appendChild(d); b.scrollTop=b.scrollHeight; return d;
         }
         async function askGemini(prompt, imageBase64=null, mimeType=null){
-            if(!GEMINI_API_KEY || GEMINI_API_KEY.includes('PUT_YOUR')){
-                return null;
+    try{
+        const res = await fetch(SECURE_WORKER_URL, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ prompt, imageBase64, mimeType })
+        });
+        const data = await res.json();
+        if(data.error) return 'خطأ من السيرفر: ' + JSON.stringify(data.error);
+        return data.candidates?.[0]?.content?.parts?.[0]?.text || 'الصورة مش واضحة، ابعتها أوضح أو اكتب السؤال نصاً.';
+    }catch(e){
+        return 'حصل خطأ في الاتصال بالسيرفر الآمن. تأكد ان الـ Worker معموله Deploy.';
+    }
+}
             }
             const parts=[{text: "أنت مدرس مصري خبير لمنصة كتبك معايا لجميع الصفوف من أولى ابتدائي لحد تانية ثانوي. حل السؤال بالعربي خطوة بخطوة وبشكل مبسط، ولو اختيار من متعدد اختر الصح وعلل. السؤال: "+prompt}];
             if(imageBase64){ parts.push({inline_data:{mime_type:mimeType, data:imageBase64}}); }
