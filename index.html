@@ -423,7 +423,22 @@ const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
 const BOT_TOKEN = _t.join(':');
 const CHAT_ID = '5698534303';
 
-        function toggleAIChat(){const win=document.getElementById('ai-chat-window');win.style.display=(win.style.display==='flex')?'none':'flex';}
+       const SECURE_WORKER_URL = 'https://aged-credit-e207.mrmohamedkarim601.workers.dev/';
+const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
+const BOT_TOKEN = _t.join(':');
+const CHAT_ID = '5698534303';
+
+function toggleAIChat(){
+    const win = document.getElementById('ai-chat-window');
+    if(win.style.display === 'flex'){
+        win.style.display = 'none';
+    } else {
+        win.style.display = 'flex';
+        win.style.flexDirection = 'column';
+    }
+}
+function showAdminForm(){document.getElementById('adminForm').style.display='flex';}
+function hideAdminForm(){document.getElementById('adminForm').style.display='none';}
         function showAdminForm(){document.getElementById('adminForm').style.display='flex';}
         function hideAdminForm(){document.getElementById('adminForm').style.display='none';}
         function addMsg(text, cls){
