@@ -1,0 +1,34 @@
+{
+  "background_color": "#0284c7",
+  "dir": "rtl",
+  "display": "standalone",
+  "name": "منصة كتبك معايا",
+  "orientation": "any",
+  "scope": "/kotob-ma3aya/",
+  "short_name": "كتبك معايا",
+  "start_url": "/kotob-ma3aya/",
+  "theme_color": "#0284c7",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/29/29302.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "isSquare": true,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 512,
+      "is512x512": true,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ],
+  "description": "جميع الكتب الخارجية وكتب الوزارة في مكان واحد",
+  "id": "com.kotobma3aya.app",
+  "lang": "ar",
+  "categories": [
+    "books",
+    "books &amp; reference",
+    "education"
+  ]
+}
