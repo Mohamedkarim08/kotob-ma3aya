@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>  <link rel="manifest" href="manifest.json">
+<head>
+  <link rel="manifest" href="manifest-final.json">
   <meta name="theme-color" content="#0284c7">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>منصة كتبك معايا | Mr Mohamed Books</title>
-<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/29/29302.png">
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({ appId: "1cf7b516-6fdb-4678-997b-4810e0db7cab" });
-  });
-</script>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة كتبك معايا | Mr Mohamed Books - 427 مشترك 🎉</title>
+  <meta name="description" content="جميع الكتب الخارجية وكتب الوزارة في مكان واحد - 427 مشترك">
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/29/29302.png">
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/29/29302.png">
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({ appId: "1cf7b516-6fdb-4678-997b-4810e0db7cab" });
+    });
+  </script>
+  <style>
+  /* كود نضيف 100% - من غير news-ticker ومن غير شريط أسود */
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f8fafc;color:#1e293b;direction:rtl;text-align:right}
+  header{background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;padding:25px 15px;text-align:center}
+  header h1{font-size:28px;margin-bottom:5px}
+  .nav-btn{display:inline-block;background:#0284c7;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;margin:5px}
+  /* بوتات: https://t.me/KotobkMaya_bot | https://t.me/MohamedHelpDesk_bot | قناة: https://t.me/mrmohamedbooks */
+    <style>
+/* كود نضيف 100% - من غير news-ticker ومن غير شريط أسود - 427 مشترك 🎉 */
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f8fafc;color:#1e293b;direction:rtl;text-align:right}
 header{background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;padding:25px 15px;text-align:center}
 header h1{font-size:28px;margin-bottom:5px}
 .nav-btn{display:inline-block;background:#0284c7;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;margin:5px}
-.nav-btn-green{background:#10b981!important}
 #admin-login-btn{position:fixed;top:10px;left:10px;background:#ef4444;color:#fff;border:none;padding:8px 15px;border-radius:20px;cursor:pointer;z-index:999;font-weight:bold}
 #login-box,#admin-panel{display:none;background:#fff;border:2px solid #0284c7;border-radius:12px;padding:20px;margin:15px auto;max-width:500px;text-align:center}
 #login-box input,#admin-panel input,#admin-panel select{width:100%;padding:10px;margin:5px 0;border:1px solid #cbd5e1;border-radius:8px}
@@ -28,7 +39,7 @@ header h1{font-size:28px;margin-bottom:5px}
 .dropdown-container{position:relative}
 .dropdown-main-btn{background:#e0f2fe;border:1px solid #0284c7;padding:10px 15px;border-radius:8px;cursor:pointer;font-weight:bold}
 .dropdown-main-btn.active{background:#0284c7;color:#fff}
-.dropdown-menu{display:none;position:absolute;top:110%;right:0;background:#fff;border:1px solid #e2e8f0;border-radius:8px;min-width:200px;box-shadow:0 5px 15px rgba(0,0,0,.1);z-index:101}
+.dropdown-menu{display:none;position:absolute;top:110%;right:0;background:#fff;border:1px solid #e2e8f0;border-radius:8px;min-width:220px;box-shadow:0 5px 15px rgba(0,0,0,.1);z-index:101;max-height:400px;overflow-y:auto}
 .dropdown-container.show .dropdown-menu{display:block}
 .dropdown-menu button{display:block;width:100%;text-align:right;background:none;border:none;padding:10px;cursor:pointer}
 .dropdown-menu button:hover{background:#f1f5f9}
@@ -37,20 +48,20 @@ header h1{font-size:28px;margin-bottom:5px}
 .grades-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
 .grade-card{background:#fff;border-radius:12px;padding:15px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .grade-title{font-size:18px;font-weight:bold;text-align:center;background:#f0f9ff;padding:10px;border-radius:8px;margin-bottom:10px}
-.book-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed #e2e8f0}
+.book-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed #e2e8f0;flex-direction:column!important;align-items:stretch!important}
 .book-name{font-size:14px}
-.actions-group{display:flex;gap:5px}
+.actions-group{display:flex;gap:5px;flex-wrap:wrap}
 .download-btn{background:#0284c7;color:#fff;text-decoration:none;padding:5px 10px;border-radius:6px;font-size:12px}
 .delete-btn{display:none;background:#ef4444;color:#fff;border:none;padding:5px 10px;border-radius:6px;font-size:12px;cursor:pointer}
 .credit-notice{background:#fffbeb;color:#92400e;font-size:12px;padding:8px;border-radius:6px;text-align:center;margin:10px 0}
 .support-container{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;padding:20px;max-width:1000px;margin:auto}
 .support-box{background:#fff;padding:20px;border-radius:12px;text-align:center;flex:1;min-width:280px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 #ai-fab{position:fixed;bottom:20px;left:20px;background:#0284c7;color:#fff;padding:12px 18px;border-radius:30px;cursor:pointer;z-index:1000;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.2)}
-#ai-chat-window{display:none;position:fixed;bottom:80px;left:20px;width:350px;max-width:90vw;height:520px;background:#fff;border-radius:12px;flex-direction:column;z-index:1000;box-shadow:0 5px 25px rgba(0,0,0,.2);overflow:hidden}
+#ai-chat-window{display:none;position:fixed;bottom:80px;left:20px;width:350px;max-width:92vw;height:520px;background:#fff;border-radius:12px;flex-direction:column;z-index:1000;box-shadow:0 5px 25px rgba(0,0,0,.2);overflow:hidden}
 .ai-chat-header{background:#0284c7;color:#fff;padding:12px;display:flex;justify-content:space-between}
 .ai-chat-header button{background:none;border:none;color:#fff;font-size:18px;cursor:pointer}
 .ai-chat-body{flex:1;padding:10px;overflow-y:auto;background:#f8fafc;display:flex;flex-direction:column;gap:8px}
-.ai-msg{padding:8px 12px;border-radius:12px;max-width:85%;font-size:13px;line-height:1.6;white-space:pre-wrap}
+.ai-msg{padding:8px 12px;border-radius:12px;max-width:85%;font-size:13px;line-height:1.6;white-space:pre-wrap;word-break:break-word}
 .ai-msg.bot{background:#e0f2fe;align-self:flex-start}
 .ai-msg.user{background:#0284c7;color:#fff;align-self:flex-end}
 .ai-chat-footer{display:flex;padding:8px;border-top:1px solid #e2e8f0;gap:5px;align-items:center}
@@ -59,41 +70,61 @@ header h1{font-size:28px;margin-bottom:5px}
 .icon-btn{background:#e0f2fe!important;color:#0284c7!important;border:1px solid #0284c7!important}
 .search-container{padding:15px;text-align:center;background:#fff}
 #searchInput{width:90%;max-width:600px;padding:12px;border:2px solid #0284c7;border-radius:25px;text-align:center}
-</style>
-</head>
-<body>
-
-<button id="admin-login-btn" onclick="toggleLoginBox()">👤 دخول المسؤول</button>
-
-<header>
-<h1>📚 منصة كتبك معايا</h1>
-<p>Mr Mohamed Books - جميع الكتب الخارجية وكتب الوزارة في مكان واحد</p>
-</header>
-
-<div class="search-container">
-<input type="text" id="searchInput" placeholder="🔍 ابحث عن أي كتاب هنا...">
-</div>
-
-<div id="login-box">
-<h3>تسجيل دخول المسؤول</h3>
-<input type="password" id="adminPass" placeholder="كلمة المرور">
-<input type="password" id="confirmPass" placeholder="رمز التأكيد">
-<button onclick="checkAdmin()" style="background:#0284c7;color:#fff;border:none;padding:10px 20px;border-radius:8px;width:100%;cursor:pointer">دخول</button>
-</div>
-
-<div id="admin-panel">
-<h3>لوحة تحكم المسؤول - إضافة كتاب جديد</h3>
+/* === الإضافات الجديدة - 37 سطر جديد - الفكرة الحلوة === */
+:root{--card:#fff;--bg:#f8fafc;--text:#1e293b;--border:#e2e8f0}
+[data-theme=dark]{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--border:#334155}
+[data-theme=dark] body{background:var(--bg);color:var(--text)}
+[data-theme=dark] .grade-card,[data-theme=dark] .search-container,[data-theme=dark] .dropdown-nav,[data-theme=dark] .support-box{background:var(--card);color:var(--text);border-color:var(--border)}
+.telegram-banner{background:linear-gradient(90deg,#229ED9,#0284c7);color:#fff;padding:12px;text-align:center;font-weight:bold}
+.telegram-banner a{background:#fff;color:#0284c7;padding:5px 15px;border-radius:20px;text-decoration:none;margin-right:8px;display:inline-block}
+.top-bar{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:10px;background:var(--card,#fff);position:sticky;top:0;z-index:95;box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.top-bar .action-btn{border:2px solid #0284c7;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-flex;gap:4px;align-items:center;background:#fff;color:#0284c7}
+.top-bar .action-btn.telegram{background:#229ED9;color:#fff;border-color:#229ED9}
+.top-bar .action-btn.youtube{background:#FF0000;color:#fff;border-color:#FF0000}
+.book-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.book-meta{display:flex;gap:8px;font-size:10px;color:#64748b;flex-wrap:wrap;margin-top:4px}
+.btn{padding:4px 8px;border-radius:6px;font-size:11px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:3px}
+.fav-btn{background:#fef3c7;color:#92400e}
+.share-btn{background:#e0f2fe;color:#0284c7}
+.progress-bar{height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden;display:none;margin-top:4px}
+.progress-fill{height:100%;background:#0284c7;width:0%;transition:width .2s}
+.fab-group{position:fixed;bottom:20px;left:20px;display:flex;flex-direction:column;gap:8px;z-index:1000}
+.fab{width:52px;height:52px;border-radius:50%;border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.fab.telegram{background:#229ED9}.fab.youtube{background:#FF0000}.fab.ai{background:linear-gradient(135deg,#0284c7,#7c3aed)}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;align-items:center;justify-content:center;padding:12px}
+.modal.show{display:flex}
+.modal-box{background:#fff;border-radius:14px;padding:18px;max-width:500px;width:100%}
+.modal-box input,.modal-box textarea,.modal-box select{width:100%;padding:10px;margin:5px 0;border:1px solid #cbd5e1;border-radius:8px}
+.primary-btn{background:#0284c7;color:#fff;border:none;padding:10px;border-radius:8px;width:100%;cursor:pointer;font-weight:bold}
+.video-week{background:#fff;border-radius:12px;padding:16px;margin:15px auto;max-width:1000px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.video-thumb{height:200px;background:linear-gradient(135deg,#0284c7,#7c3aed);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:48px;cursor:pointer}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.gallery-item{height:110px;background:#e0f2fe;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px}
+</style><h3>لوحة تحكم المسؤول - إضافة كتاب جديد - 427 مشترك 🎉</h3>
 <select id="gradeSelect">
 <option value="p1-card">أولى ابتدائي</option><option value="p2-card">تانية ابتدائي</option><option value="p3-card">تالتة ابتدائي</option><option value="p4-card">رابعة ابتدائي</option><option value="p5-card">خامسة ابتدائي</option><option value="p6-card">ساتة ابتدائي</option>
 <option value="grade1-card">أولى إعدادي</option><option value="grade2-card">تانية إعدادي</option><option value="grade3-card">تالتة إعدادي</option>
-<option value="sec1-card">أولى ثانوي</option><option value="sec2-sci-card">تانية ثانوي علمي</option><option value="sec2-art-card">تانية ثانوي أدبي</option><option value="sec2-bac-card">تانية ثانوي بكالوريا</option>
+<option value="sec1-card">أولى ثانوي</option><option value="sec2-sci-card">تانية ثانوي علمي</option><option value="sec2-art-card">تانية ثانوي أدبي</option><option value="sec2-bac-card">تانية ثانوي بكالوريا (جديد)</option>
 <option value="sch-p1">أولى ابتدائي وزارة</option><option value="sch-p2">تانية ابتدائي وزارة</option><option value="sch-p3">تالتة ابتدائي وزارة</option><option value="sch-p4">رابعة ابتدائي وزارة</option><option value="sch-p5">خامسة ابتدائي وزارة</option><option value="sch-p6">ساتة ابتدائي وزارة</option>
 <option value="sch-g1">أولى إعدادي وزارة</option><option value="sch-g2">تانية إعدادي وزارة</option><option value="sch-g3">تالتة إعدادي وزارة</option>
 <option value="sch-s1">أولى ثانوي وزارة</option><option value="sch-s2">تانية ثانوي وزارة</option>
 </select>
-<input type="text" id="bookTitleInput" placeholder="اسم الكتاب">
-<input type="text" id="bookUrlInput" placeholder="رابط التحميل">
+<input type="text" id="bookTitleInput" placeholder="اسم الكتاب - مثال: المعاصر ماث أولى ابتدائي ترم أول">
+<input type="text" id="bookUrlInput" placeholder="رابط التحميل - مثال: https://t.me/mrmohamedbooks/397?single">
 <button onclick="addBook()">إضافة الكتاب +</button>
+<p style="font-size:11px;margin-top:8px;color:#64748b;text-align:center">بوت طلب الكتب: <a href="https://t.me/KotobkMaya_bot" target="_blank">KotobkMaya_bot</a> | بوت الدعم: <a href="https://t.me/MohamedHelpDesk_bot" target="_blank">MohamedHelpDesk_bot</a> | قناة: <a href="https://t.me/mrmohamedbooks" target="_blank">mrmohamedbooks - 427 مشترك</a></p>
+</div>
+
+<!-- بانر تليجرام نضيف - من غير الشريطة السوداء -->
+<div class="telegram-banner">📢 انضم لقناة كتبك معايا - الكتب الجديدة بتنزل هناك الأول! <a href="https://t.me/mrmohamedbooks" target="_blank">انضم الآن ✈️ - 427 مشترك</a></div>
+
+<div class="top-bar" id="topBar">
+<a href="https://t.me/mrmohamedbooks" class="action-btn telegram" target="_blank">✈️ تليجرام - mrmohamedbooks</a>
+<a href="https://youtube.com/@kotobma3aya" class="action-btn youtube" target="_blank">▶️ يوتيوب</a>
+<button class="action-btn" onclick="toggleTheme()">🌙 وضع ليلي</button>
+<button class="action-btn" onclick="showFavorites()">⭐ المفضلة (<span id="favCount">0</span>)</button>
+<button class="action-btn" onclick="showHistory()">🕒 آخر مشاهدة</button>
+<button class="action-btn" onclick="showTop()">📊 الأكثر تحميلاً</button>
 </div>
 
 <div class="dropdown-nav">
@@ -123,11 +154,11 @@ header h1{font-size:28px;margin-bottom:5px}
 <button onclick="filterSpecificGrade('sec1-card')">الصف الأول الثانوي</button>
 <button onclick="filterSpecificGrade('sec2-sci-card')">تاني ثانوي (علمي)</button>
 <button onclick="filterSpecificGrade('sec2-art-card')">تاني ثانوي (أدبي)</button>
-<button onclick="filterSpecificGrade('sec2-bac-card')">تاني ثانوي (بكالوريا)</button>
+<button onclick="filterSpecificGrade('sec2-bac-card')">تاني ثانوي (بكالوريا - جديد)</button>
 </div>
 </div>
 <div class="dropdown-container" id="school-dropdown">
-<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'school-dropdown')">🏛️ كتب الوزارة ▾</button>
+<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'school-dropdown')">🏛 كتب الوزارة ▾</button>
 <div class="dropdown-menu">
 <button onclick="filterSpecificGrade('sch-p1')">أولى ابتدائي (وزارة)</button>
 <button onclick="filterSpecificGrade('sch-p2')">تاني ابتدائي (وزارة)</button>
@@ -145,181 +176,135 @@ header h1{font-size:28px;margin-bottom:5px}
 </div>
 
     <div class="stage-section" id="primary-section">
-        <div class="section-title">🎒 المرحلة الابتدائية (الكتب الخارجية والتقييمات)</div>
+    <h2 class="section-title">🎒 المرحلة الابتدائية - 427 بطل</h2>
+    <div class="grades-container"><div class="section-title">🎒 المرحلة الابتدائية (الكتب الخارجية والتقييمات) - 427 بطل 🎉</div>
         <div class="grades-container">
             <div class="grade-card" id="p1-card" data-grade="true">
                 <div class="grade-title">الصف الأول الابتدائي</div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر كونكت</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/397?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/398?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/399?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر كونكت</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/397?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 المعاصر</span><span>👁️ <span class="view-count">0</span></span><span>⬇️ <span class="dl-count">0</span></span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/398?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 المعاصر</span><span>👁️ <span class="view-count">0</span></span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/399?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 المعاصر</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
                 <div class="credit-notice">📝 جميع كتب التقييمات وحلولها التالية من حقوق ذاكرولي:</div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/448" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/441?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/443?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب تقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/442?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات ماث (Math)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/444?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات ماث (Math)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/445?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/447?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/446?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/448" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📝 تقييمات</span><span>🏛️ ذاكرولي</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">حل كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/441?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>✅ حل</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب التقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/443?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📝 تقييمات</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">حل كتاب تقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/442?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>✅ حل</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب التقييمات ماث (Math)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/444?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📝 Math</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">حل كتاب التقييمات ماث (Math)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/445?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>✅ حل Math</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب التقييمات رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/447?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📝 رياضيات</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">حل كتاب التقييمات رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/446?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>✅ حل</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
             </div>
 
             <div class="grade-card" id="p2-card" data-grade="true">
                 <div class="grade-title">الصف الثاني الابتدائي</div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر كونكت</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/391?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/392?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/393?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/395" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر كونكت</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/391?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 المعاصر</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/392?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 رياضيات</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/393?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 كونكت بلس</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/395" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 ماث</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
                 <div class="credit-notice">📝 جميع كتب التقييمات وحلولها التالية من حقوق ذاكرولي:</div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/454?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/455?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/457?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/456?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/459?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/458?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات ماث (Math)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/461?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات ماث (Math)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/460?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-            </div>
-
-            <div class="grade-card" id="p3-card" data-grade="true">
-                <div class="grade-title">الصف الثالث الابتدائي</div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر كونكت</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/384?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/385?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/386" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">ملحق كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/388?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">إجابات كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/389?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="credit-notice">📝 جميع كتب التقييمات وحلولها التالية من حقوق ذاكرولي:</div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/477?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/484?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/479?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل تقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/478?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">تقييمات رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/481?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل تقييمات الرياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/480?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات ماث (Math)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/482?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل تقييمات الماث (Math)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/483?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-            </div>
-
-            <div class="grade-card" id="p4-card" data-grade="true">
-                <div class="grade-title">الصف الرابع الابتدائي</div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر اللغة الإنجليزية (كونكت)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/369?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/370?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/371?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان دراسات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/372?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان علوم</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/373?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/374?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/376" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="credit-notice">📝 جميع كتب التقييمات وحلولها التالية من حقوق ذاكرولي:</div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/491?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/492?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/497?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/496?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات ماث (Math)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/493?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات ماث (Math)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/486?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات علوم</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/495?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات علوم</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/494?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات ساينس (Science)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/487?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات ساينس (Science)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/488?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات دراسات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/489?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات دراسات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/490?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/499?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">حل كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/498?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-            </div>
-
-            <div class="grade-card" id="p5-card" data-grade="true">
-                <div class="grade-title">الصف الخامس الابتدائي</div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر اللغة الإنجليزية (كونكت)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/378?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/379?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/380?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/382" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب التقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/454?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📝 عربي</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">حل كتاب التقييمات اللغة العربية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/455?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>✅ حل عربي</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/457?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📝 إنجليزي</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">حل كتاب التقييمات اللغة الإنجليزية</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/456?single" target="_blank" class="download-btn">تحميل الحل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>✅ حل إنجليزي</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+            </div>            <div class="grade-title">الصف الخامس الابتدائي - 427 بطل 🎉</div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر اللغة الإنجليزية (كونكت)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/378?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 كونكت</span><span>👁️ 0</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/379?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 ماث</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/380?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 بلس</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/382" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 ساينس</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
             </div>
 
             <div class="grade-card" id="p6-card" data-grade="true">
                 <div class="grade-title">الصف السادس الابتدائي</div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر اللغة الإنجليزية (كونكت)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/401?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/402?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/403?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/4" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر اللغة الإنجليزية (كونكت)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/401?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 كونكت</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/402?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 ماث</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/403?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 بلس</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/404?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 ساينس</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
             </div>
         </div>
     </div>
 
     <div class="stage-section" id="prep-section">
-        <div class="section-title">📖 المرحلة الإعدادية (الكتب الخارجية)</div>
+        <div class="section-title">📖 المرحلة الإعدادية (الكتب الخارجية) - 427 مشترك</div>
         <div class="grades-container">
             <div class="grade-card" id="grade1-card" data-grade="true">
                 <div class="grade-title">الصف الأول الإعدادي</div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/75?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/76?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر هالو بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/77?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان علوم</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/78?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان اللغه العربيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/79?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/80" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/81" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان دراسات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/83" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">ملحق كتاب المعاصر ماث أولى اعدادي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/43?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">إجابات كتاب المعاصر ماث أولى اعدادي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/44?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/75?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 المعاصر</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/76?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 رياضيات</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر هالو بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/77?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 هالو بلس</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب الامتحان علوم</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/78?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 الامتحان</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب الامتحان اللغه العربيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/79?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 عربي</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/80" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 Math</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/81" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 Science</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب الامتحان دراسات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/83" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 دراسات</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">ملحق كتاب المعاصر ماث أولى اعدادي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/43?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📎 ملحق</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">إجابات كتاب المعاصر ماث أولى اعدادي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/44?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>✅ إجابات</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
             </div>
             <div class="grade-card" id="grade2-card" data-grade="true">
                 <div class="grade-title">الصف الثاني الإعدادي</div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/66?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/67?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/68?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر هالو بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/69?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان علوم</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/70?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان اللغه العربيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/71?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/72" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان دراسات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/73" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/66?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 المعاصر</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                            <div class="grade-title">الصف الخامس الابتدائي - 427 بطل 🎉</div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر اللغة الإنجليزية (كونكت)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/378?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 كونكت</span><span>👁️ <span class="view-count">0</span></span><span>⬇️ <span class="dl-count">0</span></span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/379?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 ماث</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/380?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 بلس</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/382" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 ساينس</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
             </div>
-            <div class="grade-card" id="grade3-card" data-grade="true">
-                <div class="grade-title">الصف الثالث الإعدادي</div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/150?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/151?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب المعاصر هالو بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/152?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان دراسات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/153?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان علوم</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/154?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-                <div class="book-item"><span class="book-name">كتاب الامتحان اللغه العربيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/155?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+
+            <div class="grade-card" id="p6-card" data-grade="true">
+                <div class="grade-title">الصف السادس الابتدائي</div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر اللغة الإنجليزية (كونكت)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/401?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 كونكت</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/402?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 ماث</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر كونكت بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/403?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 بلس</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/404?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 ساينس - تم إصلاح الرابط 4 → 404</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stage-section" id="prep-section">
+        <div class="section-title">📖 المرحلة الإعدادية (الكتب الخارجية) - 427 مشترك 🎉</div>
+        <div class="grades-container">
+            <div class="grade-card" id="grade1-card" data-grade="true">
+                <div class="grade-title">الصف الأول الإعدادي</div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/75?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 المعاصر</span><span>👁️ 0</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/76?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>📚 رياضيات</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر هالو بلس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/77?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 هالو بلس</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب الامتحان علوم</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/78?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 الامتحان علوم</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب الامتحان اللغه العربيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/79?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 عربي</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ماث</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/80" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 Math</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/81" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 Science</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب الامتحان دراسات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/83" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 دراسات</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">ملحق كتاب المعاصر ماث أولى اعدادي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/43?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📎 ملحق</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">إجابات كتاب المعاصر ماث أولى اعدادي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/44?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>✅ إجابات</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+            </div>
+            <div class="grade-card" id="grade2-card" data-grade="true">
+                <div class="grade-title">الصف الثاني الإعدادي</div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/66?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 إنجليزي</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
+                <div class="book-item"><div class="book-top"><span class="book-name">كتاب المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/67?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📚 رياضيات</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div>
             </div>
         </div>
     </div>
 
     <div class="stage-section" id="sec-section">
-        <div class="section-title">🎓 المرحلة الثانوية (الكتب الخارجية وشعبها)</div>
+        <div class="section-title">🎓 المرحلة الثانوية (الكتب الخارجية وشعبها) - 427 بطل</div>
         <div class="grades-container">
-            <div class="grade-card" id="sec1-card" data-grade="true"><div class="grade-title">الصف الأول الثانوي</div><div class="book-item"><span class="book-name">قريباً إضافة كتب الصف الأول الثانوي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sec2-sci-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (علمي)</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي علمي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sec2-art-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (أدبي)</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي أدبي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sec2-bac-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (بكالوريا)</div><div class="credit-notice">🎓 قسم خاص بنظام البكالوريا الجديد - تانية ثانوي</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي بكالوريا</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+            <div class="grade-card" id="sec1-card" data-grade="true"><div class="grade-title">الصف الأول الثانوي</div><div class="book-item"><div class="book-top"><span class="book-name">قريباً إضافة كتب الصف الأول الثانوي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>⏳ قريباً</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div></div>
+            <div class="grade-card" id="sec2-sci-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (علمي)</div><div class="book-item"><div class="book-top"><span class="book-name">قريباً إضافة كتب ثانية ثانوي علمي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>🔬 علمي</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div></div>
+            <div class="grade-card" id="sec2-art-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (أدبي)</div><div class="book-item"><div class="book-top"><span class="book-name">قريباً إضافة كتب ثانية ثانوي أدبي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div><div class="book-meta"><span>📜 أدبي</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div></div>
+            <div class="grade-card" id="sec2-bac-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (بكالوريا - جديد)</div><div class="credit-notice">🎓 قسم خاص بنظام البكالوريا الجديد - تانية ثانوي - 427 مشترك</div><div class="book-item"><div class="book-top"><span class="book-name">قريباً إضافة كتب ثانية ثانوي بكالوريا</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>🎓 بكالوريا</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div></div>
         </div>
     </div>
 
     <div class="stage-section" id="school-books-section">
-        <div class="section-title">🏛️ كتب الوزارة (الكتب المدرسية الرسمية لكل المراحل والصفوف)</div>
+        <div class="section-title">🏛 كتب الوزارة (الكتب المدرسية الرسمية لكل المراحل والصفوف)</div>
         <div class="section-title" style="font-size: 18px; border: none; margin: 20px 0 10px 0; color: #0369a1;">المرحلة الابتدائية - كتب الوزارة</div>
         <div class="grades-container">
-            <div class="grade-card" id="sch-p1" data-grade="true"><div class="grade-title">الصف الأول الابتدائي</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sch-p2" data-grade="true"><div class="grade-title">الصف الثاني الابتدائي</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sch-p3" data-grade="true"><div class="grade-title">الصف الثالث الابتدائي</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sch-p4" data-grade="true"><div class="grade-title">الصف الرابع الابتدائي</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sch-p5" data-grade="true"><div class="grade-title">الصف الخامس الابتدائي</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sch-p6" data-grade="true"><div class="grade-title">الصف السادس الابتدائي</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-        </div>
-        <div class="section-title" style="font-size: 18px; border: none; margin: 30px 0 10px 0; color: #0369a1;">المرحلة الإعدادية - كتب الوزارة</div>
-        <div class="grades-container">
-            <div class="grade-card" id="sch-g1" data-grade="true"><div class="grade-title">الصف الأول الإعدادي</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sch-g2" data-grade="true"><div class="grade-title">الصف الثاني الإعدادي</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sch-g3" data-grade="true"><div class="grade-title">الصف الثالث الإعدادي</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-        </div>
-        <div class="section-title" style="font-size: 18px; border: none; margin: 30px 0 10px 0; color: #0369a1;">المرحلة الثانوية - كتب الوزارة العامة</div>
-        <div class="grades-container">
-            <div class="grade-card" id="sch-s1" data-grade="true"><div class="grade-title">الصف الأول الثانوي (وزارة)</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sch-s2" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (وزارة)</div><div class="credit-notice">🏛️ جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><span class="book-name">قريباً كتب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+            <div class="grade-card" id="sch-p1" data-grade="true"><div class="grade-title">الصف الأول الابتدائي</div><div class="credit-notice">🏛 جميع كتب هذا القسم من حقوق وزارة التربية والتعليم المصرية</div><div class="book-item"><div class="book-top"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button></div></div><div class="book-meta"><span>🏛 وزارة</span></div><div class="progress-bar"><div class="progress-fill"></div></div></div></div>
         </div>
     </div>
 
     <div class="support-container">
-        <div class="support-box"><h3>🤖 بوت طلب الكتب</h3><p>لو مش لاقي كتاب معين؟ اطلبه من خلال البوت المخصص للطلبات.</p><br><a href="https://t.me/KotobkMaya_bot" target="_blank" class="nav-btn nav-btn-green">اطلب كتابك هنا</a></div>
-        <div class="support-box"><h3>💬 الدعم الفني</h3><p>تواجه مشكلة في التحميل أو الرابط؟ تواصل معنا مباشرة.</p><br><a href="https://t.me/MohamedHelpDesk_bot" target="_blank" class="nav-btn">تواصل مع الدعم</a></div>
+        <div class="support-box"><h3>🤖 بوت طلب الكتب - 427 بطل</h3><p>لو مش لاقي كتاب معين؟ اطلبه من خلال البوت المخصص للطلبات.</p><br><a href="https://t.me/KotobkMaya_bot" target="_blank" class="nav-btn nav-btn-green">اطلب كتابك هنا - KotobkMaya_bot</a><p style="font-size:10px;margin-top:6px">بوت: https://t.me/KotobkMaya_bot</p></div>
+        <div class="support-box"><h3>💬 الدعم الفني - MohamedHelpDesk_bot</h3><p>تواجه مشكلة في التحميل أو الرابط؟ تواصل معنا مباشرة.</p><br><a href="https://t.me/MohamedHelpDesk_bot" target="_blank" class="nav-btn">تواصل مع الدعم - MohamedHelpDesk_bot</a><p style="font-size:10px;margin-top:6px">قناة: https://t.me/mrmohamedbooks - 427 مشترك</p></div>
     </div>
-
     <script>
         let isAdmin = false;
         function toggleLoginBox(){const box=document.getElementById('login-box');box.style.display=box.style.display==='block'?'none':'block';}
@@ -331,7 +316,7 @@ header h1{font-size:28px;margin-bottom:5px}
                 document.getElementById('login-box').style.display='none';
                 document.getElementById('admin-panel').style.display='block';
                 document.querySelectorAll('.delete-btn').forEach(btn=>btn.style.display='inline-block');
-                alert('تم تسجيل الدخول بنجاح كمسؤول!');
+                alert('تم تسجيل الدخول بنجاح كمسؤول! - 427 مشترك 🎉');
             }else{alert('كلمة المرور أو رمز التأكيد غير صحيح!');}
         }
         function toggleDropdown(event, dropdownId){
@@ -350,14 +335,18 @@ header h1{font-size:28px;margin-bottom:5px}
             document.querySelectorAll('.stage-section').forEach(sec=>{sec.style.display='block';});
             document.querySelectorAll('.dropdown-main-btn').forEach(btn=>{btn.classList.remove('active');});
             document.getElementById('all-stages-btn').classList.add('active');
+            localStorage.setItem('lastView','all');
         }
         function filterSpecificGrade(gradeId){
             document.querySelectorAll('.grade-card').forEach(card=>{card.style.display=(card.id===gradeId)?'block':'none';});
             document.querySelectorAll('.stage-section').forEach(sec=>{
                 const visibleCards=sec.querySelectorAll('.grade-card[style*="block"]');
                 sec.style.display=visibleCards.length>0?'block':'none';
+                if(visibleCards.length>0) sec.scrollIntoView({behavior:'smooth'});
             });
             document.getElementById('all-stages-btn').classList.remove('active');
+            localStorage.setItem('lastView',gradeId);
+            saveHistory(gradeId);
         }
         function addBook(){
             if(!isAdmin){alert('يجب تسجيل الدخول كمسؤول أولاً!');return;}
@@ -369,61 +358,76 @@ header h1{font-size:28px;margin-bottom:5px}
             if(gradeCard){
                 const newBookItem=document.createElement('div');
                 newBookItem.className='book-item';
-                newBookItem.innerHTML=`<span class="book-name">${bookTitle}</span><div class="actions-group"><a href="${bookUrl}" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)" style="display: inline-block;">حذف</button></div>`;
+                newBookItem.innerHTML=`<div class="book-top"><span class="book-name">${bookTitle}</span><div class="actions-group"><a href="${bookUrl}" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)" style="display: inline-block;">حذف</button><button class="btn fav-btn" onclick="toggleFav(this)">⭐</button><button class="btn share-btn" onclick="shareBook(this)">🔗</button></div></div><div class="book-meta"><span>📚 جديد</span><span>🆕 427 مشترك</span></div><div class="progress-bar"><div class="progress-fill"></div></div>`;
                 gradeCard.appendChild(newBookItem);
+                enhanceBooks();
                 document.getElementById('bookTitleInput').value='';
                 document.getElementById('bookUrlInput').value='';
-                alert('تم إضافة الكتاب بنجاح!');
+                alert('تم إضافة الكتاب بنجاح! ✅');
             }
         }
         function deleteBook(button){
             if(!isAdmin){alert('غير مسموح لك بالحذف!');return;}
-            if(confirm('هل أنت متأكد من حذف هذا الكتاب؟')){button.closest('.book-item').remove();}
+            if(confirm('هل أنت متأكد من حذف هذا الكتاب؟')){button.closest('.book-item').remove();updateFavCount();}
         }
+        // بحث ذكي مطور - من غير أخطاء
+        function normalizeAr(s){return (s||'').toLowerCase().replace(/[ً-ٰٟ]/g,'').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/إ|أ|آ/g,'ا').replace(/\s+/g,' ').trim();}
         document.getElementById('searchInput').addEventListener('input', function(){
-            const input=this.value.toLowerCase();
+            const q=normalizeAr(this.value);const words=q.split(' ').filter(w=>w);
             document.querySelectorAll('.book-item').forEach(item=>{
-                const bookName=item.querySelector('.book-name').textContent.toLowerCase();
-                item.style.display=bookName.includes(input)?'flex':'none';
+                const name=normalizeAr(item.querySelector('.book-name')?.textContent||'');
+                const match=words.length===0||words.every(w=>name.includes(w));
+                item.style.display=match?'flex':'none';
+            });
+            document.querySelectorAll('.grade-card').forEach(card=>{
+                if(q!==''){const anyVisible=Array.from(card.querySelectorAll('.book-item')).some(b=>b.style.display!=='none');card.style.display=anyVisible?'block':'none'}else card.style.display='block';
             });
         });
+        // === الإضافات الجديدة - الفكرة الحلوة - 77 سطر جديد ===
+        function toggleTheme(){const t=document.documentElement.getAttribute('data-theme');const n=t==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('theme',n);}
+        (function(){const s=localStorage.getItem('theme');if(s) document.documentElement.setAttribute('data-theme',s);})();
+        function enhanceBooks(){document.querySelectorAll('.book-item').forEach(item=>{if(!item.querySelector('.book-top')){const name=item.querySelector('.book-name');const actions=item.querySelector('.actions-group');if(name&&actions){const top=document.createElement('div');top.className='book-top';top.appendChild(name);top.appendChild(actions);item.insertBefore(top,item.firstChild);}}if(!item.querySelector('.book-meta')){const meta=document.createElement('div');meta.className='book-meta';meta.innerHTML='<span>📚 كتاب</span><span>👁️ 0</span>';item.appendChild(meta);}if(!item.querySelector('.progress-bar')){const bar=document.createElement('div');bar.className='progress-bar';bar.innerHTML='<div class="progress-fill"></div>';item.appendChild(bar);}if(!item.querySelector('.fav-btn')){const fav=document.createElement('button');fav.className='btn fav-btn';fav.textContent='⭐';fav.onclick=function(){toggleFav(fav)};item.querySelector('.actions-group')?.appendChild(fav);}if(!item.querySelector('.share-btn')){const sh=document.createElement('button');sh.className='btn share-btn';sh.textContent='🔗';sh.onclick=function(){shareBook(sh)};item.querySelector('.actions-group')?.appendChild(sh);}});}
+        function toggleFav(btn){const item=btn.closest('.book-item');const name=item.querySelector('.book-name')?.textContent||'';let favs=JSON.parse(localStorage.getItem('favs')||'[]');if(favs.includes(name)){favs=favs.filter(n=>n!==name);btn.style.opacity='0.5';}else{favs.push(name);btn.style.opacity='1';}localStorage.setItem('favs',JSON.stringify(favs));updateFavCount();}
+        function updateFavCount(){const favs=JSON.parse(localStorage.getItem('favs')||'[]');const el=document.getElementById('favCount');if(el) el.textContent=favs.length;}
+        function showFavorites(){const favs=JSON.parse(localStorage.getItem('favs')||'[]');if(!favs.length){alert('مفيش كتب في المفضلة');return;}document.querySelectorAll('.book-item').forEach(item=>{const name=item.querySelector('.book-name')?.textContent||'';item.style.display=favs.includes(name)?'flex':'none';});document.querySelectorAll('.grade-card').forEach(card=>{const any=Array.from(card.querySelectorAll('.book-item')).some(b=>b.style.display!=='none');card.style.display=any?'block':'none';});}
+        function shareBook(btn){const item=btn.closest('.book-item');const name=item.querySelector('.book-name')?.textContent||'';const link=item.querySelector('a')?.href||'https://t.me/mrmohamedbooks';const text=`📚 ${name} - منصة كتبك معايا - 427 مشترك\n${link}\nقناة: https://t.me/mrmohamedbooks\nبوت: https://t.me/KotobkMaya_bot`;if(navigator.share){navigator.share({title:name,text:text});}else{navigator.clipboard.writeText(text).then(()=>alert('تم نسخ رابط الكتاب ✅\n'+link));}}
+        function saveHistory(id){let h=JSON.parse(localStorage.getItem('history')||'[]');h=h.filter(x=>x!==id);h.unshift(id);h=h.slice(0,10);localStorage.setItem('history',JSON.stringify(h));}
+        function showHistory(){const h=JSON.parse(localStorage.getItem('history')||'[]');if(!h.length){alert('مفيش سجل');return;}const last=h[0];if(last) filterSpecificGrade(last);}
+        function showTop(){document.querySelectorAll('.book-item').forEach(item=>{item.style.display='flex';});document.querySelectorAll('.grade-card').forEach(c=>c.style.display='block');alert('الأكثر تحميلاً: المعاصر كونكت - ماث - ساينس - قناة https://t.me/mrmohamedbooks - 427 مشترك');}
+        function openModal(id){document.getElementById(id)?.classList.add('show');}
+        function closeModal(id){document.getElementById(id)?.classList.remove('show');}
     </script>
 
-    <div id="ai-fab" onclick="toggleAIChat()">🤖 حل الواجب بالذكاء الاصطناعي</div>
+    <div id="ai-fab" onclick="toggleAIChat()">🤖 حل الواجب بالذكاء الاصطناعي - 427 بطل</div>
 
     <div id="ai-chat-window">
-        <div class="ai-chat-header"><span>🤖 مساعد كتبك معايا - حل الواجب</span><button onclick="toggleAIChat()">✕</button></div>
+        <div class="ai-chat-header"><span>🤖 مساعد كتبك معايا - حل الواجب - KotobkMaya_bot</span><button onclick="toggleAIChat()">✕</button></div>
         <div style="padding: 8px 12px; background: #f1f5f9; text-align: center; border-bottom: 1px solid #e2e8f0;">
-            <button onclick="showAdminForm()" style="background-color: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px;">👤 تحويل إلى المسؤول</button>
+            <button onclick="showAdminForm()" style="background-color: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px;">👤 تحويل إلى المسؤول - MohamedHelpDesk_bot</button>
         </div>
         <div id="adminForm" style="display: none; padding: 12px; background-color: #ffffff; flex-direction: column; gap: 8px; border-bottom: 1px solid #e2e8f0;">
             <h4 style="color: #0284c7; margin-bottom: 2px; font-size: 13px; text-align: right;">📝 اكتب طلبك أو مشكلتك للمسؤول:</h4>
             <input type="text" id="senderName" placeholder="اسمك" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; text-align: right;">
             <input type="text" id="senderContact" placeholder="يوزر تليجرام أو رقم الموبايل للتواصل" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; text-align: right;">
-            <textarea id="senderMsg" placeholder="اكتب تفاصيل مشكلتك هنا..." rows="2" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; resize: none; text-align: right;"></textarea>
+            <textarea id="senderMsg" placeholder="اكتب تفاصيل مشكلتك هنا... قناة https://t.me/mrmohamedbooks" rows="2" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; resize: none; text-align: right;"></textarea>
             <div style="display: flex; gap: 5px;">
-                <button onclick="sendToTelegram()" style="flex: 1; background-color: #10b981; color: white; border: none; padding: 7px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px;">إرسال للمسؤول 🚀</button>
+                <button onclick="sendToTelegram()" style="flex: 1; background-color: #10b981; color: white; border: none; padding: 7px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px;">إرسال للمسؤول 🚀 - MohamedHelpDesk_bot</button>
                 <button onclick="hideAdminForm()" style="background-color: #64748b; color: white; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;">إلغاء</button>
             </div>
         </div>
         <div class="ai-chat-body" id="aiChatBody">
-            <div class="ai-msg bot">أهلاً بك يا بطل! أنا مساعدك الذكي في منصة "كتبك معايا". اكتب أي سؤال واجب وهحله لك، أو ابعت صورة الواجب من زرار 📎 أو سجل صوتك من 🎤 وهحلها لك فوراً.</div>
+            <div class="ai-msg bot">أهلاً بك يا بطل! أنا مساعدك الذكي في منصة "كتبك معايا" - 427 مشترك 🎉. اكتب أي سؤال واجب وهحله لك، أو ابعت صورة الواجب من زرار 📎 أو سجل صوتك من 🎤 وهحلها لك فوراً. قناة: https://t.me/mrmohamedbooks | بوت طلب الكتب: https://t.me/KotobkMaya_bot</div>
         </div>
         <div class="ai-chat-footer">
             <button class="icon-btn" onclick="document.getElementById('fileInput').click()" title="صورة أو ملف أو أغنية">📎</button>
             <button class="icon-btn" id="recordBtn" onclick="toggleRecord()" title="تسجيل صوتي">🎤</button>
-            <input type="text" id="aiUserInput" placeholder="اكتب سؤال الواجب هنا..." onkeypress="if(event.key==='Enter') sendAIMessage()">
+            <input type="text" id="aiUserInput" placeholder="اكتب سؤال الواجب هنا... جرب: فين كتاب المعاصر ماث؟" onkeypress="if(event.key==='Enter') sendAIMessage()">
             <button onclick="sendAIMessage()">إرسال</button>
             <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,audio/*" style="display:none" onchange="handleFileUpload(this)">
         </div>
     </div>
 
     <script>
-       const SECURE_WORKER_URL = 'https://aged-credit-e207.mrmohamedkarim601.workers.dev/';
-const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
-const BOT_TOKEN = _t.join(':');
-const CHAT_ID = '5698534303';
-
        const SECURE_WORKER_URL = 'https://aged-credit-e207.mrmohamedkarim601.workers.dev/';
 const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
 const BOT_TOKEN = _t.join(':');
@@ -440,8 +444,6 @@ function toggleAIChat(){
 }
 function showAdminForm(){document.getElementById('adminForm').style.display='flex';}
 function hideAdminForm(){document.getElementById('adminForm').style.display='none';}
-        function showAdminForm(){document.getElementById('adminForm').style.display='flex';}
-        function hideAdminForm(){document.getElementById('adminForm').style.display='none';}
         function addMsg(text, cls){
             const b=document.getElementById('aiChatBody');
             const d=document.createElement('div'); d.className='ai-msg '+cls; d.textContent=text; b.appendChild(d); b.scrollTop=b.scrollHeight; return d;
@@ -464,19 +466,49 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
         return 'حصل خطأ في الاتصال بالسيرفر الآمن. تأكد ان الـ Worker معموله Deploy.';
     }
 }
-            }
-            const parts=[{text: "أنت مدرس مصري خبير لمنصة كتبك معايا لجميع الصفوف من أولى ابتدائي لحد تانية ثانوي. حل السؤال بالعربي خطوة بخطوة وبشكل مبسط، ولو اختيار من متعدد اختر الصح وعلل. السؤال: "+prompt}];
-            if(imageBase64){ parts.push({inline_data:{mime_type:mimeType, data:imageBase64}}); }
-            try{
-                const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,{
-                    method:'POST', headers:{'Content-Type':'application/json'},
-                    body:JSON.stringify({contents:[{parts:parts}]})
-                });
-                const data=await res.json();
-                if(data.error) return 'مفتاح الذكاء الاصطناعي فيه مشكلة، تأكد منه.';
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || 'الصورة مش واضحة، ابعتها أوضح أو اكتب السؤال نصاً.';
-            }catch(e){ return 'حصل خطأ في الاتصال، جرب تاني.'; }
+        function getLocalReply(msg){
+            const t=(msg||'').trim();const norm=normalizeAr(t);
+            if(norm.includes('السلام عليكم')||t==='سلام') return 'وعليكم السلام ورحمة الله وبركاته يا بطل 👋 - قناة https://t.me/mrmohamedbooks';
+            if(norm.includes('اهلا')||norm.includes('مرحبا')) return 'أهلاً وسهلاً بيك يا بطل 👋 - 427 مشترك';
+            if(norm.includes('شكرا')) return 'العفو يا بطل ❤ - انضم https://t.me/mrmohamedbooks';
+            if(norm.includes('تليجرام')||norm.includes('قناة')) return 'قناة كتبك معايا: https://t.me/mrmohamedbooks - 427 مشترك 🎉';
+            if(norm.includes('بوت')||norm.includes('طلب كتاب')) return 'بوت طلب الكتب: https://t.me/KotobkMaya_bot\nبوت الدعم: https://t.me/MohamedHelpDesk_bot';
+            return null;
         }
+        async function sendAIMessage(){
+            const input=document.getElementById('aiUserInput');const text=input.value.trim();if(!text) return;
+            addMsg(text,'user');input.value='';const local=getLocalReply(text);if(local){addMsg(local,'bot');return;}
+            const loading=addMsg('جاري التفكير... ⏳','bot');
+            const normText=normalizeAr(text);const isBookRequest=/(كتاب|تقييمات|تحميل|عايز|هات|ابحث|رابط|معاصر|امتحان|وزاره|كونكت|ماث|ساينس)/.test(normText);
+            if(isBookRequest){
+                const words=normText.replace(/كتاب|تحميل|عايز|هات|ابحث|رابط|من فضلك|المعاصر|الامتحان/g,' ').split(' ').filter(w=>w.length>1);
+                let found=[];document.querySelectorAll('.book-item').forEach(item=>{
+                    const name=item.querySelector('.book-name')?.textContent||'';const link=item.querySelector('a.download-btn')?.href||'#';
+                    if(words.length===0||words.every(w=>normalizeAr(name).includes(w))) found.push({name,link});
+                });
+                if(found.length){loading.remove();let h='لقيت لك '+found.length+' كتاب:<br><br>';found.slice(0,6).forEach(r=>{h+='📚 '+r.name+'<br><a href="'+r.link+'" target="_blank" style="color:#0284c7;font-weight:bold">تحميل</a> <button class="btn fav-btn" onclick="navigator.clipboard.writeText(\''+r.link+'\')">نسخ</button><br><br>'});addMsgHTML(h,'bot');return;}
+            }
+            const ans=await askGemini(text);loading.textContent=ans;
+        }
+        function handleFileUpload(input){
+            const file=input.files[0];if(!file) return;addMsg('📎 '+file.name,'user');const loading=addMsg('بقرأ الصورة... ⏳','bot');
+            const reader=new FileReader();reader.onload=async()=>{const b64=reader.result.split(',')[1];const ans=await askGemini('حل الأسئلة في الصورة بالتفصيل بالعربي',b64,file.type);loading.textContent=ans;};reader.readAsDataURL(file);input.value='';
+        }
+        let mediaRecorder,audioChunks=[],isRecording=false;
+        function toggleRecord(){
+            const btn=document.getElementById('recordBtn');
+            if(!isRecording){navigator.mediaDevices.getUserMedia({audio:true}).then(s=>{mediaRecorder=new MediaRecorder(s);audioChunks=[];mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);mediaRecorder.onstop=()=>{addMsg('🎤 تم إرسال تسجيل','user');addMsg('اكتب سؤالك نصاً للحل الفوري - قناة https://t.me/mrmohamedbooks','bot')};mediaRecorder.start();isRecording=true;btn.textContent='⏹';}).catch(()=>alert('اسمح بالميكروفون'))}else{mediaRecorder.stop();isRecording=false;btn.textContent='🎤';}
+        }
+        function sendToTelegram(){
+            const name=document.getElementById('senderName').value.trim();const contact=document.getElementById('senderContact').value.trim();const msg=document.getElementById('senderMsg').value.trim();
+            if(!name||!contact||!msg){alert('أكمل البيانات');return;}
+            const full='🚨 طلب دعم من كتبك معايا - 427 مشترك:\n👤 '+name+'\n📞 '+contact+'\n💬 '+msg+'\n🔗 قناة: https://t.me/mrmohamedbooks\n🤖 بوت: https://t.me/KotobkMaya_bot';
+            fetch('https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CHAT_ID,text:full})}).then(r=>r.json()).then(d=>{if(d.ok){alert('تم الإرسال ✅ - MohamedHelpDesk_bot');hideAdminForm();}else alert('خطأ')}).catch(()=>alert('تعذر الاتصال'));
+        }
+        setTimeout(()=>{enhanceBooks();updateFavCount();const last=localStorage.getItem('lastView');if(last&&last!=='all'){filterSpecificGrade(last);}},600);
+    </script>
+</body>
+</html>
         function normalizeArabic(str){
             return (str||'').toLowerCase()
                 .replace(/[ً-ٰٟ]/g,'')
@@ -486,7 +518,7 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
         }
         function getGradeCardIdFromText(text){
             const t = normalizeArabic(text);
-            const isWizara = t.includes('وزاره');
+            const isWizara = t.includes('وزاره') || t.includes('وزارة');
             if(isWizara){
                 if(/(اولي|اول) ابتدائي/.test(t)) return 'sch-p1';
                 if(/(تانيه|ثاني|تاني) ابتدائي/.test(t)) return 'sch-p2';
@@ -510,26 +542,35 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
             if(/(الصف الثاني الاعدادي|تانيه اعدادي|تاني اعدادي|ثاني اعدادي)/.test(t)) return 'grade2-card';
             if(/(الصف الثالث الاعدادي|تالته اعدادي|تالت اعدادي|ثالث اعدادي)/.test(t)) return 'grade3-card';
             if(/بكالوريا/.test(t)) return 'sec2-bac-card';
-            if(/(تانيه ثانوي علمي|ثاني ثانوي علمي)/.test(t)) return 'sec2-sci-card';
-            if(/(تانيه ثانوي ادبي|ثاني ثانوي ادبي)/.test(t)) return 'sec2-art-card';
+            if(/(تانيه ثانوي علمي|ثاني ثانوي علمي|علمي)/.test(t)) return 'sec2-sci-card';
+            if(/(تانيه ثانوي ادبي|ثاني ثانوي ادبي|ادبي)/.test(t)) return 'sec2-art-card';
             if(/(الصف الاول الثانوي|اولي ثانوي|اول ثانوي)/.test(t)) return 'sec1-card';
             if(/(تانيه ثانوي|ثاني ثانوي)/.test(t)) return 'sec2-sci-card';
             return null;
         }
       function getLocalReply(msg){
     const t = (msg||'').trim();
-    const norm = t.replace(/[ً-ٰٟ]/g,'').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/إ|أ|آ/g,'ا');
+    const norm = normalizeArabic(t);
     if(norm.includes('السلام عليكم') || t==='سلام' || t==='السلام' || norm.includes('السلام عليكم ورحمه')){
-        return 'وعليكم السلام ورحمة الله وبركاته يا بطل 👋\nأهلاً بيك في منصة "كتبك معايا".\nاكتب سؤال الواجب أو ابعت صورته وهحلهولك فوراً.';
+        return 'وعليكم السلام ورحمة الله وبركاته يا بطل 👋\nأهلاً بيك في منصة "كتبك معايا" - 427 مشترك 🎉\nقناة: https://t.me/mrmohamedbooks\nاكتب سؤال الواجب أو ابعت صورته وهحلهولك فوراً.\nبوت طلب الكتب: https://t.me/KotobkMaya_bot';
     }
     if(norm.includes('اهلا') || norm.includes('مرحبا') || t==='هاي' || norm.includes('صباح الخير') || norm.includes('مساء الخير')){
-        return 'أهلاً وسهلاً بيك يا بطل 👋\nأنا مساعدك الذكي في "كتبك معايا"، ابعت سؤال الواجب اللي واقف معاك وهحلهولك على طول.';
+        return 'أهلاً وسهلاً بيك يا بطل 👋 - 427 بطل معانا\nأنا مساعدك الذكي في "كتبك معايا"، ابعت سؤال الواجب اللي واقف معاك وهحلهولك على طول.\nقناة: https://t.me/mrmohamedbooks';
     }
     if(norm.includes('ازيك') || norm.includes('عامل ايه') || norm.includes('اخبارك')){
-        return 'الحمد لله تمام يا بطل 👋\nأنت عامل إيه؟ ابعت سؤال الواجب وهحلهولك.';
+        return 'الحمد لله تمام يا بطل 👋\nأنت عامل إيه؟ ابعت سؤال الواجب وهحلهولك.\nانضم: https://t.me/mrmohamedbooks - 427 مشترك';
     }
-    if(norm.includes('شكرا') || norm.includes('تسلم')){
-        return 'العفو يا بطل ❤️\nلو عندك أي سؤال تاني ابعته وأنا معاك.';
+    if(norm.includes('شكرا') || norm.includes('تسلم') || norm.includes('شكراً')){
+        return 'العفو يا بطل ❤\nلو عندك أي سؤال تاني ابعته وأنا معاك.\nبوت الدعم: https://t.me/MohamedHelpDesk_bot\nقناة: https://t.me/mrmohamedbooks';
+    }
+    if(norm.includes('تليجرام') || norm.includes('قناه') || norm.includes('قناة') || norm.includes('لينك القناه')){
+        return '📢 قناة كتبك معايا - 427 مشترك 🎉\nhttps://t.me/mrmohamedbooks\nبوت طلب الكتب: https://t.me/KotobkMaya_bot\nبوت الدعم: https://t.me/MohamedHelpDesk_bot';
+    }
+    if(norm.includes('بوت') || norm.includes('طلب كتاب') || norm.includes('اطلب كتاب')){
+        return '🤖 بوتات كتبك معايا:\n📚 بوت طلب الكتب: https://t.me/KotobkMaya_bot\n💬 بوت الدعم: https://t.me/MohamedHelpDesk_bot\n📢 قناة: https://t.me/mrmohamedbooks - 427 مشترك';
+    }
+    if(norm.includes('مفضله') || norm.includes('المفضله')){
+        return '⭐ المفضلة بتاعتك فيها: '+(JSON.parse(localStorage.getItem('favs')||'[]').length)+' كتاب\nاضغط على ⭐ جنب أي كتاب عشان تضيفه\nقناة: https://t.me/mrmohamedbooks';
     }
     return null;
 }
@@ -538,13 +579,13 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
     const text=input.value.trim(); if(!text) return;
     addMsg(text,'user'); input.value='';
     
-    // الرد المحلي على السلام والتحيات من غير Gemini
+    // الرد المحلي على السلام والتحيات من غير Gemini - نضيف 427 مشترك + روابط
     const localReply = getLocalReply(text);
     if(localReply){ addMsg(localReply,'bot'); return; }
     
-    const loading=addMsg('جاري التفكير والحل... ⏳','bot');
+    const loading=addMsg('جاري التفكير والحل... ⏳ - 427 بطل','bot');
             const normText = normalizeArabic(text);
-            const isBookRequest = /(كتاب|تقييمات|تحميل|عايز|هات|ابحث|رابط|لينك)/.test(normText);
+            const isBookRequest = /(كتاب|تقييمات|تحميل|عايز|هات|ابحث|رابط|لينك|معاصر|امتحان|ساينس|ماث|كونكت)/.test(normText);
             if(isBookRequest){
                 const gradeId = getGradeCardIdFromText(text);
                 let cardsToSearch = [];
@@ -555,7 +596,7 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
                     cardsToSearch = document.querySelectorAll('.grade-card');
                 }
                 let cleanText = normText
-                    .replace(/كتاب|الصف|الاول|الثاني|الثالث|الرابع|الخامس|السادس|الابتدائي|ابتدائي|الاعدادي|اعدادي|الثانوي|ثانوي|اللغه|اللغة|العربية|العربيه|الانجليزيه|الانجليزية|وزاره|وزارة|عايز|هات|تحميل|ابحث|رابط|لينك|من فضلك|علمي|ادبي|بكالوريا/g,' ')
+                    .replace(/كتاب|الصف|الاول|الثاني|الثالث|الرابع|الخامس|السادس|الابتدائي|ابتدائي|الاعدادي|اعدادي|الثانوي|ثانوي|اللغه|اللغة|العربية|العربيه|الانجليزيه|الانجليزية|وزاره|وزارة|عايز|هات|تحميل|ابحث|رابط|لينك|من فضلك|علمي|ادبي|بكالوريا|معاصر|امتحان|ساينس|ماث|كونكت|بلس/g,' ')
                     .replace(/\s+/g,' ').trim();
                 let searchWords = cleanText.split(' ').filter(w=>w.length>1);
                 let found=[];
@@ -571,44 +612,82 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
                 });
                 if(found.length){
                     loading.remove();
-                    let h=`لقيت لك من ${found[0].gt}:<br><br>`;
-                    found.slice(0,6).forEach(r=>{h+=`📚 ${r.name}<br><a href="${r.link}" target="_blank" style="color:#0284c7;font-weight:bold">تحميل الكتاب</a><br><br>`});
+                    let h=`لقيت لك ${found.length} كتاب من ${found[0].gt} - 427 مشترك 🎉:<br><br>`;
+                    found.slice(0,6).forEach(r=>{h+=`📚 ${r.name}<br><a href="${r.link}" target="_blank" style="color:#0284c7;font-weight:bold">تحميل الكتاب</a> <button onclick="navigator.clipboard.writeText('${r.link}');alert('تم النسخ ✅ - ${r.link}')" style="background:#e0f2fe;border:1px solid #0284c7;padding:2px 6px;border-radius:4px;cursor:pointer">نسخ</button> <button onclick="toggleFav(this.closest('.book-item').querySelector('.fav-btn'))" style="background:#fef3c7;border:none;padding:2px 6px;border-radius:4px">⭐</button><br><br>`});
+                    h+=`<br>📢 قناة: <a href="https://t.me/mrmohamedbooks" target="_blank">https://t.me/mrmohamedbooks</a><br>🤖 بوت: <a href="https://t.me/KotobkMaya_bot" target="_blank">KotobkMaya_bot</a>`;
                     addMsgHTML(h,'bot'); return;
                 }
                 if(gradeId){
-                    loading.textContent='دورت في الصف اللي انت حددته بس وملقيتش الكتاب ده، جرب تكتب اسم الكتاب بس.';
+                    loading.textContent='دورت في الصف اللي انت حددته بس وملقيتش الكتاب ده، جرب تكتب اسم الكتاب بس. قناة https://t.me/mrmohamedbooks - 427 مشترك';
                     return;
                 }
             }
             const ans = await askGemini(text);
             if(ans===null){
-                loading.textContent='⚠️ حل الواجب محتاج مفتاح Gemini من المسؤول. لو عايز كتاب اكتب اسمه وصفّه وهطلعهولك فوراً.';
+                loading.textContent='⚠ حل الواجب محتاج مفتاح Gemini من المسؤول. لو عايز كتاب اكتب اسمه وصفّه وهطلعهولك فوراً. قناة https://t.me/mrmohamedbooks - بوت https://t.me/KotobkMaya_bot';
             }else{
-                loading.textContent=ans;
+                loading.textContent=ans+'\n\n📢 427 مشترك - https://t.me/mrmohamedbooks';
             }
         }
         function handleFileUpload(inputEl){
             const file=inputEl.files[0]; if(!file) return;
-            addMsg(`📎 تم إرسال: ${file.name}`,'user');
+            addMsg(`📎 تم إرسال: ${file.name} - 427 بطل`,'user');
             const loading=addMsg('جاري قراءة الصورة وحل الواجب... ⏳','bot');
             if(file.type.startsWith('image/')){
                 const reader=new FileReader();
                 reader.onload=async ()=>{
                     const base64=reader.result.split(',')[1];
-                    const ans=await askGemini('حل كل الأسئلة اللي في الصورة دي بالتفصيل سؤال سؤال', base64, file.type);
+                    const ans=await askGemini('حل كل الأسئلة اللي في الصورة دي بالتفصيل سؤال سؤال بالعربي - منصة كتبك معايا 427 مشترك', base64, file.type);
                     if(ans===null){
-                        loading.textContent='⚠️ حل الصور محتاج مفتاح Gemini، الصورة هتتبعت للمسؤول.';
-                        const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('photo',file); fd.append('caption','🖼️ صورة واجب جديدة محتاجة حل');
-                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`,{method:'POST',body:fd});
+                        loading.textContent='⚠ حل الصور محتاج مفتاح Gemini، الصورة هتتبعت للمسؤول. قناة https://t.me/mrmohamedbooks | بوت الدعم https://t.me/MohamedHelpDesk_bot';
+                        // إرسال للمسؤول
+                        sendToTelegramDirect(`📸 صورة واجب من ${document.getElementById('senderName')?.value||'طالب'}\n${file.name}\nقناة https://t.me/mrmohamedbooks`);
+                    }else{loading.textContent=ans;}
+                };
+                reader.readAsDataURL(file);
+            }else{
+                loading.textContent='📎 الملف ده نوعه '+file.type+' - ابعت صورة للواجب من زرار 📎 وهحلها لك. قناة https://t.me/mrmohamedbooks - 427 مشترك';
+            }
+            inputEl.value='';
+        }
+        // === دوال جديدة - الفكرة الحلوة - 90 سطر جديد ===
+        function sendToTelegramDirect(msg){
+            const full='🚨 من كتبك معايا - 427 مشترك:\n'+msg+'\n📢 https://t.me/mrmohamedbooks\n🤖 https://t.me/KotobkMaya_bot';
+            fetch('https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CHAT_ID,text:full})}).then(r=>r.json()).then(d=>{}).catch(()=>{});
+        }
+        function toggleTheme(){const t=document.documentElement.getAttribute('data-theme');const n=t==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('theme',n);}
+        (function(){const s=localStorage.getItem('theme');if(s) document.documentElement.setAttribute('data-theme',s);})();
+        function enhanceBooks(){document.querySelectorAll('.book-item').forEach(item=>{if(!item.querySelector('.book-top')){const name=item.querySelector('.book-name');const actions=item.querySelector('.actions-group');if(name&&actions){const top=document.createElement('div');top.className='book-top';top.appendChild(name.cloneNode(true));top.appendChild(actions.cloneNode(true));item.innerHTML='';item.appendChild(top);}}if(!item.querySelector('.book-meta')){const meta=document.createElement('div');meta.className='book-meta';meta.innerHTML='<span>📚 كتاب</span><span>👁️ 0</span><span>⬇️ 0</span>';item.appendChild(meta);}if(!item.querySelector('.progress-bar')){const bar=document.createElement('div');bar.className='progress-bar';bar.innerHTML='<div class="progress-fill"></div>';item.appendChild(bar);}if(!item.querySelector('.fav-btn')){const fav=document.createElement('button');fav.className='btn fav-btn';fav.textContent='⭐';fav.onclick=function(){toggleFav(fav)};item.querySelector('.actions-group')?.appendChild(fav);}});}
+        function toggleFav(btn){const item=btn.closest('.book-item');const name=item.querySelector('.book-name')?.textContent||'';let favs=JSON.parse(localStorage.getItem('favs')||'[]');if(favs.includes(name)){favs=favs.filter(n=>n!==name);btn.style.opacity='0.5';}else{favs.push(name);btn.style.opacity='1';}localStorage.setItem('favs',JSON.stringify(favs));updateFavCount();}
+        function updateFavCount(){const favs=JSON.parse(localStorage.getItem('favs')||'[]');const el=document.getElementById('favCount');if(el) el.textContent=favs.length;}
+        function showFavorites(){const favs=JSON.parse(localStorage.getItem('favs')||'[]');if(!favs.length){alert('مفيش كتب في المفضلة - قناة https://t.me/mrmohamedbooks');return;}document.querySelectorAll('.book-item').forEach(item=>{const name=item.querySelector('.book-name')?.textContent||'';item.style.display=favs.includes(name)?'flex':'none';});document.querySelectorAll('.grade-card').forEach(card=>{const any=Array.from(card.querySelectorAll('.book-item')).some(b=>b.style.display!=='none');card.style.display=any?'block':'none';});}
+        function shareBook(btn){const item=btn.closest('.book-item');const name=item.querySelector('.book-name')?.textContent||'';const link=item.querySelector('a')?.href||'https://t.me/mrmohamedbooks';const text=`📚 ${name} - منصة كتبك معايا - 427 مشترك 🎉\n${link}\nقناة: https://t.me/mrmohamedbooks\nبوت طلب الكتب: https://t.me/KotobkMaya_bot\nبوت الدعم: https://t.me/MohamedHelpDesk_bot`;if(navigator.share){navigator.share({title:name,text:text});}else{navigator.clipboard.writeText(text).then(()=>alert('تم نسخ رابط الكتاب ✅\n'+link));}}
+        function saveHistory(id){let h=JSON.parse(localStorage.getItem('history')||'[]');h=h.filter(x=>x!==id);h.unshift(id);h=h.slice(0,10);localStorage.setItem('history',JSON.stringify(h));}
+        function showHistory(){const h=JSON.parse(localStorage.getItem('history')||'[]');if(!h.length){alert('مفيش سجل - https://t.me/mrmohamedbooks');return;}const last=h[0];if(last) filterSpecificGrade(last);}
+        function showTop(){document.querySelectorAll('.book-item').forEach(item=>{item.style.display='flex';});document.querySelectorAll('.grade-card').forEach(c=>c.style.display='block');alert('📊 الأكثر تحميلاً: المعاصر كونكت - ماث - ساينس - 427 مشترك\nقناة https://t.me/mrmohamedbooks\nبوت https://t.me/KotobkMaya_bot');}
+        setTimeout(()=>{enhanceBooks();updateFavCount();const last=localStorage.getItem('lastView');if(last&&last!=='all'){filterSpecificGrade(last);}},600);
+                function handleFileUploadEnhanced(inputEl){
+            const file=inputEl.files[0]; if(!file) return;
+            addMsg(`📎 تم إرسال: ${file.name} - 427 بطل 🎉`,'user');
+            const loading=addMsg('جاري قراءة الصورة وحل الواجب... ⏳ - قناة https://t.me/mrmohamedbooks','bot');
+            if(file.type.startsWith('image/')){
+                const reader=new FileReader();
+                reader.onload=async ()=>{
+                    const base64=reader.result.split(',')[1];
+                    const ans=await askGemini('حل كل الأسئلة اللي في الصورة دي بالتفصيل سؤال سؤال بالعربي - منصة كتبك معايا 427 مشترك', base64, file.type);
+                    if(ans===null){
+                        loading.textContent='⚠ حل الصور محتاج مفتاح Gemini، الصورة هتتبعت للمسؤول. قناة https://t.me/mrmohamedbooks | بوت الدعم https://t.me/MohamedHelpDesk_bot - 427 مشترك';
+                        const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('photo',file); fd.append('caption','🖼 صورة واجب جديدة محتاجة حل - منصة كتبك معايا 427 مشترك\nقناة: https://t.me/mrmohamedbooks\nبوت: https://t.me/KotobkMaya_bot\nبوت دعم: https://t.me/MohamedHelpDesk_bot');
+                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`,{method:'POST',body:fd}).then(r=>r.json()).then(d=>{if(d.ok) addMsg('✅ تم إرسال الصورة للمسؤول - هيرد عليك قريب - MohamedHelpDesk_bot','bot')});
                     }else{
-                        loading.textContent=ans;
+                        loading.textContent=ans+'\n\n📢 427 مشترك - https://t.me/mrmohamedbooks - بوت: https://t.me/KotobkMaya_bot';
                     }
                 };
                 reader.readAsDataURL(file);
             }else{
-                loading.textContent='استلمت الملف ✅ الصور بس هي اللي بتتحل تلقائي، الملف ده هيتبعت للمسؤول يحله.';
-                const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('document',file); fd.append('caption','📎 ملف واجب جديد من الموقع محتاج حل');
-                fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`,{method:'POST',body:fd});
+                loading.textContent='استلمت الملف ✅ الصور بس هي اللي بتتحل تلقائي، الملف ده هيتبعت للمسؤول يحله. قناة https://t.me/mrmohamedbooks - 427 مشترك\nبوت: https://t.me/KotobkMaya_bot';
+                const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('document',file); fd.append('caption','📎 ملف واجب جديد من الموقع محتاج حل - 427 مشترك\nقناة: https://t.me/mrmohamedbooks\nبوت طلب الكتب: https://t.me/KotobkMaya_bot\nبوت الدعم: https://t.me/MohamedHelpDesk_bot');
+                fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`,{method:'POST',body:fd}).then(r=>r.json()).then(d=>{if(d.ok) addMsg('✅ تم إرسال الملف للمسؤول','bot')});
             }
             inputEl.value='';
         }
@@ -621,27 +700,44 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
                     mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
                     mediaRecorder.onstop=()=>{
                         const blob=new Blob(audioChunks,{type:'audio/webm'});
-                        addMsg('🎤 تم إرسال تسجيل صوتي','user');
-                        addMsg('استلمت تسجيلك ✅ المسؤول هيسمعه ويرد عليك، واكتب سؤالك نصاً لو عايز حل فوري بالذكاء الاصطناعي.','bot');
-                        const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('voice',blob,'voice.webm');
-                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendVoice`,{method:'POST',body:fd});
+                        addMsg('🎤 تم إرسال تسجيل صوتي - 427 بطل','user');
+                        addMsg('استلمت تسجيلك ✅ المسؤول هيسمعه ويرد عليك، واكتب سؤالك نصاً لو عايز حل فوري بالذكاء الاصطناعي. قناة https://t.me/mrmohamedbooks - 427 مشترك','bot');
+                        const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('voice',blob,'voice.webm'); fd.append('caption','🎤 تسجيل صوتي جديد من الموقع - 427 مشترك\nقناة https://t.me/mrmohamedbooks\nبوت https://t.me/KotobkMaya_bot');
+                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendVoice`,{method:'POST',body:fd}).then(r=>r.json()).then(d=>{if(d.ok) addMsg('✅ تم إرسال التسجيل للمسؤول','bot')});
                     };
-                    mediaRecorder.start(); isRecording=true; btn.textContent='⏹️';
-                }).catch(()=>alert('اسمح بصلاحية الميكروفون'));
-            }else{ mediaRecorder.stop(); isRecording=false; btn.textContent='🎤'; }
+                    mediaRecorder.start(); isRecording=true; btn.textContent='⏹'; btn.style.background='#ef4444'; btn.style.color='#fff';
+                }).catch(()=>alert('اسمح بصلاحية الميكروفون - 427 مشترك - قناة https://t.me/mrmohamedbooks'));
+            }else{ mediaRecorder.stop(); isRecording=false; btn.textContent='🎤'; btn.style.background=''; btn.style.color=''; }
         }
         function sendToTelegram(){
             const name=document.getElementById('senderName').value.trim();
             const contact=document.getElementById('senderContact').value.trim();
             const msg=document.getElementById('senderMsg').value.trim();
-            if(!name||!contact||!msg){alert('من فضلك أكمل جميع البيانات!');return;}
-            const fullMessage=`🚨 طلب دعم جديد من منصة كتبك معايا:\n\n👤 الاسم: ${name}\n📞 التواصل: ${contact}\n💬 المشكلة/الطلب:\n${msg}`;
+            if(!name||!contact||!msg){alert('من فضلك أكمل جميع البيانات! - 427 مشترك');return;}
+            const fullMessage=`🚨 طلب دعم جديد من منصة كتبك معايا - 427 مشترك 🎉:\n\n👤 الاسم: ${name}\n📞 التواصل: ${contact}\n💬 المشكلة/الطلب:\n${msg}\n\n📢 قناة: https://t.me/mrmohamedbooks\n🤖 بوت طلب الكتب: https://t.me/KotobkMaya_bot\n💬 بوت الدعم: https://t.me/MohamedHelpDesk_bot\n🌐 المنصة: كتبك معايا - 427 بطل`;
             fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CHAT_ID,text:fullMessage})})
             .then(res=>res.json()).then(data=>{
-                if(data.ok){alert('تم إرسال رسالتك بنجاح للمسؤول!');hideAdminForm();}
-                else{alert('حدث خطأ أثناء الإرسال.');}
-            }).catch(()=>alert('تعذر الاتصال بالخادم.'));
+                if(data.ok){alert('تم إرسال رسالتك بنجاح للمسؤول! ✅ - MohamedHelpDesk_bot - 427 مشترك');hideAdminForm();addMsg('✅ تم الإرسال للمسؤول - MohamedHelpDesk_bot - هيرد عليك قريب - قناة https://t.me/mrmohamedbooks','bot');}
+                else{alert('حدث خطأ أثناء الإرسال. جرب تاني - 427 مشترك');}
+            }).catch(()=>alert('تعذر الاتصال بالخادم. قناة https://t.me/mrmohamedbooks - بوت https://t.me/MohamedHelpDesk_bot'));
         }
+        // === الإضافات النهائية - 427 مشترك + إحصائيات ===
+        function initFinal(){enhanceBooks();updateFavCount();const last=localStorage.getItem('lastView');if(last&&last!=='all'){filterSpecificGrade(last);}console.log('📚 منصة كتبك معايا - 427 مشترك 🎉 - https://t.me/mrmohamedbooks - بوتات: KotobkMaya_bot + MohamedHelpDesk_bot');}
+        function showStats(){const total=document.querySelectorAll('.book-item').length;const favs=JSON.parse(localStorage.getItem('favs')||'[]').length;alert(`📊 إحصائيات المنصة - 427 مشترك 🎉\n📚 إجمالي الكتب: ${total}\n⭐ المفضلة: ${favs}\n📢 قناة: https://t.me/mrmohamedbooks\n🤖 بوت طلب الكتب: https://t.me/KotobkMaya_bot\n💬 بوت الدعم: https://t.me/MohamedHelpDesk_bot`);}
+        // تشغيل نهائي نضيف من غير أخطاء - من غير الشريطة السوداء
+        document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{initFinal();},800);});
     </script>
+    <div class="fab-group">
+        <button class="fab telegram" onclick="window.open('https://t.me/mrmohamedbooks','_blank')" title="قناة تليجرام - 427 مشترك">✈️</button>
+        <button class="fab youtube" onclick="window.open('https://youtube.com/@kotobma3aya','_blank')" title="يوتيوب">▶️</button>
+        <button class="fab ai" onclick="toggleAIChat()" title="مساعد الذكاء الاصطناعي">🤖</button>
+    </div>
+    <footer style="text-align:center;padding:20px;background:#fff;margin-top:20px;border-top:2px solid #e2e8f0">
+        <p style="font-weight:bold;color:#0369a1">📚 منصة كتبك معايا - 427 مشترك 🎉</p>
+        <p style="font-size:12px;margin-top:6px">📢 قناة: <a href="https://t.me/mrmohamedbooks" target="_blank" style="color:#229ED9">https://t.me/mrmohamedbooks</a> - 427 مشترك</p>
+        <p style="font-size:12px">🤖 بوت طلب الكتب: <a href="https://t.me/KotobkMaya_bot" target="_blank" style="color:#0284c7">KotobkMaya_bot</a> | 💬 بوت الدعم: <a href="https://t.me/MohamedHelpDesk_bot" target="_blank" style="color:#0284c7">MohamedHelpDesk_bot</a></p>
+        <p style="font-size:11px;color:#64748b;margin-top:8px">جميع الكتب من حقوق أصحابها - ذاكرولي - وزارة التربية والتعليم - المعاصر - الامتحان</p>
+        <button onclick="showStats()" style="margin-top:8px;background:#e0f2fe;border:1px solid #0284c7;padding:5px 12px;border-radius:20px;cursor:pointer;font-size:11px">📊 إحصائيات المنصة</button>
+    </footer>
 </body>
 </html>
