@@ -14,6 +14,17 @@
   });
 </script>
 <style>
+  <div id="userLoginOverlay">
+  <div class="login-card">
+    <div style="font-size:50px;margin-bottom:10px">📚</div>
+    <h2>مرحباً في كتبك معايا</h2>
+    <p>سجل دخولك مرة واحدة عشان نقدر نرد على طلباتك وفويساتك فوراً ✅</p>
+    <input id="userNameInput" placeholder="اسمك (مثال: محمد كريم)" type="text">
+    <input id="userContactInput" placeholder="رقم واتساب أو يوزر تليجرام (01033421866)" type="text">
+    <input id="userGradeInput" placeholder="الصف الدراسي (اختياري)" type="text">
+    <button class="login-btn" onclick="saveUserLogin()">دخول المنصة 🚀</button>
+    <div style="margin-top:12px;font-size:11px;color:#94a3b8">بياناتك محفوظة فقط للرد عليك</div>
+  </div>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f8fafc;color:#1e293b;direction:rtl;text-align:right}
 header{background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;padding:25px 15px;text-align:center}
@@ -23,6 +34,13 @@ header h1{font-size:28px;margin-bottom:5px}
 #admin-login-btn{position:fixed;top:10px;left:10px;background:#ef4444;color:#fff;border:none;padding:8px 15px;border-radius:20px;cursor:pointer;z-index:999;font-weight:bold}
 #login-box,#admin-panel{display:none;background:#fff;border:2px solid #0284c7;border-radius:12px;padding:20px;margin:15px auto;max-width:500px;text-align:center}
 #login-box input,#admin-panel input,#admin-panel select{width:100%;padding:10px;margin:5px 0;border:1px solid #cbd5e1;border-radius:8px}
+  #userLoginOverlay{position:fixed;inset:0;background:rgba(2,132,199,.96);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px}
+#userLoginOverlay .login-card{background:#fff;border-radius:16px;padding:25px;max-width:400px;width:100%;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+#userLoginOverlay .login-card h2{color:#0284c7;margin-bottom:8px;font-size:22px}
+#userLoginOverlay .login-card p{color:#64748b;font-size:13px;margin-bottom:15px}
+#userLoginOverlay input{width:100%;padding:12px;margin:6px 0;border:2px solid #e2e8f0;border-radius:10px;font-size:14px;text-align:center}
+#userLoginOverlay input:focus{border-color:#0284c7;outline:none}
+#userLoginOverlay .login-btn{width:100%;background:#0284c7;color:#fff;border:none;padding:12px;border-radius:10px;font-weight:bold;font-size:15px;cursor:pointer;margin-top:10px}
 #admin-panel button{background:#0284c7;color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:bold;width:100%}
 .dropdown-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:15px;background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 5px rgba(0,0,0,.1)}
 .dropdown-container{position:relative}
@@ -634,6 +652,30 @@ function toggleRecord(){
                 else{alert('حدث خطأ أثناء الإرسال.');}
             }).catch(()=>alert('تعذر الاتصال بالخادم.'));
         }
+      const USER_KEY='km_user';
+function getUser(){try{return JSON.parse(localStorage.getItem(USER_KEY)||'null')}catch{return null}}
+function saveUserLogin(){
+  const name=document.getElementById('userNameInput').value.trim();
+  const contact=document.getElementById('userContactInput').value.trim();
+  const grade=document.getElementById('userGradeInput').value.trim();
+  if(!name||!contact){alert('اكتب اسمك ورقمك');return}
+  localStorage.setItem(USER_KEY, JSON.stringify({name,contact,grade,time:Date.now()}));
+  document.getElementById('userLoginOverlay').style.display='none';
+  location.reload();
+}
+function checkUserLogin(){
+  const user=getUser();
+  const overlay=document.getElementById('userLoginOverlay');
+  if(!overlay) return;
+  if(!user){
+    overlay.style.display='flex';
+  }else{
+    overlay.style.display='none';
+    const sN=document.getElementById('senderName'); if(sN) sN.value=user.name;
+    const sC=document.getElementById('senderContact'); if(sC) sC.value=user.contact;
+  }
+}
+setTimeout(checkUserLogin,500);
     </script>
 </body>
 </html>
