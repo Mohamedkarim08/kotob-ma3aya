@@ -580,24 +580,48 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
             }
             inputEl.value='';
         }
-        let mediaRecorder, audioChunks=[], isRecording=false;
-        function toggleRecord(){
-            const btn=document.getElementById('recordBtn');
-            if(!isRecording){
-                navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
-                    mediaRecorder=new MediaRecorder(stream); audioChunks=[];
-                    mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
-                    mediaRecorder.onstop=()=>{
-                        const blob=new Blob(audioChunks,{type:'audio/webm'});
-                        addMsg('🎤 تم إرسال تسجيل صوتي','user');
-                        addMsg('استلمت تسجيلك ✅ المسؤول هيسمعه ويرد عليك، واكتب سؤالك نصاً لو عايز حل فوري بالذكاء الاصطناعي.','bot');
-                        const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('voice',blob,'voice.webm');
-                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendVoice`,{method:'POST',body:fd});
-                    };
-                    mediaRecorder.start(); isRecording=true; btn.textContent='⏹';
-                }).catch(()=>alert('اسمح بصلاحية الميكروفون'));
-            }else{ mediaRecorder.stop(); isRecording=false; btn.textContent='🎤'; }
-        }
+       let mediaRecorder,audioChunks=[],isRecording=false;
+function toggleRecord(){
+    const btn=document.getElementById('recordBtn');
+    if(!isRecording){
+        navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
+            mediaRecorder=new MediaRecorder(stream); audioChunks=[];
+            mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
+            mediaRecorder.onstop=()=>{
+                const blob=new Blob(audioChunks,{type:'audio/webm'});
+                const file = new File([blob], "voice.webm", {type:"audio/webm"});
+                addMsg('🎤 تم إرسال تسجيل صوتي','user');
+                const loading = addMsg('جاري إرسال التسجيل للمسؤول... ⏳','bot');
+                const name = document.getElementById('senderName')?.value || 'طالب من الموقع';
+                const contact = document.getElementById('senderContact')?.value || '';
+                const fd=new FormData();
+                fd.append('chat_id',CHAT_ID);
+                fd.append('voice', file);
+                fd.append('caption', `🎤 فويس جديد من كتبك معايا\n👤 ${name}\n📞 ${contact}`);
+                fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendVoice`,{method:'POST',body:fd})
+                .then(r=>r.json()).then(d=>{
+                    if(d.ok){ 
+                        loading.textContent='✅ تم إرسال الفويس للمسؤول وهيرد عليك قريب - بوت التواصل';
+                        // ابعت معاه ازرار رد
+                        const replyMarkup = {
+                            inline_keyboard: [[
+                                {text:"📩 رد واتساب", url:`https://wa.me/${contact.replace(/^0/,'2')}`},
+                                {text:"✈️ فتح بوت الدعم", url:"https://t.me/MohamedHelpDesk_bot"}
+                            ]]
+                        };
+                        const fd2=new FormData();
+                        fd2.append('chat_id',CHAT_ID);
+                        fd2.append('text', `↩️ للرد على ${name} - رقم: ${contact}`);
+                        fd2.append('reply_markup', JSON.stringify(replyMarkup));
+                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{method:'POST',body:fd2});
+                    }
+                    else{ loading.textContent='❌ فشل: '+JSON.stringify(d); }
+                }).catch(()=>{ loading.textContent='❌ تعذر الاتصال'; });
+            };
+            mediaRecorder.start(); isRecording=true; btn.textContent='⏹'; btn.style.background='#ef4444';
+        }).catch(()=>alert('اسمح بصلاحية الميكروفون'));
+    }else{ mediaRecorder.stop(); isRecording=false; btn.textContent='🎤'; btn.style.background=''; }
+}
         function sendToTelegram(){
             const name=document.getElementById('senderName').value.trim();
             const contact=document.getElementById('senderContact').value.trim();
