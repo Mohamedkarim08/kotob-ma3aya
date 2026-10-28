@@ -895,15 +895,40 @@ function previewRegPic(input){
 }
 function getUser(){try{return JSON.parse(localStorage.getItem(USER_KEY)||'null')}catch{return null}}
 function saveUserLogin(){
-  const name=document.getElementById('userNameInput').value.trim();
-  const contact=document.getElementById('userContactInput').value.trim();
-  const grade=document.getElementById('userGradeSelect').value;
-  const birthday=document.getElementById('userBirthdayInput').value;
-  if(!name||!contact){alert('اكتب اسمك ورقمك بس');return}
-  const user={name,contact,grade,birthday,pic:tempRegPic,time:Date.now()};
-  localStorage.setItem(USER_KEY, JSON.stringify(user));
-  applyUser(user);
-  document.getElementById('userLoginOverlay').style.display='none';
+  try{
+    const nameEl = document.getElementById('userNameInput');
+    const contactEl = document.getElementById('userContactInput');
+    const gradeEl = document.getElementById('userGradeSelect');
+    const bdayEl = document.getElementById('userBirthdayInput');
+    
+    const name = nameEl ? nameEl.value.trim() : '';
+    const contact = contactEl ? contactEl.value.trim() : '';
+    const grade = gradeEl ? gradeEl.value : '';
+    const birthday = bdayEl ? bdayEl.value : '';
+    
+    if(!name || !contact){
+      alert('اكتب اسمك ورقمك يا بطل');
+      return;
+    }
+    
+    const user = {name, contact, grade, birthday, pic: tempRegPic || '', time: Date.now()};
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
+    
+    // اقفل النافذة فوراً
+    const overlay = document.getElementById('userLoginOverlay');
+    if(overlay) overlay.style.display = 'none';
+    
+    const fab = document.getElementById('profileFab');
+    if(fab) fab.style.display = 'flex';
+    
+    applyUser(user);
+    console.log('تم الحفظ', user);
+  }catch(e){
+    alert('حصل خطأ: ' + e.message);
+    console.error(e);
+    // حتى لو فيه خطأ اقفلها عشان متعلقش
+    document.getElementById('userLoginOverlay').style.display='none';
+  }
 }
 function applyUser(user){
   if(!user) return;
