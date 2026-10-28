@@ -181,7 +181,125 @@ header h1{font-size:28px;margin-bottom:5px}
 <input type="password" id="confirmPass" placeholder="رمز التأكيد">
 <button onclick="checkAdmin()" style="background:#0284c7;color:#fff;border:none;padding:10px 20px;border-radius:8px;width:100%;cursor:pointer">دخول</button>
 </div>
+<div class="dropdown-nav">
+<button class="dropdown-main-btn active" id="all-stages-btn" onclick="showAllGrades()">🌐 كل المراحل</button>
+<div class="dropdown-container" id="primary-dropdown">
+<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'primary-dropdown')">🎒 الابتدائي ▾</button>
+<div class="dropdown-menu">
+<button onclick="filterSpecificGrade('p1-card')">الصف الأول الابتدائي</button>
+<button onclick="filterSpecificGrade('p2-card')">الصف الثاني الابتدائي</button>
+<button onclick="filterSpecificGrade('p3-card')">الصف الثالث الابتدائي</button>
+<button onclick="filterSpecificGrade('p4-card')">الصف الرابع الابتدائي</button>
+<button onclick="filterSpecificGrade('p5-card')">الصف الخامس الابتدائي</button>
+<button onclick="filterSpecificGrade('p6-card')">الصف السادس الابتدائي</button>
+</div>
+</div>
+<div class="dropdown-container" id="prep-dropdown">
+<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'prep-dropdown')">📖 الإعدادي ▾</button>
+<div class="dropdown-menu">
+<button onclick="filterSpecificGrade('grade1-card')">الصف الأول الإعدادي</button>
+<button onclick="filterSpecificGrade('grade2-card')">الصف الثاني الإعدادي</button>
+<button onclick="filterSpecificGrade('grade3-card')">الصف الثالث الإعدادي</button>
+</div>
+</div>
+<div class="dropdown-container" id="sec-dropdown">
+<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'sec-dropdown')">🎓 الثانوي ▾</button>
+<div class="dropdown-menu">
+<button onclick="filterSpecificGrade('sec1-card')">الصف الأول الثانوي</button>
+<button onclick="filterSpecificGrade('sec2-sci-card')">تاني ثانوي (علمي)</button>
+<button onclick="filterSpecificGrade('sec2-art-card')">تاني ثانوي (أدبي)</button>
+<button onclick="filterSpecificGrade('sec2-bac-card')">تاني ثانوي (بكالوريا)</button>
+</div>
+</div>
+<div class="dropdown-container" id="school-dropdown">
+<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'school-dropdown')">🏛 كتب الوزارة ▾</button>
+<div class="dropdown-menu">
+<button onclick="filterSpecificGrade('sch-p1')">أولى ابتدائي (وزارة)</button>
+<button onclick="filterSpecificGrade('sch-p2')">تاني ابتدائي (وزارة)</button>
+<button onclick="filterSpecificGrade('sch-p3')">تالت ابتدائي (وزارة)</button>
+<button onclick="filterSpecificGrade('sch-p4')">رابع ابتدائي (وزارة)</button>
+<button onclick="filterSpecificGrade('sch-p5')">خامس ابتدائي (وزارة)</button>
+<button onclick="filterSpecificGrade('sch-p6')">سادس ابتدائي (وزارة)</button>
+<button onclick="filterSpecificGrade('sch-g1')">أولى إعدادي (وزارة)</button>
+<button onclick="filterSpecificGrade('sch-g2')">تاني إعدادي (وزارة)</button>
+<button onclick="filterSpecificGrade('sch-g3')">تالت إعدادي (وزارة)</button>
+<button onclick="filterSpecificGrade('sch-s1')">أولى ثانوي (وزارة)</button>
+<button onclick="filterSpecificGrade('sch-s2')">تاني ثانوي (وزارة)</button>
+</div>
+</div>
+</div>
 
+<div class="stage-section" id="primary-section">
+<div class="section-title">🎒 المرحلة الابتدائية (الكتب الخارجية والتقييمات)</div>
+<div class="grades-container">
+<div class="grade-card" id="p1-card" data-grade="true"><div class="grade-title">الصف الأول الابتدائي</div>
+<div class="book-item"><span class="book-name">كتاب المعاصر كونكت</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/397?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+</div>
+<div class="grade-card" id="p2-card" data-grade="true"><div class="grade-title">الصف الثاني الابتدائي</div>
+<div class="book-item"><span class="book-name">كتاب المعاصر كونكت</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/391?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+</div>
+<div class="grade-card" id="p3-card" data-grade="true"><div class="grade-title">الصف الثالث الابتدائي</div>
+<div class="book-item"><span class="book-name">كتاب المعاصر كونكت</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/384?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+</div>
+<div class="grade-card" id="p4-card" data-grade="true"><div class="grade-title">الصف الرابع الابتدائي</div>
+<div class="book-item"><span class="book-name">كتاب المعاصر اللغة الإنجليزية (كونكت)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/369?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+</div>
+<div class="grade-card" id="p5-card" data-grade="true"><div class="grade-title">الصف الخامس الابتدائي</div>
+<div class="book-item"><span class="book-name">كتاب المعاصر اللغة الإنجليزية (كونكت)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/378?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+</div>
+<div class="grade-card" id="p6-card" data-grade="true"><div class="grade-title">الصف السادس الابتدائي</div>
+<div class="book-item"><span class="book-name">كتاب المعاصر اللغة الإنجليزية (كونكت)</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/401?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+</div>
+</div>
+</div>
+
+<div class="stage-section" id="prep-section">
+<div class="section-title">📖 المرحلة الإعدادية (الكتب الخارجية)</div>
+<div class="grades-container">
+<div class="grade-card" id="grade1-card" data-grade="true"><div class="grade-title">الصف الأول الإعدادي</div>
+<div class="book-item"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/75?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+</div>
+<div class="grade-card" id="grade2-card" data-grade="true"><div class="grade-title">الصف الثاني الإعدادي</div>
+<div class="book-item"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/66?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+</div>
+<div class="grade-card" id="grade3-card" data-grade="true"><div class="grade-title">الصف الثالث الإعدادي</div>
+<div class="book-item"><span class="book-name">كتاب المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/150?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+</div>
+</div>
+</div>
+
+<div class="stage-section" id="sec-section">
+<div class="section-title">🎓 المرحلة الثانوية</div>
+<div class="grades-container">
+<div class="grade-card" id="sec1-card" data-grade="true"><div class="grade-title">الصف الأول الثانوي</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sec2-sci-card" data-grade="true"><div class="grade-title">تانية ثانوي علمي</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sec2-art-card" data-grade="true"><div class="grade-title">تانية ثانوي أدبي</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sec2-bac-card" data-grade="true"><div class="grade-title">تانية ثانوي بكالوريا</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+</div>
+</div>
+
+<div class="stage-section" id="school-books-section">
+<div class="section-title">🏛 كتب الوزارة</div>
+<div class="grades-container">
+<div class="grade-card" id="sch-p1" data-grade="true"><div class="grade-title">أولى ابتدائي وزارة</div><div class="book-item"><span class="book-name">قريباً كتاب الوزارة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sch-p2" data-grade="true"><div class="grade-title">تانية ابتدائي وزارة</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sch-p3" data-grade="true"><div class="grade-title">تالتة ابتدائي وزارة</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sch-p4" data-grade="true"><div class="grade-title">رابعة ابتدائي وزارة</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sch-p5" data-grade="true"><div class="grade-title">خامسة ابتدائي وزارة</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sch-p6" data-grade="true"><div class="grade-title">ساتة ابتدائي وزارة</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sch-g1" data-grade="true"><div class="grade-title">أولى إعدادي وزارة</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sch-g2" data-grade="true"><div class="grade-title">تانية إعدادي وزارة</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sch-g3" data-grade="true"><div class="grade-title">تالتة إعدادي وزارة</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sch-s1" data-grade="true"><div class="grade-title">أولى ثانوي وزارة</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+<div class="grade-card" id="sch-s2" data-grade="true"><div class="grade-title">تانية ثانوي وزارة</div><div class="book-item"><span class="book-name">قريباً</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+</div>
+</div>
+
+<div class="support-container">
+<div class="support-box"><h3>🤖 بوت طلب الكتب</h3><p>لو مش لاقي كتاب معين؟ اطلبه من خلال البوت المخصص للطلبات.</p><br><a href="https://t.me/KotobkMaya_bot" target="_blank" class="nav-btn nav-btn-green">اطلب كتابك هنا</a></div>
+<div class="support-box"><h3>💬 الدعم الفني</h3><p>تواجه مشكلة في التحميل أو الرابط؟ تواصل معنا مباشرة.</p><br><a href="https://t.me/MohamedHelpDesk_bot" target="_blank" class="nav-btn">تواصل مع الدعم</a></div>
+<div class="support-box"><h3>💚 جروب الواتساب</h3><p>انضم لجروب الواتساب الرسمي لإرسال الكتب أيضاً</p><br><a href="https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A?s=cl&p=a&mlu=4&ilr=4&iam=2" target="_blank" class="nav-btn" style="background:#25D366">💬 انضم للجروب</a></div>
+</div>
 <div id="admin-panel">
 <h3>لوحة تحكم المسؤول - إضافة كتاب جديد</h3>
 <select id="gradeSelect">
