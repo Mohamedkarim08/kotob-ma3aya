@@ -907,7 +907,14 @@ function applyUser(user){
   if(fab){
     if(user.pic){fab.innerHTML=`<img src="${user.pic}">`;} else {fab.textContent=user.name.charAt(0).toUpperCase();}
   }
-  if(user.grade){filterSpecificGrade(user.grade);}else{showAllGrades();}
+  showAllGrades();
+  if(user.grade){
+    const myCard = document.getElementById(user.grade);
+    if(myCard){
+      myCard.style.border = "2px solid #0284c7";
+      myCard.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  }
 }
 function checkUserLogin(){
   const user=getUser();
