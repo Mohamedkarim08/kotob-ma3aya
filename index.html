@@ -389,7 +389,7 @@ header h1{font-size:28px;margin-bottom:5px}
         });
     </script>
 
-    <div id="ai-fab" onclick="toggleAIChat()">🤖 حل الواجب بالذكاء الاصطناعي</div>
+       <div id="ai-fab" onclick="toggleAIChat()">🤖 حل الواجب بالذكاء الاصطناعي</div>
 
     <div id="ai-chat-window">
         <div class="ai-chat-header"><span>🤖 مساعد كتبك معايا - حل الواجب</span><button onclick="toggleAIChat()">✕</button></div>
@@ -399,7 +399,7 @@ header h1{font-size:28px;margin-bottom:5px}
         <div id="adminForm" style="display: none; padding: 12px; background-color: #ffffff; flex-direction: column; gap: 8px; border-bottom: 1px solid #e2e8f0;">
             <h4 style="color: #0284c7; margin-bottom: 2px; font-size: 13px; text-align: right;">📝 اكتب طلبك أو مشكلتك للمسؤول:</h4>
             <input type="text" id="senderName" placeholder="اسمك" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; text-align: right;">
-            <input type="text" id="senderContact" placeholder="يوزر تليجرام أو رقم الموبايل للتواصل" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; text-align: right;">
+            <input type="text" id="senderContact" placeholder="يوزر تليجرام أو رقم الموبايل" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; text-align: right;">
             <textarea id="senderMsg" placeholder="اكتب تفاصيل مشكلتك هنا..." rows="2" style="padding: 7px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; resize: none; text-align: right;"></textarea>
             <div style="display: flex; gap: 5px;">
                 <button onclick="sendToTelegram()" style="flex: 1; background-color: #10b981; color: white; border: none; padding: 7px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px;">إرسال للمسؤول 🚀</button>
@@ -410,7 +410,7 @@ header h1{font-size:28px;margin-bottom:5px}
             <div class="ai-msg bot">أهلاً بك يا بطل! أنا مساعدك الذكي في منصة "كتبك معايا". اكتب أي سؤال واجب وهحله لك، أو ابعت صورة الواجب من زرار 📎 أو سجل صوتك من 🎤 وهحلها لك فوراً.</div>
         </div>
         <div class="ai-chat-footer">
-            <button class="icon-btn" onclick="document.getElementById('fileInput').click()" title="صورة أو ملف أو أغنية">📎</button>
+            <button class="icon-btn" onclick="document.getElementById('fileInput').click()" title="صورة أو ملف">📎</button>
             <button class="icon-btn" id="recordBtn" onclick="toggleRecord()" title="تسجيل صوتي">🎤</button>
             <input type="text" id="aiUserInput" placeholder="اكتب سؤال الواجب هنا..." onkeypress="if(event.key==='Enter') sendAIMessage()">
             <button onclick="sendAIMessage()">إرسال</button>
@@ -420,14 +420,9 @@ header h1{font-size:28px;margin-bottom:5px}
 
     <script>
        const SECURE_WORKER_URL = 'https://aged-credit-e207.mrmohamedkarim601.workers.dev/';
-const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
-const BOT_TOKEN = _t.join(':');
-const CHAT_ID = '5698534303';
-
-       const SECURE_WORKER_URL = 'https://aged-credit-e207.mrmohamedkarim601.workers.dev/';
-const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
-const BOT_TOKEN = _t.join(':');
-const CHAT_ID = '5698534303';
+       const _t = ['8605538102', 'AAGB_22VSlK9_kmMefEAt0TQKDfiv6OBZOM'];
+       const BOT_TOKEN = _t.join(':');
+       const CHAT_ID = '5698534303';
 
 function toggleAIChat(){
     const win = document.getElementById('ai-chat-window');
@@ -440,8 +435,7 @@ function toggleAIChat(){
 }
 function showAdminForm(){document.getElementById('adminForm').style.display='flex';}
 function hideAdminForm(){document.getElementById('adminForm').style.display='none';}
-        function showAdminForm(){document.getElementById('adminForm').style.display='flex';}
-        function hideAdminForm(){document.getElementById('adminForm').style.display='none';}
+
         function addMsg(text, cls){
             const b=document.getElementById('aiChatBody');
             const d=document.createElement('div'); d.className='ai-msg '+cls; d.textContent=text; b.appendChild(d); b.scrollTop=b.scrollHeight; return d;
@@ -451,36 +445,23 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
             const d=document.createElement('div'); d.className='ai-msg '+cls; d.innerHTML=html; b.appendChild(d); b.scrollTop=b.scrollHeight; return d;
         }
         async function askGemini(prompt, imageBase64=null, mimeType=null){
-    try{
-        const res = await fetch(SECURE_WORKER_URL, {
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ prompt, imageBase64, mimeType })
-        });
-        const data = await res.json();
-        if(data.error) return 'خطأ من السيرفر: ' + JSON.stringify(data.error);
-        return data.candidates?.[0]?.content?.parts?.[0]?.text || 'الصورة مش واضحة، ابعتها أوضح أو اكتب السؤال نصاً.';
-    }catch(e){
-        return 'حصل خطأ في الاتصال بالسيرفر الآمن. تأكد ان الـ Worker معموله Deploy.';
-    }
-}
-            }
-            const parts=[{text: "أنت مدرس مصري خبير لمنصة كتبك معايا لجميع الصفوف من أولى ابتدائي لحد تانية ثانوي. حل السؤال بالعربي خطوة بخطوة وبشكل مبسط، ولو اختيار من متعدد اختر الصح وعلل. السؤال: "+prompt}];
-            if(imageBase64){ parts.push({inline_data:{mime_type:mimeType, data:imageBase64}}); }
             try{
-                const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,{
-                    method:'POST', headers:{'Content-Type':'application/json'},
-                    body:JSON.stringify({contents:[{parts:parts}]})
+                const res = await fetch(SECURE_WORKER_URL, {
+                    method:'POST',
+                    headers:{'Content-Type':'application/json'},
+                    body: JSON.stringify({ prompt, imageBase64, mimeType })
                 });
-                const data=await res.json();
-                if(data.error) return 'مفتاح الذكاء الاصطناعي فيه مشكلة، تأكد منه.';
+                const data = await res.json();
+                if(data.error) return 'خطأ من السيرفر: ' + JSON.stringify(data.error);
                 return data.candidates?.[0]?.content?.parts?.[0]?.text || 'الصورة مش واضحة، ابعتها أوضح أو اكتب السؤال نصاً.';
-            }catch(e){ return 'حصل خطأ في الاتصال، جرب تاني.'; }
+            }catch(e){
+                return 'حصل خطأ في الاتصال بالسيرفر الآمن.';
+            }
         }
         function normalizeArabic(str){
             return (str||'').toLowerCase()
-                .replace(/[ً-ٰٟ]/g,'')
-                .replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/إ|أ|آ/g,'ا')
+                .replace(/[\u064B-\u065F\u0670]/g,'')
+                .replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/[إأآ]/g,'ا')
                 .replace(/[()]/g,' ')
                 .replace(/\s+/g,' ').trim();
         }
@@ -518,8 +499,8 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
         }
       function getLocalReply(msg){
     const t = (msg||'').trim();
-    const norm = t.replace(/[ً-ٰٟ]/g,'').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/إ|أ|آ/g,'ا');
-    if(norm.includes('السلام عليكم') || t==='سلام' || t==='السلام' || norm.includes('السلام عليكم ورحمه')){
+    const norm = normalizeArabic(msg);
+    if(norm.includes('السلام عليكم') || t==='سلام' || t==='السلام'){
         return 'وعليكم السلام ورحمة الله وبركاته يا بطل 👋\nأهلاً بيك في منصة "كتبك معايا".\nاكتب سؤال الواجب أو ابعت صورته وهحلهولك فوراً.';
     }
     if(norm.includes('اهلا') || norm.includes('مرحبا') || t==='هاي' || norm.includes('صباح الخير') || norm.includes('مساء الخير')){
@@ -537,11 +518,8 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
     const input=document.getElementById('aiUserInput');
     const text=input.value.trim(); if(!text) return;
     addMsg(text,'user'); input.value='';
-    
-    // الرد المحلي على السلام والتحيات من غير Gemini
     const localReply = getLocalReply(text);
     if(localReply){ addMsg(localReply,'bot'); return; }
-    
     const loading=addMsg('جاري التفكير والحل... ⏳','bot');
             const normText = normalizeArabic(text);
             const isBookRequest = /(كتاب|تقييمات|تحميل|عايز|هات|ابحث|رابط|لينك)/.test(normText);
@@ -581,11 +559,7 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
                 }
             }
             const ans = await askGemini(text);
-            if(ans===null){
-                loading.textContent='⚠ حل الواجب محتاج مفتاح Gemini من المسؤول. لو عايز كتاب اكتب اسمه وصفّه وهطلعهولك فوراً.';
-            }else{
-                loading.textContent=ans;
-            }
+            loading.textContent=ans;
         }
         function handleFileUpload(inputEl){
             const file=inputEl.files[0]; if(!file) return;
@@ -596,13 +570,7 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
                 reader.onload=async ()=>{
                     const base64=reader.result.split(',')[1];
                     const ans=await askGemini('حل كل الأسئلة اللي في الصورة دي بالتفصيل سؤال سؤال', base64, file.type);
-                    if(ans===null){
-                        loading.textContent='⚠ حل الصور محتاج مفتاح Gemini، الصورة هتتبعت للمسؤول.';
-                        const fd=new FormData(); fd.append('chat_id',CHAT_ID); fd.append('photo',file); fd.append('caption','🖼 صورة واجب جديدة محتاجة حل');
-                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`,{method:'POST',body:fd});
-                    }else{
-                        loading.textContent=ans;
-                    }
+                    loading.textContent=ans;
                 };
                 reader.readAsDataURL(file);
             }else{
