@@ -176,9 +176,16 @@ header h1{font-size:28px;margin-bottom:5px}
 </div>
 
 <div id="login-box">
+<div id="login-box">
 <h3>تسجيل دخول المسؤول</h3>
+<div style="position:relative">
 <input type="password" id="adminPass" placeholder="كلمة المرور">
+<button type="button" onclick="togglePass('adminPass',this)" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:18px">👁️</button>
+</div>
+<div style="position:relative">
 <input type="password" id="confirmPass" placeholder="رمز التأكيد">
+<button type="button" onclick="togglePass('confirmPass',this)" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:18px">👁️</button>
+</div>
 <button onclick="checkAdmin()" style="background:#0284c7;color:#fff;border:none;padding:10px 20px;border-radius:8px;width:100%;cursor:pointer">دخول</button>
 </div>
 
