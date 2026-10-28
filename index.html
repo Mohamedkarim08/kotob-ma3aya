@@ -585,12 +585,18 @@ header h1{font-size:28px;margin-bottom:5px}
                 document.querySelectorAll('.dropdown-container').forEach(item=>{item.classList.remove('show');});
             }
         }
-        function showAllGrades(){
-            document.querySelectorAll('.grade-card').forEach(card=>{card.style.display='block';});
-            document.querySelectorAll('.stage-section').forEach(sec=>{sec.style.display='block';});
-            document.querySelectorAll('.dropdown-main-btn').forEach(btn=>{btn.classList.remove('active');});
-            document.getElementById('all-stages-btn').classList.add('active');
-        }
+       function showAllGrades(){
+    document.querySelectorAll('.grade-card').forEach(card=>{
+      card.style.display='block';
+      card.style.border='';
+    });
+    document.querySelectorAll('.stage-section').forEach(sec=>{sec.style.display='block';});
+    document.querySelectorAll('.book-item').forEach(item=>{item.style.display='flex';});
+    document.querySelectorAll('.dropdown-main-btn').forEach(btn=>{btn.classList.remove('active');});
+    document.getElementById('all-stages-btn').classList.add('active');
+    const sInput = document.getElementById('searchInput');
+    if(sInput) sInput.value='';
+}
         function filterSpecificGrade(gradeId){
             document.querySelectorAll('.grade-card').forEach(card=>{card.style.display=(card.id===gradeId)?'block':'none';});
             document.querySelectorAll('.stage-section').forEach(sec=>{
