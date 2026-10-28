@@ -735,30 +735,85 @@ function toggleRecord(){
                 else{alert('حدث خطأ أثناء الإرسال.');}
             }).catch(()=>alert('تعذر الاتصال بالخادم.'));
         }
-      const USER_KEY='km_user';
+     const USER_KEY='km_user';
+let tempRegPic = '';
+function previewRegPic(input){
+  const file=input.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    tempRegPic=e.target.result;
+    document.getElementById('regPicPreview').src=tempRegPic;
+    document.getElementById('regPicPreview').style.display='block';
+    document.getElementById('regPicIcon').style.display='none';
+  };
+  reader.readAsDataURL(file);
+}
 function getUser(){try{return JSON.parse(localStorage.getItem(USER_KEY)||'null')}catch{return null}}
 function saveUserLogin(){
   const name=document.getElementById('userNameInput').value.trim();
   const contact=document.getElementById('userContactInput').value.trim();
-  const grade=document.getElementById('userGradeInput').value.trim();
-  if(!name||!contact){alert('اكتب اسمك ورقمك');return}
-  localStorage.setItem(USER_KEY, JSON.stringify({name,contact,grade,time:Date.now()}));
+  const grade=document.getElementById('userGradeSelect').value;
+  const birthday=document.getElementById('userBirthdayInput').value;
+  if(!name||!contact){alert('اكتب اسمك ورقمك بس');return}
+  const user={name,contact,grade,birthday,pic:tempRegPic,time:Date.now()};
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
+  applyUser(user);
   document.getElementById('userLoginOverlay').style.display='none';
-  location.reload();
+}
+function applyUser(user){
+  if(!user) return;
+  const sN=document.getElementById('senderName'); if(sN) sN.value=user.name;
+  const sC=document.getElementById('senderContact'); if(sC) sC.value=user.contact;
+  const fab=document.getElementById('profileFab');
+  if(fab){
+    if(user.pic){fab.innerHTML=`<img src="${user.pic}">`;} else {fab.textContent=user.name.charAt(0).toUpperCase();}
+  }
+  if(user.grade){filterSpecificGrade(user.grade);}else{showAllGrades();}
 }
 function checkUserLogin(){
   const user=getUser();
   const overlay=document.getElementById('userLoginOverlay');
-  if(!overlay) return;
-  if(!user){
-    overlay.style.display='flex';
-  }else{
-    overlay.style.display='none';
-    const sN=document.getElementById('senderName'); if(sN) sN.value=user.name;
-    const sC=document.getElementById('senderContact'); if(sC) sC.value=user.contact;
-  }
+  if(!user){overlay.style.display='flex'; document.getElementById('profileFab').style.display='none';}
+  else{overlay.style.display='none'; document.getElementById('profileFab').style.display='flex'; applyUser(user);}
 }
-setTimeout(checkUserLogin,500);
+function openProfile(){
+  const user=getUser(); if(!user) return;
+  document.getElementById('profileName').value=user.name||'';
+  document.getElementById('profileContact').value=user.contact||'';
+  document.getElementById('profileGrade').value=user.grade||'';
+  document.getElementById('profileBirthday').value=user.birthday||'';
+  if(user.pic){
+    document.getElementById('profilePicPreview').src=user.pic;
+    document.getElementById('profilePicPreview').style.display='block';
+    document.getElementById('profilePicIcon').style.display='none';
+  }
+  document.getElementById('profileModal').style.display='flex';
+}
+function closeProfile(){document.getElementById('profileModal').style.display='none';}
+function updateProfilePic(input){
+  const file=input.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const pic=e.target.result;
+    document.getElementById('profilePicPreview').src=pic;
+    document.getElementById('profilePicPreview').style.display='block';
+    document.getElementById('profilePicIcon').style.display='none';
+    const user=getUser(); if(user){user.pic=pic; localStorage.setItem(USER_KEY, JSON.stringify(user)); applyUser(user);}
+  };
+  reader.readAsDataURL(file);
+}
+function saveProfile(){
+  const user=getUser()||{};
+  user.name=document.getElementById('profileName').value.trim();
+  user.contact=document.getElementById('profileContact').value.trim();
+  user.grade=document.getElementById('profileGrade').value;
+  user.birthday=document.getElementById('profileBirthday').value;
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
+  applyUser(user);
+  closeProfile();
+}
+function logoutUser(){if(confirm('تخرج من حسابك؟')){localStorage.removeItem(USER_KEY); location.reload();}}
+setTimeout(checkUserLogin,400);
     </script>
 </body>
 </html>
