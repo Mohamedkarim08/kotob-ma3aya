@@ -18,26 +18,12 @@
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({ appId: "1cf7b516-6fdb-4678-997b-4810e0db7cab" });
   });
-  // يشيل الكتب المتكررة تلقائياً - يسيب أول نسخة ويمسح التانية
-window.addEventListener('DOMContentLoaded', () => {
-  const seen = new Set();
-  document.querySelectorAll('.grade-card').forEach(card => {
-    if (seen.has(card.id)) {
-      card.remove(); // ده المكرر - امسحه
-    } else {
-      seen.add(card.id);
-    }
-  });
-  // يشيل كمان الـ dropdown-nav المتكرر لو فيه
-  const navs = document.querySelectorAll('.dropdown-nav');
-  if (navs.length > 1) {
-    for (let i = 1; i < navs.length; i++) navs[i].remove();
-  }
-  // يشيل الـ support-container المتكرر
-  const supports = document.querySelectorAll('.support-container');
-  if (supports.length > 1) {
-    for (let i = 1; i < supports.length; i++) supports[i].remove();
-  }
+ // اعرض كل الكتب دايماً أول ما الصفحة تفتح
+window.addEventListener('load', () => {
+  showAllGrades();
+  // الغي أي فلترة قديمة
+  document.querySelectorAll('.grade-card').forEach(c => c.style.display = 'block');
+  document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
 });
 </script>
 <style>
