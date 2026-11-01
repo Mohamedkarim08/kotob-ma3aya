@@ -15,6 +15,10 @@
   });
 </script>
 <style>
+  .input-error{border:2px solid #ef4444 !important;background:#fef2f2 !important;animation:shake 0.3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.error-msg{color:#ef4444;font-size:11px;margin:-2px 0 5px 0;display:none;text-align:right}
+.error-msg.show{display:block}
   .social-links-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:12px;background:#f0f9ff;border-bottom:2px solid #e0f2fe}
 .social-btn{padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:700;font-size:14px;color:#fff;transition:0.2s;display:inline-flex;align-items:center;gap:6px}
 .social-btn.telegram{background:#229ED9} .social-btn.whatsapp{background:#25D366} .social-btn.bot{background:#7c3aed}
