@@ -21,6 +21,7 @@ window.addEventListener('load', () => {
   document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
 });
 </script>
+  document.querySelectorAll('.stage-section').forEach((el,i,arr)=>{if(arr.findIndex(e=>e.id===el.id)!==i)el.remove()});document.querySelectorAll('.support-container').forEach((el,i)=>{if(i>0)el.remove()});
 <style>
   .social-links-bar{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;padding:15px;background:#f0f9ff;border-bottom:2px solid #e0f2fe}.social-btn{padding:12px 20px;border-radius:25px;text-decoration:none;font-weight:700;font-size:14px;color:#fff;transition:.2s;display:inline-flex;align-items:center;gap:6px}.social-btn.telegram{background:#229ED9}.social-btn.whatsapp{background:#25D366}.social-btn.bot{background:#7c3aed}.social-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
   .social-links-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:12px;background:#f0f9ff;border-bottom:2px solid #e0f2fe}
