@@ -895,40 +895,51 @@ function previewRegPic(input){
 }
 function getUser(){try{return JSON.parse(localStorage.getItem(USER_KEY)||'null')}catch{return null}}
 function saveUserLogin(){
-  try{
-    const nameEl = document.getElementById('userNameInput');
-    const contactEl = document.getElementById('userContactInput');
-    const gradeEl = document.getElementById('userGradeSelect');
-    const bdayEl = document.getElementById('userBirthdayInput');
-    
-    const name = nameEl ? nameEl.value.trim() : '';
-    const contact = contactEl ? contactEl.value.trim() : '';
-    const grade = gradeEl ? gradeEl.value : '';
-    const birthday = bdayEl ? bdayEl.value : '';
-    
-    if(!name || !contact){
-      alert('اكتب اسمك ورقمك يا بطل');
-      return;
-    }
-    
-    const user = {name, contact, grade, birthday, pic: tempRegPic || '', time: Date.now()};
-    localStorage.setItem(USER_KEY, JSON.stringify(user));
-    
-    // اقفل النافذة فوراً
-    const overlay = document.getElementById('userLoginOverlay');
-    if(overlay) overlay.style.display = 'none';
-    
-    const fab = document.getElementById('profileFab');
-    if(fab) fab.style.display = 'flex';
-    
-    applyUser(user);
-    console.log('تم الحفظ', user);
-  }catch(e){
-    alert('حصل خطأ: ' + e.message);
-    console.error(e);
-    // حتى لو فيه خطأ اقفلها عشان متعلقش
-    document.getElementById('userLoginOverlay').style.display='none';
+  // يدور على الاسم بأي ID موجود
+  const nameEl = document.getElementById('userNameInput') || document.getElementById('loginName') || document.getElementById('userName');
+  const contactEl = document.getElementById('userContactInput') || document.getElementById('loginContact') || document.getElementById('userContact');
+  const gradeEl = document.getElementById('userGradeSelect') || document.getElementById('loginGrade') || document.getElementById('gradeSelect');
+  const birthEl = document.getElementById('userBirthdayInput') || document.getElementById('loginBirth');
+  
+  const name = nameEl ? nameEl.value.trim() : '';
+  const contact = contactEl ? contactEl.value.trim() : '';
+  const grade = gradeEl ? gradeEl.value : '';
+  const birthday = birthEl ? birthEl.value : '';
+  
+  console.log('محاولة دخول:', name, contact); // عشان نشوف في الـ Console
+  
+  if(!name || !contact){
+    alert('اكتب اسمك ورقم الواتساب');
+    return;
   }
+  
+  const user = {
+    name: name,
+    contact: contact,
+    grade: grade,
+    birthday: birthday,
+    pic: (typeof tempRegPic !== 'undefined' ? tempRegPic : '') || '',
+    time: Date.now()
+  };
+  
+  localStorage.setItem('km_user', JSON.stringify(user));
+  
+  const overlay = document.getElementById('userLoginOverlay');
+  if(overlay) overlay.style.display = 'none';
+  
+  const fab = document.getElementById('profileFab');
+  if(fab){
+    fab.style.display = 'flex';
+    if(user.pic){
+      fab.innerHTML = `<img src="${user.pic}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+    } else {
+      fab.textContent = user.name.charAt(0).toUpperCase();
+    }
+  }
+  
+  if(typeof showAllGrades === 'function') showAllGrades();
+  alert('تم الدخول بنجاح ✅');
+}
   }
   try{
     const nameEl = document.getElementById('userNameInput');
