@@ -731,7 +731,7 @@ function hideAdminForm(){document.getElementById('adminForm').style.display='non
     const t = (msg||'').trim();
     const norm = normalizeArabic(msg);
     if(norm.includes('السلام عليكم') || t==='سلام' || t==='السلام'){
-        return 'وعليكم السلام ورحمة الله وبركاته يا بطل 👋\nأهلاً بيك في منصة "كتبك معايا".\nاكتب سؤال الواجب أو ابعت صورته وهحلهولك فوراً.';
+        return 'وعليكم السلام ورحمة الله وبركاته يا بطل 👋\nأهلاً بيك في مكتبة "كتبك معايا".\nاكتب سؤال الواجب أو ابعت صورته وهحلهولك فوراً.';
     }
     if(norm.includes('اهلا') || norm.includes('مرحبا') || t==='هاي' || norm.includes('صباح الخير') || norm.includes('مساء الخير')){
         return 'أهلاً وسهلاً بيك يا بطل 👋\nأنا مساعدك الذكي في "كتبك معايا"، ابعت سؤال الواجب اللي واقف معاك وهحلهولك على طول.';
