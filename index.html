@@ -899,87 +899,105 @@ function previewRegPic(input){
 }
 function getUser(){try{return JSON.parse(localStorage.getItem(USER_KEY)||'null')}catch{return null}}
 function saveUserLogin(){
-  // يدور على الاسم بأي ID موجود
-  const nameEl = document.getElementById('userNameInput') || document.getElementById('loginName') || document.getElementById('userName');
-  const contactEl = document.getElementById('userContactInput') || document.getElementById('loginContact') || document.getElementById('userContact');
-  const gradeEl = document.getElementById('userGradeSelect') || document.getElementById('loginGrade') || document.getElementById('gradeSelect');
+  const nameEl = document.getElementById('userNameInput') || document.getElementById('loginName');
+  const contactEl = document.getElementById('userContactInput') || document.getElementById('loginContact');
+  const gradeEl = document.getElementById('userGradeSelect') || document.getElementById('loginGrade');
   const birthEl = document.getElementById('userBirthdayInput') || document.getElementById('loginBirth');
-  
-  const name = nameEl ? nameEl.value.trim() : '';
-  const contact = contactEl ? contactEl.value.trim() : '';
-  const grade = gradeEl ? gradeEl.value : '';
-  const birthday = birthEl ? birthEl.value : '';
-  
-  console.log('محاولة دخول:', name, contact); // عشان نشوف في الـ Console
-  
-  if(!name || !contact){
-    alert('اكتب اسمك ورقم الواتساب');
-    return;
+
+  // شيل أي أخطاء قديمة
+  [nameEl, contactEl].forEach(el=>{
+    if(el){el.classList.remove('input-error'); const msg=el.parentNode.querySelector('.error-msg'); if(msg) msg.classList.remove('show');}
+  });
+
+  let hasError = false;
+  let firstErrorEl = null;
+
+  // 1- تحقق من الاسم
+  if(!nameEl || !nameEl.value.trim()){
+    if(nameEl){
+      nameEl.classList.add('input-error');
+      let msg = nameEl.nextElementSibling;
+      if(!msg || !msg.classList.contains('error-msg')){
+        msg = document.createElement('div');
+        msg.className = 'error-msg';
+        msg.textContent = '⚠️ من فضلك اكتب اسمك';
+        nameEl.parentNode.insertBefore(msg, nameEl.nextSibling);
+      }
+      msg.classList.add('show');
+      if(!firstErrorEl) firstErrorEl = nameEl;
+    }
+    hasError = true;
   }
-  
+
+  // 2- تحقق من رقم الواتساب
+  if(!contactEl || !contactEl.value.trim()){
+    if(contactEl){
+      contactEl.classList.add('input-error');
+      let msg = contactEl.nextElementSibling;
+      if(!msg || !msg.classList.contains('error-msg')){
+        msg = document.createElement('div');
+        msg.className = 'error-msg';
+        msg.textContent = '⚠️ من فضلك اكتب رقم الواتساب';
+        contactEl.parentNode.insertBefore(msg, contactEl.nextSibling);
+      }
+      msg.classList.add('show');
+      if(!firstErrorEl) firstErrorEl = contactEl;
+    }
+    hasError = true;
+  } else if(contactEl && contactEl.value.trim().length < 10){
+    contactEl.classList.add('input-error');
+    let msg = contactEl.nextElementSibling;
+    if(!msg || !msg.classList.contains('error-msg')){
+      msg = document.createElement('div');
+      msg.className = 'error-msg';
+      contactEl.parentNode.insertBefore(msg, contactEl.nextSibling);
+    }
+    msg.textContent = '⚠️ الرقم قصير جداً';
+    msg.classList.add('show');
+    if(!firstErrorEl) firstErrorEl = contactEl;
+    hasError = true;
+  }
+
+  // لو فيه خطأ - وقف وميدخلش
+  if(hasError){
+    if(firstErrorEl){
+      firstErrorEl.focus();
+      firstErrorEl.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    // هز الكارت
+    const card = document.querySelector('#userLoginOverlay .login-card');
+    if(card){card.style.animation='shake 0.3s'; setTimeout(()=>card.style.animation='',300);}
+    return; // ميكملش دخول
+  }
+
+  // لو كله تمام - ادخل
   const user = {
-    name: name,
-    contact: contact,
-    grade: grade,
-    birthday: birthday,
+    name: nameEl.value.trim(),
+    contact: contactEl.value.trim(),
+    grade: gradeEl ? gradeEl.value : '',
+    birthday: birthEl ? birthEl.value : '',
     pic: (typeof tempRegPic !== 'undefined' ? tempRegPic : '') || '',
     time: Date.now()
   };
-  
+
   localStorage.setItem('km_user', JSON.stringify(user));
-  
-  const overlay = document.getElementById('userLoginOverlay');
-  if(overlay) overlay.style.display = 'none';
-  
+  document.getElementById('userLoginOverlay').style.display='none';
   const fab = document.getElementById('profileFab');
   if(fab){
-    fab.style.display = 'flex';
-    if(user.pic){
-      fab.innerHTML = `<img src="${user.pic}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
-    } else {
-      fab.textContent = user.name.charAt(0).toUpperCase();
-    }
+    fab.style.display='flex';
+    fab.textContent = user.name.charAt(0).toUpperCase();
   }
-  
   if(typeof showAllGrades === 'function') showAllGrades();
-  alert('تم الدخول بنجاح ✅');
 }
+
+ // شيل الأحمر أول ما يبدأ يكتب
+document.addEventListener('input', (e)=>{
+  if(e.target.matches('#userNameInput, #loginName, #userContactInput, #loginContact')){
+    e.target.classList.remove('input-error');
+    const msg = e.target.nextElementSibling;
+    if(msg && msg.classList.contains('error-msg')) msg.classList.remove('show');
   }
-  try{
-    const nameEl = document.getElementById('userNameInput');
-    const contactEl = document.getElementById('userContactInput');
-    const gradeEl = document.getElementById('userGradeSelect');
-    const bdayEl = document.getElementById('userBirthdayInput');
-    
-    const name = nameEl ? nameEl.value.trim() : '';
-    const contact = contactEl ? contactEl.value.trim() : '';
-    const grade = gradeEl ? gradeEl.value : '';
-    const birthday = bdayEl ? bdayEl.value : '';
-    
-    if(!name || !contact){
-      alert('اكتب اسمك ورقمك يا بطل');
-      return;
-    }
-    
-    const user = {name, contact, grade, birthday, pic: tempRegPic || '', time: Date.now()};
-    localStorage.setItem(USER_KEY, JSON.stringify(user));
-    
-    // اقفل النافذة فوراً
-    const overlay = document.getElementById('userLoginOverlay');
-    if(overlay) overlay.style.display = 'none';
-    
-    const fab = document.getElementById('profileFab');
-    if(fab) fab.style.display = 'flex';
-    
-    applyUser(user);
-    console.log('تم الحفظ', user);
-  }catch(e){
-    alert('حصل خطأ: ' + e.message);
-    console.error(e);
-    // حتى لو فيه خطأ اقفلها عشان متعلقش
-    document.getElementById('userLoginOverlay').style.display='none';
-  }
-}
+});
 function applyUser(user){
   if(!user) return;
   const sN=document.getElementById('senderName'); if(sN) sN.value=user.name;
