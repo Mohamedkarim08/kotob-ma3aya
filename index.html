@@ -904,100 +904,69 @@ function saveUserLogin(){
   const gradeEl = document.getElementById('userGradeSelect') || document.getElementById('loginGrade');
   const birthEl = document.getElementById('userBirthdayInput') || document.getElementById('loginBirth');
 
-  // شيل أي أخطاء قديمة
-  [nameEl, contactEl].forEach(el=>{
-    if(el){el.classList.remove('input-error'); const msg=el.parentNode.querySelector('.error-msg'); if(msg) msg.classList.remove('show');}
-  });
+  document.querySelectorAll('.error-msg').forEach(m=>m.remove());
+  [nameEl, contactEl].forEach(el=>{ if(el) el.classList.remove('input-error'); });
 
   let hasError = false;
-  let firstErrorEl = null;
+  let firstError = null;
 
-  // 1- تحقق من الاسم
-  if(!nameEl || !nameEl.value.trim()){
-    if(nameEl){
-      nameEl.classList.add('input-error');
-      let msg = nameEl.nextElementSibling;
-      if(!msg || !msg.classList.contains('error-msg')){
-        msg = document.createElement('div');
-        msg.className = 'error-msg';
-        msg.textContent = '⚠️ من فضلك اكتب اسمك';
-        nameEl.parentNode.insertBefore(msg, nameEl.nextSibling);
-      }
-      msg.classList.add('show');
-      if(!firstErrorEl) firstErrorEl = nameEl;
-    }
+  const showError = (el, text)=>{
+    if(!el) return;
+    el.classList.add('input-error');
+    const msg = document.createElement('div');
+    msg.className = 'error-msg show';
+    msg.style.cssText = 'color:#ef4444;font-size:12px;margin:4px 0 6px 0;display:block;text-align:center;font-weight:700;background:#fef2f2;padding:5px;border-radius:6px;border:1px solid #fecaca';
+    msg.textContent = text;
+    el.parentNode.insertBefore(msg, el.nextSibling);
+    if(!firstError) firstError = el;
     hasError = true;
+  };
+
+  const nameVal = nameEl ? nameEl.value.trim() : '';
+  const contactVal = contactEl ? contactEl.value.trim() : '';
+
+  if(!nameVal){
+    showError(nameEl, '⚠ من فضلك اكتب اسمك');
+  } else {
+    const parts = nameVal.split(/\s+/).filter(p=>p.length>=2);
+    if(parts.length < 3){
+      showError(nameEl, '⚠ اكتب الاسم ثلاثي (مثال: محمد أحمد علي)');
+    }
   }
 
-  // 2- تحقق من رقم الواتساب
-  if(!contactEl || !contactEl.value.trim()){
-    if(contactEl){
-      contactEl.classList.add('input-error');
-      let msg = contactEl.nextElementSibling;
-      if(!msg || !msg.classList.contains('error-msg')){
-        msg = document.createElement('div');
-        msg.className = 'error-msg';
-        msg.textContent = '⚠️ من فضلك اكتب رقم الواتساب';
-        contactEl.parentNode.insertBefore(msg, contactEl.nextSibling);
-      }
-      msg.classList.add('show');
-      if(!firstErrorEl) firstErrorEl = contactEl;
+  if(!contactVal){
+    showError(contactEl, '⚠ اكتب رقم الواتساب');
+  } else {
+    const digits = contactVal.replace(/\D/g,'');
+    const allSame = /^(\d)\1+$/.test(digits);
+    if(allSame || contactVal === '000' || digits.length < 11){
+      showError(contactEl, '❌ الرقم خطأ - اكتبه صحيح (01XXXXXXXXX)');
+    } else if(!digits.startsWith('01')){
+      showError(contactEl, '❌ الرقم خطأ - لازم يبدأ بـ 01');
     }
-    hasError = true;
-  } else if(contactEl && contactEl.value.trim().length < 10){
-    contactEl.classList.add('input-error');
-    let msg = contactEl.nextElementSibling;
-    if(!msg || !msg.classList.contains('error-msg')){
-      msg = document.createElement('div');
-      msg.className = 'error-msg';
-      contactEl.parentNode.insertBefore(msg, contactEl.nextSibling);
-    }
-    msg.textContent = '⚠️ الرقم قصير جداً';
-    msg.classList.add('show');
-    if(!firstErrorEl) firstErrorEl = contactEl;
-    hasError = true;
   }
 
-  // لو فيه خطأ - وقف وميدخلش
   if(hasError){
-    if(firstErrorEl){
-      firstErrorEl.focus();
-      firstErrorEl.scrollIntoView({behavior:'smooth', block:'center'});
-    }
-    // هز الكارت
+    if(firstError){ firstError.focus(); firstError.scrollIntoView({behavior:'smooth', block:'center'}); }
     const card = document.querySelector('#userLoginOverlay .login-card');
-    if(card){card.style.animation='shake 0.3s'; setTimeout(()=>card.style.animation='',300);}
-    return; // ميكملش دخول
+    if(card){ card.style.animation='shake 0.3s'; setTimeout(()=>card.style.animation='',350); }
+    return;
   }
 
-  // لو كله تمام - ادخل
   const user = {
-    name: nameEl.value.trim(),
-    contact: contactEl.value.trim(),
+    name: nameVal,
+    contact: contactVal,
     grade: gradeEl ? gradeEl.value : '',
     birthday: birthEl ? birthEl.value : '',
     pic: (typeof tempRegPic !== 'undefined' ? tempRegPic : '') || '',
     time: Date.now()
   };
-
   localStorage.setItem('km_user', JSON.stringify(user));
   document.getElementById('userLoginOverlay').style.display='none';
   const fab = document.getElementById('profileFab');
-  if(fab){
-    fab.style.display='flex';
-    fab.textContent = user.name.charAt(0).toUpperCase();
-  }
-  if(typeof showAllGrades === 'function') showAllGrades();
+  if(fab){ fab.style.display='flex'; fab.textContent=user.name.split(' ')[0].charAt(0).toUpperCase(); }
+  if(typeof showAllGrades==='function') showAllGrades();
 }
-
- // شيل الأحمر أول ما يبدأ يكتب
-document.addEventListener('input', (e)=>{
-  if(e.target.matches('#userNameInput, #loginName, #userContactInput, #loginContact')){
-    e.target.classList.remove('input-error');
-    const msg = e.target.nextElementSibling;
-    if(msg && msg.classList.contains('error-msg')) msg.classList.remove('show');
-  }
-});
 function applyUser(user){
   if(!user) return;
   const sN=document.getElementById('senderName'); if(sN) sN.value=user.name;
