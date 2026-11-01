@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+  <div class="social-links-bar">
+<a href="https://t.me/mrmohamedbooks" target="_blank" class="social-btn telegram">📢 قناة تليجرام</a>
+<a href="https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A?s=cl&p=a&mlu=4&ilr=4&iam=2" target="_blank" class="social-btn whatsapp">💚 جروب الواتساب</a>
+<a href="https://t.me/KotobkMaya_bot" target="_blank" class="social-btn bot">🤖 بوت الطلبات</a>
+</div>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0284c7">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مكتبة كتبك معايا | Mr Mohamed Books</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0284c7">
 <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/29/29302.png">
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
@@ -13,6 +18,13 @@
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({ appId: "1cf7b516-6fdb-4678-997b-4810e0db7cab" });
   });
+ // اعرض كل الكتب دايماً أول ما الصفحة تفتح
+window.addEventListener('load', () => {
+  showAllGrades();
+  // الغي أي فلترة قديمة
+  document.querySelectorAll('.grade-card').forEach(c => c.style.display = 'block');
+  document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
+});
 </script>
 <style>
   .social-links-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:12px;background:#f0f9ff;border-bottom:2px solid #e0f2fe}
@@ -30,6 +42,36 @@
 .social-btn.whatsapp{background:#25D366;}
 .social-btn.bot{background:#7c3aed;}
 .social-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+ #userLoginOverlay{position:fixed;inset:0;background:rgba(2,132,199,.96);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+#userLoginOverlay .login-card{background:#fff;border-radius:16px;padding:22px;max-width:420px;width:100%;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3);max-height:95vh;overflow-y:auto}
+#userLoginOverlay .login-card h2{color:#0284c7;margin-bottom:6px;font-size:21px}
+#userLoginOverlay .login-card p{color:#64748b;font-size:12px;margin-bottom:12px}
+#userLoginOverlay input,#userLoginOverlay select{width:100%;padding:11px;margin:5px 0;border:2px solid #e2e8f0;border-radius:10px;font-size:13px;text-align:center}
+#userLoginOverlay select{cursor:pointer;background:#f8fafc}
+#userLoginOverlay input:focus,#userLoginOverlay select:focus{border-color:#0284c7;outline:none}
+#userLoginOverlay .login-btn{width:100%;background:#0284c7;color:#fff;border:none;padding:11px;border-radius:10px;font-weight:bold;font-size:14px;cursor:pointer;margin-top:8px}
+#profileFab{position:fixed;top:10px;right:10px;z-index:998;background:#fff;border:2px solid #0284c7;width:42px;height:42px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+#profileFab img{width:100%;height:100%;object-fit:cover}
+#profileModal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99998;display:none;align-items:center;justify-content:center;padding:20px}
+#profileModal .p-card{background:#fff;border-radius:16px;padding:20px;max-width:380px;width:100%;text-align:center}
+#profileModal input{width:100%;padding:10px;margin:5px 0;border:1px solid #cbd5e1;border-radius:8px;text-align:center}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f8fafc;color:#1e293b;direction:rtl;text-align:right}
+header{background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;padding:25px 15px;text-align:center}
+header h1{font-size:28px;margin-bottom:5px}
+.nav-btn{display:inline-block;background:#0284c7;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;margin:5px}
+.nav-btn-green{background:#10b981!important}
+#admin-login-btn{position:fixed;top:10px;left:10px;background:#ef4444;color:#fff;border:none;padding:8px 15px;border-radius:20px;cursor:pointer;z-index:999;font-weight:bold}
+#login-box,#admin-panel{display:none;background:#fff;border:2px solid #0284c7;border-radius:12px;padding:20px;margin:15px auto;max-width:500px;text-align:center}
+#login-box input,#admin-panel input,#admin-panel select{width:100%;padding:10px;margin:5px 0;border:1px solid #cbd5e1;border-radius:8px}
+  #userLoginOverlay{position:fixed;inset:0;background:rgba(2,132,199,.96);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px}
+#userLoginOverlay .login-card{background:#fff;border-radius:16px;padding:25px;max-width:400px;width:100%;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+#userLoginOverlay .login-card h2{color:#0284c7;margin-bottom:8px;font-size:22px}
+#userLoginOverlay .login-card p{color:#64748b;font-size:13px;margin-bottom:15px}
+#userLoginOverlay input{width:100%;padding:12px;margin:6px 0;border:2px solid #e2e8f0;border-radius:10px;font-size:14px;text-align:center}
+#userLoginOverlay input:focus{border-color:#0284c7;outline:none}
+#userLoginOverlay .login-btn{width:100%;background:#0284c7;color:#fff;border:none;padding:12px;border-radius:10px;font-weight:bold;font-size:15px;cursor:pointer;margin-top:10px}
+#admin-panel button{background:#0284c7;color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:bold;width:100%}
 .dropdown-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:15px;background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 5px rgba(0,0,0,.1)}
 .dropdown-container{position:relative}
 .dropdown-main-btn{background:#e0f2fe;border:1px solid #0284c7;padding:10px 15px;border-radius:8px;cursor:pointer;font-weight:bold}
@@ -69,11 +111,86 @@
 </head>
 <body>
 
-<div class="social-links-bar">
-<a href="https://t.me/mrmohamedbooks" target="_blank" class="social-btn telegram">📢 قناة تليجرام</a>
-<a href="https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A?s=cl&p=a&mlu=4&ilr=4&iam=2" target="_blank" class="social-btn whatsapp">💚 جروب الواتساب</a>
-<a href="https://t.me/KotobkMaya_bot" target="_blank" class="social-btn bot">🤖 بوت الطلبات</a>
+<div id="userLoginOverlay">
+  <div class="login-card">
+    <div style="font-size:45px;margin-bottom:8px">📚</div>
+    <h2>مرحباً في كتبك معايا</h2>
+    <p>سجل مرة واحدة - الصف اختياري ✅</p>
+    <div style="position:relative;width:80px;height:80px;margin:0 auto 10px;border-radius:50%;background:#e0f2fe;display:flex;align-items:center;justify-content:center;overflow:hidden;border:2px dashed #0284c7;cursor:pointer" onclick="document.getElementById('regPicInput').click()">
+      <img id="regPicPreview" style="width:100%;height:100%;object-fit:cover;display:none">
+      <span id="regPicIcon" style="font-size:28px">📷</span>
+    </div>
+    <input type="file" id="regPicInput" accept="image/*" style="display:none" onchange="previewRegPic(this)">
+    <input id="userNameInput" placeholder="اسمك (مثال: أحمد)" type="text">
+    <input id="userContactInput" placeholder="واتساب أو تليجرام (01XXXXXXXXX)" type="text">
+    <select id="userGradeSelect">
+      <option value="">اختر صفك (اختياري)</option>
+      <option value="p1-card">أولى ابتدائي</option>
+      <option value="p2-card">تانية ابتدائي</option>
+      <option value="p3-card">تالتة ابتدائي</option>
+      <option value="p4-card">رابعة ابتدائي</option>
+      <option value="p5-card">خامسة ابتدائي</option>
+      <option value="p6-card">ساتة ابتدائي</option>
+      <option value="grade1-card">أولى إعدادي</option>
+      <option value="grade2-card">تانية إعدادي</option>
+      <option value="grade3-card">تالتة إعدادي</option>
+      <option value="sec1-card">أولى ثانوي</option>
+      <option value="sec2-sci-card">تانية ثانوي علمي</option>
+      <option value="sec2-art-card">تانية ثانوي أدبي</option>
+      <option value="sec2-bac-card">تانية ثانوي بكالوريا</option>
+      <option value="sch-p1">أولى ابتدائي وزارة</option>
+      <option value="sch-p2">تانية ابتدائي وزارة</option>
+      <option value="sch-p3">تالتة ابتدائي وزارة</option>
+      <option value="sch-p4">رابعة ابتدائي وزارة</option>
+      <option value="sch-p5">خامسة ابتدائي وزارة</option>
+      <option value="sch-p6">ساتة ابتدائي وزارة</option>
+      <option value="sch-g1">أولى إعدادي وزارة</option>
+      <option value="sch-g2">تانية إعدادي وزارة</option>
+      <option value="sch-g3">تالتة إعدادي وزارة</option>
+      <option value="sch-s1">أولى ثانوي وزارة</option>
+      <option value="sch-s2">تانية ثانوي وزارة</option>
+    </select>
+    <input id="userBirthdayInput" type="date">
+    <div style="font-size:11px;color:#94a3b8">عيد ميلادك (اختياري)</div>
+    <button class="login-btn" onclick="saveUserLogin()">دخول المنصة 🚀</button>
+  </div>
 </div>
+<button id="profileFab" onclick="openProfile()" title="ملفي">👤</button>
+<div id="profileModal">
+  <div class="p-card">
+    <h3 style="color:#0284c7;margin-bottom:10px">👤 ملفي الشخصي</h3>
+    <div style="width:90px;height:90px;margin:0 auto 10px;border-radius:50%;overflow:hidden;background:#e0f2fe;display:flex;align-items:center;justify-content:center;border:2px solid #0284c7;cursor:pointer" onclick="document.getElementById('profilePicInput').click()">
+      <img id="profilePicPreview" style="width:100%;height:100%;object-fit:cover;display:none">
+      <span id="profilePicIcon" style="font-size:30px">📷</span>
+    </div>
+    <input type="file" id="profilePicInput" accept="image/*" style="display:none" onchange="updateProfilePic(this)">
+    <input id="profileName" placeholder="اسمك">
+    <input id="profileContact" placeholder="رقمك">
+    <select id="profileGrade">
+      <option value="">بدون صف</option>
+      <option value="p1-card">أولى ابتدائي</option>
+      <option value="p2-card">تانية ابتدائي</option>
+      <option value="p3-card">تالتة ابتدائي</option>
+      <option value="p4-card">رابعة ابتدائي</option>
+      <option value="p5-card">خامسة ابتدائي</option>
+      <option value="p6-card">ساتة ابتدائي</option>
+      <option value="grade1-card">أولى إعدادي</option>
+      <option value="grade2-card">تانية إعدادي</option>
+      <option value="grade3-card">تالتة إعدادي</option>
+      <option value="sec1-card">أولى ثانوي</option>
+      <option value="sec2-sci-card">تانية ثانوي علمي</option>
+      <option value="sec2-art-card">تانية ثانوي أدبي</option>
+      <option value="sec2-bac-card">تانية ثانوي بكالوريا</option>
+    </select>
+    <input id="profileBirthday" type="date">
+    <div style="display:flex;gap:6px;margin-top:10px">
+      <button onclick="saveProfile()" style="flex:1;background:#0284c7;color:#fff;border:none;padding:10px;border-radius:8px;font-weight:bold;cursor:pointer">حفظ ✅</button>
+      <button onclick="closeProfile()" style="background:#64748b;color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer">إغلاق</button>
+    </div>
+    <button onclick="logoutUser()" style="margin-top:10px;background:#fee2e2;color:#ef4444;border:none;padding:6px 12px;border-radius:6px;font-size:11px;cursor:pointer">تسجيل خروج</button>
+  </div>
+</div>
+
 <button id="admin-login-btn" onclick="toggleLoginBox()">👤 دخول المسؤول</button>
 <button id="admin-login-btn" onclick="toggleLoginBox()">👤 دخول المسؤول</button>
 
@@ -225,7 +342,6 @@
 <input type="text" id="bookUrlInput" placeholder="رابط التحميل">
 <button onclick="addBook()">إضافة الكتاب +</button>
 </div>
-
 <div class="dropdown-nav">
 <button class="dropdown-main-btn active" id="all-stages-btn" onclick="showAllGrades()">🌐 كل المراحل</button>
 <div class="dropdown-container" id="primary-dropdown">
@@ -475,18 +591,12 @@
                 document.querySelectorAll('.dropdown-container').forEach(item=>{item.classList.remove('show');});
             }
         }
-       function showAllGrades(){
-    document.querySelectorAll('.grade-card').forEach(card=>{
-      card.style.display='block';
-      card.style.border='';
-    });
-    document.querySelectorAll('.stage-section').forEach(sec=>{sec.style.display='block';});
-    document.querySelectorAll('.book-item').forEach(item=>{item.style.display='flex';});
-    document.querySelectorAll('.dropdown-main-btn').forEach(btn=>{btn.classList.remove('active');});
-    document.getElementById('all-stages-btn').classList.add('active');
-    const sInput = document.getElementById('searchInput');
-    if(sInput) sInput.value='';
-}
+        function showAllGrades(){
+            document.querySelectorAll('.grade-card').forEach(card=>{card.style.display='block';});
+            document.querySelectorAll('.stage-section').forEach(sec=>{sec.style.display='block';});
+            document.querySelectorAll('.dropdown-main-btn').forEach(btn=>{btn.classList.remove('active');});
+            document.getElementById('all-stages-btn').classList.add('active');
+        }
         function filterSpecificGrade(gradeId){
             document.querySelectorAll('.grade-card').forEach(card=>{card.style.display=(card.id===gradeId)?'block':'none';});
             document.querySelectorAll('.stage-section').forEach(sec=>{
@@ -785,73 +895,15 @@ function previewRegPic(input){
 }
 function getUser(){try{return JSON.parse(localStorage.getItem(USER_KEY)||'null')}catch{return null}}
 function saveUserLogin(){
-  const nameEl = document.getElementById('userNameInput') || document.getElementById('loginName');
-  const contactEl = document.getElementById('userContactInput') || document.getElementById('loginContact');
-  const gradeEl = document.getElementById('userGradeSelect') || document.getElementById('loginGrade');
-  const birthEl = document.getElementById('userBirthdayInput') || document.getElementById('loginBirth');
-
-  document.querySelectorAll('.error-msg').forEach(m=>m.remove());
-  [nameEl, contactEl].forEach(el=>{ if(el) el.classList.remove('input-error'); });
-
-  let hasError = false;
-  let firstError = null;
-
-  const showError = (el, text)=>{
-    if(!el) return;
-    el.classList.add('input-error');
-    const msg = document.createElement('div');
-    msg.className = 'error-msg show';
-    msg.style.cssText = 'color:#ef4444;font-size:12px;margin:4px 0 6px 0;display:block;text-align:center;font-weight:700;background:#fef2f2;padding:5px;border-radius:6px;border:1px solid #fecaca';
-    msg.textContent = text;
-    el.parentNode.insertBefore(msg, el.nextSibling);
-    if(!firstError) firstError = el;
-    hasError = true;
-  };
-
-  const nameVal = nameEl ? nameEl.value.trim() : '';
-  const contactVal = contactEl ? contactEl.value.trim() : '';
-
-  if(!nameVal){
-    showError(nameEl, '⚠ من فضلك اكتب اسمك');
-  } else {
-    const parts = nameVal.split(/\s+/).filter(p=>p.length>=2);
-    if(parts.length < 3){
-      showError(nameEl, '⚠ اكتب الاسم ثلاثي (مثال: محمد أحمد علي)');
-    }
-  }
-
-  if(!contactVal){
-    showError(contactEl, '⚠ اكتب رقم الواتساب');
-  } else {
-    const digits = contactVal.replace(/\D/g,'');
-    const allSame = /^(\d)\1+$/.test(digits);
-    if(allSame || contactVal === '000' || digits.length < 11){
-      showError(contactEl, '❌ الرقم خطأ - اكتبه صحيح (01XXXXXXXXX)');
-    } else if(!digits.startsWith('01')){
-      showError(contactEl, '❌ الرقم خطأ - لازم يبدأ بـ 01');
-    }
-  }
-
-  if(hasError){
-    if(firstError){ firstError.focus(); firstError.scrollIntoView({behavior:'smooth', block:'center'}); }
-    const card = document.querySelector('#userLoginOverlay .login-card');
-    if(card){ card.style.animation='shake 0.3s'; setTimeout(()=>card.style.animation='',350); }
-    return;
-  }
-
-  const user = {
-    name: nameVal,
-    contact: contactVal,
-    grade: gradeEl ? gradeEl.value : '',
-    birthday: birthEl ? birthEl.value : '',
-    pic: (typeof tempRegPic !== 'undefined' ? tempRegPic : '') || '',
-    time: Date.now()
-  };
-  localStorage.setItem('km_user', JSON.stringify(user));
+  const name=document.getElementById('userNameInput').value.trim();
+  const contact=document.getElementById('userContactInput').value.trim();
+  const grade=document.getElementById('userGradeSelect').value;
+  const birthday=document.getElementById('userBirthdayInput').value;
+  if(!name||!contact){alert('اكتب اسمك ورقمك بس');return}
+  const user={name,contact,grade,birthday,pic:tempRegPic,time:Date.now()};
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
+  applyUser(user);
   document.getElementById('userLoginOverlay').style.display='none';
-  const fab = document.getElementById('profileFab');
-  if(fab){ fab.style.display='flex'; fab.textContent=user.name.split(' ')[0].charAt(0).toUpperCase(); }
-  if(typeof showAllGrades==='function') showAllGrades();
 }
 function applyUser(user){
   if(!user) return;
@@ -861,23 +913,7 @@ function applyUser(user){
   if(fab){
     if(user.pic){fab.innerHTML=`<img src="${user.pic}">`;} else {fab.textContent=user.name.charAt(0).toUpperCase();}
   }
-  showAllGrades();
-  if(user.grade){
-    const myCard = document.getElementById(user.grade);
-    if(myCard){
-      myCard.style.border = "2px solid #0284c7";
-      myCard.scrollIntoView({behavior:'smooth', block:'center'});
-    }
-  }
-}
-  showAllGrades();
-  if(user.grade){
-    const myCard = document.getElementById(user.grade);
-    if(myCard){
-      myCard.style.border = "2px solid #0284c7";
-      myCard.scrollIntoView({behavior:'smooth', block:'center'});
-    }
-  }
+  if(user.grade){filterSpecificGrade(user.grade);}else{showAllGrades();}
 }
 function checkUserLogin(){
   const user=getUser();
