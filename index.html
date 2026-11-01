@@ -857,7 +857,7 @@ function toggleRecord(){
             const contact=document.getElementById('senderContact').value.trim();
             const msg=document.getElementById('senderMsg').value.trim();
             if(!name||!contact||!msg){alert('من فضلك أكمل جميع البيانات!');return;}
-            const fullMessage=`🚨 طلب دعم جديد من منصة كتبك معايا:\n\n👤 الاسم: ${name}\n📞 التواصل: ${contact}\n💬 المشكلة/الطلب:\n${msg}`;
+            const fullMessage=`🚨 طلب دعم جديد من مكتبة كتبك معايا:\n\n👤 الاسم: ${name}\n📞 التواصل: ${contact}\n💬 المشكلة/الطلب:\n${msg}`;
             fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CHAT_ID,text:fullMessage})})
             .then(res=>res.json()).then(data=>{
                 if(data.ok){alert('تم إرسال رسالتك بنجاح للمسؤول!');hideAdminForm();}
