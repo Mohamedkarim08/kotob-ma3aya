@@ -722,7 +722,7 @@ function reply(q){
   if(BOOKS.length==0) scanBooks();
   let found=BOOKS.filter(b=>qq.split(' ').some(w=>w.length>2 && b.name.toLowerCase().includes(w))).slice(0,3);
   if(found.length>0) return found.map(b=>b.name+'\n'+b.link).join('\n\n');
-  return 'اكتب: واتساب / تليجرام / دعم / طلب كتاب / الموقع \nاو اكتب اسم الكتاب وانا اجيبهولك 💙';
+return 'اكتب: واتساب / تليجرام / دعم / طلب كتاب / الموقع 💙';
 }
 
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send');
