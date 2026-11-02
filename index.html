@@ -701,18 +701,7 @@ function scanRealBooks(){
   else msgEl.innerText=`ازيك يا بطل! 👋\nقولي عايز كتاب ايه؟\n📚 اكتب اسم الكتاب\n🔗 واتساب / تليجرام / موقع`;
 }
 const btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),msgs=document.getElementById('ktbk-msgs'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send');
-function add(t,w){
-  let d=document.createElement('div');
-  d.className='ktbk-m '+(w=='u'?'ktbk-u':'ktbk-b');
-  let linked = t.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" style="color:#fff;background:#6c5ce7;padding:2px 8px;border-radius:8px;text-decoration:none;display:inline-block;margin:3px 0;word-break:break-all">📥 اضغط هنا للتحميل</a>');
-  if(w=='b') linked = linked.replace(/📥 اضغط هنا للتحميل/g, '📥 اضغط هنا للتحميل');
-  d.innerHTML = linked.replace(/https?:\/\/[^\s]+/g, (url)=>{
-    if(url.includes('t.me')||url.includes('whatsapp')||url.includes('chat.whatsapp')) return `<a href="${url}" target="_blank" style="color:#fff;background:#25D366;padding:4px 10px;border-radius:10px;text-decoration:none;display:inline-block;margin:4px 0">🔗 افتح الرابط</a>`;
-    return `<a href="${url}" target="_blank" style="color:#fff;background:#6c5ce7;padding:4px 10px;border-radius:10px;text-decoration:none;display:inline-block;margin:4px 0">📥 اضغط هنا للتحميل</a>`;
-  });
-  msgs.appendChild(d);
-  msgs.scrollTop=msgs.scrollHeight;
-}
+function add(t,w){let d=document.createElement('div');d.className='ktbk-m '+(w=='u'?'ktbk-u':'ktbk-b');d.innerText=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
 function reply(q){
 let qq=q.toLowerCase();
 if(qq.includes("موقع")) return `الموقع أهو 👇\n${LINKS.site}`;
