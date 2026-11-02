@@ -702,12 +702,14 @@ function addMsg(t,isUser){
 }
 
 function reply(q){
-  let qq=q.toLowerCase();
-  if(qq.includes('جروب واتساب')) return LINKS.whatsapp;
-  if(qq.includes(' قناه تليجرام')) return LINKS.telegram;
-  if(qq.includes('بوت الدعم الفني')) return LINKS.support;
-  if(qq.includes('بوت طلب الكتب')) return LINKS.request;
-  if(qq.includes('موقع')||qq.includes('رسمي')) return LINKS.site;
+ let qq=q.toLowerCase();
+ if(qq.includes('واتساب') || qq.includes('واتس')) return LINKS.whatsapp;
+ if(qq.includes('تليجرام') || qq.includes('تلجرام') || qq.includes('تيليجرام')) return LINKS.telegram;
+ if(qq.includes('دعم')) return LINKS.support;
+ if(qq.includes('طلب')) return LINKS.request;
+ if(qq.includes('موقع') || qq.includes('رسمي')) return LINKS.site;
+ return LINKS.site;
+}
   return 'اكتب: جروب واتساب / قناه تليجرام / بوت الدعم الفني / بوت طلب الكتب / الموقع الرسمي 💙';
 }
 
