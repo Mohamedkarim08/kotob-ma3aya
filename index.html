@@ -671,7 +671,7 @@ window.addEventListener('load', () => {
 #ktbk-in button{background:#6c5ce7;color:white;border:none;border-radius:20px;padding:10px 16px;margin-right:8px;cursor:pointer}
 .ktbk-link{display:inline-block;background:#6c5ce7;color:white!important;padding:6px 12px;border-radius:10px;text-decoration:none;margin:5px 0}
 </style>
-<div id="ktbk-btn">🔗</div>
+<div id="ktbk-btn">💬</div>
 <div id="ktbk-box">
 <div id="ktbk-head"><span>روابط كتبك معايا 🔗</span><span id="ktbk-x" style="cursor:pointer">✕</span></div>
 <div id="ktbk-msgs"><div class="ktbk-m ktbk-b">ازيك يا بطل! جاهز 📚</div></div>
@@ -705,12 +705,7 @@ function addMsg(t,isUser){
  document.getElementById('ktbk-msgs').appendChild(d);
  document.getElementById('ktbk-msgs').scrollTop=9999;
 }
-function reply(q){
- let qq=q.toLowerCase();
- if(qq.includes('واتساب')) return 'قناة الواتساب ❤️\n'+LINKS.whatsapp;
- if(qq.includes('تليجرام')||qq.includes('تلجرام')) return 'قناة التليجرام 👇\n'+LINKS.telegram;
- if(qq.includes('موقع')) return 'الموقع أهو 👇\n'+LINKS.site;
- let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x');
+let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x');
 btn.onclick=function(){box.style.display = box.style.display=='flex' ? 'none' : 'flex';};
 x.onclick=function(){box.style.display='none';};
 </script>
