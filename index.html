@@ -82,70 +82,7 @@ header h1{font-size:28px;margin-bottom:5px}
 </style>
 </head>
 <body>
-    <input type="file" id="regPicInput" accept="image/*" style="display:none" onchange="previewRegPic(this)">
-    <input id="userNameInput" placeholder="اسمك (مثال: أحمد)" type="text">
-    <input id="userContactInput" placeholder="واتساب أو تليجرام (01XXXXXXXXX)" type="text">
-    <select id="userGradeSelect">
-      <option value="">اختر صفك (اختياري)</option>
-      <option value="p1-card">أولى ابتدائي</option>
-      <option value="p2-card">تانية ابتدائي</option>
-      <option value="p3-card">تالتة ابتدائي</option>
-      <option value="p4-card">رابعة ابتدائي</option>
-      <option value="p5-card">خامسة ابتدائي</option>
-      <option value="p6-card">ساتة ابتدائي</option>
-      <option value="grade1-card">أولى إعدادي</option>
-      <option value="grade2-card">تانية إعدادي</option>
-      <option value="grade3-card">تالتة إعدادي</option>
-      <option value="sec1-card">أولى ثانوي</option>
-      <option value="sec2-sci-card">تانية ثانوي علمي</option>
-      <option value="sec2-art-card">تانية ثانوي أدبي</option>
-      <option value="sec2-bac-card">تانية ثانوي بكالوريا</option>
-      <option value="sch-p1">أولى ابتدائي وزارة</option>
-      <option value="sch-p2">تانية ابتدائي وزارة</option>
-      <option value="sch-p3">تالتة ابتدائي وزارة</option>
-      <option value="sch-p4">رابعة ابتدائي وزارة</option>
-      <option value="sch-p5">خامسة ابتدائي وزارة</option>
-      <option value="sch-p6">ساتة ابتدائي وزارة</option>
-      <option value="sch-g1">أولى إعدادي وزارة</option>
-      <option value="sch-g2">تانية إعدادي وزارة</option>
-      <option value="sch-g3">تالتة إعدادي وزارة</option>
-      <option value="sch-s1">أولى ثانوي وزارة</option>
-      <option value="sch-s2">تانية ثانوي وزارة</option>
-    </select>
-    <input id="userBirthdayInput" type="date">
-    <div style="font-size:11px;color:#94a3b8">عيد ميلادك (اختياري)</div>
-    <button class="login-btn" onclick="saveUserLogin()">دخول المكتبة 🚀</button>
-  </div>
-</div>
-    <input type="file" id="profilePicInput" accept="image/*" style="display:none" onchange="updateProfilePic(this)">
-    <input id="profileName" placeholder="اسمك">
-    <input id="profileContact" placeholder="رقمك">
-    <select id="profileGrade">
-      <option value="">بدون صف</option>
-      <option value="p1-card">أولى ابتدائي</option>
-      <option value="p2-card">تانية ابتدائي</option>
-      <option value="p3-card">تالتة ابتدائي</option>
-      <option value="p4-card">رابعة ابتدائي</option>
-      <option value="p5-card">خامسة ابتدائي</option>
-      <option value="p6-card">ساتة ابتدائي</option>
-      <option value="grade1-card">أولى إعدادي</option>
-      <option value="grade2-card">تانية إعدادي</option>
-      <option value="grade3-card">تالتة إعدادي</option>
-      <option value="sec1-card">أولى ثانوي</option>
-      <option value="sec2-sci-card">تانية ثانوي علمي</option>
-      <option value="sec2-art-card">تانية ثانوي أدبي</option>
-      <option value="sec2-bac-card">تانية ثانوي بكالوريا</option>
-    </select>
-    <input id="profileBirthday" type="date">
-    <div style="display:flex;gap:6px;margin-top:10px">
-      <button onclick="saveProfile()" style="flex:1;background:#0284c7;color:#fff;border:none;padding:10px;border-radius:8px;font-weight:bold;cursor:pointer">حفظ ✅</button>
-      <button onclick="closeProfile()" style="background:#64748b;color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer">إغلاق</button>
-    </div>
-    <button onclick="logoutUser()" style="margin-top:10px;background:#fee2e2;color:#ef4444;border:none;padding:6px 12px;border-radius:6px;font-size:11px;cursor:pointer">تسجيل خروج</button>
-  </div>
-</div>
 
-<button id="admin-login-btn" onclick="toggleLoginBox()">👤 دخول المسؤول</button>
 <button id="admin-login-btn" onclick="toggleLoginBox()">👤 دخول المسؤول</button>
 
 <header>
