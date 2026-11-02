@@ -678,7 +678,13 @@ window.addEventListener('load', () => {
 <div id="ktbk-in"><input id="ktbk-input" placeholder="اكتب اسم الكتاب..."><button id="ktbk-send">ابعت</button></div>
 </div>
 <script>
-const LINKS={site:"https://mohamedkarim08.github.io/kotob-ma3aya/",telegram:"https://t.me/mrmohamedbooks",support:"https://t.me/MohamedHelpDesk_bot",request:"https://t.me/KotobkMaya_bot",whatsapp:"https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A?s=cl&p=a&iam=2"};
+const LINKS={
+  site:"https://mohamedkarim08.github.io/kotob-ma3aya/",
+  telegram:"https://t.me/mrmohamedbooks",
+  support:"https://t.me/MohamedHelpDesk_bot",
+  request:"https://t.me/KotobkMaya_bot",
+  whatsapp:"https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A?s=cl&p=a&iam=2"
+};
 let BOOKS=[];
 function scanBooks(){
  let arr=[];
@@ -705,29 +711,31 @@ function addMsg(t,isUser){
  document.getElementById('ktbk-msgs').appendChild(d);
  document.getElementById('ktbk-msgs').scrollTop=9999;
 }
-let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-messages');
-const LINKS={
-  whatsapp:'https://whatsapp.com/channel/0029Va2d0p8CxoAbq6u1lY0c',
-  telegram:'https://t.me/mrmohamedbooks',
-  site:'https://mohamedkarim08.github.io/kotob-ma3aya/'
-};
 function reply(q){
   let qq=q.toLowerCase();
-  if(qq.includes('واتساب')) return 'قناة الواتساب اهي يا بطل: '+LINKS.whatsapp;
-  if(qq.includes('تليجرام')) return 'قناة التليجرام اهي: '+LINKS.telegram;
-  if(qq.includes('الموقع')||qq.includes('الرسمي')) return 'الموقع الرسمي اهو: '+LINKS.site;
-  return 'اكتب: واتساب / تليجرام / الموقع وانا هبعتلك اللينك فورا 💙';
+  if(qq.includes('واتساب')) return LINKS.whatsapp;
+  if(qq.includes('تليجرام')) return LINKS.telegram;
+  if(qq.includes('دعم')||qq.includes('مساعدة')) return LINKS.support;
+  if(qq.includes('طلب')) return LINKS.request;
+  if(qq.includes('الموقع')||qq.includes('الرسمي')) return LINKS.site;
+  // بحث في الكتب
+  if(BOOKS.length==0) scanBooks();
+  let found=BOOKS.filter(b=>qq.split(' ').some(w=>w.length>2 && b.name.toLowerCase().includes(w))).slice(0,3);
+  if(found.length>0) return found.map(b=>b.name+'\n'+b.link).join('\n\n');
+  return 'اكتب: واتساب / تليجرام / دعم / طلب كتاب / الموقع \nاو اكتب اسم الكتاب وانا اجيبهولك 💙';
 }
+
+let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send');
 function sendMsg(){
   if(!inp.value.trim()) return;
-  let userDiv=document.createElement('div'); userDiv.textContent=inp.value; msgs.appendChild(userDiv);
-  let botDiv=document.createElement('div'); botDiv.textContent=reply(inp.value); msgs.appendChild(botDiv);
-  inp.value=''; msgs.scrollTop=msgs.scrollHeight;
+  addMsg(inp.value,true);
+  addMsg(reply(inp.value),false);
+  inp.value='';
 }
-btn.onclick=function(){box.style.display = box.style.display=='flex' ? 'none' : 'flex';};
+btn.onclick=function(){box.style.display = box.style.display=='flex' ? 'none' : 'flex'; scanBooks();};
 x.onclick=function(){box.style.display='none';};
-if(send) send.onclick=sendMsg;
-if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
+send.onclick=sendMsg;
+inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
 </script>
 </body>
 </html>
