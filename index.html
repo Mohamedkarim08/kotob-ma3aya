@@ -722,6 +722,12 @@ function toggleRecord(){
                 else{alert('حدث خطأ أثناء الإرسال.');}
             }).catch(()=>alert('تعذر الاتصال بالخادم.'));
         }
+      // افتح كل الكتب مباشرة بدون تسجيل
+window.addEventListener('load', () => {
+  showAllGrades();
+  document.querySelectorAll('.grade-card').forEach(c => c.style.display = 'block');
+  document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
+});
     </script>
 </body>
 </html>
