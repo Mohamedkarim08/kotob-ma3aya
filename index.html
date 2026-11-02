@@ -710,6 +710,9 @@ function reply(q){
  if(qq.includes('واتساب')) return 'قناة الواتساب ❤️\n'+LINKS.whatsapp;
  if(qq.includes('تليجرام')||qq.includes('تلجرام')) return 'قناة التليجرام 👇\n'+LINKS.telegram;
  if(qq.includes('موقع')) return 'الموقع أهو 👇\n'+LINKS.site;
+  let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x');
+btn.onclick=function(){box.style.display='flex';};
+x.onclick=function(){box.style.display='none';};
 </script>
 </body>
 </html>
