@@ -705,9 +705,29 @@ function addMsg(t,isUser){
  document.getElementById('ktbk-msgs').appendChild(d);
  document.getElementById('ktbk-msgs').scrollTop=9999;
 }
-let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x');
+let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-messages');
+const LINKS={
+  whatsapp:'https://whatsapp.com/channel/0029Va2d0p8CxoAbq6u1lY0c',
+  telegram:'https://t.me/mrmohamedbooks',
+  site:'https://mohamedkarim08.github.io/kotob-ma3aya/'
+};
+function reply(q){
+  let qq=q.toLowerCase();
+  if(qq.includes('واتساب')) return 'قناة الواتساب اهي يا بطل: '+LINKS.whatsapp;
+  if(qq.includes('تليجرام')) return 'قناة التليجرام اهي: '+LINKS.telegram;
+  if(qq.includes('الموقع')||qq.includes('الرسمي')) return 'الموقع الرسمي اهو: '+LINKS.site;
+  return 'اكتب: واتساب / تليجرام / الموقع وانا هبعتلك اللينك فورا 💙';
+}
+function sendMsg(){
+  if(!inp.value.trim()) return;
+  let userDiv=document.createElement('div'); userDiv.textContent=inp.value; msgs.appendChild(userDiv);
+  let botDiv=document.createElement('div'); botDiv.textContent=reply(inp.value); msgs.appendChild(botDiv);
+  inp.value=''; msgs.scrollTop=msgs.scrollHeight;
+}
 btn.onclick=function(){box.style.display = box.style.display=='flex' ? 'none' : 'flex';};
 x.onclick=function(){box.style.display='none';};
+if(send) send.onclick=sendMsg;
+if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
 </script>
 </body>
 </html>
