@@ -710,21 +710,6 @@ function reply(q){
  if(qq.includes('واتساب')) return 'قناة الواتساب ❤️\n'+LINKS.whatsapp;
  if(qq.includes('تليجرام')||qq.includes('تلجرام')) return 'قناة التليجرام 👇\n'+LINKS.telegram;
  if(qq.includes('موقع')) return 'الموقع أهو 👇\n'+LINKS.site;
- let f=BOOKS.filter(b=>b.name.toLowerCase().includes(qq) || qq.split(' ').some(w=>w.length>2 && b.name.toLowerCase().includes(w)));
- if(f.length>0){
-  let r='لقيتلك '+f.length+' كتاب 😎\n\n';
-  f.slice(0,4).forEach(b=>{r+=b.name+'\n'+b.link+'\n\n';});
-  return r;
- }
- return 'جرب كلمة واحدة زي "كونكت" او "ماث"';
-}
-let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send');
-btn.onclick=function(){box.style.display='flex'; scanBooks();};
-x.onclick=function(){box.style.display='none';};
-function go(){let q=inp.value.trim();if(!q)return;addMsg(q,true);inp.value='';setTimeout(function(){addMsg(reply(q),false);},400);}
-send.onclick=go; inp.onkeypress=function(e){if(e.key==='Enter')go();};
-setTimeout(scanBooks,1500);
-</script>
 </script>
 </body>
 </html>
