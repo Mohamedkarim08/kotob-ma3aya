@@ -658,28 +658,23 @@ window.addEventListener('load', () => {
   document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
 });
     </script>
-<!-- بوت كتبك معايا -->
+<!-- بوت معايا - يقرا الكتب الحقيقية -->
 <style>
-#ktbk-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#6c5ce7;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;cursor:pointer;z-index:9999}
-#ktbk-box{position:fixed;bottom:90px;right:20px;width:360px;max-width:92vw;height:460px;background:white;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;flex-direction:column;z-index:9999;overflow:hidden;font-family:sans-serif}
+#ktbk-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#6c5ce7;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,.3)}
+#ktbk-box{position:fixed;bottom:90px;right:20px;width:360px;max-width:92vw;height:460px;background:white;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;flex-direction:column;z-index:9999;overflow:hidden;font-family:'Cairo',sans-serif}
 #ktbk-head{background:#6c5ce7;color:white;padding:14px;font-weight:bold;display:flex;justify-content:space-between}
 #ktbk-msgs{flex:1;padding:12px;overflow-y:auto;background:#f8f9fa}
-.ktbk-m{margin:6px 0;padding:10px 14px;border-radius:12px;max-width:85%;line-height:1.5;white-space:pre-line}
+.ktbk-m{margin:6px 0;padding:10px 14px;border-radius:12px;max-width:85%;line-height:1.6;white-space:pre-line}
 .ktbk-b{background:white}.ktbk-u{background:#6c5ce7;color:white;margin-left:auto}
 #ktbk-in{display:flex;padding:10px;border-top:1px solid #eee}
-#ktbk-in input{flex:1;border:1px solid #ddd;border-radius:20px;padding:10px 14px}
+#ktbk-in input{flex:1;border:1px solid #ddd;border-radius:20px;padding:10px 14px;outline:none}
 #ktbk-in button{background:#6c5ce7;color:white;border:none;border-radius:20px;padding:10px 16px;margin-right:8px;cursor:pointer}
 </style>
 <div id="ktbk-btn">💬</div>
 <div id="ktbk-box">
 <div id="ktbk-head"><span>مساعد كتبك معايا 🤖</span><span id="ktbk-x" style="cursor:pointer">✕</span></div>
-<div id="ktbk-msgs"><div class="ktbk-m ktbk-b">ازيك يا بطل! 👋
-قولي عايز ايه؟
-📚 اسم كتاب
-🔗 واتساب / تليجرام / موقع
-🆘 دعم فني
-📩 طلب كتاب</div></div>
-<div id="ktbk-in"><input id="ktbk-input" placeholder="اكتب هنا..."><button id="ktbk-send">ابعت</button></div>
+<div id="ktbk-msgs"><div class="ktbk-m ktbk-b">ازيك يا بطل! 👋 بقرا مكتبتك...</div></div>
+<div id="ktbk-in"><input id="ktbk-input" placeholder="اكتب اسم الكتاب..."><button id="ktbk-send">ابعت</button></div>
 </div>
 <script>
 const LINKS={
@@ -689,6 +684,22 @@ support:"https://t.me/MohamedHelpDesk_bot",
 request:"https://t.me/KotobkMaya_bot",
 whatsapp:"https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A?s=cl&p=a&iam=2"
 };
+let BOOKS=[];
+function scanRealBooks(){
+  let books=[];
+  document.querySelectorAll('a').forEach(a=>{
+    let t=a.innerText||"";
+    if(t.includes('تحميل') && a.href){
+      let p=a.closest('[class*="book"]')||a.closest('.card')||a.parentElement.parentElement||a.parentElement;
+      let name = p ? p.innerText.replace(/تحميل|تحميل الحل|تحميل الكتاب/g,'').trim().split('\n')[0] : "";
+      if(name && name.length>4 && name.length<100) books.push({name: name.trim(), link: a.href});
+    }
+  });
+  BOOKS=[...new Map(books.map(b=>[b.name,b])).values()];
+  let msgEl=document.querySelector('#ktbk-msgs .ktbk-b');
+  if(BOOKS.length>0) msgEl.innerText=`جاهز! لقيت ${BOOKS.length} كتاب عندك 📚\nقولي عايز كتاب ايه؟ مثلا "كونكت"`;
+  else msgEl.innerText=`ازيك يا بطل! 👋\nقولي عايز كتاب ايه؟\n📚 اكتب اسم الكتاب\n🔗 واتساب / تليجرام / موقع`;
+}
 const btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),msgs=document.getElementById('ktbk-msgs'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send');
 function add(t,w){let d=document.createElement('div');d.className='ktbk-m '+(w=='u'?'ktbk-u':'ktbk-b');d.innerText=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
 function reply(q){
@@ -698,11 +709,17 @@ if(qq.includes("واتساب")) return `قناة الواتساب ❤️\n${LINK
 if(qq.includes("تليجرام")||qq.includes("تلجرام")) return `قناة التليجرام 👇\n${LINKS.telegram}`;
 if(qq.includes("دعم")||qq.includes("مشكلة")) return `بوت الدعم الفني 🛠️\n${LINKS.support}`;
 if(qq.includes("طلب")) return `بوت طلب الكتب 📩\n${LINKS.request}`;
-return `تمام 👍\nلو بتدور على كتاب اكتب اسمه\nأو اسألني:\n- فين الواتساب\n- فين التليجرام\n- لينك الموقع\n\nالموقع: ${LINKS.site}`;
+let f=BOOKS.filter(b=>{let n=b.name.toLowerCase(); return qq.split(' ').some(w=>w.length>2&&n.includes(w)) || n.includes(qq) || qq.includes(n.split(' ')[0]);});
+if(f.length>0){
+let r=`لقيتلك ${f.length} كتاب 😎\n\n`;
+f.slice(0,5).forEach(b=>{r+=`📚 ${b.name}\n🔗 ${b.link}\n\n`;});
+return r;
 }
-function go(){let q=inp.value.trim();if(!q)return;add(q,'u');inp.value='';setTimeout(()=>add(reply(q),'b'),400)}
+return `مش لاقي "${q}" بالظبط 😅\nجرب كلمة واحدة بس زي "كونكت" أو "تقييمات"\nأو اطلب من هنا: ${LINKS.request}`;
+}
+function go(){let q=inp.value.trim();if(!q)return;add(q,'u');inp.value='';setTimeout(()=>add(reply(q),'b'),500)}
 btn.onclick=()=>box.style.display='flex';x.onclick=()=>box.style.display='none';send.onclick=go;inp.onkeypress=e=>{if(e.key=='Enter')go()}
+setTimeout(scanRealBooks,1000);
 </script>
-<!-- انتهى البوت -->
 </body>
 </html>
