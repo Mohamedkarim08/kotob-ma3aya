@@ -685,18 +685,7 @@ const LINKS={
   request:"https://t.me/KotobkMaya_bot",
   whatsapp:"https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A?s=cl&p=a&iam=2"
 };
-let BOOKS=[];
-function scanBooks(){
- let arr=[];
- document.querySelectorAll('a').forEach(a=>{
-  if(a.textContent.includes('تحميل') && a.href && a.href.startsWith('http')){
-   let parent=a.closest('div');
-   let name=parent?parent.innerText.replace(/تحميل.*$/,'').trim().split('\n')[0]:a.getAttribute('title')||'';
-   if(name && name.length>5 && name.length<100) arr.push({name:name,link:a.href});
-  }
- });
- BOOKS=[...new Map(arr.map(b=>[b.name,b])).values()];
-}
+
 function addMsg(t,isUser){
  let d=document.createElement('div');
  d.className='ktbk-m '+(isUser?'ktbk-u':'ktbk-b');
@@ -704,25 +693,22 @@ function addMsg(t,isUser){
  else{
   let html=t.replace(/\n/g,'<br>');
   html=html.replace(/https?:\/\/[^\s]+/g,function(url){
-   return '<br><a class="ktbk-link" href="'+url+'" target="_blank">📥 اضغط هنا للتحميل</a>';
+   return '<br><a class="ktbk-link" href="'+url+'" target="_blank">🔗 اضغط هنا للانضمام</a>';
   });
   d.innerHTML=html;
  }
  document.getElementById('ktbk-msgs').appendChild(d);
  document.getElementById('ktbk-msgs').scrollTop=9999;
 }
+
 function reply(q){
   let qq=q.toLowerCase();
   if(qq.includes('واتساب')) return LINKS.whatsapp;
   if(qq.includes('تليجرام')) return LINKS.telegram;
-  if(qq.includes('دعم')||qq.includes('مساعدة')) return LINKS.support;
+  if(qq.includes('دعم')) return LINKS.support;
   if(qq.includes('طلب')) return LINKS.request;
-  if(qq.includes('الموقع')||qq.includes('الرسمي')) return LINKS.site;
-  // بحث في الكتب
-  if(BOOKS.length==0) scanBooks();
-  let found=BOOKS.filter(b=>qq.split(' ').some(w=>w.length>2 && b.name.toLowerCase().includes(w))).slice(0,3);
-  if(found.length>0) return found.map(b=>b.name+'\n'+b.link).join('\n\n');
-return 'اكتب: جروب واتساب / قناه تليجرام / دعم الفني / طلب كتاب / الموقع الرسمي 💙';
+  if(qq.includes('موقع')||qq.includes('رسمي')) return LINKS.site;
+  return 'اكتب: واتساب / تليجرام / دعم / طلب كتاب / الموقع 💙';
 }
 
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send');
@@ -732,7 +718,7 @@ function sendMsg(){
   addMsg(reply(inp.value),false);
   inp.value='';
 }
-btn.onclick=function(){box.style.display = box.style.display=='flex' ? 'none' : 'flex'; scanBooks();};
+btn.onclick=function(){box.style.display = box.style.display=='flex' ? 'none' : 'flex';};
 x.onclick=function(){box.style.display='none';};
 send.onclick=sendMsg;
 inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
