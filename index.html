@@ -689,13 +689,18 @@ function reply(q){
   return '💙 اكتب: يوتيوب / واتس / تليجرام / دعم فني / طلب كتاب / الموقع - وانا هبعتلك اللينك فوراً';
 }
 
-let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send');
+let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-messages');
 
 function addMsg(text,isUser){
-  // اتأكد ان الفانكشن دي موجودة عندك
+  if(!msgs) return;
   let div = document.createElement('div');
   div.textContent = text;
-  // ...
+  div.style.padding = '8px';
+  div.style.margin = '4px';
+  div.style.background = isUser ? '#e0f7fa' : '#fff';
+  if(text.startsWith('http')){ div.innerHTML = '<a href="'+text+'" target="_blank">'+text+'</a>'; }
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
 }
 
 function sendMsg(){
@@ -709,6 +714,8 @@ if(btn && box){
   btn.onclick=function(){box.style.display = box.style.display=='flex' ? 'none' : 'flex';};
 }
 if(x) x.onclick=function(){box.style.display='none';};
+if(send) send.onclick=sendMsg;
+if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
 if(send) send.onclick=sendMsg;
 if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
 </script>
