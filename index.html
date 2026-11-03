@@ -662,16 +662,31 @@ function addMsg(t,isUser){
  document.getElementById('ktbk-msgs').scrollTop=9999;
 }
 
+const LINKS = {
+  youtube: 'https://www.youtube.com/@MrMohamedBooks - قناة اليوتيوب 🎥\nhttps://www.youtube.com/@MrMohamedBooks',
+  whatsapp: '💚 قناة الواتساب:\nhttps://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A',
+  telegram: '✈️ قناة التليجرام:\nhttps://t.me/mrmohamedbooks',
+  support: '💬 بوت الدعم الفني:\nhttps://t.me/MohamedHelpDesk_bot',
+  request: '📚 بوت طلب الكتب:\nhttps://t.me/KotobkMaya_bot',
+  site: '🌐 موقعنا:\nhttps://mohamedkarim08.github.io/kotob-ma3aya/'
+};
+
 function reply(q){
- let qq=q.toLowerCase();
- if(qq.includes('واتساب') || qq.includes('واتس')) return LINKS.whatsapp;
- if(qq.includes('تليجرام') || qq.includes('تلجرام') || qq.includes('تيليجرام')) return LINKS.telegram;
- if(qq.includes('دعم')) return LINKS.support;
- if(qq.includes('طلب')) return LINKS.request;
- if(qq.includes('موقع') || qq.includes('رسمي')) return LINKS.site;
- return LINKS.site;
-}
-  return 'اكتب: جروب واتساب / قناه تليجرام / بوت الدعم الفني / بوت طلب الكتب / الموقع الرسمي 💙';
+  let qq = q.toLowerCase();
+  // يوتيوب
+  if(qq.includes('يوتيوب') || qq.includes('youtube') || qq.includes('قناة اليوتيوب')) return LINKS.youtube;
+  // واتساب
+  if(qq.includes('واتس') || qq.includes('whatsapp') || qq.includes('قناة الواتس')) return LINKS.whatsapp;
+  // تليجرام قناة
+  if((qq.includes('تليجرام') || qq.includes('تلجرام') || qq.includes('telegram')) && (qq.includes('قناه') || qq.includes('قناة') || qq.includes('لينك'))) return LINKS.telegram;
+  // بوت الدعم
+  if(qq.includes('دعم') || qq.includes('مساعدة') || qq.includes('help') || qq.includes('الدعم الفني')) return LINKS.support;
+  // بوت طلب الكتب
+  if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('عايز كتاب') || qq.includes('bot') || qq.includes('بوت الكتب')) return LINKS.request;
+  // الموقع
+  if(qq.includes('موقع') || qq.includes('لينك الموقع') || qq.includes('site')) return LINKS.site;
+  
+  return '💙 اكتب: يوتيوب / واتس / تليجرام / دعم فني / طلب كتاب / الموقع - وانا هبعتلك اللينك فوراً';
 }
 
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send');
