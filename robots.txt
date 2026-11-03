@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohamedkarim08.github.io/kotob-ma3aya/sitemap.xml
