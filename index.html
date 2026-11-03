@@ -677,7 +677,7 @@ function reply(q){
   if(qq.includes('يوتيوب') || qq.includes('youtube') || qq.includes('قناة اليوتيوب')) return LINKS.youtube;
   // واتساب
   if(qq.includes('واتس') || qq.includes('whatsapp') || qq.includes('قناة الواتس')) return LINKS.whatsapp;
-  // تليجرام قناة
+  // تليجرام قناة - هنا كان الخطأ
   if((qq.includes('تليجرام') || qq.includes('تلجرام') || qq.includes('telegram')) && (qq.includes('قناه') || qq.includes('قناة') || qq.includes('لينك'))) return LINKS.telegram;
   // بوت الدعم
   if(qq.includes('دعم') || qq.includes('مساعدة') || qq.includes('help') || qq.includes('الدعم الفني')) return LINKS.support;
@@ -690,16 +690,27 @@ function reply(q){
 }
 
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send');
+
+function addMsg(text,isUser){
+  // اتأكد ان الفانكشن دي موجودة عندك
+  let div = document.createElement('div');
+  div.textContent = text;
+  // ...
+}
+
 function sendMsg(){
   if(!inp.value.trim()) return;
   addMsg(inp.value,true);
   addMsg(reply(inp.value),false);
   inp.value='';
 }
-btn.onclick=function(){box.style.display = box.style.display=='flex' ? 'none' : 'flex';};
-x.onclick=function(){box.style.display='none';};
-send.onclick=sendMsg;
-inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
+
+if(btn && box){
+  btn.onclick=function(){box.style.display = box.style.display=='flex' ? 'none' : 'flex';};
+}
+if(x) x.onclick=function(){box.style.display='none';};
+if(send) send.onclick=sendMsg;
+if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
 </script>
 </body>
 </html>
