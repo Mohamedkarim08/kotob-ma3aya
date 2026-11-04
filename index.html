@@ -615,7 +615,7 @@ window.addEventListener('load', () => {
   document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
 });
     </script>
-<!-- بوت معايا - نسخة نهائية -->
+<!-- بوت معايا - نسخة مصلحة -->
 <style>
 #ktbk-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#6c5ce7;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;cursor:pointer;z-index:9999}
 #ktbk-box{position:fixed;bottom:90px;right:20px;width:360px;max-width:92vw;height:460px;background:white;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;flex-direction:column;z-index:9999;overflow:hidden;font-family:Cairo,sans-serif}
@@ -635,29 +635,6 @@ window.addEventListener('load', () => {
 <div id="ktbk-in"><input id="ktbk-input" placeholder="اكتب اسم الكتاب..."><button id="ktbk-send">ابعت</button></div>
 </div>
 <script>
-const LINKS={
-  site:"https://mohamedkarim08.github.io/kotob-ma3aya/",
-  telegram:"https://t.me/mrmohamedbooks",
-  support:"https://t.me/MohamedHelpDesk_bot",
-  request:"https://t.me/KotobkMaya_bot",
-  whatsapp:"https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A?s=cl&p=a&iam=2"
-};
-
-function addMsg(t,isUser){
- let d=document.createElement('div');
- d.className='ktbk-m '+(isUser?'ktbk-u':'ktbk-b');
- if(isUser){d.textContent=t;}
- else{
-  let html=t.replace(/\n/g,'<br>');
-  html=html.replace(/https?:\/\/[^\s]+/g,function(url){
-   return '<br><a class="ktbk-link" href="'+url+'" target="_blank">🔗 اضغط هنا للانضمام</a>';
-  });
-  d.innerHTML=html;
- }
- document.getElementById('ktbk-msgs').appendChild(d);
- document.getElementById('ktbk-msgs').scrollTop=9999;
-}
-
 const LINKS = {
   youtube: 'https://www.youtube.com/@MrMohamedBooks - قناة اليوتيوب 🎥\nhttps://www.youtube.com/@MrMohamedBooks',
   whatsapp: '💚 قناة الواتساب:\nhttps://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A',
@@ -669,63 +646,45 @@ const LINKS = {
 
 function reply(q){
   let qq = q.toLowerCase();
-  // يوتيوب
-  if(qq.includes('يوتيوب') || qq.includes('youtube') || qq.includes('قناة اليوتيوب')) return LINKS.youtube;
-  // واتساب
-  if(qq.includes('واتس') || qq.includes('whatsapp') || qq.includes('قناة الواتس')) return LINKS.whatsapp;
-  // تليجرام قناة - هنا كان الخطأ
+  if(qq.includes('يوتيوب') || qq.includes('youtube')) return LINKS.youtube;
+  if(qq.includes('واتس') || qq.includes('whatsapp')) return LINKS.whatsapp;
   if((qq.includes('تليجرام') || qq.includes('تلجرام') || qq.includes('telegram')) && (qq.includes('قناه') || qq.includes('قناة') || qq.includes('لينك'))) return LINKS.telegram;
-  // بوت الدعم
-  if(qq.includes('دعم') || qq.includes('مساعدة') || qq.includes('help') || qq.includes('الدعم الفني')) return LINKS.support;
-  // بوت طلب الكتب
-  if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('عايز كتاب') || qq.includes('bot') || qq.includes('بوت الكتب')) return LINKS.request;
-  // الموقع
-  if(qq.includes('موقع') || qq.includes('لينك الموقع') || qq.includes('site')) return LINKS.site;
-  
+  if(qq.includes('دعم') || qq.includes('مساعدة') || qq.includes('help')) return LINKS.support;
+  if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('بوت')) return LINKS.request;
+  if(qq.includes('موقع') || qq.includes('site')) return LINKS.site;
   return '💙 اكتب: يوتيوب / واتس / تليجرام / دعم فني / طلب كتاب / الموقع - وانا هبعتلك اللينك فوراً';
 }
 
-let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-messages');
+let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-msgs');
 
-function addMsg(text,isUser){
-  if(!msgs) return;
-  let div = document.createElement('div');
-  div.textContent = text;
-  div.style.padding = '8px';
-  div.style.margin = '4px';
-  div.style.background = isUser ? '#e0f7fa' : '#fff';
-  if(text.startsWith('http')){ div.innerHTML = '<a href="'+text+'" target="_blank">'+text+'</a>'; }
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
+function addMsgKtbk(t,isUser){
+  let d=document.createElement('div');
+  d.className='ktbk-m '+(isUser?'ktbk-u':'ktbk-b');
+  if(isUser){ d.textContent=t; }
+  else{
+    let html=t.replace(/\n/g,'<br>');
+    html=html.replace(/https?:\/\/[^\s]+/g,function(url){
+      return '<br><a class="ktbk-link" href="'+url+'" target="_blank">🔗 اضغط هنا للانضمام</a>';
+    });
+    d.innerHTML=html;
+  }
+  msgs.appendChild(d);
+  msgs.scrollTop=msgs.scrollHeight;
 }
 
 function sendMsg(){
   if(!inp.value.trim()) return;
-  addMsg(inp.value,true);
-  addMsg(reply(inp.value),false);
+  addMsgKtbk(inp.value,true);
+  addMsgKtbk(reply(inp.value),false);
   inp.value='';
 }
 
 if(btn && box){
-  btn.onclick=function(){box.style.display = box.style.display=='flex' ? 'none' : 'flex';};
+  btn.onclick=function(){ box.style.display = box.style.display=='flex' ? 'none' : 'flex'; };
 }
-if(x) x.onclick=function(){box.style.display='none';};
-if(send) send.onclick=sendMsg;
-if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
+if(x) x.onclick=function(){ box.style.display='none'; };
 if(send) send.onclick=sendMsg;
 if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
 </script>
- <div style="padding:20px; background:#f0f9ff; margin-top:30px; border-radius:10px;">
-  <h2>مكتبة كتبك معايا - تحميل جميع الكتب الخارجية</h2>
-  <p>
-    مرحبا بكم في <strong>كتبك معايا</strong>، المنصة الاولى لتحميل الكتب الخارجية مجانا. نوفر لكم تحميل <strong>كتاب المعاصر</strong> للمرحلة الثانوية والاعدادية، 
-    <strong>كتاب الامتحان</strong> في جميع المواد، <strong>كتاب المعاصر ماث وساينس</strong>، كتب الوزارة، تقييمات الوزارة، وكل المذكرات الخارجية 
-    لجميع المراحل: الابتدائية والاعدادية والثانوية العامة بكل شعبها علمي وادبي.
-    ابحث عن <strong>كتبك معايا</strong> او <strong>كتبك</strong> او <strong>معايا</strong> للوصول الينا مباشرة.
-  </p>
-  <p style="color:#666; font-size:14px;">
-    كلمات مفتاحية: كتبك معايا, موقع كتبك معايا, كتاب المعاصر 2026, كتاب الامتحان 2026, تحميل كتاب المعاصر pdf, تحميل كتاب الامتحان
-  </p>
-</div>
 </body>
 </html>
