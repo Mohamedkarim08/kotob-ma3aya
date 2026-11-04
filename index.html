@@ -648,7 +648,7 @@ function reply(q){
   let qq = q.toLowerCase();
   if(qq.includes('يوتيوب') || qq.includes('youtube')) return LINKS.youtube;
   if(qq.includes('واتس') || qq.includes('whatsapp')) return LINKS.whatsapp;
-  if((qq.includes('تليجرام') || qq.includes('تلجرام') || qq.includes('telegram')) && (qq.includes('قناه') || qq.includes('قناة') || qq.includes('لينك'))) return LINKS.telegram;
+  if(qq.includes('تليجرام') || qq.includes('تلجرام') || qq.includes('telegram')) return LINKS.telegram;
   if(qq.includes('دعم') || qq.includes('مساعدة') || qq.includes('help')) return LINKS.support;
   if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('بوت')) return LINKS.request;
   if(qq.includes('موقع') || qq.includes('site')) return LINKS.site;
