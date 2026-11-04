@@ -669,15 +669,20 @@ const LINKS = {
 
 function reply(q){
   let qq = q.toLowerCase();
+  if(qq.includes('امتحان') || qq.includes('اختبار') || qq.includes('quiz')){
+    if(qq.includes('kg1') || qq.includes('كي جي') || qq.includes('كيجي') || qq.includes('kg 1') || qq.includes('انجليزي') || qq.includes('english')){
+      return '📝 امتحان KG1 انجليزي - مستر محمد 👇\nhttps://forms.gle/CgPZsRE4VDrPHdPU6';
+    }
+    return '📝 امتحانات مستر محمد المتاحة دلوقتي:\n📚 KG1 انجليزي:\nhttps://forms.gle/CgPZsRE4VDrPHdPU6';
+  }
   if(qq.includes('يوتيوب') || qq.includes('youtube')) return LINKS.youtube;
   if(qq.includes('واتس') || qq.includes('whatsapp')) return LINKS.whatsapp;
   if(qq.includes('تليجرام') || qq.includes('تلجرام') || qq.includes('telegram')) return LINKS.telegram;
   if(qq.includes('دعم') || qq.includes('مساعدة') || qq.includes('help')) return LINKS.support;
   if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('بوت')) return LINKS.request;
   if(qq.includes('موقع') || qq.includes('site')) return LINKS.site;
-  return '💙 اكتب: يوتيوب / واتس / تليجرام / دعم فني / طلب كتاب / الموقع - وانا هبعتلك اللينك فوراً';
+  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / الموقع - وانا هبعتلك اللينك فوراً';
 }
-
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-msgs');
 
 function addMsgKtbk(t,isUser){
