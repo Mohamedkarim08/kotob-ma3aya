@@ -574,46 +574,81 @@ function quickAsk(txt){ document.getElementById('aiUserInput').value = txt; send
         }
         inputEl.value='';
     }
-   let mediaRecorder,audioChunks=[],isRecording=false;
+   let mediaRecorder, audioChunks = [], isRecording = false;
+
 function toggleRecord(){
-    const btn=document.getElementById('recordBtn');
+    const btn = document.getElementById('recordBtn');
     if(!isRecording){
         navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
-            mediaRecorder=new MediaRecorder(stream); audioChunks=[];
-            mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
-            mediaRecorder.onstop=()=>{
-                const blob=new Blob(audioChunks,{type:'audio/webm'});
-                const file = new File([blob], "voice.webm", {type:"audio/webm"});
+            // جرب ogg الأول، لو المتصفح مش بيدعمه انزل لـ webm
+            let mime = '';
+            if (MediaRecorder.isTypeSupported('audio/ogg;codecs=opus')) mime = 'audio/ogg;codecs=opus';
+            else if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) mime = 'audio/webm;codecs=opus';
+            else mime = '';
+
+            mediaRecorder = new MediaRecorder(stream, mime ? {mimeType: mime} : undefined);
+            audioChunks = [];
+            mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+            mediaRecorder.onstop = ()=>{
+                // وقف المايك
+                stream.getTracks().forEach(t => t.stop());
+
+                const isOgg = mime.includes('ogg');
+                const blobType = isOgg ? 'audio/ogg' : 'audio/webm';
+                const fileName = isOgg ? "voice.ogg" : "voice.webm";
+                const blob = new Blob(audioChunks, {type: blobType});
+                const file = new File([blob], fileName, {type: blobType});
+
                 addMsg('🎤 تم إرسال تسجيل صوتي','user');
                 const loading = addMsg('جاري إرسال التسجيل للمسؤول... ⏳','bot');
                 const name = document.getElementById('senderName')?.value || 'طالب من الموقع';
                 const contact = document.getElementById('senderContact')?.value || '';
-                const fd=new FormData();
-                fd.append('chat_id',CHAT_ID);
-                fd.append('voice', file);
+
+                const fd = new FormData();
+                fd.append('chat_id', CHAT_ID);
+                // لو ogg ابعت sendVoice، لو webm ابعت sendAudio عشان التليجرام يقبله
+                const method = isOgg ? 'sendVoice' : 'sendAudio';
+                if(isOgg) fd.append('voice', file);
+                else fd.append('audio', file);
                 fd.append('caption', `🎤 فويس جديد من كتبك معايا\n👤 ${name}\n📞 ${contact}`);
-                fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendVoice`,{method:'POST',body:fd})
-                .then(r=>r.json()).then(d=>{
-                    if(d.ok){ 
-                        loading.textContent='✅ تم إرسال الفويس للمسؤول وهيرد عليك قريب - بوت التواصل';
+
+                fetch(`https://api.telegram.org/bot${BOT_TOKEN}/${method}`, {method:'POST', body:fd})
+                .then(r => r.json()).then(d=>{
+                    if(d.ok){
+                        loading.textContent = '✅ تم إرسال الفويس للمسؤول وهيرد عليك قريب - بوت التواصل';
+                        const waLink = contact ? `https://wa.me/${contact.replace(/^0/,'2')}` : `https://wa.me/`;
                         const replyMarkup = {
                             inline_keyboard: [[
-                                {text:"📩 رد واتساب", url:`https://wa.me/${contact.replace(/^0/,'2')}`},
+                                {text:"📩 رد واتساب", url: waLink},
                                 {text:"✈️ فتح بوت الدعم", url:"https://t.me/MohamedHelpDesk_bot"}
                             ]]
                         };
-                        const fd2=new FormData();
-                        fd2.append('chat_id',CHAT_ID);
+                        const fd2 = new FormData();
+                        fd2.append('chat_id', CHAT_ID);
                         fd2.append('text', `↩️ للرد على ${name} - رقم: ${contact}`);
                         fd2.append('reply_markup', JSON.stringify(replyMarkup));
-                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{method:'POST',body:fd2});
+                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {method:'POST', body:fd2});
+                    } else {
+                        loading.textContent = '❌ حصل مشكلة في إرسال الفويس، جرب تاني: ' + (d.description || '');
+                        console.log(d);
                     }
-                    else{ loading.textContent='❌ فشل: '+JSON.stringify(d); }
-                }).catch(()=>{ loading.textContent='❌ تعذر الاتصال'; });
+                })
+                .catch(err=>{
+                    loading.textContent = '❌ مشكلة في الاتصال، جرب تاني';
+                    console.log(err);
+                });
             };
-            mediaRecorder.start(); isRecording=true; btn.textContent='⏹'; btn.style.background='#ef4444';
-        }).catch(()=>alert('اسمح بصلاحية الميكروفون'));
-    }else{ mediaRecorder.stop(); isRecording=false; btn.textContent='🎤'; btn.style.background=''; }
+            mediaRecorder.start();
+            isRecording = true;
+            btn.textContent = '⏹️ وقف التسجيل';
+        }).catch(()=>{
+            alert('لازم تسمح للمايك عشان تسجل');
+        });
+    } else {
+        mediaRecorder.stop();
+        isRecording = false;
+        btn.textContent = '🎤 تسجيل صوتي';
+    }
 }
     function sendToTelegram(){
         const name=document.getElementById('senderName').value.trim();
