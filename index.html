@@ -650,6 +650,26 @@ function toggleRecord(){
         btn.textContent = '🎤 تسجيل صوتي';
     }
 }
+ function formatAI(text){
+    if(!text) return '';
+    let t = text
+        // امسح علامات اللاتكس
+        .replace(/\$\$/g, '')
+        .replace(/\$/g, '')
+        // امسح علامات العناوين
+        .replace(/^### /gm, '')
+        .replace(/^## /gm, '')
+        .replace(/^# /gm, '')
+        .replace(/###/g, '')
+        .replace(/##/g, '')
+        // تحويل **نص** لـ بولد
+        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+        .replace(/\*/g, '')
+        // سطور جديدة
+        .replace(/\n/g, '<br>');
+
+    return t;
+}
     function sendToTelegram(){
         const name=document.getElementById('senderName').value.trim();
         const contact=document.getElementById('senderContact').value.trim();
