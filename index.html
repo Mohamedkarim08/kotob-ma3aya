@@ -789,7 +789,17 @@ if(notiBtn) notiBtn.onclick=function(){
   addMsgKtbk('🔔 دوس سماح لما يطلعلك طلب الإشعارات فوق',false);
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.Slidedown.promptPush();
+    try{
+      await OneSignal.Notifications.requestPermission();
+      let perm = await OneSignal.Notifications.permission;
+      if(perm){
+        addMsgKtbk('✅ تم الاشتراك بنجاح! هتوصلك كل الإشعارات',false);
+      } else {
+        addMsgKtbk('❌ انت دوست Block. دوس على القفل 🔒 اللي فوق جنب اللينك واعمل Notifications = Allow وبعدين جرب تاني',false);
+      }
+    }catch(e){
+      addMsgKtbk('❌ حصل مشكلة: '+e.message,false);
+    }
   });
 };
 let eltzamBtn=document.getElementById('ktbk-eltzam');
