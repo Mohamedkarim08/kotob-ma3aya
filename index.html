@@ -788,21 +788,19 @@ if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg
 let notiBtn=document.getElementById('ktbk-noti');
 if(notiBtn) notiBtn.onclick=function(){
   addMsgKtbk('عايز اشترك في الإشعارات',true);
-  addMsgKtbk('🔔 دوس سماح لما يطلعلك طلب الإشعارات فوق',false);
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    try{
-      await OneSignal.Notifications.requestPermission();
-      let perm = await OneSignal.Notifications.permission;
-      if(perm){
-        addMsgKtbk('✅ تم الاشتراك بنجاح! هتوصلك كل الإشعارات',false);
+  if('Notification' in window){
+    Notification.requestPermission().then(function(perm){
+      if(perm === 'granted'){
+        addMsgKtbk('✅ تم الاشتراك! هتوصلك الإشعارات',false);
+      } else if(perm === 'denied'){
+        addMsgKtbk('❌ انت دوست Block قبل كده. دوس على القفل 🔒 فوق جنب اللينك > Notifications > Allow وبعدين اعمل ريفريش',false);
       } else {
-        addMsgKtbk('❌ انت دوست Block. دوس على القفل 🔒 اللي فوق جنب اللينك واعمل Notifications = Allow وبعدين جرب تاني',false);
+        addMsgKtbk('لسه ماوافقتش، دوس Allow لما يطلعلك',false);
       }
-    }catch(e){
-      addMsgKtbk('❌ حصل مشكلة: '+e.message,false);
-    }
-  });
+    });
+  } else {
+    addMsgKtbk('المتصفح ده مش بيدعم الإشعارات',false);
+  }
 };
 let eltzamBtn=document.getElementById('ktbk-eltzam');
 if(eltzamBtn) eltzamBtn.onclick=function(){ addMsgKtbk('فورم الالتزام',true); addMsgKtbk(LINKS.eltzam,false); };
