@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+ <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "حط_هنا_App_ID_بتاعك",
+      allowLocalhostAsSecureOrigin: true,
+    });
+  });
+</script>
  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="manifest" href="manifest.json">
@@ -688,10 +698,10 @@ function toggleRecord(){
     document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
 });
 </script>
-<!-- بوت روابط كتبك معايا - نسخة مصلحة + فورم الالتزام -->
+<!-- بوت روابط كتبك معايا - الاتنين مع بعض -->
 <style>
 #ktbk-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#6c5ce7;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;cursor:pointer;z-index:9999}
-#ktbk-box{position:fixed;bottom:90px;right:20px;width:360px;max-width:92vw;height:460px;background:white;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;flex-direction:column;z-index:9999;overflow:hidden;font-family:Cairo,sans-serif}
+#ktbk-box{position:fixed;bottom:90px;right:20px;width:360px;max-width:92vw;height:480px;background:white;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;flex-direction:column;z-index:9999;overflow:hidden;font-family:Cairo,sans-serif}
 #ktbk-head{background:#6c5ce7;color:white;padding:14px;font-weight:bold;display:flex;justify-content:space-between}
 #ktbk-msgs{flex:1;padding:12px;overflow-y:auto;background:#f8f9fa}
 .ktbk-m{margin:6px 0;padding:10px 14px;border-radius:12px;max-width:85%;line-height:1.6}
@@ -700,16 +710,39 @@ function toggleRecord(){
 #ktbk-in input{flex:1;border:1px solid #ddd;border-radius:20px;padding:10px 14px;outline:none}
 #ktbk-in button{background:#6c5ce7;color:white;border:none;border-radius:20px;padding:10px 16px;margin-right:8px;cursor:pointer}
 .ktbk-link{display:inline-block;background:#6c5ce7;color:white!important;padding:6px 12px;border-radius:10px;text-decoration:none;margin:5px 0}
+#ktbk-quick{display:flex;gap:6px;padding:8px 10px;background:white;border-top:1px solid #eee;flex-wrap:wrap}
+.ktbk-q{flex:1 1 45%;border:none;border-radius:20px;padding:9px 6px;font-size:13px;font-weight:bold;cursor:pointer}
+.ktbk-q-red{background:#ff0000;color:white}
+.ktbk-q-purple{background:#6c5ce7;color:white}
+.ktbk-q-orange{background:#ff9800;color:white}
+.ktbk-q-green{background:#25D366;color:white}
 </style>
+
+<!-- كود OneSignal - حطه في <head> الموقع -->
+<!-- <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({ appId: "حط_هنا_App_ID_بتاعك" });
+  });
+</script> -->
+
 <div id="ktbk-btn">💬</div>
 <div id="ktbk-box">
 <div id="ktbk-head"><span>روابط كتبك معايا 🔗</span><span id="ktbk-x" style="cursor:pointer">✕</span></div>
-<div id="ktbk-msgs"><div class="ktbk-m ktbk-b">ازيك يا بطل! جاهز 📚<br>اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام</div></div>
+<div id="ktbk-msgs"><div class="ktbk-m ktbk-b">ازيك يا بطل! جاهز 📚<br>دوس على الزرار اللي انت عايزه تحت 👇</div></div>
+<div id="ktbk-quick">
+<button class="ktbk-q ktbk-q-red" id="ktbk-sub">🔴 اشترك في القناة</button>
+<button class="ktbk-q ktbk-q-orange" id="ktbk-noti">🔔 اشترك في إشعارات الموقع</button>
+<button class="ktbk-q ktbk-q-purple" id="ktbk-eltzam">📝 فورم الالتزام</button>
+<button class="ktbk-q ktbk-q-green" id="ktbk-wa">💚 واتساب</button>
+</div>
 <div id="ktbk-in"><input id="ktbk-input" placeholder="اكتب اسم الكتاب..."><button id="ktbk-send">ابعت</button></div>
 </div>
 <script>
 const LINKS = {
  youtube: '🎥 قناة اليوتيوب:\nhttps://www.youtube.com/@kotobma3aya',
+  youtube_sub: 'https://www.youtube.com/@kotobma3aya?sub_confirmation=1',
   whatsapp: '💚 قناة الواتساب:\nhttps://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A',
   telegram: '✈️ قناة التليجرام:\nhttps://t.me/mrmohamedbooks',
   support: '💬 بوت الدعم الفني:\nhttps://t.me/MohamedHelpDesk_bot',
@@ -717,56 +750,51 @@ const LINKS = {
   site: '🌐 موقعنا:\nhttps://mohamedkarim08.github.io/kotob-ma3aya/',
   eltzam: '📝 فورم الالتزام 👇\nhttps://forms.gle/8zpk6oc6i454zzTx5'
 };
-
 function reply(q){
   let qq = q.toLowerCase();
-  if(qq.includes('شهاده الالتزام') || qq.includes('eltzam') || qq.includes('التزام') || qq.includes('فورم الالتزام')){
-    return LINKS.eltzam;
-  }
+  if(qq.includes('اشترك في القناة') || qq.includes('اشترك')) return '🔴 اشترك في قناة كتبك معايا وفعّل الجرس 🔔👇\nhttps://www.youtube.com/@kotobma3aya?sub_confirmation=1';
+  if(qq.includes('اشعار') || qq.includes('اشعارات') || qq.includes('تنبيه')) return '🔔 عشان توصلك إشعارات الموقع، دوس على زرار (اشترك في إشعارات الموقع) اللي تحت، وبعدها دوس سماح ✅';
+  if(qq.includes('التزام') || qq.includes('eltzam')) return LINKS.eltzam;
   if(qq.includes('امتحان') || qq.includes('اختبار') || qq.includes('quiz')){
-    if(qq.includes('kg1') || qq.includes('كي جي') || qq.includes('كيجي') || qq.includes('kg 1') || qq.includes('انجليزي') || qq.includes('english')){
-      return '📝 امتحان KG1 انجليزي - مستر محمد 👇\nhttps://forms.gle/CgPZsRE4VDrPHdPU6';
-    }
+    if(qq.includes('kg1') || qq.includes('كي جي') || qq.includes('كيجي') || qq.includes('انجليزي')) return '📝 امتحان KG1 انجليزي - مستر محمد 👇\nhttps://forms.gle/CgPZsRE4VDrPHdPU6';
     return '📝 امتحانات مستر محمد المتاحة دلوقتي:\n📚 KG1 انجليزي:\nhttps://forms.gle/CgPZsRE4VDrPHdPU6';
   }
   if(qq.includes('يوتيوب') || qq.includes('youtube')) return LINKS.youtube;
   if(qq.includes('واتس') || qq.includes('whatsapp')) return LINKS.whatsapp;
   if(qq.includes('تليجرام') || qq.includes('تلجرام') || qq.includes('telegram')) return LINKS.telegram;
-  if(qq.includes('دعم') || qq.includes('مساعدة') || qq.includes('help')) return LINKS.support;
+  if(qq.includes('دعم') || qq.includes('مساعدة')) return LINKS.support;
   if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('بوت')) return LINKS.request;
   if(qq.includes('موقع') || qq.includes('site')) return LINKS.site;
-  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / شهاده الالتزام / الموقع - وانا هبعتلك اللينك فوراً';
+  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام / اشترك - وانا هبعتلك اللينك فوراً';
 }
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-msgs');
-
 function addMsgKtbk(t,isUser){
-  let d=document.createElement('div');
-  d.className='ktbk-m '+(isUser?'ktbk-u':'ktbk-b');
-  if(isUser){ d.textContent=t; }
-  else{
+  let d=document.createElement('div'); d.className='ktbk-m '+(isUser?'ktbk-u':'ktbk-b');
+  if(isUser){ d.textContent=t; } else {
     let html=t.replace(/\n/g,'<br>');
-    html=html.replace(/https?:\/\/[^\s]+/g,function(url){
-      return '<br><a class="ktbk-link" href="'+url+'" target="_blank">🔗 اضغط هنا للانضمام</a>';
-    });
+    html=html.replace(/https?:\/\/[^\s]+/g,function(url){ return '<br><a class="ktbk-link" href="'+url+'" target="_blank">🔗 اضغط هنا</a>'; });
     d.innerHTML=html;
   }
-  msgs.appendChild(d);
-  msgs.scrollTop=msgs.scrollHeight;
+  msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;
 }
-
-function sendMsg(){
-  if(!inp.value.trim()) return;
-  addMsgKtbk(inp.value,true);
-  addMsgKtbk(reply(inp.value),false);
-  inp.value='';
-}
-
-if(btn && box){
-  btn.onclick=function(){ box.style.display = box.style.display=='flex' ? 'none' : 'flex'; };
-}
+function sendMsg(){ if(!inp.value.trim()) return; addMsgKtbk(inp.value,true); addMsgKtbk(reply(inp.value),false); inp.value=''; }
+if(btn && box){ btn.onclick=function(){ box.style.display = box.style.display=='flex' ? 'none' : 'flex'; }; }
 if(x) x.onclick=function(){ box.style.display='none'; };
 if(send) send.onclick=sendMsg;
 if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
+
+let subBtn=document.getElementById('ktbk-sub');
+if(subBtn) subBtn.onclick=function(){ window.open(LINKS.youtube_sub,'_blank'); addMsgKtbk(reply('اشترك'),false); };
+let notiBtn=document.getElementById('ktbk-noti');
+if(notiBtn) notiBtn.onclick=async function(){
+  addMsgKtbk('عايز اشترك في الإشعارات',true);
+  addMsgKtbk('🔔 دوس سماح لما يطلعلك طلب الإشعارات، وهبعتلك كل جديد أول بأول 📚',false);
+  try{ if(window.OneSignal){ await window.OneSignal.showSlidedownPrompt(); } }catch(e){}
+};
+let eltzamBtn=document.getElementById('ktbk-eltzam');
+if(eltzamBtn) eltzamBtn.onclick=function(){ addMsgKtbk('فورم الالتزام',true); addMsgKtbk(LINKS.eltzam,false); };
+let waBtn=document.getElementById('ktbk-wa');
+if(waBtn) waBtn.onclick=function(){ window.open('https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A','_blank'); };
 </script>
 </body>
 </html>
