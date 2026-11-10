@@ -783,13 +783,14 @@ if(x) x.onclick=function(){ box.style.display='none'; };
 if(send) send.onclick=sendMsg;
 if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
 
-let subBtn=document.getElementById('ktbk-sub');
-if(subBtn) subBtn.onclick=function(){ window.open(LINKS.youtube_sub,'_blank'); addMsgKtbk(reply('اشترك'),false); };
 let notiBtn=document.getElementById('ktbk-noti');
-if(notiBtn) notiBtn.onclick=async function(){
+if(notiBtn) notiBtn.onclick=function(){
   addMsgKtbk('عايز اشترك في الإشعارات',true);
-  addMsgKtbk('🔔 دوس سماح لما يطلعلك طلب الإشعارات، وهبعتلك كل جديد أول بأول 📚',false);
-  try{ if(window.OneSignal){ await window.OneSignal.showSlidedownPrompt(); } }catch(e){}
+  addMsgKtbk('🔔 دوس سماح لما يطلعلك طلب الإشعارات فوق',false);
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.Slidedown.promptPush();
+  });
 };
 let eltzamBtn=document.getElementById('ktbk-eltzam');
 if(eltzamBtn) eltzamBtn.onclick=function(){ addMsgKtbk('فورم الالتزام',true); addMsgKtbk(LINKS.eltzam,false); };
