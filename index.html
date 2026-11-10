@@ -7,6 +7,8 @@
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({
       appId: "0bab1240-0450-4f76-934e-84bea722e350",
+      serviceWorkerPath: "OneSignalSDKWorker.js",
+      serviceWorkerParam: { scope: "/kotob-ma3aya/" },
       allowLocalhostAsSecureOrigin: true,
     });
   });
