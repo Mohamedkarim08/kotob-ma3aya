@@ -688,7 +688,7 @@ function toggleRecord(){
     document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
 });
 </script>
-<!-- بوت روابط كتبك معايا - نسخة مصلحة -->
+<!-- بوت روابط كتبك معايا - نسخة مصلحة + فورم الالتزام -->
 <style>
 #ktbk-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#6c5ce7;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;cursor:pointer;z-index:9999}
 #ktbk-box{position:fixed;bottom:90px;right:20px;width:360px;max-width:92vw;height:460px;background:white;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;flex-direction:column;z-index:9999;overflow:hidden;font-family:Cairo,sans-serif}
@@ -704,7 +704,7 @@ function toggleRecord(){
 <div id="ktbk-btn">💬</div>
 <div id="ktbk-box">
 <div id="ktbk-head"><span>روابط كتبك معايا 🔗</span><span id="ktbk-x" style="cursor:pointer">✕</span></div>
-<div id="ktbk-msgs"><div class="ktbk-m ktbk-b">ازيك يا بطل! جاهز 📚</div></div>
+<div id="ktbk-msgs"><div class="ktbk-m ktbk-b">ازيك يا بطل! جاهز 📚<br>اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام</div></div>
 <div id="ktbk-in"><input id="ktbk-input" placeholder="اكتب اسم الكتاب..."><button id="ktbk-send">ابعت</button></div>
 </div>
 <script>
@@ -714,11 +714,15 @@ const LINKS = {
   telegram: '✈️ قناة التليجرام:\nhttps://t.me/mrmohamedbooks',
   support: '💬 بوت الدعم الفني:\nhttps://t.me/MohamedHelpDesk_bot',
   request: '📚 بوت طلب الكتب:\nhttps://t.me/KotobkMaya_bot',
-  site: '🌐 موقعنا:\nhttps://mohamedkarim08.github.io/kotob-ma3aya/'
+  site: '🌐 موقعنا:\nhttps://mohamedkarim08.github.io/kotob-ma3aya/',
+  eltzam: '📝 فورم الالتزام 👇\nhttps://forms.gle/8zpk6oc6i454zzTx5'
 };
 
 function reply(q){
   let qq = q.toLowerCase();
+  if(qq.includes('التزام') || qq.includes('eltzam') || qq.includes('التزام') || qq.includes('فورم الالتزام')){
+    return LINKS.eltzam;
+  }
   if(qq.includes('امتحان') || qq.includes('اختبار') || qq.includes('quiz')){
     if(qq.includes('kg1') || qq.includes('كي جي') || qq.includes('كيجي') || qq.includes('kg 1') || qq.includes('انجليزي') || qq.includes('english')){
       return '📝 امتحان KG1 انجليزي - مستر محمد 👇\nhttps://forms.gle/CgPZsRE4VDrPHdPU6';
@@ -731,7 +735,7 @@ function reply(q){
   if(qq.includes('دعم') || qq.includes('مساعدة') || qq.includes('help')) return LINKS.support;
   if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('بوت')) return LINKS.request;
   if(qq.includes('موقع') || qq.includes('site')) return LINKS.site;
-  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / الموقع - وانا هبعتلك اللينك فوراً';
+  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام / الموقع - وانا هبعتلك اللينك فوراً';
 }
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-msgs');
 
