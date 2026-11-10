@@ -720,7 +720,7 @@ const LINKS = {
 
 function reply(q){
   let qq = q.toLowerCase();
-  if(qq.includes('التزام') || qq.includes('eltzam') || qq.includes('التزام') || qq.includes('فورم الالتزام')){
+  if(qq.includes('شهاده الالتزام') || qq.includes('eltzam') || qq.includes('التزام') || qq.includes('فورم الالتزام')){
     return LINKS.eltzam;
   }
   if(qq.includes('امتحان') || qq.includes('اختبار') || qq.includes('quiz')){
@@ -735,7 +735,7 @@ function reply(q){
   if(qq.includes('دعم') || qq.includes('مساعدة') || qq.includes('help')) return LINKS.support;
   if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('بوت')) return LINKS.request;
   if(qq.includes('موقع') || qq.includes('site')) return LINKS.site;
-  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام / الموقع - وانا هبعتلك اللينك فوراً';
+  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / شهاده الالتزام / الموقع - وانا هبعتلك اللينك فوراً';
 }
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-msgs');
 
