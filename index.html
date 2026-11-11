@@ -784,24 +784,6 @@ if(btn && box){ btn.onclick=function(){ box.style.display = box.style.display=='
 if(x) x.onclick=function(){ box.style.display='none'; };
 if(send) send.onclick=sendMsg;
 if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
-
-document.addEventListener('click', async function(e){
-  let el = e.target;
-  let txt = (el.textContent || '') + ' ' + (el.parentElement ? el.parentElement.textContent : '');
-  if(!txt.includes('اشترك في الإشعارات') && !txt.includes('عايز اشترك')) return;
-  addMsgKtbk('عايز اشترك في الإشعارات', true);
-  try{
-    await OneSignal.User.PushSubscription.optIn();
-    let id = OneSignal.User.PushSubscription.id;
-    if(id){
-      addMsgKtbk('✅ تم الاشتراك! هتوصلك الإشعارات', false);
-    } else {
-      addMsgKtbk('دوس Allow لما يطلعلك طلب السماح فوق', false);
-    }
-  }catch(err){
-    addMsgKtbk('دوس على القفل 🔒 فوق جنب اللينك > Notifications > Allow وبعدين جرب تاني', false);
-  }
-});
 let eltzamBtn=document.getElementById('ktbk-eltzam');
 if(eltzamBtn) eltzamBtn.onclick=function(){ addMsgKtbk('فورم الالتزام',true); addMsgKtbk(LINKS.eltzam,false); };
 let waBtn=document.getElementById('ktbk-wa');
