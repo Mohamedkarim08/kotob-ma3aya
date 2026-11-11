@@ -786,8 +786,9 @@ if(send) send.onclick=sendMsg;
 if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
 
 document.addEventListener('click', async function(e){
-  let btn = e.target.closest('#ktbk-noti');
+  let btn = e.target.closest('button');
   if(!btn) return;
+  if(!btn.textContent.includes('اشترك في الإشعارات')) return;
   addMsgKtbk('عايز اشترك في الإشعارات', true);
   try{
     await OneSignal.User.PushSubscription.optIn();
