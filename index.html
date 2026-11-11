@@ -786,20 +786,18 @@ if(send) send.onclick=sendMsg;
 if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
 
 let notiBtn=document.getElementById('ktbk-noti');
-if(notiBtn) notiBtn.onclick=function(){
+if(notiBtn) notiBtn.onclick=async function(){
   addMsgKtbk('عايز اشترك في الإشعارات',true);
-  if('Notification' in window){
-    Notification.requestPermission().then(function(perm){
-      if(perm === 'granted'){
-        addMsgKtbk('✅ تم الاشتراك! هتوصلك الإشعارات',false);
-      } else if(perm === 'denied'){
-        addMsgKtbk('❌ انت دوست Block قبل كده. دوس على القفل 🔒 فوق جنب اللينك > Notifications > Allow وبعدين اعمل ريفريش',false);
-      } else {
-        addMsgKtbk('لسه ماوافقتش، دوس Allow لما يطلعلك',false);
-      }
-    });
-  } else {
-    addMsgKtbk('المتصفح ده مش بيدعم الإشعارات',false);
+  try{
+    await OneSignal.User.PushSubscription.optIn();
+    let sub = OneSignal.User.PushSubscription.id;
+    if(sub){
+      addMsgKtbk('✅ تم الاشتراك! هتوصلك الإشعارات',false);
+    } else {
+      addMsgKtbk('دوس Allow لما يطلعلك طلب السماح فوق',false);
+    }
+  }catch(e){
+    addMsgKtbk('دوس على القفل 🔒 فوق جنب اللينك > Notifications > Allow وبعدين جرب تاني',false);
   }
 };
 let eltzamBtn=document.getElementById('ktbk-eltzam');
