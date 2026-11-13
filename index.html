@@ -747,7 +747,7 @@ function toggleRecord(){
 <div id="ktbk-btn">💬</div>
 <div id="ktbk-box">
 <div id="ktbk-head"><span>روابط كتبك معايا 🔗</span><span id="ktbk-x" style="cursor:pointer">✕</span></div>
-<div id="ktbk-msgs"><div class="ktbk-m ktbk-b">اهلا بك في منصة كتبك معايا 📚<br>لو جاهز اكتبلي جاهز 👇</div></div>
+<div id="ktbk-msgs"><div class="ktbk-m ktbk-b">اهلا بك في منصة كتبك معايا 📚<br>لو جاهز اكتبلي او اكتب جاهز 👇</div></div>
 <div id="ktbk-in"><input id="ktbk-input" placeholder="اكتب اسم الكتاب..."><button id="ktbk-send">ابعت</button></div>
 </div>
 <script>
@@ -759,16 +759,23 @@ const LINKS = {
   support: '💬 بوت الدعم الفني:\nhttps://t.me/MohamedHelpDesk_bot',
   request: '📚 بوت طلب الكتب:\nhttps://t.me/KotobkMaya_bot',
   site: '🌐 موقعنا:\nhttps://mohamedkarim08.github.io/kotob-ma3aya/',
-  eltzam: '📝 فورم الالتزام 👇\nhttps://forms.gle/8zpk6oc6i454zzTx5'
+  eltzam: '📝 فورم الالتزام 👇\nhttps://forms.gle/8zpk6oc6i454zzTx5',
+  abakira: '🧠🔥 تحدي العباقرة - أصعب سؤالين في كتبك معايا!\n📝 السؤال عليه 10 درجات\n🏆 واللي يحله ياخد شهادة "عبقري كتبك معايا" باسمه\nادخل جرب حظك دلوقتي 👇\nhttps://forms.gle/J3zZKF4ULA9JYtLQ8\nمتنساش تكتب اسمك الثلاثي صح 💪🎓',
+  zaka2: '🧠 اختبار ذكاء - تانية إعدادي | كتبك معايا 🏆\n📝 الاختبار فيه 5 أسئلة: عربي - رياضيات - علوم - إنجليزي - دراسات\n⏰ الامتحان هيتقفل الساعة 6\n🏅 واللي هيجيب 5 من 5 هياخد شهادة تقدير باسمه\nادخل حل دلوقتي من هنا 👇\nhttps://forms.gle/ZPHV5S1JfAaAfnEW9',
+  zaka2_4: '🧠 اختبار ذكاء - رابعة ابتدائي | كتبك معايا 🏆\n📝 الاختبار فيه 5 أسئلة: عربي - رياضيات - علوم - إنجليزي - دراسات\n⏰ الامتحان هيتقفل الساعة 6\n🏅 واللي هيجيب 5 من 5 هياخد شهادة تقدير باسمه\nادخل حل دلوقتي من هنا 👇\nhttps://forms.gle/mhSekWuJrVXCB3h97'
 };
 function reply(q){
   let qq = q.toLowerCase();
   if(qq.includes('اشترك في القناة') || qq.includes('اشترك')) return '🔴 اشترك في قناة كتبك معايا وفعّل الجرس 🔔👇\nhttps://www.youtube.com/@kotobma3aya?sub_confirmation=1';
   if(qq.includes('اشعار') || qq.includes('اشعارات') || qq.includes('تنبيه')) return '🔔 عشان توصلك إشعارات الموقع، دوس على زرار (اشترك في إشعارات الموقع) اللي تحت، وبعدها دوس سماح ✅';
   if(qq.includes('التزام') || qq.includes('eltzam')) return LINKS.eltzam;
+  if(qq.includes('عباقرة') || qq.includes('عبقري') || qq.includes('تحدي')) return LINKS.abakira;
+  if(qq.includes('رابعة') || qq.includes('ابتدائي')) return LINKS.zaka2_4;
+  if(qq.includes('تانية') || qq.includes('اعدادي') || qq.includes('إعدادي')) return LINKS.zaka2;
+  if(qq.includes('ذكاء')) return '🧠 اختبارات الذكاء المتاحة:\n\n🧠 تانية إعدادي:\nhttps://forms.gle/ZPHV5S1JfAaAfnEW9\n\n🧠 رابعة ابتدائي:\nhttps://forms.gle/mhSekWuJrVXCB3h97';
   if(qq.includes('امتحان') || qq.includes('اختبار') || qq.includes('quiz')){
     if(qq.includes('kg1') || qq.includes('كي جي') || qq.includes('كيجي') || qq.includes('انجليزي')) return '📝 امتحان KG1 انجليزي - مستر محمد 👇\nhttps://forms.gle/CgPZsRE4VDrPHdPU6';
-    return '📝 امتحانات مستر محمد المتاحة دلوقتي:\n📚 KG1 انجليزي:\nhttps://forms.gle/CgPZsRE4VDrPHdPU6';
+    return '📝 امتحانات مستر محمد المتاحة دلوقتي:\n📚 KG1 انجليزي:\nhttps://forms.gle/CgPZsRE4VDrPHdPU6\n\n🧠🔥 تحدي العباقرة:\nhttps://forms.gle/J3zZKF4ULA9JYtLQ8\n\n🧠 اختبار ذكاء - تانية إعدادي:\nhttps://forms.gle/ZPHV5S1JfAaAfnEW9\n\n🧠 اختبار ذكاء - رابعة ابتدائي:\nhttps://forms.gle/mhSekWuJrVXCB3h97';
   }
   if(qq.includes('يوتيوب') || qq.includes('youtube')) return LINKS.youtube;
   if(qq.includes('واتس') || qq.includes('whatsapp')) return LINKS.whatsapp;
@@ -776,7 +783,7 @@ function reply(q){
   if(qq.includes('دعم') || qq.includes('مساعدة')) return LINKS.support;
   if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('بوت')) return LINKS.request;
   if(qq.includes('موقع') || qq.includes('site')) return LINKS.site;
-  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام / اشترك - وانا هبعتلك اللينك فوراً';
+  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام / اشترك / عباقرة / ذكاء - وانا هبعتلك اللينك فوراً';
 }
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-msgs');
 function addMsgKtbk(t,isUser){
