@@ -717,32 +717,18 @@ function toggleRecord(){
 </script>
 <!-- بوت روابط كتبك معايا - الاتنين مع بعض -->
 <style>
-#ktbk-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#6c5ce7;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;cursor:pointer;z-index:9999}
-#ktbk-box{position:fixed;bottom:90px;right:20px;width:360px;max-width:92vw;height:480px;background:white;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;flex-direction:column;z-index:9999;overflow:hidden;font-family:Cairo,sans-serif}
-#ktbk-head{background:#6c5ce7;color:white;padding:14px;font-weight:bold;display:flex;justify-content:space-between}
-#ktbk-msgs{flex:1;padding:12px;overflow-y:auto;background:#f8f9fa}
-.ktbk-m{margin:6px 0;padding:10px 14px;border-radius:12px;max-width:85%;line-height:1.6}
-.ktbk-b{background:white;color:#333;border:1px solid #eee}.ktbk-u{background:#6c5ce7;color:white;margin-left:auto}
-#ktbk-in{display:flex;padding:10px;border-top:1px solid #eee}
-#ktbk-in input{flex:1;border:1px solid #ddd;border-radius:20px;padding:10px 14px;outline:none}
-#ktbk-in button{background:#6c5ce7;color:white;border:none;border-radius:20px;padding:10px 16px;margin-right:8px;cursor:pointer}
-.ktbk-link{display:inline-block;background:#6c5ce7;color:white!important;padding:6px 12px;border-radius:10px;text-decoration:none;margin:5px 0}
-#ktbk-quick{display:flex;gap:6px;padding:8px 10px;background:white;border-top:1px solid #eee;flex-wrap:wrap}
-.ktbk-q{flex:1 1 45%;border:none;border-radius:20px;padding:9px 6px;font-size:13px;font-weight:bold;cursor:pointer}
-.ktbk-q-red{background:#ff0000;color:white}
-.ktbk-q-purple{background:#6c5ce7;color:white}
-.ktbk-q-orange{background:#ff9800;color:white}
-.ktbk-q-green{background:#25D366;color:white}
+#ktbk-btn{position:fixed;bottom:20px;right:20px;width:55px;height:55px;background:#7c5cff;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,.3)}
+#ktbk-box{position:fixed;bottom:85px;right:20px;width:320px;max-width:calc(100vw - 40px);background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.25);overflow:hidden;display:none;flex-direction:column;z-index:9999}
+#ktbk-head{background:#7c5cff;color:#fff;padding:12px;display:flex;justify-content:space-between;font-weight:bold}
+#ktbk-msgs{height:320px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;direction:rtl;text-align:right}
+.ktbk-m{padding:10px 12px;border-radius:12px;font-size:14px;line-height:1.6;word-break:break-word}
+.ktbk-b{background:#f1efff}
+.ktbk-u{background:#7c5cff;color:#fff;align-self:flex-end}
+#ktbk-in{display:flex;padding:10px;gap:8px;border-top:1px solid #eee}
+#ktbk-input{flex:1;padding:10px;border:1px solid #ddd;border-radius:10px;outline:none}
+#ktbk-send{background:#7c5cff;color:#fff;border:none;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:bold}
+.ktbk-link{display:block;text-align:center;background:#7c5cff;color:#fff!important;padding:11px;border-radius:12px;text-decoration:none!important;font-weight:bold;margin:8px 0}
 </style>
-
-<!-- كود OneSignal - حطه في <head> الموقع -->
-<!-- <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({ appId: "حط_هنا_App_ID_بتاعك" });
-  });
-</script> -->
 
 <div id="ktbk-btn">💬</div>
 <div id="ktbk-box">
@@ -750,41 +736,67 @@ function toggleRecord(){
 <div id="ktbk-msgs"><div class="ktbk-m ktbk-b">اهلا بك في منصة كتبك معايا 📚<br>لو جاهز اكتبلي او اكتب جاهز 👇</div></div>
 <div id="ktbk-in"><input id="ktbk-input" placeholder="اكتب اسم الكتاب..."><button id="ktbk-send">ابعت</button></div>
 </div>
+
 <script>
 const LINKS = {
- youtube: '🎥 قناة اليوتيوب:\nhttps://www.youtube.com/@kotobma3aya',
+  youtube: 'https://www.youtube.com/@kotobma3aya',
   youtube_sub: 'https://www.youtube.com/@kotobma3aya?sub_confirmation=1',
-  whatsapp: '💚 قناة الواتساب:\nhttps://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A',
-  telegram: '✈️ قناة التليجرام:\nhttps://t.me/mrmohamedbooks',
-  support: '💬 بوت الدعم الفني:\nhttps://t.me/MohamedHelpDesk_bot',
-  request: '📚 بوت طلب الكتب:\nhttps://t.me/KotobkMaya_bot',
-  site: '🌐 موقعنا:\nhttps://mohamedkarim08.github.io/kotob-ma3aya/',
-  eltzam: '📝 فورم الالتزام 👇\nhttps://forms.gle/8zpk6oc6i454zzTx5',
-  abakira: '🧠🔥 تحدي العباقرة - أصعب سؤالين في كتبك معايا!\n📝 السؤال عليه 10 درجات\n🏆 واللي يحله ياخد شهادة "عبقري كتبك معايا" باسمه\nادخل جرب حظك دلوقتي 👇\nhttps://forms.gle/J3zZKF4ULA9JYtLQ8\nمتنساش تكتب اسمك الثلاثي صح 💪🎓',
-  zaka2: '🧠 اختبار ذكاء - تانية إعدادي | كتبك معايا 🏆\n📝 الاختبار فيه 5 أسئلة: عربي - رياضيات - علوم - إنجليزي - دراسات\n⏰ الامتحان هيتقفل الساعة 6\n🏅 واللي هيجيب 5 من 5 هياخد شهادة تقدير باسمه\nادخل حل دلوقتي من هنا 👇\nhttps://forms.gle/ZPHV5S1JfAaAfnEW9',
-  zaka2_4: '🧠 اختبار ذكاء - رابعة ابتدائي | كتبك معايا 🏆\n📝 الاختبار فيه 5 أسئلة: عربي - رياضيات - علوم - إنجليزي - دراسات\n⏰ الامتحان هيتقفل الساعة 6\n🏅 واللي هيجيب 5 من 5 هياخد شهادة تقدير باسمه\nادخل حل دلوقتي من هنا 👇\nhttps://forms.gle/mhSekWuJrVXCB3h97'
+  whatsapp: 'https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A',
+  telegram: 'https://t.me/mrmohamedbooks',
+  support: 'https://t.me/MohamedHelpDesk_bot',
+  request: 'https://t.me/KotobkMaya_bot',
+  site: 'https://mohamedkarim08.github.io/kotob-ma3aya/',
+  eltzam: 'https://forms.gle/8zpk6oc6i454zzTx5',
+  abakira: 'https://forms.gle/J3zZKF4ULA9JYtLQ8',
+  zaka2: 'https://forms.gle/ZPHV5S1JfAaAfnEW9',
+  zaka2_4: 'https://forms.gle/mhSekWuJrVXCB3h97',
+  kg1: 'https://forms.gle/CgPZsRE4VDrPHdPU6'
 };
+function linkBtn(text, url){ return `<a class="ktbk-link" href="${url}" target="_blank">${text} 🔗</a>`; }
 function reply(q){
   let qq = q.toLowerCase();
-  if(qq.includes('اشترك في القناة') || qq.includes('اشترك')) return '🔴 اشترك في قناة كتبك معايا وفعّل الجرس 🔔👇\nhttps://www.youtube.com/@kotobma3aya?sub_confirmation=1';
-  if(qq.includes('اشعار') || qq.includes('اشعارات') || qq.includes('تنبيه')) return '🔔 عشان توصلك إشعارات الموقع، دوس على زرار (اشترك في إشعارات الموقع) اللي تحت، وبعدها دوس سماح ✅';
-  if(qq.includes('التزام') || qq.includes('eltzam')) return LINKS.eltzam;
-  if(qq.includes('عباقرة') || qq.includes('عبقري') || qq.includes('تحدي')) return LINKS.abakira;
-  if(qq.includes('رابعة') || qq.includes('ابتدائي')) return LINKS.zaka2_4;
-  if(qq.includes('تانية') || qq.includes('اعدادي') || qq.includes('إعدادي')) return LINKS.zaka2;
-  if(qq.includes('ذكاء')) return '🧠 اختبارات الذكاء المتاحة:\n\n🧠 تانية إعدادي:\nhttps://forms.gle/ZPHV5S1JfAaAfnEW9\n\n🧠 رابعة ابتدائي:\nhttps://forms.gle/mhSekWuJrVXCB3h97';
+  if(qq.includes('اشترك')) return '🔴 اشترك في قناة كتبك معايا وفعّل الجرس 🔔' + linkBtn('اشترك في القناة', LINKS.youtube_sub);
+  if(qq.includes('اشعار') || qq.includes('تنبيه')) return '🔔 عشان توصلك إشعارات الموقع، دوس على زرار (اشترك في إشعارات الموقع) اللي تحت، وبعدها دوس سماح ✅';
+  if(qq.includes('التزام')) return '📝 فورم الالتزام 👇' + linkBtn('ادخل فورم الالتزام', LINKS.eltzam);
+  if(qq.includes('عباقرة') || qq.includes('عبقري') || qq.includes('تحدي')) return '🧠🔥 <b>تحدي العباقرة</b><br>السؤال عليه 10 درجات، واللي يحله ياخد شهادة "عبقري كتبك معايا" باسمه' + linkBtn('ادخل تحدي العباقرة', LINKS.abakira);
+  if(qq.includes('رابعة') || qq.includes('ابتدائي')) return '🧠 <b>اختبار ذكاء - رابعة ابتدائي</b><br>5 أسئلة، اللي يجيب 5/5 ياخد شهادة' + linkBtn('ادخل اختبار رابعة ابتدائي', LINKS.zaka2_4);
+  if(qq.includes('تانية') || qq.includes('اعدادي') || qq.includes('إعدادي')) return '🧠 <b>اختبار ذكاء - تانية إعدادي</b><br>5 أسئلة، اللي يجيب 5/5 ياخد شهادة' + linkBtn('ادخل اختبار تانية إعدادي', LINKS.zaka2);
+  if(qq.includes('ذكاء')) return '<b>🧠 اختبارات الذكاء:</b>' + linkBtn('تانية إعدادي', LINKS.zaka2) + linkBtn('رابعة ابتدائي', LINKS.zaka2_4);
   if(qq.includes('امتحان') || qq.includes('اختبار') || qq.includes('quiz')){
-    if(qq.includes('kg1') || qq.includes('كي جي') || qq.includes('كيجي') || qq.includes('انجليزي')) return '📝 امتحان KG1 انجليزي - مستر محمد 👇\nhttps://forms.gle/CgPZsRE4VDrPHdPU6';
-    return '📝 امتحانات مستر محمد المتاحة دلوقتي:\n📚 KG1 انجليزي:\nhttps://forms.gle/CgPZsRE4VDrPHdPU6\n\n🧠🔥 تحدي العباقرة:\nhttps://forms.gle/J3zZKF4ULA9JYtLQ8\n\n🧠 اختبار ذكاء - تانية إعدادي:\nhttps://forms.gle/ZPHV5S1JfAaAfnEW9\n\n🧠 اختبار ذكاء - رابعة ابتدائي:\nhttps://forms.gle/mhSekWuJrVXCB3h97';
+    if(qq.includes('kg1') || qq.includes('كي جي') || qq.includes('كيجي')) return '📝 امتحان KG1 انجليزي' + linkBtn('ادخل امتحان KG1', LINKS.kg1);
+    return '<b>📝 امتحانات مستر محمد:</b>' + linkBtn('📚 KG1 انجليزي', LINKS.kg1) + linkBtn('🧠🔥 تحدي العباقرة', LINKS.abakira) + linkBtn('🧠 تانية إعدادي', LINKS.zaka2) + linkBtn('🧠 رابعة ابتدائي', LINKS.zaka2_4);
   }
-  if(qq.includes('يوتيوب') || qq.includes('youtube')) return LINKS.youtube;
-  if(qq.includes('واتس') || qq.includes('whatsapp')) return LINKS.whatsapp;
-  if(qq.includes('تليجرام') || qq.includes('تلجرام') || qq.includes('telegram')) return LINKS.telegram;
-  if(qq.includes('دعم') || qq.includes('مساعدة')) return LINKS.support;
-  if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('بوت')) return LINKS.request;
-  if(qq.includes('موقع') || qq.includes('site')) return LINKS.site;
-  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام / اشترك / عباقرة / ذكاء - وانا هبعتلك اللينك فوراً';
+  if(qq.includes('يوتيوب')) return '🎥 قناة اليوتيوب:' + linkBtn('افتح اليوتيوب', LINKS.youtube);
+  if(qq.includes('واتس')) return '💚 قناة الواتساب:' + linkBtn('افتح الواتساب', LINKS.whatsapp);
+  if(qq.includes('تليجرام') || qq.includes('تلجرام')) return '✈️ قناة التليجرام:' + linkBtn('افتح التليجرام', LINKS.telegram);
+  if(qq.includes('دعم')) return '💬 بوت الدعم الفني:' + linkBtn('افتح بوت الدعم', LINKS.support);
+  if(qq.includes('طلب') || qq.includes('كتاب') || qq.includes('بوت')) return '📚 بوت طلب الكتب:' + linkBtn('افتح بوت طلب الكتب', LINKS.request);
+  if(qq.includes('موقع')) return '🌐 موقعنا:' + linkBtn('افتح الموقع', LINKS.site);
+  return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام / اشترك / عباقرة / ذكاء';
 }
+
+// ده الجزء اللي كان ناقص عندك - هو اللي بيعرض الرسايل
+const msgsBox = document.getElementById('ktbk-msgs');
+function addMsg(html, isUser){
+  const d = document.createElement('div');
+  d.className = 'ktbk-m ' + (isUser ? 'ktbk-u' : 'ktbk-b');
+  d.innerHTML = html;
+  msgsBox.appendChild(d);
+  msgsBox.scrollTop = msgsBox.scrollHeight;
+}
+function sendMsg(){
+  const inp = document.getElementById('ktbk-input');
+  const val = inp.value.trim();
+  if(!val) return;
+  addMsg(val, true);
+  inp.value = '';
+  setTimeout(()=>{ addMsg(reply(val), false); }, 300);
+}
+document.getElementById('ktbk-send').onclick = sendMsg;
+document.getElementById('ktbk-input').onkeydown = (e)=>{ if(e.key==='Enter') sendMsg(); };
+document.getElementById('ktbk-btn').onclick = ()=>{ const b=document.getElementById('ktbk-box'); b.style.display = b.style.display==='flex'?'none':'flex'; };
+document.getElementById('ktbk-x').onclick = ()=>{ document.getElementById('ktbk-box').style.display='none'; };
+</script>
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-msgs');
 function addMsgKtbk(t,isUser){
   let d=document.createElement('div'); d.className='ktbk-m '+(isUser?'ktbk-u':'ktbk-b');
