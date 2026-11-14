@@ -827,6 +827,7 @@ document.getElementById('ktbk-input').onkeydown = (e)=>{ if(e.key==='Enter') sen
 document.getElementById('ktbk-btn').onclick = ()=>{ const b=document.getElementById('ktbk-box'); b.style.display = b.style.display==='flex'?'none':'flex'; };
 document.getElementById('ktbk-x').onclick = ()=>{ document.getElementById('ktbk-box').style.display='none'; };
 </script>
+<script>
 let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-msgs');
 function addMsgKtbk(t,isUser){
   let d=document.createElement('div'); d.className='ktbk-m '+(isUser?'ktbk-u':'ktbk-b');
