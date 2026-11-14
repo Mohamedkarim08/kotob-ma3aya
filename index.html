@@ -781,6 +781,7 @@ const LINKS = {
   zaka2_4: 'https://forms.gle/mhSekWuJrVXCB3h97',
   kg1: 'https://forms.gle/CgPZsRE4VDrPHdPU6'
 };
+<script>
 function linkBtn(text, url){ return `<a class="ktbk-link" href="${url}" target="_blank">${text} 🔗</a>`; }
 function reply(q){
   let qq = q.toLowerCase();
@@ -803,13 +804,11 @@ function reply(q){
   if(qq.includes('موقع')) return '🌐 موقعنا:' + linkBtn('افتح الموقع', LINKS.site);
   return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام / اشترك / عباقرة / ذكاء';
 }
-
-// ده الجزء اللي كان ناقص عندك - هو اللي بيعرض الرسايل
 const msgsBox = document.getElementById('ktbk-msgs');
 function addMsg(html, isUser){
   const d = document.createElement('div');
   d.className = 'ktbk-m ' + (isUser ? 'ktbk-u' : 'ktbk-b');
-  d.innerHTML = html;
+  if(isUser){ d.textContent = html; } else { d.innerHTML = html; }
   msgsBox.appendChild(d);
   msgsBox.scrollTop = msgsBox.scrollHeight;
 }
@@ -825,27 +824,6 @@ document.getElementById('ktbk-send').onclick = sendMsg;
 document.getElementById('ktbk-input').onkeydown = (e)=>{ if(e.key==='Enter') sendMsg(); };
 document.getElementById('ktbk-btn').onclick = ()=>{ const b=document.getElementById('ktbk-box'); b.style.display = b.style.display==='flex'?'none':'flex'; };
 document.getElementById('ktbk-x').onclick = ()=>{ document.getElementById('ktbk-box').style.display='none'; };
-</script>
-<script>
-let btn=document.getElementById('ktbk-btn'),box=document.getElementById('ktbk-box'),x=document.getElementById('ktbk-x'),inp=document.getElementById('ktbk-input'),send=document.getElementById('ktbk-send'),msgs=document.getElementById('ktbk-msgs');
-function addMsgKtbk(t,isUser){
-  let d=document.createElement('div'); d.className='ktbk-m '+(isUser?'ktbk-u':'ktbk-b');
-  if(isUser){ d.textContent=t; } else {
-    let html=t.replace(/\n/g,'<br>');
-    html=html.replace(/https?:\/\/[^\s]+/g,function(url){ return '<br><a class="ktbk-link" href="'+url+'" target="_blank">🔗 اضغط هنا</a>'; });
-    d.innerHTML=html;
-  }
-  msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;
-}
-function sendMsg(){ if(!inp.value.trim()) return; addMsgKtbk(inp.value,true); addMsgKtbk(reply(inp.value),false); inp.value=''; }
-if(btn && box){ btn.onclick=function(){ box.style.display = box.style.display=='flex' ? 'none' : 'flex'; }; }
-if(x) x.onclick=function(){ box.style.display='none'; };
-if(send) send.onclick=sendMsg;
-if(inp) inp.addEventListener('keypress',function(e){ if(e.key==='Enter') sendMsg(); });
-let eltzamBtn=document.getElementById('ktbk-eltzam');
-if(eltzamBtn) eltzamBtn.onclick=function(){ addMsgKtbk('فورم الالتزام',true); addMsgKtbk(LINKS.eltzam,false); };
-let waBtn=document.getElementById('ktbk-wa');
-if(waBtn) waBtn.onclick=function(){ window.open('https://chat.whatsapp.com/G017CD9YyCv8ygNaRcBX6A','_blank'); };
 </script>
 </body>
 </html>
