@@ -91,6 +91,41 @@ header h1{font-size:28px;margin-bottom:5px}
 .icon-btn{background:#e0f2fe!important;color:#0284c7!important;border:1px solid #0284c7!important}
 .search-container{padding:15px;text-align:center;background:#fff}
 #searchInput{width:90%;max-width:600px;padding:12px;border:2px solid #0284c7;border-radius:25px;text-align:center}
+ /* خلي المراحل عواميد جنب بعض زي الصورة */
+main, .container, .grades-container, .content {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 15px !important;
+  align-items: start !important;
+}
+
+/* الكارت نفسه يرجع زي ما كان */
+.grade-card{
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* الكتب جوة ترجع صفوف عادية */
+.book-item{
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  text-align: right !important;
+  align-items: center !important;
+  padding: 10px !important;
+  border: none !important;
+  border-bottom: 1px solid #eee !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+/* للموبايل: عمود واحد بس عشان يبان كويس */
+@media (max-width: 700px){
+  main, .container, .grades-container, .content {
+    grid-template-columns: 1fr !important;
+  }
+}
 </style>
 </head>
 <body>
