@@ -91,41 +91,6 @@ header h1{font-size:28px;margin-bottom:5px}
 .icon-btn{background:#e0f2fe!important;color:#0284c7!important;border:1px solid #0284c7!important}
 .search-container{padding:15px;text-align:center;background:#fff}
 #searchInput{width:90%;max-width:600px;padding:12px;border:2px solid #0284c7;border-radius:25px;text-align:center}
- /* خلي المراحل عواميد جنب بعض زي الصورة */
-main, .container, .grades-container, .content {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 15px !important;
-  align-items: start !important;
-}
-
-/* الكارت نفسه يرجع زي ما كان */
-.grade-card{
-  display: block !important;
-  width: 100% !important;
-  margin: 0 !important;
-}
-
-/* الكتب جوة ترجع صفوف عادية */
-.book-item{
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: space-between !important;
-  text-align: right !important;
-  align-items: center !important;
-  padding: 10px !important;
-  border: none !important;
-  border-bottom: 1px solid #eee !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-}
-
-/* للموبايل: عمود واحد بس عشان يبان كويس */
-@media (max-width: 700px){
-  main, .container, .grades-container, .content {
-    grid-template-columns: 1fr !important;
-  }
-}
 </style>
 </head>
 <body>
@@ -377,21 +342,57 @@ main, .container, .grades-container, .content {
         </div>
     </div>
 
-<div class="grade-card" id="sec1-card" data-grade="true">
-    <div class="grade-title">الصف الأول الثانوي</div>
-    <div class="book-item"><span class="book-name">الامتحان اللغه العربيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/765?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-    <div class="book-item"><span class="book-name">المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/762?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-    <div class="book-item"><span class="book-name">الامتحان تاريخ</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/763?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-    <div class="book-item"><span class="book-name">الامتحان فلسفه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/764?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-    <div class="book-item"><span class="book-name">الامتحان علوم متكاملة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/766?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-    <div class="book-item"><span class="book-name">المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/767?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-    <div class="book-item"><span class="book-name">المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/768?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
-</div>
-            <div class="grade-card" id="sec2-sci-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (علمي)</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي علمي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sec2-art-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (أدبي)</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي أدبي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-            <div class="grade-card" id="sec2-bac-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (بكالوريا)</div><div class="credit-notice">🎓 قسم خاص بنظام البكالوريا الجديد - تانية ثانوي</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي بكالوريا</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
-        </div>
+<style>
+  /* العواميد زي الصورة */
+  .grades-container{
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 15px !important;
+    align-items: start !important;
+  }
+  .grade-card{
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .book-item{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  @media (max-width: 900px){
+    .grades-container{ grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 600px){
+    .grades-container{ grid-template-columns: 1fr !important; }
+  }
+</style>
+
+<div class="stage-section" id="sec-section">
+  <div class="section-title">🎓 المرحلة الثانوية (الكتب الخارجية وشعبها)</div>
+  <div class="grades-container">
+
+    <div class="grade-card" id="sec1-card" data-grade="true">
+      <div class="grade-title">الصف الأول الثانوي</div>
+      <div class="book-item"><span class="book-name">الامتحان اللغه العربيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/765?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+      <div class="book-item"><span class="book-name">المعاصر اللغه الانجليزيه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/762?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+      <div class="book-item"><span class="book-name">الامتحان تاريخ</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/763?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+      <div class="book-item"><span class="book-name">الامتحان فلسفه</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/764?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+      <div class="book-item"><span class="book-name">الامتحان علوم متكاملة</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/766?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+      <div class="book-item"><span class="book-name">المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/767?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
+      <div class="book-item"><span class="book-name">المعاصر ساينس</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/768?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
     </div>
+
+    <div class="grade-card" id="sec2-sci-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (علمي)</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي علمي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+
+    <div class="grade-card" id="sec2-art-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (أدبي)</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي أدبي</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+
+    <div class="grade-card" id="sec2-bac-card" data-grade="true"><div class="grade-title">الصف الثاني الثانوي (بكالوريا)</div><div class="credit-notice">🎓 قسم خاص بنظام البكالوريا الجديد - تانية ثانوي</div><div class="book-item"><span class="book-name">قريباً إضافة كتب ثانية ثانوي بكالوريا</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks" target="_blank" class="download-btn">ترقبوا</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div></div>
+
+  </div>
+</div>
     <script>
         let isAdmin = false;
         function toggleLoginBox(){const box=document.getElementById('login-box');box.style.display=box.style.display==='block'?'none':'block';}
