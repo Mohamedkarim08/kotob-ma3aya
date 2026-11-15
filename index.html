@@ -837,16 +837,15 @@ document.getElementById('ktbk-x').onclick = ()=>{ document.getElementById('ktbk-
 #rate-send{background:#7c5cff;color:#fff;border:none;padding:10px 20px;border-radius:10px;cursor:pointer;font-weight:bold;margin-top:10px;width:100%}
 </style>
 
-<div id="rate-box">
-  <h3>⭐ قيّم مكتبة كتبك معايا</h3>
-  <p style="margin:0;color:#666;font-size:14px">رأيك يهمنا، دوس على النجوم 👇</p>
-  <div class="rate-stars" id="rate-stars">
+<div id="rate-box" style="background:#fff;border-radius:16px;padding:18px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,.1);margin:20px auto;max-width:400px;direction:rtl">
+  <h3 style="margin:0">⭐ قيّم مكتبة كتبك معايا</h3>
+  <p style="color:#666;font-size:14px">دوس على النجوم 👇</p>
+  <div id="rate-stars" style="font-size:35px;cursor:pointer">
     <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
   </div>
-  <input id="rate-input" placeholder="اكتب رأيك هنا (اختياري)...">
-  <button id="rate-send">ابعت التقييم</button>
-  <div id="rate-msg"></div>
-  <div id="rate-count"></div>
+  <input id="rate-input" placeholder="اكتب رأيك هنا..." style="width:100%;padding:10px;border:1px solid #ddd;border-radius:10px;margin-top:10px;box-sizing:border-box">
+  <button id="rate-send" style="background:#7c5cff;color:#fff;border:none;padding:12px;border-radius:10px;cursor:pointer;font-weight:bold;margin-top:10px;width:100%">ابعت التقييم</button>
+  <div id="rate-msg" style="margin-top:10px;font-weight:bold;color:#7c5cff"></div>
 </div>
 
 <script>
@@ -855,27 +854,17 @@ let stars = document.querySelectorAll('#rate-stars span');
 stars.forEach(s=>{
   s.onclick = ()=>{
     selectedRate = parseInt(s.dataset.v);
-    stars.forEach(st=>{ st.classList.toggle('active', parseInt(st.dataset.v) <= selectedRate); });
-    document.getElementById('rate-msg').textContent = 'اخترت ' + selectedRate + ' من 5 ⭐';
+    stars.forEach(st=>{ st.style.color = parseInt(st.dataset.v) <= selectedRate ? '#FFC107' : '#ddd'; });
   };
 });
 document.getElementById('rate-send').onclick = ()=>{
   if(!selectedRate){ document.getElementById('rate-msg').textContent = 'اختار عدد النجوم الأول ⭐'; return; }
-  let total = parseInt(localStorage.getItem('ktbk_rate_total')||'0');
-  let count = parseInt(localStorage.getItem('ktbk_rate_count')||'0');
-  total += selectedRate; count += 1;
-  localStorage.setItem('ktbk_rate_total', total);
-  localStorage.setItem('ktbk_rate_count', count);
-  let avg = (total/count).toFixed(1);
-  document.getElementById('rate-msg').textContent = 'شكرا ليك ❤️ تقييمك اتسجل: ' + selectedRate + ' ⭐';
-  document.getElementById('rate-count').textContent = 'متوسط التقييم: ' + avg + ' ⭐ من ' + count + ' شخص';
-  document.getElementById('rate-input').value = '';
+  let comment = document.getElementById('rate-input').value;
+  let text = 'تقييم جديد للمكتبة ⭐\nالتقييم: ' + selectedRate + ' من 5\nرأيه: ' + (comment || 'مفيش تعليق');
+  let url = 'https://t.me/MohamedHelpDesk_bot?text=' + encodeURIComponent(text);
+  window.open(url, '_blank');
+  document.getElementById('rate-msg').textContent = 'شكرا ليك ❤️ دوس ابعت في التليجرام عشان التقييم يوصلي';
 };
-let c = parseInt(localStorage.getItem('ktbk_rate_count')||'0');
-if(c>0){
-  let t = parseInt(localStorage.getItem('ktbk_rate_total')||'0');
-  document.getElementById('rate-count').textContent = 'متوسط التقييم: ' + (t/c).toFixed(1) + ' ⭐ من ' + c + ' شخص';
-}
 </script>
 </body>
 </html>
