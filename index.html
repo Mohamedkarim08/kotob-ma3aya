@@ -123,60 +123,6 @@ header h1{font-size:28px;margin-bottom:5px}
 <div class="search-container">
 <input type="text" id="searchInput" placeholder="🔍 ابحث عن أي كتاب هنا...">
 </div>
-
-<div id="login-box">
-<h3>تسجيل دخول المسؤول</h3>
-<input type="password" id="adminPass" placeholder="كلمة المرور">
-<input type="password" id="confirmPass" placeholder="رمز التأكيد">
-<button onclick="checkAdmin()" style="background:#0284c7;color:#fff;border:none;padding:10px 20px;border-radius:8px;width:100%;cursor:pointer">دخول</button>
-</div>
-<div class="dropdown-nav">
-<button class="dropdown-main-btn active" id="all-stages-btn" onclick="showAllGrades()">🌐 كل المراحل</button>
-<div class="dropdown-container" id="primary-dropdown">
-<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'primary-dropdown')">🎒 الابتدائي ▾</button>
-<div class="dropdown-menu">
-<button onclick="filterSpecificGrade('p1-card')">الصف الأول الابتدائي</button>
-<button onclick="filterSpecificGrade('p2-card')">الصف الثاني الابتدائي</button>
-<button onclick="filterSpecificGrade('p3-card')">الصف الثالث الابتدائي</button>
-<button onclick="filterSpecificGrade('p4-card')">الصف الرابع الابتدائي</button>
-<button onclick="filterSpecificGrade('p5-card')">الصف الخامس الابتدائي</button>
-<button onclick="filterSpecificGrade('p6-card')">الصف السادس الابتدائي</button>
-</div>
-</div>
-<div class="dropdown-container" id="prep-dropdown">
-<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'prep-dropdown')">📖 الإعدادي ▾</button>
-<div class="dropdown-menu">
-<button onclick="filterSpecificGrade('grade1-card')">الصف الأول الإعدادي</button>
-<button onclick="filterSpecificGrade('grade2-card')">الصف الثاني الإعدادي</button>
-<button onclick="filterSpecificGrade('grade3-card')">الصف الثالث الإعدادي</button>
-</div>
-</div>
-<div class="dropdown-container" id="sec-dropdown">
-<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'sec-dropdown')">🎓 الثانوي ▾</button>
-<div class="dropdown-menu">
-<button onclick="filterSpecificGrade('sec1-card')">الصف الأول الثانوي</button>
-<button onclick="filterSpecificGrade('sec2-sci-card')">تاني ثانوي (علمي)</button>
-<button onclick="filterSpecificGrade('sec2-art-card')">تاني ثانوي (أدبي)</button>
-<button onclick="filterSpecificGrade('sec2-bac-card')">تاني ثانوي (بكالوريا)</button>
-</div>
-</div>
-</div>
-<div class="stage-section" id="school-books-section">
-</div>
-  
-<div id="admin-panel">
-<h3>لوحة تحكم المسؤول - إضافة كتاب جديد</h3>
-<select id="gradeSelect">
-<option value="p1-card">أولى ابتدائي</option><option value="p2-card">تانية ابتدائي</option><option value="p3-card">تالتة ابتدائي</option><option value="p4-card">رابعة ابتدائي</option><option value="p5-card">خامسة ابتدائي</option><option value="p6-card">ساتة ابتدائي</option>
-<option value="grade1-card">أولى إعدادي</option><option value="grade2-card">تانية إعدادي</option><option value="grade3-card">تالتة إعدادي</option>
-<option value="sec1-card">أولى ثانوي</option><option value="sec2-sci-card">تانية ثانوي علمي</option><option value="sec2-art-card">تانية ثانوي أدبي</option><option value="sec2-bac-card">تانية ثانوي بكالوريا</option>
-</select>
-<input type="text" id="bookTitleInput" placeholder="اسم الكتاب">
-<input type="text" id="bookUrlInput" placeholder="رابط التحميل">
-<button onclick="addBook()">إضافة الكتاب +</button>
-</div>
-</div>
-</div>
 <div class="stage-section" id="primary-section">
         <div class="section-title">🎒 المرحلة الابتدائية (كتب خارجية وتقييمات)</div>
         <div class="grades-container">
