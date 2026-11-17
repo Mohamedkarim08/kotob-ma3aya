@@ -381,20 +381,6 @@ header h1{font-size:28px;margin-bottom:5px}
   <div class="book-item"><span class="book-name">الامتحان تاريخ</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/806?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
   <div class="book-item"><span class="book-name">المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/807?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
 </div>
-    <script>
-        let isAdmin = false;
-        function toggleLoginBox(){const box=document.getElementById('login-box');box.style.display=box.style.display==='block'?'none':'block';}
-        function checkAdmin(){
-            const pass=document.getElementById('adminPass').value;
-            const confirm=document.getElementById('confirmPass').value;
-            if(pass==='كتبك معايا' && confirm==='082013'){
-                isAdmin=true;
-                document.getElementById('login-box').style.display='none';
-                document.getElementById('admin-panel').style.display='block';
-                document.querySelectorAll('.delete-btn').forEach(btn=>btn.style.display='inline-block');
-                alert('تم تسجيل الدخول بنجاح كمسؤول!');
-            }else{alert('كلمة المرور أو رمز التأكيد غير صحيح!');}
-        }
         function toggleDropdown(event, dropdownId){
             event.stopPropagation();
             const dropdown=document.getElementById(dropdownId);
