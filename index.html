@@ -751,12 +751,27 @@ function showAllGrades(){
     document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
 }
 function filterSpecificGrade(cardId){
-    document.querySelectorAll('.grade-card, [id$="-card"]').forEach(c => c.style.display = 'none');
-    document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
+    // اخفي كل الأقسام وكل الكروت الأول
+    document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'none');
+    document.querySelectorAll('[id$="-card"]').forEach(c => c.style.display = 'none');
+    document.querySelectorAll('.grade-card').forEach(c => c.style.display = 'none');
+
+    // اظهر الكارت المطلوب بس والقسم بتاعه
     const target = document.getElementById(cardId);
-    if(target) target.style.display = 'block';
+    if(target){
+        target.style.display = 'block';
+        const parent = target.closest('.stage-section');
+        if(parent) parent.style.display = 'block';
+    }
     document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
     window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function showAllGrades(){
+    document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
+    document.querySelectorAll('[id$="-card"]').forEach(c => c.style.display = 'block');
+    document.querySelectorAll('.grade-card').forEach(c => c.style.display = 'block');
+    document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
 }
 document.addEventListener('click', function(){
     document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
