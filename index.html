@@ -123,6 +123,38 @@ header h1{font-size:28px;margin-bottom:5px}
 <div class="search-container">
 <input type="text" id="searchInput" placeholder="🔍 ابحث عن أي كتاب هنا...">
 </div>
+ <div class="dropdown-nav">
+<button class="dropdown-main-btn active" id="all-stages-btn" onclick="showAllGrades()">🌐 كل المراحل</button>
+<div class="dropdown-container" id="primary-dropdown">
+<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'primary-dropdown')">🎒 الابتدائي ▾</button>
+<div class="dropdown-menu">
+<button onclick="filterSpecificGrade('p1-card')">الصف الأول الابتدائي</button>
+<button onclick="filterSpecificGrade('p2-card')">الصف الثاني الابتدائي</button>
+<button onclick="filterSpecificGrade('p3-card')">الصف الثالث الابتدائي</button>
+<button onclick="filterSpecificGrade('p4-card')">الصف الرابع الابتدائي</button>
+<button onclick="filterSpecificGrade('p5-card')">الصف الخامس الابتدائي</button>
+<button onclick="filterSpecificGrade('p6-card')">الصف السادس الابتدائي</button>
+</div>
+</div>
+<div class="dropdown-container" id="prep-dropdown">
+<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'prep-dropdown')">📖 الإعدادي ▾</button>
+<div class="dropdown-menu">
+<button onclick="filterSpecificGrade('grade1-card')">الصف الأول الإعدادي</button>
+<button onclick="filterSpecificGrade('grade2-card')">الصف الثاني الإعدادي</button>
+<button onclick="filterSpecificGrade('grade3-card')">الصف الثالث الإعدادي</button>
+</div>
+</div>
+<div class="dropdown-container" id="sec-dropdown">
+<button class="dropdown-main-btn" onclick="toggleDropdown(event, 'sec-dropdown')">🎓 الثانوي ▾</button>
+<div class="dropdown-menu">
+<button onclick="filterSpecificGrade('sec1-card')">الصف الأول الثانوي</button>
+<button onclick="filterSpecificGrade('sec2-sci-card')">تاني ثانوي (علمي)</button>
+<button onclick="filterSpecificGrade('sec2-art-card')">تاني ثانوي (أدبي)</button>
+<button onclick="filterSpecificGrade('sec2-bac-card')">تاني ثانوي (بكالوريا)</button>
+</div>
+</div>
+</div>
+ <div class="stage-section" id="primary-section">
 <div class="stage-section" id="primary-section">
         <div class="section-title">🎒 المرحلة الابتدائية (كتب خارجية وتقييمات)</div>
         <div class="grades-container">
