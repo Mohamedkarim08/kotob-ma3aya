@@ -735,6 +735,32 @@ function toggleRecord(){
     document.querySelectorAll('.grade-card').forEach(c => c.style.display = 'block');
     document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
 });
+ function toggleDropdown(event, id){
+    event.stopPropagation();
+    document.querySelectorAll('.dropdown-menu').forEach(m => {
+        if(m.parentElement.id !== id) m.style.display = 'none';
+    });
+    const menu = document.querySelector('#' + id + ' .dropdown-menu');
+    if(menu){
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    }
+}
+function showAllGrades(){
+    document.querySelectorAll('.grade-card, [id$="-card"]').forEach(c => c.style.display = 'block');
+    document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
+    document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
+}
+function filterSpecificGrade(cardId){
+    document.querySelectorAll('.grade-card, [id$="-card"]').forEach(c => c.style.display = 'none');
+    document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
+    const target = document.getElementById(cardId);
+    if(target) target.style.display = 'block';
+    document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+document.addEventListener('click', function(){
+    document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
+});
 </script>
 <!-- بوت روابط كتبك معايا - الاتنين مع بعض -->
 <style>
