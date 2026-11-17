@@ -317,34 +317,35 @@ header h1{font-size:28px;margin-bottom:5px}
             </div>
         </div>
     </div>
-
-<style>
+ <style>
   .grades-container{
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 15px !important;
-    align-items: start !important;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    align-items: start;
   }
   .grade-card{
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+  .grade-card.hide, .stage-section.hide{
+    display: none !important;
   }
   .book-item{
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    gap: 8px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
   }
   @media (max-width: 900px){
-    .grades-container{ grid-template-columns: repeat(2, 1fr) !important; }
+    .grades-container{ grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 600px){
-    .grades-container{ grid-template-columns: 1fr !important; }
+    .grades-container{ grid-template-columns: 1fr; }
   }
 </style>
-
 <div class="stage-section" id="sec-section">
   <div class="section-title">🎓 المرحلة الثانوية (كتب خارجية وتقييمات)</div>
   <div class="grades-container">
