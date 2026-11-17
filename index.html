@@ -381,52 +381,6 @@ header h1{font-size:28px;margin-bottom:5px}
   <div class="book-item"><span class="book-name">الامتحان تاريخ</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/806?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
   <div class="book-item"><span class="book-name">المعاصر رياضيات</span><div class="actions-group"><a href="https://t.me/mrmohamedbooks/807?single" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)">حذف</button></div></div>
 </div>
-        function toggleDropdown(event, dropdownId){
-            event.stopPropagation();
-            const dropdown=document.getElementById(dropdownId);
-            document.querySelectorAll('.dropdown-container').forEach(item=>{if(item.id!==dropdownId){item.classList.remove('show');}});
-            dropdown.classList.toggle('show');
-        }
-        window.onclick=function(event){
-            if(!event.target.matches('.dropdown-main-btn')){
-                document.querySelectorAll('.dropdown-container').forEach(item=>{item.classList.remove('show');});
-            }
-        }
-        function showAllGrades(){
-            document.querySelectorAll('.grade-card').forEach(card=>{card.style.display='block';});
-            document.querySelectorAll('.stage-section').forEach(sec=>{sec.style.display='block';});
-            document.querySelectorAll('.dropdown-main-btn').forEach(btn=>{btn.classList.remove('active');});
-            document.getElementById('all-stages-btn').classList.add('active');
-        }
-        function filterSpecificGrade(gradeId){
-            document.querySelectorAll('.grade-card').forEach(card=>{card.style.display=(card.id===gradeId)?'block':'none';});
-            document.querySelectorAll('.stage-section').forEach(sec=>{
-                const visibleCards=sec.querySelectorAll('.grade-card[style*="block"]');
-                sec.style.display=visibleCards.length>0?'block':'none';
-            });
-            document.getElementById('all-stages-btn').classList.remove('active');
-        }
-        function addBook(){
-            if(!isAdmin){alert('يجب تسجيل الدخول كمسؤول أولاً!');return;}
-            const targetGradeCardId=document.getElementById('gradeSelect').value;
-            const bookTitle=document.getElementById('bookTitleInput').value.trim();
-            const bookUrl=document.getElementById('bookUrlInput').value.trim();
-            if(!bookTitle||!bookUrl){alert('الرجاء إدخال اسم الكتاب ورابط التحميل!');return;}
-            const gradeCard=document.getElementById(targetGradeCardId);
-            if(gradeCard){
-                const newBookItem=document.createElement('div');
-                newBookItem.className='book-item';
-                newBookItem.innerHTML=`<span class="book-name">${bookTitle}</span><div class="actions-group"><a href="${bookUrl}" target="_blank" class="download-btn">تحميل</a><button class="delete-btn" onclick="deleteBook(this)" style="display: inline-block;">حذف</button></div>`;
-                gradeCard.appendChild(newBookItem);
-                document.getElementById('bookTitleInput').value='';
-                document.getElementById('bookUrlInput').value='';
-                alert('تم إضافة الكتاب بنجاح!');
-            }
-        }
-        function deleteBook(button){
-            if(!isAdmin){alert('غير مسموح لك بالحذف!');return;}
-            if(confirm('هل أنت متأكد من حذف هذا الكتاب؟')){button.closest('.book-item').remove();}
-        }
         document.getElementById('searchInput').addEventListener('input', function(){
             const input=this.value.toLowerCase();
             document.querySelectorAll('.book-item').forEach(item=>{
