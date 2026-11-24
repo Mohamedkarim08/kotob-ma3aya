@@ -79,22 +79,43 @@ header h1{font-size:28px;margin-bottom:5px}
 .search-container{padding:15px;text-align:center;background:#fff}
 #searchInput{width:90%;max-width:600px;padding:12px;border:2px solid #0284c7;border-radius:25px;text-align:center}
 </style>
- <style>
-  .grades-container{
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 15px;
-    width: 100%;
+<style>
+  /* ده بيخلي كل الكروت جنب بعض في كل المراحل */
+  .grades-container,
+  .grades,
+  .grades-list,
+  .talkhis-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 15px !important;
+    width: 100% !important;
   }
-  .grade-card{
-    width: auto;
-    margin: 0;
+
+  .grade-card {
+    width: auto !important;
+    margin: 0 !important;
+    flex: none !important;
+    max-width: none !important;
   }
-  @media (max-width: 900px){
-    .grades-container{ grid-template-columns: repeat(2, 1fr); }
+
+  /* التابلت */
+  @media (max-width: 900px) {
+    .grades-container,
+    .grades,
+    .grades-list,
+    .talkhis-container {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
   }
-  @media (max-width: 600px){
-    .grades-container{ grid-template-columns: 1fr; }
+
+  /* الموبايل */
+  @media (max-width: 600px) {
+    .grades-container,
+    .grades,
+    .grades-list,
+    .talkhis-container {
+      grid-template-columns: 1fr !important;
+    }
   }
 </style>
 </head>
