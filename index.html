@@ -905,13 +905,13 @@ function reply(q){
   if(qq.includes('موقع')) return '🌐 موقعنا:' + linkBtn('افتح الموقع', LINKS.site);
   return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام / اشترك / عباقرة / ذكاء';
 }
-const msgsBox = document.getElementById('ktbk-msgs');
 function addMsg(html, isUser){
   const d = document.createElement('div');
   d.className = 'ktbk-m ' + (isUser ? 'ktbk-u' : 'ktbk-b');
   if(isUser){ d.textContent = html; } else { d.innerHTML = html; }
   msgsBox.appendChild(d);
   msgsBox.scrollTop = msgsBox.scrollHeight;
+  return d;
 }
 function sendMsg(){
   const inp = document.getElementById('ktbk-input');
