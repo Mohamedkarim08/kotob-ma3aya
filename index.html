@@ -673,7 +673,24 @@ function quickAsk(t){
   inp.value = t;
   inp.focus();
   sendAIMessage();
-}
+ // توصيل زرار ارسال
+setTimeout(function(){
+  var box = document.getElementById('ai-chat-window');
+  if(!box) return;
+  var btns = box.querySelectorAll('button');
+  btns.forEach(function(b){
+    if(b.textContent.includes('إرسال') || b.textContent.includes('ارسال')){
+      b.onclick = function(){ sendAIMessage(); };
+    }
+  });
+  // خلي زرار Enter يشتغل كمان
+  var inp = box.querySelector('input');
+  if(inp){
+    inp.onkeydown = function(e){
+      if(e.key === 'Enter'){ sendAIMessage(); }
+    };
+  }
+}, 500);
 </script>
 </body>
 </html>
