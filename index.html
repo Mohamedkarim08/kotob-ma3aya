@@ -616,8 +616,9 @@ document.getElementById('ktbk-x').onclick = ()=>{ document.getElementById('ktbk-
 #rate-input{width:100%;padding:10px;border:1px solid #ddd;border-radius:10px;margin-top:10px;outline:none;box-sizing:border-box}
 #rate-send{background:#7c5cff;color:#fff;border:none;padding:10px 20px;border-radius:10px;cursor:pointer;font-weight:bold;margin-top:10px;width:100%}
 </style>
-   <div id="ai-fab" onclick="toggleAIChat()">🤖</div>
-<div id="ktbk-btn">📚</div>
-</body>
+  <div id="ai-fab" onclick="toggleAIChat()">🤖</div>
+<div id="ktbk-btn" onclick="document.getElementById('ktbk-box').classList.toggle('open')">📚</div>
+
+<script>
 </body>
 </html>
