@@ -619,6 +619,8 @@ document.getElementById('ktbk-send').onclick = sendMsg;
 document.getElementById('ktbk-input').onkeydown = (e)=>{ if(e.key==='Enter') sendMsg(); };
 document.getElementById('ktbk-btn').onclick = ()=>{ const b=document.getElementById('ktbk-box'); b.style.display = b.style.display==='flex'?'none':'flex'; };
 document.getElementById('ktbk-x').onclick = ()=>{ document.getElementById('ktbk-box').style.display='none'; };
+ function toggleAIChat(){ var w=document.getElementById('ai-chat-window'); if(w){ w.style.display = w.style.display==='flex'?'none':'flex'; } }
+function sendAIMessage(){ var box=document.getElementById('ai-chat-window'); var inp=box?box.querySelector('input'):document.getElementById('ktbk-input'); var v=inp?inp.value.trim():''; if(!v) return; addMsg(v,true); if(inp) inp.value=''; setTimeout(()=>{ addMsg('تمام، وصلتني: '+v,false); },300); }                                                 
 </script>
  <style>
 #rate-box{background:#fff;border-radius:16px;padding:18px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,.1);margin:20px auto;max-width:400px;direction:rtl}
