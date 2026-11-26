@@ -906,11 +906,14 @@ function reply(q){
   return '💙 اكتب: يوتيوب / واتس / تليجرام / امتحان / التزام / اشترك / عباقرة / ذكاء';
 }
 function addMsg(html, isUser){
+  const msgsBox = document.getElementById('aiChatBody') || document.getElementById('ktbk-msgs');
   const d = document.createElement('div');
   d.className = 'ktbk-m ' + (isUser ? 'ktbk-u' : 'ktbk-b');
   if(isUser){ d.textContent = html; } else { d.innerHTML = html; }
-  msgsBox.appendChild(d);
-  msgsBox.scrollTop = msgsBox.scrollHeight;
+  if(msgsBox){
+    msgsBox.appendChild(d);
+    msgsBox.scrollTop = msgsBox.scrollHeight;
+  }
   return d;
 }
 function sendMsg(){
