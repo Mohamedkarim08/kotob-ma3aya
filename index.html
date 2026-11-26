@@ -636,11 +636,12 @@ function sendAIMessage(){ var box=document.getElementById('ai-chat-window'); var
    <script>
 function sendAIMessage(){
   var box = document.getElementById('ai-chat-window');
-  var inp = box ? box.querySelector('input') : document.getElementById('ai-input');
+  if(!box) return;
+  var inp = box.querySelector('input');
   if(!inp) return;
   var v = inp.value.trim();
   if(!v) return;
-  var msgs = document.getElementById('ai-msgs');
+  var msgs = document.getElementById('ai-msgs') || box;
   msgs.innerHTML += '<div style="text-align:left;background:#dcf8c6;padding:8px;border-radius:10px;margin:5px">'+v+'</div>';
   inp.value = '';
   msgs.scrollTop = msgs.scrollHeight;
@@ -651,7 +652,8 @@ function sendAIMessage(){
 }
 function quickAsk(t){
   var box = document.getElementById('ai-chat-window');
-  var inp = box ? box.querySelector('input') : document.getElementById('ai-input');
+  if(!box) return;
+  var inp = box.querySelector('input');
   if(!inp) return;
   inp.value = t;
   inp.focus();
