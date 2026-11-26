@@ -639,13 +639,11 @@ function getLocalReply(msg){
     return null;
 }
 async function sendAIMessage(){
-    if(isSending) return;
-    const input=document.getElementById('aiUserInput');
-    const sendBtn=document.getElementById('sendBtn');
-    const text=input.value.trim();
+    const input = document.getElementById('aiUserInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const text = input.value.trim();
     if(!text) return;
 
-    // خد الرسالة الأول وبعدين امسح
     const msgToSend = text;
     input.value = '';
     addMsg(msgToSend,'user');
@@ -654,7 +652,7 @@ async function sendAIMessage(){
     const localReply = getLocalReply(msgToSend);
     if(localReply){ addMsg(localReply,'bot'); return; }
 
-    isSending = true;
+    // شلت isSending من هنا خالص عشان ميعلقش
     if(sendBtn){ sendBtn.disabled = true; sendBtn.textContent = '...'; }
     const loading = addMsg('تمام يا بطل، بفكر في سؤالك وبجهز الشرح... 🤔','bot');
 
@@ -704,7 +702,6 @@ async function sendAIMessage(){
         loading.innerHTML = 'حصل خطأ، جرب تاني يا بطل.';
         console.log(err);
     }finally{
-        isSending = false;
         if(sendBtn){ sendBtn.disabled = false; sendBtn.textContent = 'إرسال'; }
     }
 }
