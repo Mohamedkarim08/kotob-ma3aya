@@ -635,13 +635,18 @@ function sendAIMessage(){ var box=document.getElementById('ai-chat-window'); var
 </style>
    <script>
 function sendAIMessage(){
-  var input = document.getElementById('ai-input');
-  var text = input.value.trim();
-  if(!text) return;
-  // هنا كود الارسال بتاعك
-  input.value = '';
+  var inp=document.getElementById('ai-input');
+  var v = inp.value.trim();
+  if(!v) return;
+  var box = document.getElementById('ai-msgs');
+  box.innerHTML += '<div style="text-align:left;background:#dcf8c6;padding:8px;border-radius:10px;margin:5px">'+v+'</div>';
+  inp.value = '';
+  box.scrollTop = box.scrollHeight;
+  setTimeout(function(){
+    box.innerHTML += '<div style="background:#fff;padding:8px;border-radius:10px;margin:5px">سؤالك وصلني، وهجاوبك...</div>';
+    box.scrollTop = box.scrollHeight;
+  }, 500);
 }
-
 function quickAsk(t){
   document.getElementById('ai-input').value = t;
   sendAIMessage();
