@@ -691,6 +691,21 @@ setTimeout(function(){
     };
   }
 }, 500);
+ // حل نهائي - اسمع أي دوسة في الصفحة كلها
+document.addEventListener('click', function(e){
+  var t = e.target.textContent || '';
+  if(t.includes('إرسال') || t.includes('ارسال')){
+    sendAIMessage();
+  }
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Enter'){
+    var box = document.getElementById('ai-chat-window');
+    if(box && box.contains(document.activeElement)){
+      sendAIMessage();
+    }
+  }
+});
 </script>
 </body>
 </html>
