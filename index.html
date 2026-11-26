@@ -637,6 +637,13 @@ function sendAIMessage(){ var box=document.getElementById('ai-chat-window'); var
 function sendAIMessage(){
   var box = document.getElementById('ai-chat-window');
   if(!box) return;
+  // خلي الشات فوق كل حاجة وثابت
+  box.style.position = 'fixed';
+  box.style.bottom = '80px';
+  box.style.right = '20px';
+  box.style.zIndex = '9999';
+  box.style.display = 'block';
+
   var inp = box.querySelector('input');
   if(!inp) return;
   var v = inp.value.trim();
@@ -645,10 +652,18 @@ function sendAIMessage(){
   msgs.innerHTML += '<div style="text-align:left;background:#dcf8c6;padding:8px;border-radius:10px;margin:5px">'+v+'</div>';
   inp.value = '';
   msgs.scrollTop = msgs.scrollHeight;
+
+  // الرد الحقيقي على حسب السؤال
+  var reply = 'تمام، فهمت سؤالك. جرب تدوس على زرار من اللي فوق عشان أجاوبك بسرعة.';
+  if(v.includes('اختبار')) reply = 'تمام! يلا اختبار سريع: ما هي عاصمة مصر؟ أ) القاهرة ب) أسوان ج) الإسكندرية';
+  else if(v.includes('اشرح')) reply = 'تمام، هشرحلك ببساطة: الدرس بيتكلم عن أهم الأماكن السياحية في مصر، زي الأهرامات ومعبد الكرنك.';
+  else if(v.includes('ترجم')) reply = 'Pyramids = الأهرامات. Temple = معبد. Tourist = سائح.';
+  else if(v.includes('لخص')) reply = 'ملخص سريع: مصر فيها آثار كتير، وأشهرها الأهرامات ومعبد الكرنك، وبييجي ليها سياح من كل العالم.';
+
   setTimeout(function(){
-    msgs.innerHTML += '<div style="background:#fff;padding:8px;border-radius:10px;margin:5px">سؤالك وصلني، وهجاوبك...</div>';
+    msgs.innerHTML += '<div style="background:#fff;padding:8px;border-radius:10px;margin:5px">'+reply+'</div>';
     msgs.scrollTop = msgs.scrollHeight;
-  }, 500);
+  }, 600);
 }
 function quickAsk(t){
   var box = document.getElementById('ai-chat-window');
