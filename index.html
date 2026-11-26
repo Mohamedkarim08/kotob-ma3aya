@@ -698,8 +698,13 @@ async function sendAIMessage(){
         const ans = await askGemini(msgToSend);
         chatHistory.push('المساعد: '+ans);
         loading.innerHTML = formatAI(ans);
-    }catch(err){
-        loading.innerHTML = 'حصل خطأ، جرب تاني يا بطل.';
+   }catch(err){
+  console.log('الخطأ الأصلي:', err);
+  if(typeof loading !== 'undefined' && loading){
+    loading.innerHTML = 'حصل خطأ هرب كني يا بطل';
+  } else {
+    addMsg('حصل خطأ هرب كني يا بطل', 'bot');
+  }
         console.log(err);
     }finally{
         if(sendBtn){ sendBtn.disabled = false; sendBtn.textContent = 'إرسال'; }
