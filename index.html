@@ -646,6 +646,9 @@ function sendAIMessage(){
     box.innerHTML += '<div style="background:#fff;padding:8px;border-radius:10px;margin:5px">تمام، وصلني سؤالك: '+v+' - هجاوبك دلوقتي خطوة بخطوة.</div>';
     box.scrollTop = box.scrollHeight;
   }, 500);
+function quickAsk(t){
+  document.getElementById('ai-input').value = t;
+  sendAIMessage();
 }
 </script>
 </body>
