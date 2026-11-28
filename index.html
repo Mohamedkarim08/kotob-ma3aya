@@ -698,16 +698,6 @@ document.addEventListener('click', function(e){
     sendAIMessage();
   }
 });
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Enter'){
-    var box = document.getElementById('ai-chat-window');
-    if(box && box.contains(document.activeElement)){
-      sendAIMessage();
-    }
-  }
-      }
-    });
-  }
 </script>
 <script>
 var sendBtn = document.getElementById('ktbk-send');
