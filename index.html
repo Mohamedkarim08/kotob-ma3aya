@@ -707,5 +707,36 @@ document.addEventListener('keydown', function(e){
   }
 });
 </script>
+   <script>
+var sendBtn = document.getElementById('ktbk-send');
+var inputBox = document.getElementById('ktbk-input');
+var msgBox = document.getElementById('ktbk-msg');
+
+function sendKTBK(){
+  var v = inputBox.value.trim();
+  if(!v) return;
+  msgBox.innerHTML += '<div style="text-align:left;background:#dcf8c6;padding:8px;border-radius:10px;margin:5px">'+v+'</div>';
+  inputBox.value = '';
+  msgBox.scrollTop = msgBox.scrollHeight;
+
+  var reply = 'تمام فهمت، جرب تدوس على زرار من اللي فوق.';
+  if(v.includes('اختبار')) reply = 'يلا اختبار سريع: ما هي عاصمة مصر؟ أ) القاهرة ب) أسوان ج) الإسكندرية';
+  else if(v.includes('اشرح')) reply = 'هشرحلك ببساطة: الدرس بيتكلم عن أهم الأماكن السياحية في مصر زي الأهرامات.';
+  else if(v.includes('ترجم')) reply = 'Pyramids = الأهرامات. Temple = معبد.';
+
+  setTimeout(function(){
+    msgBox.innerHTML += '<div style="background:#fff;padding:8px;border-radius:10px;margin:5px">'+reply+'</div>';
+    msgBox.scrollTop = msgBox.scrollHeight;
+  }, 500);
+}
+
+if(sendBtn){
+  sendBtn.onclick = function(e){ e.preventDefault(); sendKTBK(); };
+}
+if(inputBox){
+  inputBox.onkeydown = function(e){ if(e.key === 'Enter'){ e.preventDefault(); sendKTBK(); } };
+}
+</script>
+</body>
 </body>
 </html>
